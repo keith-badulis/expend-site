@@ -1415,25 +1415,36 @@ a:hover {
   }
   .gallery-staggered-grid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 4rem;
   }
   .gallery-col-right {
     margin-top: 0;
   }
+  /* On mobile/tablet, ALWAYS put Caption on Top, Screenshot on Bottom */
   .gallery-item.caption-left,
   .gallery-item.caption-right {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 1.5rem;
   }
   .gallery-caption-box {
+    order: 1;
     align-items: center;
+    width: 100%;
+  }
+  .gallery-screen-box {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
   }
   .gallery-tags-wrap {
     justify-content: center;
   }
   .gallery-phone-frame {
     max-width: 225px;
-    margin: 1.25rem auto 0 auto;
+    margin: 0 auto;
   }
   .reviews-cards-grid {
     grid-template-columns: 1fr;
@@ -1451,35 +1462,36 @@ a:hover {
     padding: 3.75rem 0;
   }
   .phone-anchor {
-    width: 250px;
+    width: 240px;
   }
   .phone-backlight-aura {
     width: 320px;
     height: 420px;
   }
   .phone-emanating-ring.ring-1 {
-    width: 270px;
-    height: 450px;
+    width: 265px;
+    height: 440px;
   }
   .phone-emanating-ring.ring-2 {
-    width: 295px;
-    height: 480px;
+    width: 290px;
+    height: 470px;
   }
+  /* Clear space beside the phone so icons never overlap the frame */
   .icon-bank {
     top: 22%;
-    left: -28px;
+    left: -48px;
   }
   .icon-wallet {
     top: 32%;
-    right: -28px;
+    right: -48px;
   }
   .icon-piggy {
     top: 62%;
-    left: -30px;
+    left: -50px;
   }
   .icon-card {
     top: 72%;
-    right: -28px;
+    right: -48px;
   }
   .hero-shape-top-left {
     width: 150px;
@@ -1550,38 +1562,43 @@ a:hover {
     font-size: 0.7rem;
   }
   .phone-anchor {
-    width: 220px;
+    width: 210px;
   }
   .phone-backlight-aura {
-    width: 270px;
-    height: 360px;
-    filter: blur(26px);
+    width: 260px;
+    height: 350px;
+    filter: blur(24px);
   }
   .phone-emanating-ring.ring-1 {
-    width: 238px;
-    height: 390px;
+    width: 232px;
+    height: 380px;
     border-radius: 38px;
   }
   .phone-emanating-ring.ring-2 {
-    width: 258px;
-    height: 412px;
+    width: 252px;
+    height: 405px;
     border-radius: 42px;
   }
+  /* Stand completely outside the phone mockup border with zero overlap */
   .icon-bank {
     top: 20%;
-    left: -20px;
+    left: -44px;
   }
   .icon-wallet {
     top: 30%;
-    right: -20px;
+    right: -44px;
   }
   .icon-piggy {
     top: 60%;
-    left: -22px;
+    left: -46px;
   }
   .icon-card {
     top: 70%;
-    right: -20px;
+    right: -44px;
+  }
+  .emanating-finance-icon svg {
+    width: 24px;
+    height: 24px;
   }
   .hero-shape-top-left {
     width: 110px;
