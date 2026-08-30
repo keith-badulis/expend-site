@@ -11,7 +11,7 @@ interface AnimatedLogoProps {
 }
 
 export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
-  size = 104,
+  size = 112,
   showText = true,
   animateOnScroll = false,
   interactive = true,
@@ -69,6 +69,7 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         marginBottom: showText ? '2rem' : '0',
         userSelect: 'none',
         cursor: interactive ? 'pointer' : 'default',
+        ['--logo-frame-size' as any]: `${size}px`,
         ...style,
       }}
     >
@@ -81,14 +82,14 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         className="logo-frame"
         style={{
           position: 'relative',
-          width: `${size}px`,
-          height: `${size}px`,
+          width: 'var(--logo-frame-size)',
+          height: 'var(--logo-frame-size)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        {/* Layer 1: Unified Rotating Squircle Background (Circle -> 38px Squircle) */}
+        {/* Layer 1: Unified Rotating Squircle Background */}
         <div
           className={`logo-squircle-shape ${
             isSpinning ? 'spin-manual' : animateOnScroll && !hasScrolledIn ? '' : 'spin-initial'
@@ -112,8 +113,8 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
             alt="eXpend Logo"
             className={isSpinning || (!animateOnScroll) ? 'logo-inner-img' : ''}
             style={{
-              width: `${Math.round(size * 0.66)}px`,
-              height: `${Math.round(size * 0.66)}px`,
+              width: 'calc(var(--logo-frame-size) * 0.66)',
+              height: 'calc(var(--logo-frame-size) * 0.66)',
               display: 'block',
               objectFit: 'contain',
               opacity: animateOnScroll && !hasScrolledIn ? 0 : 1,
