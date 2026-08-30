@@ -1,6 +1,6 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
-import appIcon from '../assets/app-icon.png';
+import { AnimatedLogo } from './AnimatedLogo';
 import { LockIcon, SparklesIcon, DiamondIcon } from './icons';
 
 export const CtaSection: React.FC = () => {
@@ -12,13 +12,9 @@ export const CtaSection: React.FC = () => {
           <div className="cta-ambient-glow" />
 
           <div className="cta-inner-content">
-            {/* App Icon */}
+            {/* Animated Brand Logo (Scroll-triggered Squircle Morph Spin) */}
             <div className="cta-icon-wrapper">
-              <img
-                src={appIcon}
-                alt="eXpend App Icon"
-                className="cta-app-icon-img"
-              />
+              <AnimatedLogo size={112} showText={false} animateOnScroll={true} />
             </div>
 
             {/* Main Headline */}
