@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   LockIcon,
   SparklesIcon,
@@ -8,196 +8,268 @@ import {
   CheckIcon,
 } from './icons';
 
+// Exact app color tokens & gradient shifts
+export const AppColorThemes = [
+  { key: 'blue', name: 'Electric Blue', c50: '#4C74DB', shift: '#5C3CCe' },
+  { key: 'sky', name: 'Sky Blue', c50: '#37a5d6', shift: '#2c80d3' },
+  { key: 'teal', name: 'Aqua Teal', c50: '#4fb2b5', shift: '#3a7c88' },
+  { key: 'green', name: 'Emerald Green', c50: '#0BB190', shift: '#0f8a78' },
+  { key: 'lime', name: 'Fresh Lime', c50: '#88ba4a', shift: '#4d9148' },
+  { key: 'olive', name: 'Olive Leaf', c50: '#8EA449', shift: '#6f7132' },
+  { key: 'yellow', name: 'Warm Amber', c50: '#EAAF3B', shift: '#ea8034' },
+  { key: 'orange', name: 'Sunset Orange', c50: '#EF8354', shift: '#e54f41' },
+  { key: 'peach', name: 'Soft Peach', c50: '#dca366', shift: '#ca7733' },
+  { key: 'red', name: 'Ruby Red', c50: '#F56960', shift: '#d93f81' },
+  { key: 'pink', name: 'Berry Pink', c50: '#dd56b2', shift: '#a54298' },
+  { key: 'purple', name: 'Royal Purple', c50: '#9957BD', shift: '#543EAC' },
+  { key: 'brown', name: 'Earth Brown', c50: '#a66e53', shift: '#834d46' },
+  { key: 'sand', name: 'Warm Sand', c50: '#a6927b', shift: '#8c6a58' },
+  { key: 'bluegray', name: 'Steel Blue', c50: '#5E6882', shift: '#3a4057' },
+  { key: 'gray', name: 'Slate Gray', c50: '#838487', shift: '#535557' },
+  { key: 'charcoal', name: 'Charcoal Dark', c50: '#484850', shift: '#363743' },
+];
+
 export const WhyChoose: React.FC = () => {
-  const whyPoints = [
+  const [activeTheme, setActiveTheme] = useState<number>(0);
+
+  const pillars = [
     {
-      icon: <LockIcon size={28} color="var(--accent-light)" />,
+      id: 'privacy',
+      themeKey: 'green',
+      color50: '#0BB190',
+      colorShift: '#0f8a78',
+      glow: 'rgba(11, 177, 144, 0.35)',
+      badge: '100% Offline & Private',
+      icon: <LockIcon size={26} color="#0BB190" />,
       title: 'Private & Secure',
-      desc: 'Your data never leaves your device. No servers, no tracking—just pure privacy.',
+      desc: 'Your financial data never leaves your device. No cloud sync, no surveillance, and zero third-party data tracking—ever.',
+      featureTag: 'Local SQLite/Realm',
     },
     {
-      icon: <SparklesIcon size={28} color="var(--accent-light)" />,
-      title: 'User-Friendly & Intuitive',
-      desc: 'A clean, modern interface designed for a seamless, worry-free experience.',
+      id: 'speed',
+      themeKey: 'orange',
+      color50: '#EF8354',
+      colorShift: '#e54f41',
+      glow: 'rgba(239, 131, 84, 0.35)',
+      badge: 'Friction-Free Flow',
+      icon: <SparklesIcon size={26} color="#EF8354" />,
+      title: 'Intuitive & Fast',
+      desc: 'A thoughtfully designed interface with instant built-in calculator shortcuts, making logging daily expenses an effortless 5-second habit.',
+      featureTag: 'Built-in Calculator',
     },
     {
-      icon: <WrenchIcon size={28} color="var(--accent-light)" />,
-      title: 'Comprehensive Finance Tools',
-      desc: 'From budget planning to debt management, everything you need is in one place.',
+      id: 'tools',
+      themeKey: 'purple',
+      color50: '#9957BD',
+      colorShift: '#543EAC',
+      glow: 'rgba(153, 87, 189, 0.35)',
+      badge: 'All-in-One Power',
+      icon: <WrenchIcon size={26} color="#9957BD" />,
+      title: 'Comprehensive Tools',
+      desc: 'From nested subcategories, recurring bills, and budget limits to multi-wallet cash cycles and debt management—all in one place.',
+      featureTag: 'Debts & Recurring',
     },
     {
-      icon: <PaletteIcon size={28} color="var(--accent-light)" />,
+      id: 'custom',
+      themeKey: 'pink',
+      color50: '#dd56b2',
+      colorShift: '#a54298',
+      glow: 'rgba(221, 86, 178, 0.35)',
+      badge: '17 Expressive Themes',
+      icon: <PaletteIcon size={26} color="#dd56b2" />,
       title: 'Beautifully Customizable',
-      desc: 'Personalize your experience with dynamic themes and full Dark Mode support.',
+      desc: 'Personalize your budgeting workspace with 17 vibrant color palettes, custom tags, and full Dark Mode support to match your style.',
+      featureTag: 'Dynamic Palettes',
     },
   ];
 
-  const premiumFeatures = [
-    'Unlimited Wallets, Budgets, Goals, Debts & Templates',
-    'Advanced Tagging for superior organization',
-    'CSV Export to Excel or Google Sheets',
-    'Filtered & Detailed Report Views',
-    'Local JSON Backup & Restore tools',
+  const premiumHighlights = [
+    { title: 'Unlimited Wallets, Budgets, Goals, Debts & Templates', color: '#0BB190' },
+    { title: 'Advanced Tagging & Nested Categories for deep organization', color: '#37a5d6' },
+    { title: 'CSV Data Export to Excel, Google Sheets, or Numbers', color: '#9957BD' },
+    { title: 'Flexible Filtered & Detailed Spending Reports with totals', color: '#EF8354' },
+    { title: 'Complete Local JSON Backup & One-Tap Restore freedom', color: '#dd56b2' },
   ];
 
   return (
-    <section id="why-choose" className="section" style={{ position: 'relative' }}>
-      {/* Background Accent Ring */}
-      <div
-        className="edge-shape ring"
-        style={{
-          width: '320px',
-          height: '320px',
-          top: '20%',
-          left: '-120px',
-        }}
-      />
+    <section id="why-choose" className="section why-choose-colorful-section">
+      {/* Playful Ambient Colorful Backdrop Blobs */}
+      <div className="colorful-bg-blob blob-green" />
+      <div className="colorful-bg-blob blob-purple" />
+      <div className="colorful-bg-blob blob-pink" />
 
       <div className="container">
-        {/* Section Header */}
+        {/* Section Header with Gradient Shimmer Title */}
         <div className="section-header">
-          <div className="section-subtitle">Why Choose eXpend</div>
+          <div className="colorful-section-pill">
+            <SparklesIcon size={14} color="#7094F0" />
+            <span>Why Choose eXpend</span>
+          </div>
+
           <h2 className="section-title">
-            Built for Mindful Habits. <br />
-            <span style={{ color: 'var(--accent-light)' }}>Zero Subscriptions.</span>
+            Built for Mindful Habits.{' '}
+            <span className="colorful-title-gradient">Zero Subscriptions.</span>
           </h2>
-          <p className="section-description">
-            Ditch the spreadsheets and notebooks. Embrace the simplicity of eXpend and make mindful financial journaling a habit today.
+
+          <p className="section-description" style={{ maxWidth: '620px', margin: '0 auto' }}>
+            Ditch rigid spreadsheets and tedious notebooks. Embrace a colorful, lightweight personal finance journaling experience crafted for real habits.
           </p>
         </div>
 
-        {/* 4 Pillars Grid */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '1.75rem',
-          marginBottom: '3.5rem',
-        }}>
-          {whyPoints.map((point, idx) => (
+        {/* 4 Playful Color Pillar Cards */}
+        <div className="why-pillars-grid">
+          {pillars.map((pillar) => (
             <div
-              key={idx}
-              className="bold-card"
+              key={pillar.id}
+              className={`why-color-card card-theme-${pillar.themeKey}`}
               style={{
-                padding: '2rem 1.75rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-              }}
+                '--card-c50': pillar.color50,
+                '--card-shift': pillar.colorShift,
+                '--card-glow': pillar.glow,
+              } as React.CSSProperties}
             >
-              <div className="feature-icon-box" style={{ marginBottom: '1.15rem' }}>
-                {point.icon}
+              {/* Colorful Gradient Top Bar Accent */}
+              <div
+                className="card-gradient-topbar"
+                style={{
+                  background: `linear-gradient(90deg, ${pillar.color50} 0%, ${pillar.colorShift} 100%)`,
+                }}
+              />
+
+              {/* Badge & Icon Row */}
+              <div className="card-top-row">
+                <div
+                  className="card-icon-squircle"
+                  style={{
+                    background: `linear-gradient(145deg, rgba(23, 32, 54, 0.95), rgba(30, 42, 70, 0.8))`,
+                    borderColor: `${pillar.color50}80`,
+                    boxShadow: `0 8px 20px ${pillar.glow}`,
+                  }}
+                >
+                  {pillar.icon}
+                </div>
+
+                <span
+                  className="card-badge-pill"
+                  style={{
+                    color: pillar.color50,
+                    borderColor: `${pillar.color50}60`,
+                    backgroundColor: `${pillar.color50}18`,
+                  }}
+                >
+                  {pillar.badge}
+                </span>
               </div>
-              <h3 style={{
-                fontSize: '1.25rem',
-                fontWeight: 800,
-                marginBottom: '0.65rem',
-                color: '#FFFFFF',
-              }}>
-                {point.title}
+
+              {/* Pillar Title & Copy */}
+              <h3 className="pillar-title">
+                {pillar.title}
               </h3>
-              <p style={{
-                fontSize: '0.98rem',
-                lineHeight: 1.6,
-                color: 'var(--text-secondary)',
-                margin: 0,
-              }}>
-                {point.desc}
+
+              <p className="pillar-desc">
+                {pillar.desc}
               </p>
+
+              {/* Feature Footer Tag */}
+              <div className="pillar-footer">
+                <span
+                  className="pillar-tag-accent"
+                  style={{
+                    color: '#CBD5E1',
+                    borderLeft: `3px solid ${pillar.color50}`,
+                  }}
+                >
+                  {pillar.featureTag}
+                </span>
+              </div>
             </div>
           ))}
         </div>
 
+        {/* Interactive App Theme Swatch Showcase */}
+        <div className="palette-showcase-box">
+          <div className="palette-showcase-header">
+            <div className="palette-title-wrap">
+              <PaletteIcon size={22} color="#dd56b2" />
+              <div>
+                <h4 className="palette-heading">Pick Your Vibe: 17 App Themes</h4>
+                <p className="palette-subheading">Every color paired with an active gradient shift</p>
+              </div>
+            </div>
+
+            <div className="palette-active-preview">
+              <div
+                className="active-swatch-chip"
+                style={{
+                  background: `linear-gradient(135deg, ${AppColorThemes[activeTheme].c50} 0%, ${AppColorThemes[activeTheme].shift} 100%)`,
+                }}
+              />
+              <span className="active-swatch-name">
+                {AppColorThemes[activeTheme].name}
+              </span>
+            </div>
+          </div>
+
+          <div className="palette-swatches-strip">
+            {AppColorThemes.map((theme, idx) => {
+              const isSelected = activeTheme === idx;
+              return (
+                <button
+                  key={theme.key}
+                  type="button"
+                  className={`swatch-bubble ${isSelected ? 'selected' : ''}`}
+                  onClick={() => setActiveTheme(idx)}
+                  onMouseEnter={() => setActiveTheme(idx)}
+                  title={`${theme.name} (${theme.c50})`}
+                  style={{
+                    background: `linear-gradient(135deg, ${theme.c50} 0%, ${theme.shift} 100%)`,
+                    boxShadow: isSelected
+                      ? `0 0 16px ${theme.c50}, 0 0 0 2.5px #FFFFFF`
+                      : `0 4px 10px rgba(0, 0, 0, 0.4)`,
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+
         {/* Lifetime Premium & Data Freedom Banner */}
-        <div
-          className="bold-card"
-          style={{
-            padding: 'clamp(2.25rem, 4vw, 3.25rem)',
-            background: 'linear-gradient(145deg, #182238 0%, #1F2A47 100%)',
-            border: '2.5px solid var(--accent-color)',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2.5rem',
-            alignItems: 'center',
-          }}
-        >
-          <div>
-            <div style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              padding: '0.35rem 0.85rem',
-              background: 'rgba(76, 116, 219, 0.2)',
-              border: '1.5px solid var(--accent-color)',
-              borderRadius: '9999px',
-              color: 'var(--accent-light)',
-              fontSize: '0.82rem',
-              fontWeight: 800,
-              marginBottom: '1rem',
-            }}>
-              <DiamondIcon size={14} color="var(--accent-light)" />
+        <div className="lifetime-premium-banner">
+          <div className="banner-left-content">
+            <div className="premium-badge-sparkle">
+              <DiamondIcon size={16} color="#7094F0" />
               <span>One-Time Payment • Lifetime Premium</span>
             </div>
-            <h3 style={{
-              fontSize: 'clamp(1.6rem, 3vw, 2.1rem)',
-              fontWeight: 900,
-              color: '#FFFFFF',
-              letterSpacing: '-0.02em',
-              marginBottom: '0.85rem',
-              lineHeight: 1.2,
-            }}>
-              No Monthly Subscriptions. <br />
-              <span style={{ color: 'var(--accent-light)' }}>Complete Data Freedom.</span>
+
+            <h3 className="banner-title">
+              No Subscriptions. <br />
+              <span className="banner-title-highlight">Complete Data Freedom.</span>
             </h3>
-            <p style={{
-              fontSize: '1.02rem',
-              color: 'var(--text-secondary)',
-              lineHeight: 1.65,
-              marginBottom: '1.25rem',
-            }}>
-              Unlock the full power of eXpend with a single one-time purchase. Backup and restore your data locally via JSON or export transaction history to CSV for Excel or Google Sheets anytime.
+
+            <p className="banner-desc">
+              Unlock unlimited features with a single, transparent purchase. Back up and restore your transactions locally via JSON or export records to CSV for Excel and Google Sheets anytime.
             </p>
           </div>
 
-          <div style={{
-            background: 'rgba(23, 32, 54, 0.75)',
-            border: '1.5px solid rgba(76, 116, 219, 0.4)',
-            borderRadius: 'var(--radius-md)',
-            padding: '1.75rem',
-          }}>
-            <h4 style={{
-              fontSize: '1.05rem',
-              fontWeight: 800,
-              color: '#FFFFFF',
-              marginBottom: '1rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-            }}>
-              <SparklesIcon size={16} color="var(--accent-light)" />
-              <span>Premium Highlights</span>
+          <div className="banner-highlights-box">
+            <h4 className="highlights-header">
+              <SparklesIcon size={18} color="#7094F0" />
+              <span>What's Included:</span>
             </h4>
-            <ul style={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '0.75rem',
-            }}>
-              {premiumFeatures.map((feat, fIdx) => (
-                <li
-                  key={fIdx}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.65rem',
-                    fontSize: '0.92rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  <CheckIcon size={16} color="var(--accent-light)" />
-                  <span>{feat}</span>
+
+            <ul className="highlights-list">
+              {premiumHighlights.map((item, idx) => (
+                <li key={idx} className="highlight-item">
+                  <div
+                    className="highlight-check-circle"
+                    style={{
+                      backgroundColor: `${item.color}22`,
+                      borderColor: item.color,
+                    }}
+                  >
+                    <CheckIcon size={13} color={item.color} />
+                  </div>
+                  <span>{item.title}</span>
                 </li>
               ))}
             </ul>

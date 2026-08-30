@@ -808,7 +808,359 @@ a:hover {
   object-fit: cover;
 }
 
-/* Bold Card Styling (Used for Reviews & Why Choose) */
+/* =======================================================
+   WHY CHOOSE EXPEND (PLAYFUL, COLORFUL APP PALETTE)
+======================================================= */
+.why-choose-colorful-section {
+  position: relative;
+  overflow: hidden;
+  padding: 6.5rem 0;
+}
+
+/* Playful Ambient Backdrop Color Blobs */
+.colorful-bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.18;
+}
+
+.blob-green {
+  width: 380px;
+  height: 380px;
+  background: #0BB190;
+  top: 15%;
+  left: -120px;
+}
+
+.blob-purple {
+  width: 440px;
+  height: 440px;
+  background: #9957BD;
+  top: 40%;
+  right: -140px;
+}
+
+.blob-pink {
+  width: 360px;
+  height: 360px;
+  background: #dd56b2;
+  bottom: 5%;
+  left: 20%;
+}
+
+.colorful-section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1.05rem;
+  background: rgba(76, 116, 219, 0.15);
+  border: 1.5px solid var(--accent-color);
+  border-radius: 9999px;
+  color: var(--accent-light);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.colorful-title-gradient {
+  background: linear-gradient(135deg, #7094F0 0%, #dd56b2 50%, #EF8354 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 4 Playful Pillar Cards Grid */
+.why-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.why-color-card {
+  position: relative;
+  background: #172036;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem 1.75rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.why-color-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: var(--card-c50);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6), 0 0 30px var(--card-glow);
+}
+
+.card-gradient-topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+}
+
+.card-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.card-icon-squircle {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.why-color-card:hover .card-icon-squircle {
+  transform: scale(1.08) rotate(4deg);
+}
+
+.card-badge-pill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1.2px solid;
+  letter-spacing: 0.02em;
+}
+
+.pillar-title {
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.pillar-desc {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.pillar-footer {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.pillar-tag-accent {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding-left: 0.6rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+/* Interactive App Theme Swatch Showcase */
+.palette-showcase-box {
+  background: #172138;
+  border: 2px solid rgba(76, 116, 219, 0.4);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
+  margin-bottom: 3.5rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 2;
+}
+
+.palette-showcase-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.palette-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.palette-heading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 0.2rem;
+}
+
+.palette-subheading {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.palette-active-preview {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(23, 32, 54, 0.8);
+  border: 1.5px solid rgba(76, 116, 219, 0.5);
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+}
+
+.active-swatch-chip {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.active-swatch-name {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.palette-swatches-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.swatch-bubble {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  position: relative;
+}
+
+.swatch-bubble:hover {
+  transform: translateY(-4px) scale(1.2);
+  z-index: 5;
+}
+
+.swatch-bubble.selected {
+  transform: scale(1.15);
+  z-index: 4;
+}
+
+/* Lifetime Premium & Data Freedom Banner */
+.lifetime-premium-banner {
+  padding: clamp(2.25rem, 4vw, 3.25rem);
+  background: linear-gradient(145deg, #182238 0%, #1c2742 100%);
+  border: 2.5px solid var(--accent-color);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 35px var(--accent-glow);
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 2.5rem;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+.premium-badge-sparkle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(76, 116, 219, 0.2);
+  border: 1.5px solid var(--accent-color);
+  border-radius: 9999px;
+  color: var(--accent-light);
+  font-size: 0.82rem;
+  font-weight: 800;
+  margin-bottom: 1.15rem;
+}
+
+.banner-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.95rem;
+  line-height: 1.2;
+}
+
+.banner-title-highlight {
+  background: linear-gradient(135deg, #7094F0 0%, #0BB190 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.banner-desc {
+  font-size: 1.04rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+.banner-highlights-box {
+  background: rgba(23, 32, 54, 0.85);
+  border: 1.5px solid rgba(76, 116, 219, 0.45);
+  border-radius: var(--radius-lg);
+  padding: 1.85rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.highlights-header {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  margin-bottom: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.94rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.highlight-check-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Bold Card Styling (Used for Reviews) */
 .bold-card {
   background: var(--bg-card);
   border: 2.5px solid rgba(76, 116, 219, 0.6);
@@ -964,6 +1316,10 @@ a:hover {
     max-width: 230px;
     margin: 0 auto;
   }
+  .lifetime-premium-banner {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1021,5 +1377,15 @@ a:hover {
   }
   .official-badge-img {
     height: 42px;
+  }
+  .palette-showcase-box {
+    padding: 1.25rem;
+  }
+  .palette-swatches-strip {
+    justify-content: center;
+  }
+  .swatch-bubble {
+    width: 32px;
+    height: 32px;
   }
 }
