@@ -106,7 +106,7 @@ a:hover {
   width: 100%;
 }
 
-/* --- ORCHESTRATED STAGGERED REVEALS (T = 0.0s -> 2.4s) --- */
+/* --- ORCHESTRATED STAGGERED REVEALS --- */
 
 /* 1. Animated App Logo on Left (Starts at T = 0.0s) */
 .animated-logo-container {
@@ -122,32 +122,32 @@ a:hover {
   flex-shrink: 0;
 }
 
-/* ROTATING SQUIRCLE FILL (Thicker border, radiant contrast background & luminous halo) */
+/* ROTATING SQUIRCLE FILL (Subtle border, soft rounded superellipse radius, smooth unbouncy spin) */
 .logo-squircle-shape {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 40% 30%, #2A3B66 0%, #151E33 100%);
-  border-radius: 30px;
-  border: 3.5px solid var(--accent-color);
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 32px rgba(76, 116, 219, 0.45), inset 0 0 16px rgba(76, 116, 219, 0.2);
+  background: #172138;
+  border-radius: 38px;
+  border: 1.5px solid rgba(76, 116, 219, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .logo-squircle-shape.spin-initial {
-  animation: logoSquircleMorphSpin 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: logoSquircleMorphSpin 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .logo-squircle-shape.spin-manual {
-  animation: logoSquircleMorphSpin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: logoSquircleMorphSpin 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* INNER LOGO IMAGE (Strictly zero rotation) */
 .logo-inner-img {
   display: block;
   object-fit: contain;
-  animation: logoScaleOnly 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: logoScaleOnly 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .logo-brand-text {
@@ -188,7 +188,7 @@ a:hover {
   animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
 }
 
-/* 5. Phone Screenshot Graceful Elevation (Smooth & At Ease) */
+/* 5. Phone Screenshot Graceful Elevation */
 .phone-reveal {
   animation: phoneEaseIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.25s both;
 }
@@ -237,8 +237,8 @@ a:hover {
   object-fit: cover;
 }
 
-/* Base Accent Shape Style */
-.chunky-shape {
+/* --- HERO SECTION PERIMETER & SIDE SHAPES --- */
+.hero-edge-shape {
   position: absolute;
   pointer-events: none;
   z-index: 1;
@@ -246,88 +246,86 @@ a:hover {
   box-shadow: 0 0 24px var(--accent-glow);
 }
 
-/* --- SPACIOUS EXPANSIVE SHAPES ARRANGEMENT (PLACED FARTHER OUT) --- */
-
-/* 1. Large Ring (220px, 8px stroke) - Upper-Right Spacious Orbit */
-.chunky-ring-lg {
+/* 1. Top-Left Corner Ring */
+.hero-shape-top-left {
   width: 220px;
   height: 220px;
-  top: -105px;
-  right: -165px;
-  border: 8px solid var(--accent-color);
+  top: -80px;
+  left: -90px;
+  border: 6px solid var(--accent-color);
   border-radius: 50%;
-  opacity: 0.85;
+  opacity: 0.55;
 }
 
 .shape-reveal-1 {
-  animation: burstShape1 1.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.55s both,
-             subtleBreathe 7s ease-in-out 2.8s infinite;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both,
+             subtleBreathe 7s ease-in-out 1.8s infinite;
 }
 
-/* 2. Rotated Rounded Square (175px, 7px stroke) - Lower-Left Spacious Anchor */
-.chunky-square-md {
-  width: 175px;
-  height: 175px;
-  bottom: -85px;
-  left: -145px;
-  border: 7px solid var(--accent-color);
-  border-radius: 42px;
+/* 2. Top-Right Corner Rounded Square */
+.hero-shape-top-right {
+  width: 190px;
+  height: 190px;
+  top: -50px;
+  right: -70px;
+  border: 6px solid var(--accent-color);
+  border-radius: 46px;
   transform: rotate(18deg);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .shape-reveal-2 {
-  animation: burstShape2 1.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.7s both,
-             floatSquareMD 11s ease-in-out 2.95s infinite alternate-reverse;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s both,
+             floatSquareMD 11s ease-in-out 2.0s infinite alternate-reverse;
 }
 
-/* 3. Small Ring (68px, 4.5px stroke) - Upper-Left Distant Accent */
-.chunky-ring-sm {
-  width: 68px;
-  height: 68px;
-  top: 35px;
-  left: -110px;
-  border: 4.5px solid var(--accent-color);
+/* 3. Bottom-Left Perimeter Dashed Ring */
+.hero-shape-bottom-left {
+  width: 150px;
+  height: 150px;
+  bottom: -45px;
+  left: 6%;
+  border: 4.5px dashed var(--accent-color);
   border-radius: 50%;
-  opacity: 0.75;
+  opacity: 0.45;
 }
 
 .shape-reveal-3 {
-  animation: burstShape3 1.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.85s both,
-             floatRingSM 8s ease-in-out 2.95s infinite alternate;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.0s both,
+             rotateDashedMD 32s linear 2.2s infinite;
 }
 
-/* 4. Dashed Ring (145px, 5px dashed stroke) - Lower-Right Distant Orbit */
-.chunky-dashed-md {
-  width: 145px;
-  height: 145px;
-  bottom: 30px;
-  right: -115px;
-  border: 5px dashed var(--accent-color);
+/* 4. Bottom-Right Perimeter Ring */
+.hero-shape-bottom-right {
+  width: 210px;
+  height: 210px;
+  bottom: -75px;
+  right: 5%;
+  border: 6px solid var(--accent-color);
   border-radius: 50%;
-  opacity: 0.75;
+  opacity: 0.5;
 }
 
 .shape-reveal-4 {
-  animation: burstShape4 1.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.0s both,
-             rotateDashedMD 32s linear 3.25s infinite;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s both,
+             floatRingSM 8s ease-in-out 2.4s infinite alternate;
 }
 
-/* 5. Tilted Pill (125px x 50px, 5.5px stroke) - Mid-Right Distant Orbit */
-.chunky-pill {
-  width: 125px;
-  height: 50px;
-  top: 46%;
-  right: -210px;
-  border: 5.5px solid var(--accent-color);
+/* 5. Mid-Right Perimeter Pill */
+.hero-shape-mid-right {
+  width: 120px;
+  height: 48px;
+  top: 48%;
+  right: -45px;
+  border: 5px solid var(--accent-color);
   border-radius: 9999px;
-  transform: rotate(-24deg);
-  opacity: 0.75;
+  transform: rotate(-22deg);
+  opacity: 0.5;
 }
 
 .shape-reveal-5 {
-  animation: burstShape5 1.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) 2.15s both,
-             floatPillFree 10s ease-in-out 3.4s infinite alternate;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1.4s both,
+             floatPillFree 10s ease-in-out 2.6s infinite alternate;
 }
 
 /* --- KEYFRAME DEFINITIONS --- */
@@ -341,6 +339,18 @@ a:hover {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Hero Perimeter shapes smooth fade & gentle settle */
+@keyframes heroShapeFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: var(--shape-target-opacity, 0.5);
+    transform: scale(1);
   }
 }
 
@@ -358,87 +368,7 @@ a:hover {
   }
 }
 
-/* Shape 1 (Large Ring) Burst Outward to Upper-Right Space */
-@keyframes burstShape1 {
-  0% {
-    opacity: 0;
-    transform: translate(-120px, 90px) scale(0.25);
-  }
-  65% {
-    opacity: 0.9;
-    transform: translate(8px, -6px) scale(1.05);
-  }
-  100% {
-    opacity: 0.85;
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-/* Shape 2 (Square) Burst Outward to Lower-Left */
-@keyframes burstShape2 {
-  0% {
-    opacity: 0;
-    transform: translate(110px, -60px) scale(0.25) rotate(0deg);
-  }
-  65% {
-    opacity: 0.85;
-    transform: translate(-6px, 4px) scale(1.05) rotate(22deg);
-  }
-  100% {
-    opacity: 0.8;
-    transform: translate(0, 0) scale(1) rotate(18deg);
-  }
-}
-
-/* Shape 3 (Small Ring) Burst Outward to Upper-Left */
-@keyframes burstShape3 {
-  0% {
-    opacity: 0;
-    transform: translate(60px, -20px) scale(0.25);
-  }
-  65% {
-    opacity: 0.85;
-    transform: translate(-4px, 3px) scale(1.08);
-  }
-  100% {
-    opacity: 0.75;
-    transform: translate(0, 0) scale(1);
-  }
-}
-
-/* Shape 4 (Dashed Ring) Burst Outward to Lower-Right */
-@keyframes burstShape4 {
-  0% {
-    opacity: 0;
-    transform: translate(-65px, -35px) scale(0.25) rotate(0deg);
-  }
-  65% {
-    opacity: 0.8;
-    transform: translate(5px, 5px) scale(1.05) rotate(12deg);
-  }
-  100% {
-    opacity: 0.75;
-    transform: translate(0, 0) scale(1) rotate(0deg);
-  }
-}
-
-/* Shape 5 (Pill) Burst Outward to Mid-Right Space */
-@keyframes burstShape5 {
-  0% {
-    opacity: 0;
-    transform: translate(-130px, 0px) scale(0.25) rotate(0deg);
-  }
-  65% {
-    opacity: 0.8;
-    transform: translate(8px, -4px) scale(1.06) rotate(-28deg);
-  }
-  100% {
-    opacity: 0.75;
-    transform: translate(0, 0) scale(1) rotate(-24deg);
-  }
-}
-
-/* Continuous Subtle Breathing Animation for the Hero Ring */
+/* Continuous Subtle Breathing Animation */
 @keyframes subtleBreathe {
   0% {
     transform: scale(1) translateY(0);
@@ -470,54 +400,35 @@ a:hover {
 }
 
 @keyframes floatPillFree {
-  0% { transform: rotate(-24deg) translateY(0px); }
-  100% { transform: rotate(-18deg) translateY(-6px); }
+  0% { transform: rotate(-22deg) translateY(0px); }
+  100% { transform: rotate(-16deg) translateY(-6px); }
 }
 
-/* Squircle Morph & Spin: Shadows are NONE during spin, and fade in at the end */
+/* Squircle Morph & Spin (Smooth ease-out, zero bounce / zero overshoot) */
 @keyframes logoSquircleMorphSpin {
   0% {
-    transform: rotate(-360deg) scale(0.6);
+    transform: rotate(-270deg) scale(0.88);
     border-radius: 50%;
-    border: 3.5px solid rgba(76, 116, 219, 0.4);
-    background: #151E33;
     opacity: 0;
     box-shadow: 0 0 0 transparent;
   }
-  35% {
+  40% {
     opacity: 1;
-    border: 3.5px solid var(--accent-color);
-    background: #1C2742;
-    box-shadow: 0 0 0 transparent;
-  }
-  70% {
-    transform: rotate(10deg) scale(1.04);
-    border-radius: 32px;
-    border: 3.5px solid var(--accent-light);
-    background: radial-gradient(circle at 40% 30%, #2A3B66 0%, #151E33 100%);
     box-shadow: 0 0 0 transparent;
   }
   100% {
     transform: rotate(0deg) scale(1);
-    border-radius: 30px;
-    border: 3.5px solid var(--accent-color);
-    background: radial-gradient(circle at 40% 30%, #2A3B66 0%, #151E33 100%);
+    border-radius: 38px;
     opacity: 1;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 0 32px rgba(76, 116, 219, 0.45), inset 0 0 16px rgba(76, 116, 219, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 }
 
 /* Logo Scale ONLY (Strictly zero rotation) */
 @keyframes logoScaleOnly {
   0% {
-    transform: scale(0.65);
+    transform: scale(0.75);
     opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  75% {
-    transform: scale(1.04);
   }
   100% {
     transform: scale(1);
@@ -855,24 +766,20 @@ a:hover {
   .phone-anchor {
     width: 260px;
   }
-  .chunky-ring-lg {
-    width: 175px;
-    height: 175px;
-    top: -70px;
-    right: -95px;
-    border-width: 6.5px;
+  .hero-shape-top-left {
+    width: 160px;
+    height: 160px;
+    top: -60px;
+    left: -60px;
   }
-  .chunky-square-md {
-    width: 140px;
-    height: 140px;
-    bottom: -60px;
-    left: -85px;
-    border-width: 6px;
+  .hero-shape-top-right {
+    width: 130px;
+    height: 130px;
+    top: -40px;
+    right: -40px;
   }
-  .chunky-pill {
-    right: -110px;
-    width: 95px;
-    height: 38px;
+  .hero-shape-mid-right {
+    display: none;
   }
   .official-badge-img {
     height: 42px;

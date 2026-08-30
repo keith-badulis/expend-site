@@ -6,6 +6,13 @@ import appScreenImg from '../assets/app-screen.png';
 export const Hero: React.FC = () => {
   return (
     <section className="hero-section">
+      {/* Decorative Geometric Shapes Framing the Sides & Edges of the Section */}
+      <div className="hero-edge-shape hero-shape-top-left shape-reveal-1" />
+      <div className="hero-edge-shape hero-shape-top-right shape-reveal-2" />
+      <div className="hero-edge-shape hero-shape-bottom-left shape-reveal-3" />
+      <div className="hero-edge-shape hero-shape-bottom-right shape-reveal-4" />
+      <div className="hero-edge-shape hero-shape-mid-right shape-reveal-5" />
+
       <div className="container">
         <div className="hero-grid">
           {/* Left Column: Animated App Logo & Orchestrated Typographic Reveal */}
@@ -64,26 +71,10 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup with Shapes Animating Outward from Screenshot */}
+          {/* Right Column: Phone Mockup */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
-              {/* The 5 Geometric Shapes with Balanced Open-Space Placements */}
-              {/* 1. Large Ring (210px) - Floating free in upper-right open space */}
-              <div className="chunky-shape chunky-ring-lg shape-reveal-1" />
-
-              {/* 2. Rotated Rounded Square (170px) - Lower-left corner anchor */}
-              <div className="chunky-shape chunky-square-md shape-reveal-2" />
-
-              {/* 3. Small Ring (72px) - Upper-left accent */}
-              <div className="chunky-shape chunky-ring-sm shape-reveal-3" />
-
-              {/* 4. Dashed Ring (140px) - Lower-right anchor */}
-              <div className="chunky-shape chunky-dashed-md shape-reveal-4" />
-
-              {/* 5. Tilted Pill (115px x 46px) - Floating free in mid-right open space */}
-              <div className="chunky-shape chunky-pill shape-reveal-5" />
-
-              {/* Phone device container (Reveals at T = 1.25s) */}
+              {/* Phone device container (Reveals gracefully at T = 1.25s) */}
               <div className="phone-mockup phone-reveal">
                 <div className="phone-screen">
                   <img
@@ -99,3 +90,5 @@ export const Hero: React.FC = () => {
     </section>
   );
 };
+
+export default Hero;
