@@ -47,14 +47,14 @@ export const Hero: React.FC = () => {
             {/* 3. Subtext Paragraph (Stagger 2: T = 0.75s) */}
             <div className="hero-reveal-subtext">
               <p style={{
-                fontSize: '1.15rem',
+                fontSize: '1.12rem',
                 lineHeight: 1.65,
                 color: 'var(--text-secondary)',
                 marginBottom: '2.25rem',
-                maxWidth: '480px',
+                maxWidth: '520px',
                 fontWeight: 400,
               }}>
-                Effortless daily tracking, smart budgets, and goal planning—100% private on your phone with zero accounts or subscriptions.
+                Take control of your money with <strong>eXpend</strong>—the thoughtfully-designed, all-in-one expense tracker and budget planner. Simplify personal finances, track spending habits, and reach your goals—all while keeping your data private and secure on your device.
               </p>
             </div>
 

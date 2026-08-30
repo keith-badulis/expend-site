@@ -11,7 +11,7 @@ export const CtaSection: React.FC = () => {
           style={{
             padding: 'clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem)',
             background: 'linear-gradient(145deg, #172036 0%, #1F2A47 100%)',
-            border: '4px solid var(--accent-color)',
+            border: '3.5px solid var(--accent-color)',
             boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow)',
             textAlign: 'center',
             position: 'relative',
@@ -38,15 +38,15 @@ export const CtaSection: React.FC = () => {
             }}
           />
 
-          <div style={{ position: 'relative', zIndex: 2, maxWidth: '600px', margin: '0 auto' }}>
+          <div style={{ position: 'relative', zIndex: 2, maxWidth: '640px', margin: '0 auto' }}>
             <div style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
               <img
                 src={appIcon}
                 alt="eXpend App Icon"
                 style={{
-                  width: '80px',
-                  height: '80px',
-                  borderRadius: '20px',
+                  width: '84px',
+                  height: '84px',
+                  borderRadius: '22px',
                   border: '3.5px solid var(--accent-color)',
                   boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow)',
                 }}
@@ -59,17 +59,17 @@ export const CtaSection: React.FC = () => {
               marginBottom: '1rem',
               letterSpacing: '-0.025em',
             }}>
-              Ready to Make Budgeting <br />
-              <span style={{ color: 'var(--accent-light)' }}>a Permanent Habit?</span>
+              Embrace the Simplicity of <br />
+              <span style={{ color: 'var(--accent-light)' }}>eXpend Today</span>
             </h2>
 
             <p style={{
-              fontSize: '1.15rem',
+              fontSize: '1.12rem',
               lineHeight: 1.65,
               color: 'var(--text-secondary)',
               marginBottom: '2.5rem',
             }}>
-              Download eXpend on Android and iOS. Free, private, and built to make managing everyday money effortless.
+              Ditch the spreadsheets and notebooks. Start mindful financial journaling and take control of your money—100% private and secure on your device.
             </p>
 
             <div style={{
@@ -81,12 +81,12 @@ export const CtaSection: React.FC = () => {
             </div>
 
             <p style={{
-              fontSize: '0.95rem',
+              fontSize: '0.92rem',
               color: 'var(--text-muted)',
               fontWeight: 700,
               margin: 0,
             }}>
-              No sign-up required • Instant setup • 100% on your device
+              Private & Secure • Zero Subscriptions • Complete Data Freedom
             </p>
           </div>
         </div>
@@ -94,3 +94,5 @@ export const CtaSection: React.FC = () => {
     </section>
   );
 };
+
+export default CtaSection;

@@ -17,26 +17,26 @@ interface GalleryItemData {
 
 const leftColItems: GalleryItemData[] = [
   {
-    badge: '💰 Multi-Account & Net Worth',
-    title: 'Track Every Account in One Place',
-    description: 'Monitor cash, bank accounts, digital wallets, debts, and savings. Real-time net worth calculation with seamless multi-currency support.',
-    tags: ['Net Worth', 'Multi-Currency', 'Asset & Debt Tracking'],
+    badge: '📊 Detailed Financial Reports',
+    title: 'Visualize Net Worth, Assets & Liabilities',
+    description: 'Comprehensive finance tools in one place. Monitor cash, digital wallets, bank accounts, and debts with real-time net worth and multi-currency support.',
+    tags: ['Net Worth', 'Assets & Liabilities', 'Multi-Currency'],
     image: accountsImg,
     imageAlt: 'eXpend Accounts Summary and Net Worth screen',
   },
   {
-    badge: '📈 Visual Cashflow & Trends',
-    title: 'See Where Every Dollar Goes',
-    description: 'Interactive cashflow curves and categorical spending breakdowns reveal your financial habits clearly over custom date ranges.',
-    tags: ['Cashflow Curves', 'Category Bars', 'Filtered Reports'],
+    badge: '📈 Filtered & Detailed Reports',
+    title: 'Analyze Spending Habits With Charts',
+    description: 'Get deeper insights with filtered and detailed report views. Interactive cashflow curves and categorical spending breakdowns reveal where your money goes.',
+    tags: ['Cashflow Curves', 'Category Breakdown', 'Filtered Views'],
     image: reportsImg,
     imageAlt: 'eXpend Filtered Reports with interactive cashflow chart',
   },
   {
-    badge: '🏷️ Tags & Planned Bills',
-    title: 'Organize with Tags & Upcoming Bills',
-    description: 'Attach custom tags like #Impulse or #FundTransfer, search transactions instantly, and keep tabs on upcoming scheduled bills.',
-    tags: ['Custom Tags', 'Planned Transactions', 'Instant Search'],
+    badge: '🏷️ Organize With Tags',
+    title: 'Label, Filter & Group With Custom Tags',
+    description: 'Group transactions, accounts, and planned bills with custom tags like #Impulse or #FundTransfer to analyze your financial life exactly how you want it.',
+    tags: ['Custom Tags', 'Nested Categories', 'Planned Bills'],
     image: txListImg,
     imageAlt: 'eXpend All Transactions list with tag filters',
   },
@@ -44,26 +44,26 @@ const leftColItems: GalleryItemData[] = [
 
 const rightColItems: GalleryItemData[] = [
   {
-    badge: '📊 Smart Budgeting',
-    title: 'Stay On Track Automatically',
-    description: 'Set realistic monthly limits by category. Visual progress bars, projected totals, and instant "On Track" status prevent overspending before it happens.',
-    tags: ['Custom Categories', 'Projected Totals', 'Status Alerts'],
+    badge: '🎯 Flexible Budget Planning',
+    title: 'Set Spending Limits & Stay Within Targets',
+    description: 'Set spending limits by category and stay within your monthly targets with clear visual progress bars, projected totals, and instant status indicators.',
+    tags: ['Spending Limits', 'Monthly Targets', 'Projected Totals'],
     image: budgetImg,
     imageAlt: 'eXpend Budget Details and spending status screen',
   },
   {
-    badge: '⚡ Lightning-Fast Entry',
-    title: 'Log Expenses in Under 3 Seconds',
-    description: 'A built-in calculator keypad lets you log purchases, split amounts, and pick wallets with zero friction.',
-    tags: ['Built-in Calculator', '1-Tap Wallets', 'Quick Split'],
+    badge: '⚡ Quick & Easy Recording',
+    title: 'Log In Seconds With Built-in Calculator',
+    description: 'Log income, expenses, and money transfers in seconds. Use customizable reusable templates to record common everyday transactions instantly.',
+    tags: ['Income & Expenses', 'Transfers', 'Customizable Templates'],
     image: addTxImg,
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
   },
   {
-    badge: '🗓️ Weekly Rhythm Analytics',
-    title: 'Compare Weekly Income vs Expense',
-    description: 'Understand your monthly rhythm across each week with clean, comparative bar charts and income vs. expense balance.',
-    tags: ['Weekly Breakdown', 'Income vs Expense', '100% Offline Realm DB'],
+    badge: '🤝 Comprehensive Debt & Milestones',
+    title: 'Track Debts, Goals & Weekly Rhythm',
+    description: 'Mindfully track all your debts (both payable and receivable), monitor savings progress milestones, and compare weekly income vs expense balance.',
+    tags: ['Debt Management', 'Smart Goal Tracking', 'Weekly Trends'],
     image: weeklyImg,
     imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
   },
@@ -95,13 +95,13 @@ export const Features: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <div className="section-subtitle">Gallery & Features</div>
+          <div className="section-subtitle">📝 Key Features</div>
           <h2 className="section-title">
-            Crafted for Clarity. <br />
-            <span style={{ color: 'var(--accent-light)' }}>Built for Daily Habits.</span>
+            Simplify Your Finances. <br />
+            <span style={{ color: 'var(--accent-light)' }}>Reach Your Goals.</span>
           </h2>
           <p className="section-description">
-            Explore the interface designed to give you frictionless control, deep insights, and 100% privacy on your device.
+            Ditch the spreadsheets and notebooks. Embrace the simplicity of eXpend and make mindful financial journaling a habit today.
           </p>
         </div>
 
