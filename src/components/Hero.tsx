@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup with Emanating Finance Highlight Accents */}
+          {/* Right Column: Phone Mockup with Pure Floating Finance Icons */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
               {/* 1. Radiant Backlight Aura */}
@@ -82,18 +82,18 @@ export const Hero: React.FC = () => {
               <div className="phone-emanating-ring ring-1" />
               <div className="phone-emanating-ring ring-2" />
 
-              {/* 3. Emanating Floating Finance Badges */}
+              {/* 3. Emanating Pure Vector Finance Icons (No background tiles, floating completely clear of the phone) */}
               <div className="emanating-finance-icon icon-wallet">
-                <WalletIcon size={28} color="var(--accent-light)" />
+                <WalletIcon size={36} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-piggy">
-                <PiggyBankIcon size={28} color="var(--accent-light)" />
+                <PiggyBankIcon size={36} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-card">
-                <CardIcon size={26} color="var(--accent-light)" />
+                <CardIcon size={34} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-coin">
-                <CoinIcon size={24} color="var(--accent-light)" />
+                <CoinIcon size={32} color="var(--accent-light)" />
               </div>
 
               {/* 4. Phone Device Container (Reveals gracefully at T = 1.25s) */}
