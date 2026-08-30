@@ -707,6 +707,60 @@ export const StarFilledIcon: React.FC<IconProps> = ({
   </svg>
 );
 
+export const StarOutlineIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, strokeLinejoin: 'round', ...style }}
+  >
+    <path
+      d="M50.936 18.559a1.283 1.283 0 0 1 2.256 0L63.241 37.15l20.786 3.812a1.282 1.282 0 0 1 .697 2.146L70.149 58.41l2.797 20.946a1.282 1.282 0 0 1-1.825 1.327l-19.057-9.134-19.057 9.134a1.283 1.283 0 0 1-1.826-1.327l2.798-20.946-14.575-15.302a1.284 1.284 0 0 1-.292-1.281c.146-.448.526-.78.989-.865l20.786-3.812 10.049-18.591Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const CloudBackupIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M40.001 73.958H25.417v-.04c-6.988-.533-12.5-6.379-12.5-13.502 0-7.318 5.818-13.289 13.077-13.534a19.277 19.277 0 0 1-.577-4.695c0-10.636 8.635-19.271 19.271-19.271 8.976 0 16.526 6.149 18.665 14.461a18.723 18.723 0 0 1 5.814-.92c10.348 0 18.75 8.402 18.75 18.75s-8.402 18.75-18.75 18.75h-8.333M50.41 80.745l.01-32.755"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M60.531 57.521 51.3 48.29a1.244 1.244 0 0 0-1.758 0l-9.231 9.231"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
 export const DescriptionIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',

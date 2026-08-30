@@ -6,8 +6,8 @@ import {
   LightningBoltIcon,
   WalletIcon,
   CoinIcon,
-  StarFilledIcon,
-  DescriptionIcon,
+  StarOutlineIcon,
+  CloudBackupIcon,
   ReportIcon,
 } from './icons';
 
@@ -48,13 +48,13 @@ export const WhyChoose: React.FC = () => {
     },
     {
       label: 'Lifetime Access',
-      icon: <StarFilledIcon size={16} color="#88ba4a" />,
+      icon: <StarOutlineIcon size={16} color="#88ba4a" />,
       color: '#88ba4a',
       bg: 'rgba(136, 186, 74, 0.12)',
     },
     {
-      label: 'Local JSON Backup',
-      icon: <DescriptionIcon size={16} color="#dd56b2" />,
+      label: 'Cloud & Local Backups',
+      icon: <CloudBackupIcon size={16} color="#dd56b2" />,
       color: '#dd56b2',
       bg: 'rgba(221, 86, 178, 0.12)',
     },
@@ -99,7 +99,7 @@ export const WhyChoose: React.FC = () => {
               </h3>
 
               <p className="clean-card-description">
-                Your financial data never leaves your device. No cloud sync, no tracking, and no third-party data broker access.
+                Your financial data never leaves your device. No mandatory accounts, no analytics tracking, and no third-party data broker access.
               </p>
 
               {/* Soft, Borderless Icon Chips */}
@@ -126,7 +126,7 @@ export const WhyChoose: React.FC = () => {
 
             <div className="clean-card-body">
               <span className="clean-card-kicker" style={{ color: '#7094F0' }}>
-                True Ownership
+                Pay Once
               </span>
 
               <h3 className="clean-card-headline">
