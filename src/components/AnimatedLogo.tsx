@@ -5,6 +5,7 @@ interface AnimatedLogoProps {
   size?: number;
   showText?: boolean;
   animateOnScroll?: boolean;
+  interactive?: boolean;
   style?: React.CSSProperties;
   className?: string;
 }
@@ -13,6 +14,7 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   size = 104,
   showText = true,
   animateOnScroll = false,
+  interactive = true,
   style,
   className = '',
 }) => {
@@ -45,6 +47,7 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   }, [animateOnScroll, hasScrolledIn]);
 
   const triggerAnimation = () => {
+    if (!interactive) return;
     setIsSpinning(false);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
@@ -57,15 +60,15 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
     <div
       ref={containerRef}
       className={`animated-logo-container ${className}`}
-      onClick={triggerAnimation}
-      title="Click to animate"
+      onClick={interactive ? triggerAnimation : undefined}
+      title={interactive ? 'Click to animate' : undefined}
       style={{
         display: 'inline-flex',
         alignItems: 'center',
         gap: '1.25rem',
         marginBottom: showText ? '2rem' : '0',
         userSelect: 'none',
-        cursor: 'pointer',
+        cursor: interactive ? 'pointer' : 'default',
         ...style,
       }}
     >

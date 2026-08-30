@@ -11,9 +11,14 @@ export const CtaSection: React.FC = () => {
 
       <div className="container">
         <div className="cta-inner-content">
-          {/* Animated Brand Logo (Scroll-triggered Squircle Morph Spin) */}
+          {/* Animated Brand Logo (Scroll-triggered Squircle Morph Spin, non-clickable) */}
           <div className="cta-icon-wrapper">
-            <AnimatedLogo size={112} showText={false} animateOnScroll={true} />
+            <AnimatedLogo
+              size={112}
+              showText={false}
+              animateOnScroll={true}
+              interactive={false}
+            />
           </div>
 
           {/* Main Headline */}

@@ -8,7 +8,7 @@ interface StoreBadgesProps {
 
 export const GooglePlayBadge: React.FC<{ className?: string }> = ({ className }) => (
   <a
-    href="https://play.google.com/store/apps/details?id=com.subdial.expend"
+    href="https://play.google.com/store/apps/details?id=com.subdial.expend&referrer=utm_source%3Dwebsite"
     target="_blank"
     rel="noopener noreferrer"
     className={`official-store-badge ${className || ''}`}
@@ -24,7 +24,7 @@ export const GooglePlayBadge: React.FC<{ className?: string }> = ({ className })
 
 export const AppStoreBadge: React.FC<{ className?: string }> = ({ className }) => (
   <a
-    href="https://apps.apple.com/app/expend/id6739958047"
+    href="https://apps.apple.com/app/apple-store/id6747117634?pt=127899556&ct=website&mt=8"
     target="_blank"
     rel="noopener noreferrer"
     className={`official-store-badge ${className || ''}`}
