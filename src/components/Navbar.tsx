@@ -11,80 +11,42 @@ export const Navbar: React.FC = () => {
   const closeMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header style={{
-      position: 'sticky',
-      top: 0,
-      zIndex: 100,
-      backgroundColor: 'rgba(31, 42, 71, 0.92)',
-      backdropFilter: 'blur(16px)',
-      WebkitBackdropFilter: 'blur(16px)',
-      borderBottom: '2.5px solid rgba(76, 116, 219, 0.35)',
-      padding: '0.9rem 0',
-    }}>
-      <div className="container" style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-      }}>
-        {/* Brand */}
-        <Link to="/" onClick={closeMenu} style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.85rem',
-          textDecoration: 'none',
-        }}>
+    <header className="site-header">
+      <div className="container header-container">
+        {/* Brand Logo & Name */}
+        <Link to="/" onClick={closeMenu} className="header-brand-link">
           <img
             src={appIcon}
             alt="eXpend Icon"
-            style={{
-              width: '44px',
-              height: '44px',
-              borderRadius: '12px',
-              border: '2px solid var(--accent-color)',
-              boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-            }}
+            className="header-brand-icon"
           />
-          <div>
-            <div style={{
-              fontSize: '1.5rem',
-              fontWeight: 900,
-              color: '#FFFFFF',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1,
-            }}>
+          <div className="header-brand-text-wrap">
+            <div className="header-brand-name">
               e<span style={{ color: 'var(--accent-light)' }}>X</span>pend
             </div>
-            <div style={{
-              fontSize: '0.75rem',
-              color: 'var(--text-muted)',
-              fontWeight: 600,
-              letterSpacing: '0.04em',
-            }}>
+            <div className="header-brand-tagline">
               Make Budgeting a Habit
             </div>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '2rem',
-        }} className="desktop-nav">
+        <nav className="desktop-nav">
           {isHome ? (
             <>
-              <a href="#features" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.95rem' }}>Features</a>
-              <a href="#reviews" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.95rem' }}>Reviews</a>
-              <a href="#download" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.95rem' }}>Download</a>
+              <a href="#features" className="nav-link">Features</a>
+              <a href="#why-choose" className="nav-link">Why eXpend</a>
+              <a href="#reviews" className="nav-link">Reviews</a>
+              <a href="#download" className="nav-link">Download</a>
             </>
           ) : (
-            <Link to="/" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.95rem' }}>← Back to Home</Link>
+            <Link to="/" className="nav-link">← Back to Home</Link>
           )}
-          <Link to="/privacy-policy" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.95rem' }}>Privacy Policy</Link>
-          <a href="mailto:subdial.expend@outlook.com" style={{ color: 'var(--text-secondary)', fontWeight: 600, fontSize: '0.95rem' }}>Contact</a>
+          <Link to="/privacy-policy" className="nav-link">Privacy Policy</Link>
+          <a href="mailto:subdial.expend@outlook.com" className="nav-link">Contact</a>
 
           {isHome && (
-            <a href="#download" className="btn-primary" style={{ padding: '0.55rem 1.25rem', fontSize: '0.9rem' }}>
+            <a href="#download" className="btn-primary nav-cta-btn">
               Get App
             </a>
           )}
@@ -93,18 +55,10 @@ export const Navbar: React.FC = () => {
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={toggleMenu}
-          aria-label="Toggle menu"
+          aria-label="Toggle navigation menu"
           className="mobile-toggle"
-          style={{
-            display: 'none',
-            background: 'transparent',
-            border: 'none',
-            color: '#FFFFFF',
-            cursor: 'pointer',
-            padding: '0.5rem',
-          }}
         >
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
             {mobileMenuOpen ? (
               <path d="M18 6L6 18M6 6l12 12" />
             ) : (
@@ -114,45 +68,30 @@ export const Navbar: React.FC = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Dropdown Menu Overlay */}
       {mobileMenuOpen && (
-        <div style={{
-          backgroundColor: 'var(--bg-surface)',
-          borderBottom: '2.5px solid var(--accent-color)',
-          padding: '1.5rem',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '1.25rem',
-        }}>
+        <div className="mobile-dropdown-menu">
           {isHome ? (
             <>
-              <a href="#features" onClick={closeMenu} style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Features</a>
-              <a href="#reviews" onClick={closeMenu} style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Reviews</a>
-              <a href="#download" onClick={closeMenu} style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Download</a>
+              <a href="#features" onClick={closeMenu} className="mobile-nav-link">Features</a>
+              <a href="#why-choose" onClick={closeMenu} className="mobile-nav-link">Why eXpend</a>
+              <a href="#reviews" onClick={closeMenu} className="mobile-nav-link">Reviews</a>
+              <a href="#download" onClick={closeMenu} className="mobile-nav-link">Download</a>
             </>
           ) : (
-            <Link to="/" onClick={closeMenu} style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>← Back to Home</Link>
+            <Link to="/" onClick={closeMenu} className="mobile-nav-link">← Back to Home</Link>
           )}
-          <Link to="/privacy-policy" onClick={closeMenu} style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Privacy Policy</Link>
-          <a href="mailto:subdial.expend@outlook.com" onClick={closeMenu} style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Contact</a>
+          <Link to="/privacy-policy" onClick={closeMenu} className="mobile-nav-link">Privacy Policy</Link>
+          <a href="mailto:subdial.expend@outlook.com" onClick={closeMenu} className="mobile-nav-link">Contact</a>
           {isHome && (
-            <a href="#download" onClick={closeMenu} className="btn-primary" style={{ textAlign: 'center' }}>
+            <a href="#download" onClick={closeMenu} className="btn-primary mobile-cta-btn">
               Get App
             </a>
           )}
         </div>
       )}
-
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-nav {
-            display: none !important;
-          }
-          .mobile-toggle {
-            display: block !important;
-          }
-        }
-      `}</style>
     </header>
   );
 };
+
+export default Navbar;
