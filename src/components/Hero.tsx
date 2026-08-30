@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
-import { BankIcon, WalletIcon, TaxIcon, TagIcon, PiggyBankIcon, CardIcon, CoinIcon } from './icons';
+import { BankIcon, WalletIcon, PiggyBankIcon, CardIcon } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 
 export const Hero: React.FC = () => {
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup with Staggered Multi-Axis Floating Finance Icons */}
+          {/* Right Column: Phone Mockup with 4 Floating Finance Icons */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
               {/* 1. Radiant Backlight Aura */}
@@ -82,27 +82,18 @@ export const Hero: React.FC = () => {
               <div className="phone-emanating-ring ring-1" />
               <div className="phone-emanating-ring ring-2" />
 
-              {/* 3. Emanating Pure Vector Money Icons (Intentionally Non-Axis-Aligned, Floating Clear of Phone) */}
+              {/* 3. Emanating Pure Vector Money Icons (4 Balanced Icons) */}
               <div className="emanating-finance-icon icon-bank">
                 <BankIcon size={34} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-wallet">
                 <WalletIcon size={36} color="var(--accent-light)" />
               </div>
-              <div className="emanating-finance-icon icon-tax">
-                <TaxIcon size={33} color="var(--accent-light)" />
-              </div>
-              <div className="emanating-finance-icon icon-tag">
-                <TagIcon size={32} color="var(--accent-light)" />
-              </div>
               <div className="emanating-finance-icon icon-piggy">
                 <PiggyBankIcon size={35} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-card">
                 <CardIcon size={34} color="var(--accent-light)" />
-              </div>
-              <div className="emanating-finance-icon icon-coin">
-                <CoinIcon size={32} color="var(--accent-light)" />
               </div>
 
               {/* 4. Phone Device Container (Reveals gracefully at T = 1.25s) */}
