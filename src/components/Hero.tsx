@@ -1,6 +1,7 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
+import { SparklesIcon, DiamondIcon } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 
 export const Hero: React.FC = () => {
@@ -71,10 +72,28 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup */}
+          {/* Right Column: Phone Mockup with Emanating Highlight Accents */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
-              {/* Phone device container (Reveals gracefully at T = 1.25s) */}
+              {/* 1. Radiant Backlight Aura */}
+              <div className="phone-backlight-aura" />
+
+              {/* 2. Emanating Concentric Ripple Rings */}
+              <div className="phone-emanating-ring ring-1" />
+              <div className="phone-emanating-ring ring-2" />
+
+              {/* 3. Emanating Shimmer Sparkles & Diamond Badges */}
+              <div className="emanating-sparkle sparkle-top-right">
+                <SparklesIcon size={30} color="var(--accent-light)" />
+              </div>
+              <div className="emanating-sparkle sparkle-left">
+                <SparklesIcon size={24} color="var(--accent-color)" />
+              </div>
+              <div className="emanating-sparkle sparkle-bottom-right">
+                <DiamondIcon size={22} color="var(--accent-light)" />
+              </div>
+
+              {/* 4. Phone Device Container (Reveals gracefully at T = 1.25s) */}
               <div className="phone-mockup phone-reveal">
                 <div className="phone-screen">
                   <img
