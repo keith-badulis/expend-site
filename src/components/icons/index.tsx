@@ -16,6 +16,52 @@ const baseStyle = {
   strokeMiterlimit: 1.5,
 };
 
+export const TaxIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M33.334 87.393 75 87.394h.002c4.599 0 8.334-3.734 8.334-8.334V68.643H41.668l-.002 10.416h.002c0 4.599-3.734 8.334-8.334 8.334-4.599 0-8.334-3.734-8.334-8.334v-18.75"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="m75.002 68.643-.001-43.919a3.997 3.997 0 0 0-3.997-3.997H28.998a3.994 3.994 0 0 0-3.997 3.997v6.419"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle
+      cx={33.333}
+      cy={45.726}
+      r={16.667}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle cx={28.125} cy={40.519} r={3.126} fill={color} />
+    <circle cx={38.541} cy={50.935} r={3.125} fill={color} />
+    <path
+      d="m29.166 49.893 8.333-8.333M56.25 31.143h8.333M60.417 41.56h4.167M60.417 51.976h4.167"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
 export const BankIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
-import { BankIcon, WalletIcon, PiggyBankIcon, TagIcon, CardIcon, CoinIcon } from './icons';
+import { BankIcon, WalletIcon, TaxIcon, TagIcon, PiggyBankIcon, CardIcon, CoinIcon } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 
 export const Hero: React.FC = () => {
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup with Pure Floating Finance Icons */}
+          {/* Right Column: Phone Mockup with Staggered Multi-Axis Floating Finance Icons */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
               {/* 1. Radiant Backlight Aura */}
@@ -82,18 +82,21 @@ export const Hero: React.FC = () => {
               <div className="phone-emanating-ring ring-1" />
               <div className="phone-emanating-ring ring-2" />
 
-              {/* 3. Emanating Pure Vector Money Icons (Floating completely clear of the phone) */}
+              {/* 3. Emanating Pure Vector Money Icons (Intentionally Non-Axis-Aligned, Floating Clear of Phone) */}
               <div className="emanating-finance-icon icon-bank">
                 <BankIcon size={34} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-wallet">
                 <WalletIcon size={36} color="var(--accent-light)" />
               </div>
-              <div className="emanating-finance-icon icon-piggy">
-                <PiggyBankIcon size={36} color="var(--accent-light)" />
+              <div className="emanating-finance-icon icon-tax">
+                <TaxIcon size={33} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-tag">
-                <TagIcon size={34} color="var(--accent-light)" />
+                <TagIcon size={32} color="var(--accent-light)" />
+              </div>
+              <div className="emanating-finance-icon icon-piggy">
+                <PiggyBankIcon size={35} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-card">
                 <CardIcon size={34} color="var(--accent-light)" />
