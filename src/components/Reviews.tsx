@@ -3,127 +3,130 @@ import { StarFilledIcon } from './icons';
 
 interface Review {
   name: string;
+  fullName: string;
   role: string;
   rating: number;
   highlight: string;
   comment: string;
   store: string;
+  avatarColor: string;
 }
 
 const reviews: Review[] = [
   {
-    name: 'Marcus K.',
-    role: 'Everyday Budgeter',
+    name: 'Ibrahim H.',
+    fullName: 'Ibrahim Hassan',
+    role: 'Verified Google Play User',
     rating: 5,
-    highlight: 'Clean, fast, and completely offline.',
+    highlight: "Best expense tracking and budgeting app I've found.",
     comment:
-      'I love that my financial records stay on my phone. No logins, no ads, and no weird syncing errors. It just works.',
+      "I've been using this app for almost a year, and it exceeded my expectations. The interface is modern, clean, and easy to use with plenty of features without feeling complicated. The lifetime premium option is affordable and worth every riyal. Great work by the developer!",
     store: 'Google Play',
+    avatarColor: '#4C74DB', // blue
   },
   {
-    name: 'Elena R.',
-    role: 'Freelancer',
+    name: 'Susie C.',
+    fullName: 'Susie Cox',
+    role: 'Verified Google Play User',
     rating: 5,
-    highlight: 'Replaced my expensive paid app.',
+    highlight: 'The choice of icons and colors is great!',
     comment:
-      'I was tired of paying monthly subscriptions just to track my own money. eXpend has all the features I need in a great dark interface.',
-    store: 'App Store',
+      'I LOVE this app! The choice of icons and colors is great. The app is beautifully designed and easy to use. Thank you to the developer for making such a beautiful money tracking tool.',
+    store: 'Google Play',
+    avatarColor: '#0BB190', // green
   },
   {
-    name: 'David L.',
-    role: 'Student',
+    name: 'Jurij M.',
+    fullName: 'Jurij Malovrh',
+    role: 'Verified Google Play User',
     rating: 5,
-    highlight: 'The 1-tap templates are a lifesaver.',
+    highlight: 'Design is just soo clean — bought lifetime premium!',
     comment:
-      'Logging coffee or lunch takes two seconds with the templates. Debts and budget tracking keep my spending stress-free.',
+      'This is honestly the best app for tracking expenses. I tried a bunch of others and always stopped tracking, but here the design is just soo clean, I actually love it! After two months I decided this is it and bought premium. Huge thank you for making it a ONE-TIME purchase!',
     store: 'Google Play',
+    avatarColor: '#9957BD', // purple
   },
 ];
 
 export const Reviews: React.FC = () => {
   return (
-    <section id="reviews" className="section" style={{ position: 'relative' }}>
-      {/* Single shape anchored to top-left edge */}
+    <section id="reviews" className="section reviews-section" style={{ position: 'relative' }}>
+      {/* Single subtle geometric shape anchored to top-left edge */}
       <div
         className="edge-shape square"
         style={{
-          width: '220px',
-          height: '220px',
-          top: '-70px',
-          left: '-70px',
+          width: '200px',
+          height: '200px',
+          top: '-60px',
+          left: '-60px',
+          opacity: 0.2,
         }}
       />
 
       <div className="container">
-        <div className="section-header">
-          <div className="section-subtitle">Reviews</div>
-          <h2 className="section-title">
+        {/* Section Header */}
+        <div className="section-header" style={{ marginBottom: '3.5rem' }}>
+          <div className="clean-section-pill">
+            User Reviews
+          </div>
+
+          <h2 className="section-title" style={{ fontWeight: 700 }}>
             Loved by People Who Value <br />
-            <span style={{ color: 'var(--accent-light)' }}>Simplicity & Privacy</span>
+            <span style={{ color: 'var(--accent-light)' }}>Simplicity & Design</span>
           </h2>
-          <p className="section-description">
-            Here is what people are saying about managing their money with eXpend.
+
+          <p className="section-description" style={{ maxWidth: '580px', margin: '0 auto' }}>
+            Real feedback from verified budgeters managing their daily expenses with eXpend.
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem',
-        }}>
+        {/* 3 Review Cards Grid */}
+        <div className="reviews-cards-grid">
           {reviews.map((rev, idx) => (
-            <div
-              key={idx}
-              className="bold-card"
-              style={{
-                padding: '2.25rem 2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-              }}
-            >
+            <div key={idx} className="clean-review-card">
               <div>
-                <div style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '1.25rem',
-                }}>
-                  <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                {/* Top Row: 5 Stars + Google Play Pill */}
+                <div className="review-top-row">
+                  <div className="review-stars-wrap">
                     {Array.from({ length: rev.rating }).map((_, sIdx) => (
-                      <StarFilledIcon key={sIdx} size={18} color="#FFB800" strokeWidth="3px" />
+                      <StarFilledIcon
+                        key={sIdx}
+                        size={17}
+                        color="#EAAF3B"
+                        strokeWidth="2px"
+                      />
                     ))}
                   </div>
-                  <span className="store-tag">{rev.store}</span>
+
+                  <span className="review-store-pill">
+                    {rev.store}
+                  </span>
                 </div>
 
-                <h3 style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 800,
-                  marginBottom: '0.75rem',
-                  color: '#FFFFFF',
-                }}>
+                {/* Highlight Headline */}
+                <h3 className="review-highlight-text">
                   "{rev.highlight}"
                 </h3>
 
-                <p style={{
-                  fontSize: '1rem',
-                  lineHeight: 1.65,
-                  color: 'var(--text-secondary)',
-                }}>
+                {/* Comment Body */}
+                <p className="review-comment-text">
                   "{rev.comment}"
                 </p>
               </div>
 
-              <div className="review-author">
-                <div className="review-avatar">
+              {/* Author Footer */}
+              <div className="review-author-footer">
+                <div
+                  className="review-author-avatar"
+                  style={{ backgroundColor: `${rev.avatarColor}20`, color: rev.avatarColor, borderColor: `${rev.avatarColor}60` }}
+                >
                   {rev.name.charAt(0)}
                 </div>
                 <div>
-                  <div style={{ fontWeight: 800, color: '#FFFFFF', fontSize: '1.05rem' }}>
+                  <div className="review-author-name">
                     {rev.name}
                   </div>
-                  <div style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 600 }}>
+                  <div className="review-author-role">
                     {rev.role}
                   </div>
                 </div>

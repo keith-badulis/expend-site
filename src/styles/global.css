@@ -920,56 +920,112 @@ a:hover {
   border: none;
 }
 
-/* Bold Card Styling (Used for Reviews) */
-.bold-card {
-  background: var(--bg-card);
-  border: 2.5px solid rgba(76, 116, 219, 0.6);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+/* =======================================================
+   REVIEWS SECTION (CLEAN MATTE CARDS)
+======================================================= */
+.reviews-section {
+  padding: 5.5rem 0;
   position: relative;
-  overflow: hidden;
 }
 
-.bold-card:hover {
-  border-color: var(--accent-color);
-  background: var(--bg-card-hover);
-  box-shadow: 0 12px 32px var(--accent-glow);
+.reviews-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+.clean-review-card {
+  background: #172036;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 20px;
+  padding: 2rem 1.85rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.clean-review-card:hover {
   transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
-/* Reviews Component Elements */
-.store-tag {
-  font-size: 0.8rem;
-  color: #FFFFFF;
-  font-weight: 700;
-  background-color: rgba(76, 116, 219, 0.2);
-  border: 1.5px solid var(--accent-color);
+.review-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.15rem;
+}
+
+.review-stars-wrap {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.review-store-pill {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-light);
+  background: rgba(76, 116, 219, 0.12);
   padding: 0.25rem 0.65rem;
   border-radius: 8px;
+  letter-spacing: 0.02em;
 }
 
-.review-author {
+.review-highlight-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 0.65rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.review-comment-text {
+  font-size: 0.94rem;
+  font-weight: 400;
+  line-height: 1.62;
+  color: var(--text-secondary);
+  margin-bottom: 1.75rem;
+}
+
+.review-author-footer {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  margin-top: 1.75rem;
   padding-top: 1.15rem;
-  border-top: 2px solid rgba(76, 116, 219, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.review-avatar {
-  width: 42px;
-  height: 42px;
+.review-author-avatar {
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: var(--accent-color);
-  border: 2px solid var(--accent-light);
-  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: 1.5px solid;
+  flex-shrink: 0;
+}
+
+.review-author-name {
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.review-author-role {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
 }
 
 /* Official Crisp Vector Store Badge Buttons */
@@ -1076,6 +1132,11 @@ a:hover {
     max-width: 230px;
     margin: 0 auto;
   }
+  .reviews-cards-grid {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1138,5 +1199,8 @@ a:hover {
     flex-direction: column;
     padding: 1.75rem 1.35rem;
     gap: 1.15rem;
+  }
+  .clean-review-card {
+    padding: 1.75rem 1.35rem;
   }
 }
