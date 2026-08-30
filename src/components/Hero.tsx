@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
           {/* Left Column: Animated App Logo & Orchestrated Typographic Reveal */}
           <div>
             {/* 1. Animated Logo (Starts immediately at T = 0.0s) */}
-            <AnimatedLogo size={104} />
+            <AnimatedLogo size={112} />
 
             {/* 2. Headline & Setup Text (Stagger 1: T = 0.45s) */}
             <div className="hero-reveal-headline" style={{ marginBottom: '1.5rem' }}>
