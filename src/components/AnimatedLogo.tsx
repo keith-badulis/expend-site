@@ -32,10 +32,10 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
       }}
     >
       {/* 
-        Parent Frame: Stays completely static.
-        Houses two independent sibling layers:
-        1. The squircle background that spins & morphs.
-        2. The inner logo image that stays strictly upright.
+        Parent Frame:
+        1. Static Shadow & Glow Layer (Shadow does not spin)
+        2. Rotating Squircle Shape (Circle -> Crisp Squircle)
+        3. Static Upright Logo Image
       */}
       <div
         className="logo-frame"
@@ -48,22 +48,18 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
           justifyContent: 'center',
         }}
       >
-        {/* Layer 1: Animated Rotating Squircle Background */}
-        <div
-          className={`logo-squircle-bg ${isSpinning ? 'spin-manual' : 'spin-initial'}`}
-          style={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-          }}
-        />
+        {/* Layer 1: Static Shadow & Ambient Glow (No rotation) */}
+        <div className={`logo-static-shadow ${isSpinning ? 'shadow-manual' : 'shadow-initial'}`} />
 
-        {/* Layer 2: Static Upright Logo Image (Subtle ~2px optical center shift) */}
+        {/* Layer 2: Rotating Background Shape (Starts as 50% circle, ends as 26px squircle) */}
+        <div className={`logo-squircle-shape ${isSpinning ? 'spin-manual' : 'spin-initial'}`} />
+
+        {/* Layer 3: Static Upright Logo Image (Shifted 2px right to align circle with squircle) */}
         <div
           className="logo-graphic-wrapper"
           style={{
             position: 'relative',
-            zIndex: 2,
+            zIndex: 3,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',

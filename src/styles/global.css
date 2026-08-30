@@ -115,28 +115,47 @@ a:hover {
   flex-shrink: 0;
 }
 
-/* SQUIRCLE BACKGROUND LAYER - ONLY THIS ROTATES & MORPHS */
-.logo-squircle-bg {
+/* LAYER 1: STATIC SHADOW & GLOW - NO ROTATION */
+.logo-static-shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 26px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5), 0 0 24px rgba(76, 116, 219, 0.25);
+  pointer-events: none;
+}
+
+.logo-static-shadow.shadow-initial {
+  animation: logoShadowMorph 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.logo-static-shadow.shadow-manual {
+  animation: logoShadowMorph 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* LAYER 2: ROTATING SQUIRCLE FILL (Starts 50% Circle -> Ends 26px Crisp Squircle) */
+.logo-squircle-shape {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background-color: #282f40;
-  border-radius: 34px;
-  border: 2px solid rgba(76, 116, 219, 0.45);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 25px rgba(76, 116, 219, 0.3);
+  border-radius: 26px;
+  border: 1.5px solid rgba(76, 116, 219, 0.45);
 }
 
-.logo-squircle-bg.spin-initial {
-  animation: logoSquircleSpin 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.logo-squircle-shape.spin-initial {
+  animation: logoSquircleMorphSpin 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.logo-squircle-bg.spin-manual {
-  animation: logoSquircleSpin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.logo-squircle-shape.spin-manual {
+  animation: logoSquircleMorphSpin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* INNER LOGO IMAGE LAYER - STAYS COMPLETELY UPRIGHT (NO ROTATION) */
+/* LAYER 3: INNER LOGO IMAGE (Strictly zero rotation) */
 .logo-inner-img {
   display: block;
   object-fit: contain;
@@ -166,8 +185,29 @@ a:hover {
   color: var(--text-secondary);
 }
 
-/* Keyframes for Squircle Rotation & Color Transition */
-@keyframes logoSquircleSpin {
+/* Keyframes for Static Shadow (Expands without rotating) */
+@keyframes logoShadowMorph {
+  0% {
+    transform: scale(0.6);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.7;
+  }
+  75% {
+    transform: scale(1.05);
+    border-radius: 28px;
+  }
+  100% {
+    transform: scale(1);
+    border-radius: 26px;
+    opacity: 1;
+  }
+}
+
+/* Keyframes for Squircle Morph & Spin (Circle -> Crisp Squircle) */
+@keyframes logoSquircleMorphSpin {
   0% {
     transform: rotate(-360deg) scale(0.6);
     border-radius: 50%;
@@ -179,13 +219,13 @@ a:hover {
     background-color: #1F2A47;
   }
   75% {
-    transform: rotate(12deg) scale(1.06);
-    border-radius: 36px;
+    transform: rotate(12deg) scale(1.05);
+    border-radius: 28px;
     background-color: #282f40;
   }
   100% {
     transform: rotate(0deg) scale(1);
-    border-radius: 34px;
+    border-radius: 26px;
     background-color: #282f40;
     opacity: 1;
   }
@@ -201,7 +241,7 @@ a:hover {
     opacity: 1;
   }
   75% {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
   100% {
     transform: scale(1);
