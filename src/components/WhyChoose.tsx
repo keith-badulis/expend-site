@@ -6,46 +6,64 @@ import {
 } from './icons';
 
 export const WhyChoose: React.FC = () => {
-  const privacyPoints = [
+  // Block 1: Offline & Privacy Points (Color-coded with solid app palette)
+  const privacyTiles = [
     {
-      title: 'No Accounts or Sign-Ups Required',
-      desc: 'Open the app and start budgeting immediately. No email, no passwords, and no personal profile needed.',
+      title: 'No Accounts or Sign-Ups',
+      desc: 'Open the app and start logging immediately. No email, passwords, or personal profile needed.',
+      color: '#0BB190', // green-50
+      tag: 'Zero Sign-Up',
     },
     {
-      title: 'Zero Cloud Servers & No Tracking',
-      desc: 'We do not collect, store, or sell your data. We have no servers to log your income, expenses, or habits.',
+      title: 'Zero Cloud Servers',
+      desc: 'We do not collect, store, or sell your data. We have no remote servers tracking your habits.',
+      color: '#9957BD', // purple-50
+      tag: 'No Tracking',
     },
     {
-      title: '100% Local Device Storage',
-      desc: 'Your financial records remain strictly on your physical phone, guarded by your device’s native security.',
+      title: '100% Local Storage',
+      desc: 'Your financial transactions and budgets live strictly in your device’s local secure database.',
+      color: '#37a5d6', // sky-50
+      tag: 'On-Device',
     },
     {
-      title: 'Full Offline Functionality',
-      desc: 'Log expenses anytime, anywhere—whether on a flight, in the subway, or completely disconnected from the internet.',
+      title: 'Full Offline Freedom',
+      desc: 'Log expenses anytime, anywhere—on planes, in subways, or completely disconnected from the web.',
+      color: '#EAAF3B', // yellow-50
+      tag: 'No Internet Needed',
     },
   ];
 
-  const premiumPoints = [
+  // Block 2: No-Subscriptions / Ownership Points (Color-coded with solid app palette)
+  const ownershipTiles = [
     {
-      title: 'One-Time Purchase, Forever Yours',
-      desc: 'No recurring monthly or yearly subscription fees. Pay once to unlock the full app forever.',
+      title: 'Pay Once, Keep Forever',
+      desc: 'Say goodbye to recurring monthly fees. Unlock the full app with a single, transparent purchase.',
+      color: '#EF8354', // orange-50
+      tag: 'No Subscriptions',
     },
     {
-      title: 'CSV Data Export Freedom',
-      desc: 'Export your entire transaction history to CSV format for Excel, Google Sheets, or Numbers anytime.',
+      title: 'CSV Data Export',
+      desc: 'Export your full transaction history to CSV format for Excel, Google Sheets, or Numbers anytime.',
+      color: '#4fb2b5', // teal-50
+      tag: 'Excel & Sheets',
     },
     {
-      title: 'Local JSON Backup & Restore',
-      desc: 'Easily create offline backups and restore your financial data safely without relying on third-party cloud services.',
+      title: 'Local JSON Backup',
+      desc: 'Easily backup and restore your financial data safely using local files without cloud lock-in.',
+      color: '#dd56b2', // pink-50
+      tag: 'Offline Backup',
     },
     {
       title: 'Unlimited Everything',
-      desc: 'Manage unlimited wallets, budget limits, savings goals, debts, and custom categories with zero limits.',
+      desc: 'Create unlimited wallets, budgets, goals, debts, and custom categories without artificial limits.',
+      color: '#88ba4a', // lime-50
+      tag: 'No Limits',
     },
   ];
 
   return (
-    <section id="why-choose" className="section why-choose-section">
+    <section id="why-choose" className="section why-choose-stacked-section">
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
@@ -58,81 +76,140 @@ export const WhyChoose: React.FC = () => {
             <span style={{ color: '#4C74DB' }}>Zero Subscriptions.</span>
           </h2>
 
-          <p className="section-description" style={{ maxWidth: '600px', margin: '0 auto' }}>
-            No accounts, no cloud servers, and no recurring fees. A lightweight personal finance tracker built around two core promises: pure privacy and true ownership.
+          <p className="section-description" style={{ maxWidth: '620px', margin: '0 auto' }}>
+            No accounts, no cloud servers, and no recurring fees. Built around two simple promises: pure privacy and true ownership.
           </p>
         </div>
 
-        {/* 2 Focused Main Pillar Cards */}
-        <div className="why-focused-grid">
-          {/* Card 1: 100% Offline & Private (Solid Green Theme #0BB190) */}
-          <div className="why-core-card card-privacy">
-            <div className="core-card-header">
-              <div className="core-icon-box icon-green">
+        {/* =======================================================
+            BLOCK 1: 100% OFFLINE & PRIVATE (TOP HERO BLOCK)
+        ======================================================= */}
+        <div className="why-stacked-block block-privacy">
+          {/* Left Column: Core Privacy Manifesto */}
+          <div className="block-lead-column">
+            <div className="lead-badge-row">
+              <div className="lead-icon-box icon-green">
                 <LockIcon size={28} color="#0BB190" />
               </div>
-
-              <div className="core-badge-pill badge-green">
-                <span>100% Offline & Private</span>
-              </div>
+              <span className="lead-badge-pill pill-green">
+                100% Offline & Private
+              </span>
             </div>
 
-            <h3 className="core-card-title">
+            <h3 className="lead-title">
               Your Financial Data Stays On Your Device.
             </h3>
 
-            <p className="core-card-desc">
-              eXpend is built from the ground up to be an offline-first app. Your personal records are never transmitted across the web or stored on remote servers.
+            <p className="lead-desc">
+              eXpend is engineered from day one to be 100% offline. We don't have user databases, telemetry servers, or analytics trackers. Your personal financial habits are private, secure, and entirely yours.
             </p>
-
-            <div className="core-points-list">
-              {privacyPoints.map((pt, idx) => (
-                <div key={idx} className="core-point-item">
-                  <div className="point-check-bullet check-green">
-                    <CheckIcon size={13} color="#0BB190" />
-                  </div>
-                  <div>
-                    <h4 className="point-title">{pt.title}</h4>
-                    <p className="point-desc">{pt.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Card 2: No Subscriptions • Lifetime Premium (Solid Blue Theme #4C74DB) */}
-          <div className="why-core-card card-pricing">
-            <div className="core-card-header">
-              <div className="core-icon-box icon-blue">
+          {/* Right Column: 4 Solid Color Feature Tiles */}
+          <div className="block-tiles-grid">
+            {privacyTiles.map((tile, idx) => (
+              <div
+                key={idx}
+                className="color-feature-tile"
+                style={{
+                  '--tile-color': tile.color,
+                  borderColor: `${tile.color}40`,
+                } as React.CSSProperties}
+              >
+                <div className="tile-top-row">
+                  <span
+                    className="tile-tag-pill"
+                    style={{
+                      color: tile.color,
+                      borderColor: `${tile.color}60`,
+                      backgroundColor: `${tile.color}15`,
+                    }}
+                  >
+                    {tile.tag}
+                  </span>
+                  <div
+                    className="tile-check-dot"
+                    style={{ backgroundColor: tile.color }}
+                  >
+                    <CheckIcon size={11} color="#172036" />
+                  </div>
+                </div>
+
+                <h4 className="tile-title" style={{ color: '#FFFFFF' }}>
+                  {tile.title}
+                </h4>
+
+                <p className="tile-desc">
+                  {tile.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* =======================================================
+            BLOCK 2: NO SUBSCRIPTIONS / ONE-TIME PURCHASE (BELOW BLOCK 1)
+        ======================================================= */}
+        <div className="why-stacked-block block-ownership">
+          {/* Left Column: Core Ownership Manifesto */}
+          <div className="block-lead-column">
+            <div className="lead-badge-row">
+              <div className="lead-icon-box icon-blue">
                 <DiamondIcon size={28} color="#4C74DB" />
               </div>
-
-              <div className="core-badge-pill badge-blue">
-                <span>One-Time Purchase • No Subscriptions</span>
-              </div>
+              <span className="lead-badge-pill pill-blue">
+                One-Time Purchase • No Subscriptions
+              </span>
             </div>
 
-            <h3 className="core-card-title">
+            <h3 className="lead-title">
               Pay Once. Keep It Forever.
             </h3>
 
-            <p className="core-card-desc">
-              Say goodbye to subscription fatigue. Unlock the complete, unrestricted power of eXpend with a single transparent one-time purchase.
+            <p className="lead-desc">
+              No subscription fatigue. Enjoy the complete, unrestricted feature set of eXpend with a single one-time lifetime purchase. Complete data ownership with local backup and CSV export.
             </p>
+          </div>
 
-            <div className="core-points-list">
-              {premiumPoints.map((pt, idx) => (
-                <div key={idx} className="core-point-item">
-                  <div className="point-check-bullet check-blue">
-                    <CheckIcon size={13} color="#4C74DB" />
-                  </div>
-                  <div>
-                    <h4 className="point-title">{pt.title}</h4>
-                    <p className="point-desc">{pt.desc}</p>
+          {/* Right Column: 4 Solid Color Feature Tiles */}
+          <div className="block-tiles-grid">
+            {ownershipTiles.map((tile, idx) => (
+              <div
+                key={idx}
+                className="color-feature-tile"
+                style={{
+                  '--tile-color': tile.color,
+                  borderColor: `${tile.color}40`,
+                } as React.CSSProperties}
+              >
+                <div className="tile-top-row">
+                  <span
+                    className="tile-tag-pill"
+                    style={{
+                      color: tile.color,
+                      borderColor: `${tile.color}60`,
+                      backgroundColor: `${tile.color}15`,
+                    }}
+                  >
+                    {tile.tag}
+                  </span>
+                  <div
+                    className="tile-check-dot"
+                    style={{ backgroundColor: tile.color }}
+                  >
+                    <CheckIcon size={11} color="#172036" />
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <h4 className="tile-title" style={{ color: '#FFFFFF' }}>
+                  {tile.title}
+                </h4>
+
+                <p className="tile-desc">
+                  {tile.desc}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
