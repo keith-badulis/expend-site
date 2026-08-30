@@ -21,11 +21,6 @@ export const CtaSection: React.FC = () => {
               />
             </div>
 
-            {/* Kicker Pill */}
-            <div className="clean-section-pill" style={{ marginBottom: '1.25rem' }}>
-              Start In Seconds
-            </div>
-
             {/* Main Headline */}
             <h2 className="cta-headline">
               Make Budgeting a Habit. <br />

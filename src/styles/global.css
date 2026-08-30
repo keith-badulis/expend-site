@@ -1065,11 +1065,17 @@ a:hover {
   z-index: 2;
   max-width: 660px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .cta-icon-wrapper {
-  display: inline-flex;
-  margin-bottom: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.75rem;
 }
 
 .cta-app-icon-img {
