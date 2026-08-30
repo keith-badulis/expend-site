@@ -1,5 +1,5 @@
 import React from 'react';
-import { StarFilledIcon } from './icons';
+import { StarFilledIcon, StarOutlineIcon } from './icons';
 
 interface Review {
   name: string;
@@ -66,8 +66,9 @@ export const Reviews: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '3.5rem' }}>
-          <div className="clean-section-pill">
-            User Reviews
+          <div className="section-subtitle">
+            <StarOutlineIcon size={16} color="var(--accent-light)" />
+            <span>User Reviews</span>
           </div>
 
           <h2 className="section-title" style={{ fontWeight: 700 }}>

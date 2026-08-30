@@ -71,8 +71,9 @@ export const WhyChoose: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '3rem' }}>
-          <div className="clean-section-pill">
-            Why Choose eXpend
+          <div className="section-subtitle">
+            <SparklesIcon size={16} color="var(--accent-light)" />
+            <span>Why Choose eXpend</span>
           </div>
 
           <h2 className="section-title" style={{ fontWeight: 700 }}>
