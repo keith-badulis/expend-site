@@ -28,19 +28,16 @@ export const Hero: React.FC = () => {
               </span>
 
               <h1 style={{
-                fontSize: 'clamp(2.5rem, 5.2vw, 3.9rem)',
-                fontWeight: 900,
+                fontSize: 'clamp(2.4rem, 4.8vw, 3.75rem)',
+                fontWeight: 700,
                 letterSpacing: '-0.03em',
-                lineHeight: 1.1,
+                lineHeight: 1.12,
                 color: '#FFFFFF',
                 margin: 0,
               }}>
                 Let's make it{' '}
                 <span style={{
                   color: 'var(--accent-light)',
-                  borderBottom: '5px solid var(--accent-color)',
-                  display: 'inline-block',
-                  paddingBottom: '2px',
                 }}>
                   a habit.
                 </span>
@@ -61,44 +58,32 @@ export const Hero: React.FC = () => {
               </p>
             </div>
 
-            {/* 4. Official Download Badges & Stars (Stagger 3: T = 1.05s) */}
+            {/* 4. Official Download Badges (Stagger 3: T = 1.05s) */}
             <div className="hero-reveal-badges">
               <StoreBadges />
-
-              <div className="rating-wrapper" style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.75rem',
-                marginTop: '1.75rem',
-                fontSize: '0.95rem',
-                color: 'var(--text-muted)',
-              }}>
-                <span style={{ color: '#FFB800', letterSpacing: '2px', fontSize: '1.15rem' }}>★★★★★</span>
-                <span><strong>4.9/5</strong> rating from happy budgeters</span>
-              </div>
             </div>
           </div>
 
           {/* Right Column: Phone Mockup with Shapes Animating Outward from Screenshot */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
-              {/* The 5 Geometric Shapes (Burst Outward from Screenshot at T = 1.6s - 2.0s) */}
-              {/* 1. Large Ring (240px) */}
+              {/* The 5 Geometric Shapes with Balanced Open-Space Placements */}
+              {/* 1. Large Ring (210px) - Floating free in upper-right open space */}
               <div className="chunky-shape chunky-ring-lg shape-reveal-1" />
 
-              {/* 2. Rotated Rounded Square (180px) */}
+              {/* 2. Rotated Rounded Square (170px) - Lower-left corner anchor */}
               <div className="chunky-shape chunky-square-md shape-reveal-2" />
 
-              {/* 3. Small Ring (76px) */}
+              {/* 3. Small Ring (72px) - Upper-left accent */}
               <div className="chunky-shape chunky-ring-sm shape-reveal-3" />
 
-              {/* 4. Dashed Ring (140px) */}
+              {/* 4. Dashed Ring (140px) - Lower-right anchor */}
               <div className="chunky-shape chunky-dashed-md shape-reveal-4" />
 
-              {/* 5. Tilted Pill (115px x 48px) */}
+              {/* 5. Tilted Pill (115px x 46px) - Floating free in mid-right open space */}
               <div className="chunky-shape chunky-pill shape-reveal-5" />
 
-              {/* Phone device container (Reveals at T = 1.35s) */}
+              {/* Phone device container (Reveals at T = 1.25s) */}
               <div className="phone-mockup phone-reveal">
                 <div className="phone-screen">
                   <img

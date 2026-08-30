@@ -65,7 +65,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   font-family: var(--font-family);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.15;
 }
 
@@ -117,7 +117,7 @@ a:hover {
   flex-shrink: 0;
 }
 
-/* ROTATING SQUIRCLE FILL (Circle -> 30px Smooth Squircle with unified attached shadow) */
+/* ROTATING SQUIRCLE FILL (No shadows during spin; shadows fade in at completion) */
 .logo-squircle-shape {
   position: absolute;
   top: 0;
@@ -241,15 +241,15 @@ a:hover {
   box-shadow: 0 0 24px var(--accent-glow);
 }
 
-/* --- RE-BALANCED HARMONIOUS 5 SHAPES ARRANGEMENT --- */
+/* --- SPACIOUS HARMONIOUS 5 SHAPES ARRANGEMENT --- */
 
-/* 1. Large Top-Right Ring (220px, 8.5px stroke) - Top-Right Anchor */
+/* 1. Large Ring (210px, 8px stroke) - Floating Farther in Upper-Right Space (Not Touching) */
 .chunky-ring-lg {
-  width: 220px;
-  height: 220px;
-  top: -45px;
-  right: -85px;
-  border: 8.5px solid var(--accent-color);
+  width: 210px;
+  height: 210px;
+  top: -65px;
+  right: -125px;
+  border: 8px solid var(--accent-color);
   border-radius: 50%;
   opacity: 0.85;
 }
@@ -259,15 +259,15 @@ a:hover {
              subtleBreathe 7s ease-in-out 2.8s infinite;
 }
 
-/* 2. Rotated Rounded Square (165px, 7px stroke) - Mid-Left Anchor */
+/* 2. Rotated Rounded Square (170px, 7px stroke) - Lower-Left Edge Anchor */
 .chunky-square-md {
-  width: 165px;
-  height: 165px;
-  top: 46%;
+  width: 170px;
+  height: 170px;
+  bottom: -50px;
   left: -95px;
   border: 7px solid var(--accent-color);
-  border-radius: 38px;
-  transform: rotate(15deg);
+  border-radius: 40px;
+  transform: rotate(16deg);
   opacity: 0.8;
 }
 
@@ -276,12 +276,12 @@ a:hover {
              floatSquareMD 11s ease-in-out 2.95s infinite alternate-reverse;
 }
 
-/* 3. Small Ring (70px, 4.5px stroke) - Bottom-Left Accent */
+/* 3. Small Ring (72px, 4.5px stroke) - Upper-Left Accent */
 .chunky-ring-sm {
-  width: 70px;
-  height: 70px;
-  bottom: 35px;
-  left: -40px;
+  width: 72px;
+  height: 72px;
+  top: 65px;
+  left: -55px;
   border: 4.5px solid var(--accent-color);
   border-radius: 50%;
   opacity: 0.8;
@@ -292,12 +292,12 @@ a:hover {
              floatRingSM 8s ease-in-out 2.95s infinite alternate;
 }
 
-/* 4. Dashed Ring (135px, 5px dashed stroke) - Bottom-Right Texture */
+/* 4. Dashed Ring (140px, 5px dashed stroke) - Lower-Right Anchor */
 .chunky-dashed-md {
-  width: 135px;
-  height: 135px;
-  bottom: -30px;
-  right: -65px;
+  width: 140px;
+  height: 140px;
+  bottom: 45px;
+  right: -55px;
   border: 5px dashed var(--accent-color);
   border-radius: 50%;
   opacity: 0.75;
@@ -308,15 +308,15 @@ a:hover {
              rotateDashedMD 32s linear 3.25s infinite;
 }
 
-/* 5. Tilted Pill (110px x 46px, 5.5px stroke) - Top-Left Accent */
+/* 5. Tilted Pill (115px x 46px, 5.5px stroke) - Floating Farther in Mid-Right Space (Not Touching) */
 .chunky-pill {
-  width: 110px;
+  width: 115px;
   height: 46px;
-  top: -25px;
-  left: -45px;
+  top: 36%;
+  right: -140px;
   border: 5.5px solid var(--accent-color);
   border-radius: 9999px;
-  transform: rotate(-18deg);
+  transform: rotate(-22deg);
   opacity: 0.75;
 }
 
@@ -353,15 +353,15 @@ a:hover {
   }
 }
 
-/* Shape 1 (Large Ring) Burst Outward to Top-Right */
+/* Shape 1 (Large Ring) Burst Outward to Upper-Right Space */
 @keyframes burstShape1 {
   0% {
     opacity: 0;
-    transform: translate(-70px, 60px) scale(0.25);
+    transform: translate(-100px, 70px) scale(0.25);
   }
   65% {
     opacity: 0.9;
-    transform: translate(4px, -4px) scale(1.05);
+    transform: translate(6px, -4px) scale(1.05);
   }
   100% {
     opacity: 0.85;
@@ -369,31 +369,31 @@ a:hover {
   }
 }
 
-/* Shape 2 (Square) Burst Outward to Mid-Left */
+/* Shape 2 (Square) Burst Outward to Lower-Left */
 @keyframes burstShape2 {
   0% {
     opacity: 0;
-    transform: translate(75px, 0px) scale(0.25) rotate(0deg);
+    transform: translate(80px, -40px) scale(0.25) rotate(0deg);
   }
   65% {
     opacity: 0.85;
-    transform: translate(-5px, 0px) scale(1.05) rotate(18deg);
+    transform: translate(-5px, 3px) scale(1.05) rotate(20deg);
   }
   100% {
     opacity: 0.8;
-    transform: translate(0, 0) scale(1) rotate(15deg);
+    transform: translate(0, 0) scale(1) rotate(16deg);
   }
 }
 
-/* Shape 3 (Small Ring) Burst Outward to Bottom-Left */
+/* Shape 3 (Small Ring) Burst Outward to Upper-Left */
 @keyframes burstShape3 {
   0% {
     opacity: 0;
-    transform: translate(35px, -30px) scale(0.25);
+    transform: translate(40px, -20px) scale(0.25);
   }
   65% {
     opacity: 0.85;
-    transform: translate(-3px, 3px) scale(1.08);
+    transform: translate(-3px, 2px) scale(1.08);
   }
   100% {
     opacity: 0.8;
@@ -401,11 +401,11 @@ a:hover {
   }
 }
 
-/* Shape 4 (Dashed Ring) Burst Outward to Bottom-Right */
+/* Shape 4 (Dashed Ring) Burst Outward to Lower-Right */
 @keyframes burstShape4 {
   0% {
     opacity: 0;
-    transform: translate(-50px, -40px) scale(0.25) rotate(0deg);
+    transform: translate(-45px, -30px) scale(0.25) rotate(0deg);
   }
   65% {
     opacity: 0.8;
@@ -417,19 +417,19 @@ a:hover {
   }
 }
 
-/* Shape 5 (Pill) Burst Outward to Top-Left */
+/* Shape 5 (Pill) Burst Outward to Mid-Right Space */
 @keyframes burstShape5 {
   0% {
     opacity: 0;
-    transform: translate(40px, 30px) scale(0.25) rotate(0deg);
+    transform: translate(-100px, 0px) scale(0.25) rotate(0deg);
   }
   65% {
     opacity: 0.8;
-    transform: translate(-4px, -3px) scale(1.06) rotate(-22deg);
+    transform: translate(6px, -3px) scale(1.06) rotate(-26deg);
   }
   100% {
     opacity: 0.75;
-    transform: translate(0, 0) scale(1) rotate(-18deg);
+    transform: translate(0, 0) scale(1) rotate(-22deg);
   }
 }
 
@@ -450,8 +450,8 @@ a:hover {
 }
 
 @keyframes floatSquareMD {
-  0% { transform: rotate(15deg) translateY(0px); }
-  100% { transform: rotate(11deg) translateY(8px); }
+  0% { transform: rotate(16deg) translateY(0px); }
+  100% { transform: rotate(12deg) translateY(8px); }
 }
 
 @keyframes floatRingSM {
@@ -465,28 +465,29 @@ a:hover {
 }
 
 @keyframes floatPillFree {
-  0% { transform: rotate(-18deg) translateY(0px); }
-  100% { transform: rotate(-12deg) translateY(-6px); }
+  0% { transform: rotate(-22deg) translateY(0px); }
+  100% { transform: rotate(-16deg) translateY(-6px); }
 }
 
-/* Squircle Morph & Spin (Circle -> 30px Squircle with Unified Attached Shadow) */
+/* Squircle Morph & Spin: Shadows are NONE during spin, and fade in at the end */
 @keyframes logoSquircleMorphSpin {
   0% {
     transform: rotate(-360deg) scale(0.6);
     border-radius: 50%;
     background-color: #172036;
     opacity: 0;
-    box-shadow: 0 0 10px rgba(76, 116, 219, 0.1);
+    box-shadow: 0 0 0 transparent;
   }
   35% {
     opacity: 1;
     background-color: #1F2A47;
+    box-shadow: 0 0 0 transparent;
   }
-  75% {
+  70% {
     transform: rotate(10deg) scale(1.04);
     border-radius: 32px;
     background-color: #282f40;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5), 0 0 30px rgba(76, 116, 219, 0.4);
+    box-shadow: 0 0 0 transparent;
   }
   100% {
     transform: rotate(0deg) scale(1);
@@ -689,9 +690,6 @@ a:hover {
     justify-content: center;
   }
   .store-badges-container {
-    justifyContent: center;
-  }
-  .hero-grid .rating-wrapper {
     justify-content: center;
   }
 }
@@ -707,13 +705,13 @@ a:hover {
     width: 260px;
   }
   .chunky-ring-lg {
-    width: 180px;
-    height: 180px;
-    border-width: 7px;
+    width: 170px;
+    height: 170px;
+    border-width: 6.5px;
   }
   .chunky-square-md {
-    width: 140px;
-    height: 140px;
+    width: 135px;
+    height: 135px;
     border-width: 6px;
   }
   .official-badge-img {
