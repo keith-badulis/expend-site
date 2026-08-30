@@ -212,7 +212,7 @@ a:hover {
   align-items: center;
 }
 
-/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (4 BALANCED CORE ICONS) --- */
+/* --- EMANATING FINANCE HIGHLIGHTS (STRICTLY ON LEFT & RIGHT SIDES OF SCREENSHOT) --- */
 
 /* 1. Radiant Backlight Aura Glow (Reveals at T = 2.1s) */
 .phone-backlight-aura {
@@ -262,7 +262,7 @@ a:hover {
              ringEmanateDashed 7s ease-in-out 3.45s infinite alternate;
 }
 
-/* 3. Pure Vector Finance Icons (4 Core Icons, Multi-Axis Staggered) */
+/* 3. Pure Vector Finance Icons (Strictly Flanking the Left & Right Sides) */
 .emanating-finance-icon {
   position: absolute;
   z-index: 5;
@@ -274,34 +274,34 @@ a:hover {
   opacity: 0;
 }
 
-/* 1. Bank: Upper-Left (Y = -35px, X = -50px) */
+/* 1. Bank Icon: Upper-Left Side (Y = 24%, X = -65px) */
 .icon-bank {
-  top: -35px;
-  left: -50px;
+  top: 24%;
+  left: -65px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both,
              financeFloat1 5.2s ease-in-out 3.25s infinite alternate;
 }
 
-/* 2. Wallet: Upper-Right (Y = -15px, X = -55px) */
+/* 2. Wallet Icon: Upper-Right Side (Y = 34%, X = -70px) */
 .icon-wallet {
-  top: -15px;
-  right: -55px;
+  top: 34%;
+  right: -70px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s both,
              financeFloat2 5.6s ease-in-out 3.33s infinite alternate;
 }
 
-/* 3. Piggy Bank: Lower-Left (Y = 64%, X = -65px) */
+/* 3. Piggy Bank Icon: Lower-Left Side (Y = 64%, X = -75px) */
 .icon-piggy {
   top: 64%;
-  left: -65px;
+  left: -75px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s both,
              financeFloat3 6.0s ease-in-out 3.41s infinite alternate;
 }
 
-/* 4. Card: Lower-Right (Y = 76%, X = -55px) */
+/* 4. Card Icon: Lower-Right Side (Y = 74%, X = -65px) */
 .icon-card {
-  top: 76%;
-  right: -55px;
+  top: 74%;
+  right: -65px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both,
              financeFloat1 5.4s ease-in-out 3.49s infinite alternate;
 }
@@ -556,6 +556,15 @@ a:hover {
   }
   100% {
     transform: translateY(-7px) scale(1.04) rotate(5deg);
+  }
+}
+
+@keyframes financeFloat4 {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-7px) scale(1.04) rotate(-5deg);
   }
 }
 
@@ -970,19 +979,19 @@ a:hover {
     height: 510px;
   }
   .icon-bank {
-    top: -25px;
-    left: -30px;
+    top: 24%;
+    left: -35px;
   }
   .icon-wallet {
-    top: -10px;
-    right: -30px;
+    top: 34%;
+    right: -35px;
   }
   .icon-piggy {
     top: 64%;
-    left: -35px;
+    left: -38px;
   }
   .icon-card {
-    top: 76%;
+    top: 74%;
     right: -35px;
   }
   .hero-shape-top-left {
