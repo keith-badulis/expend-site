@@ -86,11 +86,16 @@ a:hover {
   color: #FFFFFF;
 }
 
-/* Hero Section (Clean top spacing without App Bar) */
+/* Hero Section (Full Window Height presentation) */
 .hero-section {
-  padding: 4.5rem 0 4.5rem 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 3.5rem 0;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .hero-grid {
@@ -675,7 +680,9 @@ a:hover {
 /* Responsive queries */
 @media (max-width: 960px) {
   .hero-section {
-    padding: 3.5rem 0 3.5rem 0;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 3.5rem 0;
   }
   .hero-grid {
     grid-template-columns: 1fr;
