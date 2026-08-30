@@ -105,17 +105,17 @@ export const Features: React.FC = () => {
           </p>
         </div>
 
-        {/* 2-Column Staggered Exhibition Gallery */}
+        {/* 2-Column Staggered Open Exhibition Gallery (Cardless) */}
         <div className="gallery-staggered-grid">
           {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
           <div className="gallery-column gallery-col-left">
             {leftColItems.map((item, idx) => (
-              <div key={idx} className="gallery-card caption-left">
+              <div key={idx} className="gallery-item caption-left">
                 {/* Caption on Left */}
                 <div className="gallery-caption-box">
                   <span className="gallery-badge">{item.badge}</span>
-                  <h3 className="gallery-card-title">{item.title}</h3>
-                  <p className="gallery-card-desc">{item.description}</p>
+                  <h3 className="gallery-item-title">{item.title}</h3>
+                  <p className="gallery-item-desc">{item.description}</p>
                   <div className="gallery-tags-wrap">
                     {item.tags.map((tag, tIdx) => (
                       <span key={tIdx} className="gallery-tag-pill">
@@ -143,7 +143,7 @@ export const Features: React.FC = () => {
           {/* RIGHT COLUMN (Staggered Downward: Screenshot on Left, Caption on Right) */}
           <div className="gallery-column gallery-col-right">
             {rightColItems.map((item, idx) => (
-              <div key={idx} className="gallery-card caption-right">
+              <div key={idx} className="gallery-item caption-right">
                 {/* Screenshot on Left */}
                 <div className="gallery-screen-box">
                   <div className="gallery-phone-frame">
@@ -159,8 +159,8 @@ export const Features: React.FC = () => {
                 {/* Caption on Right */}
                 <div className="gallery-caption-box">
                   <span className="gallery-badge">{item.badge}</span>
-                  <h3 className="gallery-card-title">{item.title}</h3>
-                  <p className="gallery-card-desc">{item.description}</p>
+                  <h3 className="gallery-item-title">{item.title}</h3>
+                  <p className="gallery-item-desc">{item.description}</p>
                   <div className="gallery-tags-wrap">
                     {item.tags.map((tag, tIdx) => (
                       <span key={tIdx} className="gallery-tag-pill">
