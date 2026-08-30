@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
-import { SparklesIcon, DiamondIcon } from './icons';
+import { WalletIcon, PiggyBankIcon, CardIcon, CoinIcon } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 
 export const Hero: React.FC = () => {
@@ -72,7 +72,7 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup with Emanating Highlight Accents */}
+          {/* Right Column: Phone Mockup with Emanating Finance Highlight Accents */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
               {/* 1. Radiant Backlight Aura */}
@@ -82,15 +82,18 @@ export const Hero: React.FC = () => {
               <div className="phone-emanating-ring ring-1" />
               <div className="phone-emanating-ring ring-2" />
 
-              {/* 3. Emanating Shimmer Sparkles & Diamond Badges */}
-              <div className="emanating-sparkle sparkle-top-right">
-                <SparklesIcon size={30} color="var(--accent-light)" />
+              {/* 3. Emanating Floating Finance Badges */}
+              <div className="emanating-finance-icon icon-wallet">
+                <WalletIcon size={28} color="var(--accent-light)" />
               </div>
-              <div className="emanating-sparkle sparkle-left">
-                <SparklesIcon size={24} color="var(--accent-color)" />
+              <div className="emanating-finance-icon icon-piggy">
+                <PiggyBankIcon size={28} color="var(--accent-light)" />
               </div>
-              <div className="emanating-sparkle sparkle-bottom-right">
-                <DiamondIcon size={22} color="var(--accent-light)" />
+              <div className="emanating-finance-icon icon-card">
+                <CardIcon size={26} color="var(--accent-light)" />
+              </div>
+              <div className="emanating-finance-icon icon-coin">
+                <CoinIcon size={24} color="var(--accent-light)" />
               </div>
 
               {/* 4. Phone Device Container (Reveals gracefully at T = 1.25s) */}

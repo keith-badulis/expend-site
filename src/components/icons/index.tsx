@@ -16,6 +16,145 @@ const baseStyle = {
   strokeMiterlimit: 1.5,
 };
 
+export const WalletIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M16.667 28.125v44.768a6.276 6.276 0 0 0 6.274 6.274H75a8.334 8.334 0 0 0 8.333-8.334V43.75c0-2.21-.878-4.33-2.44-5.893A8.338 8.338 0 0 0 75 35.417h-6.25"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M81.25 20.833h-57.3a7.284 7.284 0 0 0-7.283 7.284v.016a7.283 7.283 0 0 0 7.283 7.284h46.883"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle cx={70.833} cy={57.292} r={4.167} fill={color} />
+  </svg>
+);
+
+export const CardIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M85.417 31.583c0-4.783-3.555-8.666-7.934-8.666H22.516c-4.379 0-7.934 3.883-7.934 8.666v36.834c0 4.783 3.555 8.666 7.934 8.666h54.967c4.379 0 7.934-3.883 7.934-8.666V31.583Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M14.582 37.5h70.82M14.583 47.917h70.834"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="square"
+    />
+    <path
+      d="M25 62.5h12.5"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const CoinIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, strokeLinecap: 'square', ...style }}
+  >
+    <ellipse
+      cx={50}
+      cy={43.75}
+      rx={33.333}
+      ry={25}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M83.333 43.795V56.25c0 13.798-14.936 25-33.333 25s-33.334-11.202-33.334-25v-12.5"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="butt"
+    />
+    <path
+      d="M58.333 68.75v9.534M41.667 68.75v9.534M27.083 64.583v5.367M72.917 64.583v5.367"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const ReceiptIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, strokeLinejoin: 'round', ...style }}
+  >
+    <path
+      d="M79.165 68.541v.204l.002 16.565c0 1.051-6.213-1.61-14.583-2.083-4.454-.252-9.519 4.167-14.584 4.167-4.29 0-10.664-4.373-14.583-4.167-9.402.496-14.583 3.219-14.583 2.083l.002-16.565a6.936 6.936 0 0 1 0-.204l-.002-45.731c0-1.051 6.213 2.189 14.583 2.662 4.454.252 9.519-4.167 14.584-4.167 4.29 0 10.664 4.373 14.583 4.167 9.402-.496 14.583-3.798 14.583-2.662l-.002 45.731Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M33.333 37.393h33.333M33.333 49.893h33.333M33.333 62.393h23.81"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
 export const LockIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',

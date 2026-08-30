@@ -212,7 +212,7 @@ a:hover {
   align-items: center;
 }
 
-/* --- EMANATING SCREENSHOT HIGHLIGHTS & RADIANT AURA --- */
+/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA --- */
 
 /* 1. Radiant Backlight Aura Glow */
 .phone-backlight-aura {
@@ -223,7 +223,7 @@ a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.5) 0%, rgba(112, 148, 240, 0.22) 42%, transparent 72%);
+  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.48) 0%, rgba(112, 148, 240, 0.2) 42%, transparent 72%);
   filter: blur(32px);
   pointer-events: none;
   z-index: 1;
@@ -257,30 +257,46 @@ a:hover {
   animation: ringEmanateDashed 7s ease-in-out 1.6s infinite alternate;
 }
 
-/* 3. Emanating Shimmer Sparkles */
-.emanating-sparkle {
+/* 3. Emanating Floating Finance Icon Badges */
+.emanating-finance-icon {
   position: absolute;
   z-index: 5;
   pointer-events: none;
-  filter: drop-shadow(0 0 14px var(--accent-light));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(23, 32, 54, 0.88);
+  border: 1.5px solid rgba(76, 116, 219, 0.55);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 18px var(--accent-glow);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
-.sparkle-top-right {
-  top: -24px;
-  right: -28px;
-  animation: sparkleFloat1 4.5s ease-in-out 1.4s infinite alternate;
+.icon-wallet {
+  top: -18px;
+  right: -24px;
+  animation: financeFloat1 5s ease-in-out 1.4s infinite alternate;
 }
 
-.sparkle-left {
-  top: 40%;
-  left: -32px;
-  animation: sparkleFloat2 5.5s ease-in-out 1.6s infinite alternate;
+.icon-piggy {
+  top: 34%;
+  left: -28px;
+  animation: financeFloat2 6s ease-in-out 1.6s infinite alternate;
 }
 
-.sparkle-bottom-right {
-  bottom: 35px;
+.icon-card {
+  bottom: 20%;
   right: -26px;
-  animation: sparkleFloat3 5s ease-in-out 1.8s infinite alternate;
+  animation: financeFloat3 5.5s ease-in-out 1.8s infinite alternate;
+}
+
+.icon-coin {
+  bottom: -15px;
+  left: 20px;
+  animation: financeFloat4 4.8s ease-in-out 2.0s infinite alternate;
 }
 
 .phone-mockup {
@@ -475,49 +491,40 @@ a:hover {
   }
 }
 
-/* Sparkle Floating Animations */
-@keyframes sparkleFloat1 {
+/* Finance Icon Floating Animations */
+@keyframes financeFloat1 {
   0% {
-    transform: scale(0.85) rotate(0deg) translateY(0);
-    opacity: 0.65;
-  }
-  50% {
-    transform: scale(1.2) rotate(14deg) translateY(-8px);
-    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
   }
   100% {
-    transform: scale(0.85) rotate(0deg) translateY(0);
-    opacity: 0.65;
+    transform: translateY(-8px) scale(1.04) rotate(6deg);
   }
 }
 
-@keyframes sparkleFloat2 {
+@keyframes financeFloat2 {
   0% {
-    transform: scale(0.9) rotate(0deg) translateY(0);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.25) rotate(-16deg) translateY(-6px);
-    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
   }
   100% {
-    transform: scale(0.9) rotate(0deg) translateY(0);
-    opacity: 0.6;
+    transform: translateY(-6px) scale(1.05) rotate(-6deg);
   }
 }
 
-@keyframes sparkleFloat3 {
+@keyframes financeFloat3 {
   0% {
-    transform: scale(0.85) rotate(0deg) translateY(0);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.2) rotate(12deg) translateY(-7px);
-    opacity: 1;
+    transform: translateY(0) scale(1) rotate(0deg);
   }
   100% {
-    transform: scale(0.85) rotate(0deg) translateY(0);
-    opacity: 0.6;
+    transform: translateY(-7px) scale(1.04) rotate(5deg);
+  }
+}
+
+@keyframes financeFloat4 {
+  0% {
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-6px) scale(1.04) rotate(-4deg);
   }
 }
 
@@ -930,6 +937,11 @@ a:hover {
   .phone-emanating-ring.ring-2 {
     width: 310px;
     height: 510px;
+  }
+  .emanating-finance-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
   }
   .hero-shape-top-left {
     width: 160px;
