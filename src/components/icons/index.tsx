@@ -389,6 +389,85 @@ export const ProfileIcon: React.FC<IconProps> = ({
   </svg>
 );
 
+export const TransactionsIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, strokeLinejoin: 'round', ...style }}
+  >
+    <path
+      d="M79.167 23.019a6.353 6.353 0 0 0-6.353-6.352H27.186a6.353 6.353 0 0 0-6.353 6.352V83.75c0 1.136 5.182-4.088 14.584-4.583 3.919-.207 10.292 4.166 14.582 4.166 5.065 0 10.13-4.418 14.584-4.166 8.371.473 14.584 5.634 14.584 4.583V23.019Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M35.417 33.333h29.166M35.417 47.917H56.25"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const FilterIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M49.98 18.75V25M22.897 18.75v14.584M77.064 18.75v27.084M49.98 52.084V81.25M22.897 60.417V81.25M77.064 72.917v8.333"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle
+      cx={49.981}
+      cy={33.334}
+      r={8.333}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle
+      cx={22.898}
+      cy={52.084}
+      r={8.333}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle
+      cx={77.064}
+      cy={64.584}
+      r={8.333}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
 export const StarFilledIcon: React.FC<IconProps> = ({
   size = 20,
   color = '#FFB800',

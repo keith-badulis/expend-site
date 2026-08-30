@@ -1,16 +1,18 @@
 import React from 'react';
-import accountsImg from '../assets/screenshots/IMG_2305.png';
-import budgetImg from '../assets/screenshots/IMG_2304.png';
-import profileDashboardImg from '../assets/screenshots/IMG_2309.png';
 import addTxImg from '../assets/screenshots/IMG_2301.png';
 import txListImg from '../assets/screenshots/IMG_2303.png';
-import weeklyImg from '../assets/screenshots/IMG_2306.png';
+import budgetImg from '../assets/screenshots/IMG_2304.png';
+import filteredReportsImg from '../assets/screenshots/IMG_2308.png';
+import accountsImg from '../assets/screenshots/IMG_2305.png';
+import weeklyReportsImg from '../assets/screenshots/IMG_2306.png';
+import profileDashboardImg from '../assets/screenshots/IMG_2309.png';
 import {
-  ReportIcon,
-  PiggyBankIcon,
-  StonksIcon,
   LightningBoltIcon,
-  TagIcon,
+  TransactionsIcon,
+  PiggyBankIcon,
+  FilterIcon,
+  ReportIcon,
+  StonksIcon,
   ProfileIcon,
   DescriptionIcon,
 } from './icons';
@@ -26,6 +28,24 @@ interface GalleryItemData {
 }
 
 const leftColItems: GalleryItemData[] = [
+  {
+    icon: <LightningBoltIcon size={16} color="var(--accent-light)" />,
+    badge: 'Quick & Easy Recording',
+    title: 'Log Transactions within Seconds',
+    description: 'Log income, expenses, and money transfers in seconds with a fast, built-in keypad calculator. Use customizable reusable templates to record common everyday transactions instantly.',
+    tags: ['Income & Expenses', 'Transfers', 'Customizable Templates'],
+    image: addTxImg,
+    imageAlt: 'eXpend Add Transaction keypad and calculator screen',
+  },
+  {
+    icon: <PiggyBankIcon size={16} color="var(--accent-light)" />,
+    badge: 'Flexible Budget Planning',
+    title: 'Set Spending Limits & Stay Within Targets',
+    description: 'Set custom spending limits by category across flexible budget periods. Stay in control with clear visual progress bars, projected totals, and instant status indicators.',
+    tags: ['Spending Limits', 'Flexible Periods', 'Projected Totals'],
+    image: budgetImg,
+    imageAlt: 'eXpend Budget Details and spending status screen',
+  },
   {
     icon: <ReportIcon size={16} color="var(--accent-light)" />,
     badge: 'Detailed Financial Reports',
@@ -44,35 +64,26 @@ const leftColItems: GalleryItemData[] = [
     image: profileDashboardImg,
     imageAlt: 'eXpend Profile and Dashboard with Wallets, Goals, and Debts',
   },
-  {
-    icon: <TagIcon size={16} color="var(--accent-light)" />,
-    badge: 'Organize With Tags',
-    title: 'Label, Filter & Group With Custom Tags',
-    description: 'Group transactions, accounts, and planned bills with custom tags like #Impulse or #FundTransfer to analyze your financial life exactly how you want it.',
-    tags: ['Custom Tags', 'Nested Categories', 'Planned Bills'],
-    image: txListImg,
-    imageAlt: 'eXpend All Transactions list with tag filters',
-  },
 ];
 
 const rightColItems: GalleryItemData[] = [
   {
-    icon: <PiggyBankIcon size={16} color="var(--accent-light)" />,
-    badge: 'Flexible Budget Planning',
-    title: 'Set Spending Limits & Stay Within Targets',
-    description: 'Set custom spending limits by category across flexible budget periods. Stay in control with clear visual progress bars, projected totals, and instant status indicators.',
-    tags: ['Spending Limits', 'Flexible Periods', 'Projected Totals'],
-    image: budgetImg,
-    imageAlt: 'eXpend Budget Details and spending status screen',
+    icon: <TransactionsIcon size={16} color="var(--accent-light)" />,
+    badge: 'Transaction Timeline',
+    title: 'Complete Transaction Timeline',
+    description: 'View your full financial history with planned transactions, custom tags, and detailed notes all organized chronologically for effortless review.',
+    tags: ['Chronological Timeline', 'Planned Transactions', 'Grouped Tags'],
+    image: txListImg,
+    imageAlt: 'eXpend All Transactions list with planned transactions and tags',
   },
   {
-    icon: <LightningBoltIcon size={16} color="var(--accent-light)" />,
-    badge: 'Quick & Easy Recording',
-    title: 'Log In Seconds With Built-in Calculator',
-    description: 'Log income, expenses, and money transfers in seconds. Use customizable reusable templates to record common everyday transactions instantly.',
-    tags: ['Income & Expenses', 'Transfers', 'Customizable Templates'],
-    image: addTxImg,
-    imageAlt: 'eXpend Add Transaction keypad and calculator screen',
+    icon: <FilterIcon size={16} color="var(--accent-light)" />,
+    badge: 'Filtered Reports',
+    title: 'View Records Your Way With Flexible Filters',
+    description: 'Flexibly filter your transactions to see where you can improve. Interactive cashflow curves and categorical breakdowns calculate totals automatically.',
+    tags: ['Flexible Filters', 'Automatic Totals', 'Cashflow Curves'],
+    image: filteredReportsImg,
+    imageAlt: 'eXpend Filtered Reports screen with cashflow timeline chart',
   },
   {
     icon: <StonksIcon size={16} color="var(--accent-light)" />,
@@ -80,7 +91,7 @@ const rightColItems: GalleryItemData[] = [
     title: 'Gain Actionable Spending Insights',
     description: 'Gain clear insights on your spending by viewing easy-to-digest, customizable reports that let you stay firmly in charge of your finances. Compare income against expenses and analyze weekly trends.',
     tags: ['Actionable Insights', 'Weekly Breakdown', 'Income vs Expense'],
-    image: weeklyImg,
+    image: weeklyReportsImg,
     imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
   },
 ];
