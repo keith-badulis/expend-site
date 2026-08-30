@@ -10,8 +10,6 @@
   --accent-glow: rgba(76, 116, 219, 0.35);
   --accent-light: #7094F0;
   --accent-border: #4C74DB;
-  --color-green: #0BB190;
-  --color-blue: #4C74DB;
   --text-primary: #FFFFFF;
   --text-secondary: #CBD5E1;
   --text-muted: #94A3B8;
@@ -811,147 +809,115 @@ a:hover {
 }
 
 /* =======================================================
-   WHY CHOOSE EXPEND (ULTRA-CONCISE & PUNCHY CARDS)
+   WHY CHOOSE EXPEND (CLEAN, MATTE & BALANCED CARDS)
 ======================================================= */
-.why-choose-concise-section {
-  padding: 6rem 0;
+.why-choose-clean-section {
+  padding: 5.5rem 0;
   position: relative;
 }
 
-.why-section-pill {
+.clean-section-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.4rem 1.15rem;
+  padding: 0.35rem 1rem;
   background: rgba(76, 116, 219, 0.12);
-  border: 1.5px solid var(--accent-color);
   border-radius: 9999px;
   color: var(--accent-light);
-  font-size: 0.85rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
 }
 
-.why-concise-container {
-  max-width: 860px;
+.clean-cards-container {
+  max-width: 820px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   position: relative;
   z-index: 2;
 }
 
-.why-punchy-card {
+.clean-value-card {
   background: #172036;
-  border-radius: var(--radius-xl);
-  padding: clamp(2rem, 3.5vw, 2.75rem);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 22px;
+  padding: 2rem 2.25rem;
   display: flex;
   align-items: flex-start;
-  gap: 1.85rem;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  gap: 1.5rem;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-/* Card 1: Emerald Green Border */
-.why-punchy-card.card-green-theme {
-  border: 2.5px solid rgba(11, 177, 144, 0.55);
+.clean-value-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.38);
 }
 
-.why-punchy-card.card-green-theme:hover {
-  border-color: #0BB190;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 32px rgba(11, 177, 144, 0.25);
-  transform: translateY(-4px);
-}
-
-/* Card 2: Electric Blue Border */
-.why-punchy-card.card-blue-theme {
-  border: 2.5px solid rgba(76, 116, 219, 0.55);
-}
-
-.why-punchy-card.card-blue-theme:hover {
-  border-color: #4C74DB;
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 32px rgba(76, 116, 219, 0.25);
-  transform: translateY(-4px);
-}
-
-.punchy-icon-box {
-  width: 60px;
-  height: 60px;
-  border-radius: 20px;
+.clean-card-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  margin-top: 0.15rem;
 }
 
-.punchy-icon-box.icon-box-green {
-  background: rgba(11, 177, 144, 0.14);
-  border: 2px solid #0BB190;
-}
-
-.punchy-icon-box.icon-box-blue {
-  background: rgba(76, 116, 219, 0.14);
-  border: 2px solid #4C74DB;
-}
-
-.punchy-text-content {
+.clean-card-body {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.punchy-kicker {
-  font-size: 0.8rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+.clean-card-kicker {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.35rem;
+  display: block;
 }
 
-.punchy-kicker.kicker-green {
-  color: #0BB190;
-}
-
-.punchy-kicker.kicker-blue {
-  color: #7094F0;
-}
-
-.punchy-headline {
-  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
-  font-weight: 900;
+.clean-card-headline {
+  font-size: 1.32rem;
+  font-weight: 700;
   color: #FFFFFF;
-  letter-spacing: -0.025em;
-  margin-bottom: 0.65rem;
-  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.45rem;
+  line-height: 1.3;
 }
 
-.punchy-tagline {
-  font-size: 1.02rem;
+.clean-card-description {
+  font-size: 0.96rem;
+  font-weight: 400;
   line-height: 1.6;
   color: var(--text-secondary);
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.15rem;
 }
 
-.punchy-pills-wrap {
+.clean-chips-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: 0.5rem;
   align-items: center;
 }
 
-.solid-badge-pill {
+.clean-chip {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.5rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 10px;
   font-size: 0.82rem;
-  font-weight: 800;
-  padding: 0.35rem 0.85rem;
-  border-radius: 9999px;
-  border: 1.5px solid;
-  letter-spacing: 0.02em;
-  background: #172036;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: none;
 }
 
 /* Bold Card Styling (Used for Reviews) */
@@ -1168,9 +1134,9 @@ a:hover {
   .official-badge-img {
     height: 42px;
   }
-  .why-punchy-card {
+  .clean-value-card {
     flex-direction: column;
-    padding: 1.85rem 1.5rem;
-    gap: 1.25rem;
+    padding: 1.75rem 1.35rem;
+    gap: 1.15rem;
   }
 }
