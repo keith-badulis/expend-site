@@ -1,4 +1,5 @@
 import React from 'react';
+import { StarFilledIcon } from './icons';
 
 interface Review {
   name: string;
@@ -88,8 +89,10 @@ export const Reviews: React.FC = () => {
                   justifyContent: 'space-between',
                   marginBottom: '1.25rem',
                 }}>
-                  <div style={{ color: '#FFB800', fontSize: '1.25rem', letterSpacing: '2px' }}>
-                    {'★'.repeat(rev.rating)}
+                  <div style={{ display: 'flex', gap: '3px', alignItems: 'center' }}>
+                    {Array.from({ length: rev.rating }).map((_, sIdx) => (
+                      <StarFilledIcon key={sIdx} size={18} color="#FFB800" strokeWidth="3px" />
+                    ))}
                   </div>
                   <span className="store-tag">{rev.store}</span>
                 </div>
@@ -132,3 +135,5 @@ export const Reviews: React.FC = () => {
     </section>
   );
 };
+
+export default Reviews;

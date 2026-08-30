@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import appIcon from '../assets/app-icon.png';
+import { LockIcon } from './icons';
 
 export const Footer: React.FC = () => {
   return (
@@ -49,8 +50,9 @@ export const Footer: React.FC = () => {
             }}>
               Make budgeting a habit with a simple, private personal finance app that lives on your phone.
             </p>
-            <div className="bold-pill" style={{ fontSize: '0.8rem', padding: '0.35rem 0.85rem' }}>
-              <span>🔒 100% Offline • Zero Tracking</span>
+            <div className="bold-pill" style={{ fontSize: '0.8rem', padding: '0.35rem 0.85rem', display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+              <LockIcon size={14} color="var(--accent-light)" />
+              <span>100% Offline • Zero Tracking</span>
             </div>
           </div>
 
@@ -70,6 +72,11 @@ export const Footer: React.FC = () => {
               <li>
                 <a href="#features" style={{ color: 'var(--text-secondary)', fontWeight: 500, fontSize: '0.95rem' }}>
                   Features
+                </a>
+              </li>
+              <li>
+                <a href="#why-choose" style={{ color: 'var(--text-secondary)', fontWeight: 500, fontSize: '0.95rem' }}>
+                  Why Choose eXpend
                 </a>
               </li>
               <li>

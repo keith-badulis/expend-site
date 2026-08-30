@@ -5,8 +5,18 @@ import reportsImg from '../assets/screenshots/IMG_2308.png';
 import addTxImg from '../assets/screenshots/IMG_2301.png';
 import txListImg from '../assets/screenshots/IMG_2303.png';
 import weeklyImg from '../assets/screenshots/IMG_2306.png';
+import {
+  ReportIcon,
+  PiggyBankIcon,
+  StonksIcon,
+  LightningBoltIcon,
+  TagIcon,
+  BorrowIcon,
+  DescriptionIcon,
+} from './icons';
 
 interface GalleryItemData {
+  icon: React.ReactNode;
   badge: string;
   title: string;
   description: string;
@@ -17,7 +27,8 @@ interface GalleryItemData {
 
 const leftColItems: GalleryItemData[] = [
   {
-    badge: '📊 Detailed Financial Reports',
+    icon: <ReportIcon size={16} color="var(--accent-light)" />,
+    badge: 'Detailed Financial Reports',
     title: 'Visualize Net Worth, Assets & Liabilities',
     description: 'Comprehensive finance tools in one place. Monitor cash, digital wallets, bank accounts, and debts with real-time net worth and multi-currency support.',
     tags: ['Net Worth', 'Assets & Liabilities', 'Multi-Currency'],
@@ -25,7 +36,8 @@ const leftColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Accounts Summary and Net Worth screen',
   },
   {
-    badge: '📈 Filtered & Detailed Reports',
+    icon: <StonksIcon size={16} color="var(--accent-light)" />,
+    badge: 'Filtered & Detailed Reports',
     title: 'Analyze Spending Habits With Charts',
     description: 'Get deeper insights with filtered and detailed report views. Interactive cashflow curves and categorical spending breakdowns reveal where your money goes.',
     tags: ['Cashflow Curves', 'Category Breakdown', 'Filtered Views'],
@@ -33,7 +45,8 @@ const leftColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Filtered Reports with interactive cashflow chart',
   },
   {
-    badge: '🏷️ Organize With Tags',
+    icon: <TagIcon size={16} color="var(--accent-light)" />,
+    badge: 'Organize With Tags',
     title: 'Label, Filter & Group With Custom Tags',
     description: 'Group transactions, accounts, and planned bills with custom tags like #Impulse or #FundTransfer to analyze your financial life exactly how you want it.',
     tags: ['Custom Tags', 'Nested Categories', 'Planned Bills'],
@@ -44,7 +57,8 @@ const leftColItems: GalleryItemData[] = [
 
 const rightColItems: GalleryItemData[] = [
   {
-    badge: '🎯 Flexible Budget Planning',
+    icon: <PiggyBankIcon size={16} color="var(--accent-light)" />,
+    badge: 'Flexible Budget Planning',
     title: 'Set Spending Limits & Stay Within Targets',
     description: 'Set spending limits by category and stay within your monthly targets with clear visual progress bars, projected totals, and instant status indicators.',
     tags: ['Spending Limits', 'Monthly Targets', 'Projected Totals'],
@@ -52,7 +66,8 @@ const rightColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Budget Details and spending status screen',
   },
   {
-    badge: '⚡ Quick & Easy Recording',
+    icon: <LightningBoltIcon size={16} color="var(--accent-light)" />,
+    badge: 'Quick & Easy Recording',
     title: 'Log In Seconds With Built-in Calculator',
     description: 'Log income, expenses, and money transfers in seconds. Use customizable reusable templates to record common everyday transactions instantly.',
     tags: ['Income & Expenses', 'Transfers', 'Customizable Templates'],
@@ -60,7 +75,8 @@ const rightColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
   },
   {
-    badge: '🤝 Comprehensive Debt & Milestones',
+    icon: <BorrowIcon size={16} color="var(--accent-light)" />,
+    badge: 'Comprehensive Debt & Milestones',
     title: 'Track Debts, Goals & Weekly Rhythm',
     description: 'Mindfully track all your debts (both payable and receivable), monitor savings progress milestones, and compare weekly income vs expense balance.',
     tags: ['Debt Management', 'Smart Goal Tracking', 'Weekly Trends'],
@@ -95,7 +111,10 @@ export const Features: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <div className="section-subtitle">📝 Key Features</div>
+          <div className="section-subtitle" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
+            <DescriptionIcon size={15} color="var(--accent-light)" />
+            <span>Key Features</span>
+          </div>
           <h2 className="section-title">
             Simplify Your Finances. <br />
             <span style={{ color: 'var(--accent-light)' }}>Reach Your Goals.</span>
@@ -105,7 +124,7 @@ export const Features: React.FC = () => {
           </p>
         </div>
 
-        {/* 2-Column Staggered Exhibition Gallery (Side-by-side columns not on the same row, no cards) */}
+        {/* 2-Column Staggered Exhibition Gallery */}
         <div className="gallery-staggered-grid">
           {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
           <div className="gallery-column gallery-col-left">
@@ -113,7 +132,10 @@ export const Features: React.FC = () => {
               <div key={idx} className="gallery-item caption-left">
                 {/* Caption on Left */}
                 <div className="gallery-caption-box">
-                  <span className="gallery-badge">{item.badge}</span>
+                  <span className="gallery-badge">
+                    {item.icon}
+                    <span>{item.badge}</span>
+                  </span>
                   <h3 className="gallery-item-title">{item.title}</h3>
                   <p className="gallery-item-desc">{item.description}</p>
                   <div className="gallery-tags-wrap">
@@ -158,7 +180,10 @@ export const Features: React.FC = () => {
 
                 {/* Caption on Right */}
                 <div className="gallery-caption-box">
-                  <span className="gallery-badge">{item.badge}</span>
+                  <span className="gallery-badge">
+                    {item.icon}
+                    <span>{item.badge}</span>
+                  </span>
                   <h3 className="gallery-item-title">{item.title}</h3>
                   <p className="gallery-item-desc">{item.description}</p>
                   <div className="gallery-tags-wrap">

@@ -1,24 +1,32 @@
 import React from 'react';
+import {
+  LockIcon,
+  SparklesIcon,
+  WrenchIcon,
+  PaletteIcon,
+  DiamondIcon,
+  CheckIcon,
+} from './icons';
 
 export const WhyChoose: React.FC = () => {
   const whyPoints = [
     {
-      icon: '🔒',
+      icon: <LockIcon size={28} color="var(--accent-light)" />,
       title: 'Private & Secure',
       desc: 'Your data never leaves your device. No servers, no tracking—just pure privacy.',
     },
     {
-      icon: '✨',
+      icon: <SparklesIcon size={28} color="var(--accent-light)" />,
       title: 'User-Friendly & Intuitive',
       desc: 'A clean, modern interface designed for a seamless, worry-free experience.',
     },
     {
-      icon: '🛠️',
+      icon: <WrenchIcon size={28} color="var(--accent-light)" />,
       title: 'Comprehensive Finance Tools',
       desc: 'From budget planning to debt management, everything you need is in one place.',
     },
     {
-      icon: '🎨',
+      icon: <PaletteIcon size={28} color="var(--accent-light)" />,
       title: 'Beautifully Customizable',
       desc: 'Personalize your experience with dynamic themes and full Dark Mode support.',
     },
@@ -76,7 +84,7 @@ export const WhyChoose: React.FC = () => {
                 justifyContent: 'flex-start',
               }}
             >
-              <div className="feature-icon-box" style={{ fontSize: '1.75rem', marginBottom: '1rem' }}>
+              <div className="feature-icon-box" style={{ marginBottom: '1.15rem' }}>
                 {point.icon}
               </div>
               <h3 style={{
@@ -126,7 +134,8 @@ export const WhyChoose: React.FC = () => {
               fontWeight: 800,
               marginBottom: '1rem',
             }}>
-              💎 One-Time Payment • Lifetime Premium
+              <DiamondIcon size={14} color="var(--accent-light)" />
+              <span>One-Time Payment • Lifetime Premium</span>
             </div>
             <h3 style={{
               fontSize: 'clamp(1.6rem, 3vw, 2.1rem)',
@@ -164,7 +173,8 @@ export const WhyChoose: React.FC = () => {
               alignItems: 'center',
               gap: '0.5rem',
             }}>
-              <span>✦</span> Premium Highlights
+              <SparklesIcon size={16} color="var(--accent-light)" />
+              <span>Premium Highlights</span>
             </h4>
             <ul style={{
               listStyle: 'none',
@@ -179,14 +189,14 @@ export const WhyChoose: React.FC = () => {
                   key={fIdx}
                   style={{
                     display: 'flex',
-                    alignItems: 'flex-start',
+                    alignItems: 'center',
                     gap: '0.65rem',
                     fontSize: '0.92rem',
                     color: 'var(--text-secondary)',
                     lineHeight: 1.5,
                   }}
                 >
-                  <span style={{ color: 'var(--accent-light)', fontWeight: 800 }}>✓</span>
+                  <CheckIcon size={16} color="var(--accent-light)" />
                   <span>{feat}</span>
                 </li>
               ))}
