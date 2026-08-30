@@ -6,7 +6,7 @@ interface AnimatedLogoProps {
   showText?: boolean;
 }
 
-export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 84, showText = true }) => {
+export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText = true }) => {
   const [isSpinning, setIsSpinning] = useState(false);
 
   const triggerAnimation = () => {
@@ -27,13 +27,12 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 84, showText 
       style={{
         display: 'inline-flex',
         alignItems: 'center',
-        gap: '1rem',
+        gap: '1.25rem',
         marginBottom: '2rem',
-        cursor: 'pointer',
         userSelect: 'none',
       }}
     >
-      {/* Outer Spring Rotating Rounded Square Box */}
+      {/* Outer Spring Rotating Rounded Square Box (Only this rotates & transitions color) */}
       <div
         className={`logo-bounding-box ${isSpinning ? 'spin-manual' : 'spin-initial'}`}
         style={{
@@ -41,22 +40,31 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 84, showText 
           height: `${size}px`,
         }}
       >
-        {/* Inner App Logo Graphic */}
-        <img
-          src={appLogoImg}
-          alt="eXpend Logo"
-          className="logo-inner-img"
+        {/* Inner App Logo Graphic (Does NOT rotate; shifted slightly right so the circular part aligns with the squircle) */}
+        <div
           style={{
-            width: `${Math.round(size * 0.68)}px`,
-            height: `${Math.round(size * 0.68)}px`,
+            transform: `translateX(${Math.ceil(size * 0.04)}px)`,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
-        />
+        >
+          <img
+            src={appLogoImg}
+            alt="eXpend Logo"
+            className="logo-inner-img"
+            style={{
+              width: `${Math.round(size * 0.65)}px`,
+              height: `${Math.round(size * 0.65)}px`,
+            }}
+          />
+        </div>
       </div>
 
       {showText && (
         <div className="logo-brand-text">
           <span className="logo-brand-name">eXpend</span>
-          <span className="logo-brand-sub">Personal Finance</span>
+          <span className="logo-brand-sub">Make budgeting a habit</span>
         </div>
       )}
     </div>
