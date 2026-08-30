@@ -82,18 +82,26 @@ export const Hero: React.FC = () => {
               <div className="phone-emanating-ring ring-1" />
               <div className="phone-emanating-ring ring-2" />
 
-              {/* 3. Emanating Pure Vector Money Icons (4 Balanced Icons) */}
+              {/* 3. Emanating Pure Vector Money Icons (Seamless Entrance + Continuous Float) */}
               <div className="emanating-finance-icon icon-bank">
-                <BankIcon size={34} color="var(--accent-light)" />
+                <div className="finance-icon-inner float-1">
+                  <BankIcon size={34} color="var(--accent-light)" />
+                </div>
               </div>
               <div className="emanating-finance-icon icon-wallet">
-                <WalletIcon size={36} color="var(--accent-light)" />
+                <div className="finance-icon-inner float-2">
+                  <WalletIcon size={36} color="var(--accent-light)" />
+                </div>
               </div>
               <div className="emanating-finance-icon icon-piggy">
-                <PiggyBankIcon size={35} color="var(--accent-light)" />
+                <div className="finance-icon-inner float-3">
+                  <PiggyBankIcon size={35} color="var(--accent-light)" />
+                </div>
               </div>
               <div className="emanating-finance-icon icon-card">
-                <CardIcon size={34} color="var(--accent-light)" />
+                <div className="finance-icon-inner float-1">
+                  <CardIcon size={34} color="var(--accent-light)" />
+                </div>
               </div>
 
               {/* 4. Phone Device Container (Separated entrance reveal & interactive mockup) */}

@@ -230,14 +230,13 @@ a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.5) 0%, rgba(112, 148, 240, 0.22) 42%, transparent 72%);
+  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.45) 0%, rgba(112, 148, 240, 0.2) 42%, transparent 72%);
   filter: blur(32px);
   pointer-events: none;
   z-index: 1;
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, filter 0.5s ease;
-  animation: auraFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both,
-             auraPulse 6s ease-in-out 3.3s infinite alternate;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, filter 0.4s ease;
+  animation: auraFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
 }
 
 /* 2. Concentric Emanating Ripple Rings (Reveals at T = 2.25s) */
@@ -250,28 +249,26 @@ a:hover {
   pointer-events: none;
   z-index: 2;
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease, box-shadow 0.5s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .phone-emanating-ring.ring-1 {
   width: 322px;
   height: 552px;
-  border: 2px solid rgba(112, 148, 240, 0.35);
-  box-shadow: 0 0 20px rgba(76, 116, 219, 0.25);
-  animation: ringFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 2.25s both,
-             ringEmanate 5s ease-in-out 3.35s infinite alternate;
+  border: 2px solid rgba(112, 148, 240, 0.32);
+  box-shadow: 0 0 20px rgba(76, 116, 219, 0.2);
+  animation: ringFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 2.25s both;
 }
 
 .phone-emanating-ring.ring-2 {
   width: 356px;
   height: 588px;
-  border: 2.5px dashed rgba(76, 116, 219, 0.25);
+  border: 2.5px dashed rgba(76, 116, 219, 0.22);
   border-radius: 52px;
-  animation: ringFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 2.35s both,
-             ringEmanateDashed 7s ease-in-out 3.45s infinite alternate;
+  animation: ringFadeIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 2.35s both;
 }
 
-/* 3. Pure Vector Finance Icons (Strictly Flanking the Left & Right Sides) */
+/* 3. Pure Vector Finance Icons (Nested Stutter-Free Float) */
 .emanating-finance-icon {
   position: absolute;
   z-index: 5;
@@ -279,44 +276,55 @@ a:hover {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 16px var(--accent-light)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(0 0 14px var(--accent-light)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
 }
 
-/* 1. Bank Icon: Upper-Left Side (Y = 24%, X = -65px) */
+.finance-icon-inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.finance-icon-inner.float-1 {
+  animation: financeFloat1 5.2s ease-in-out infinite alternate;
+}
+
+.finance-icon-inner.float-2 {
+  animation: financeFloat2 5.6s ease-in-out infinite alternate;
+}
+
+.finance-icon-inner.float-3 {
+  animation: financeFloat3 6.0s ease-in-out infinite alternate;
+}
+
+/* Coordinates & Pop-In Delays */
 .icon-bank {
   top: 24%;
   left: -65px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both,
-             financeFloat1 5.2s ease-in-out 3.25s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s forwards;
 }
 
-/* 2. Wallet Icon: Upper-Right Side (Y = 34%, X = -70px) */
 .icon-wallet {
   top: 34%;
   right: -70px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s both,
-             financeFloat2 5.6s ease-in-out 3.33s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s forwards;
 }
 
-/* 3. Piggy Bank Icon: Lower-Left Side (Y = 64%, X = -75px) */
 .icon-piggy {
   top: 64%;
   left: -75px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s both,
-             financeFloat3 6.0s ease-in-out 3.41s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s forwards;
 }
 
-/* 4. Card Icon: Lower-Right Side (Y = 74%, X = -65px) */
 .icon-card {
   top: 74%;
   right: -65px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both,
-             financeFloat1 5.4s ease-in-out 3.49s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s forwards;
 }
 
-/* Phone Mockup Frame (Entire device frame, border, shape & inner screen) */
+/* Phone Mockup Frame (Whole Device Frame & Border) */
 .phone-mockup {
   position: relative;
   width: 100%;
@@ -326,7 +334,7 @@ a:hover {
   border: 3.5px solid var(--accent-color);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 40px var(--accent-glow);
   transform-origin: center center;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.5s ease;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
 .phone-screen {
@@ -345,86 +353,80 @@ a:hover {
 }
 
 /* =======================================================
-   HOVER INTERACTION: TOTAL COMPOSITION BREATHING TO LIFE
+   HOVER INTERACTION: MEASURED & REFINED BREATHING
 ======================================================= */
 
-/* 1. Entire Phone Mockup (Border, Container Shape & Screen) Scales Up */
+/* 1. Phone Mockup Scales Gracefully */
 .phone-anchor:hover .phone-mockup {
-  transform: scale(1.07) translateY(-8px);
+  transform: scale(1.03) translateY(-5px);
   border-color: var(--accent-light);
-  box-shadow: 0 35px 75px rgba(0, 0, 0, 0.85), 0 0 65px rgba(112, 148, 240, 0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(112, 148, 240, 0.5);
 }
 
-/* 2. Radiant Backlight Aura Expands & Glows Brightly */
+/* 2. Radiant Backlight Aura Subtle Halo Expansion */
 .phone-anchor:hover .phone-backlight-aura {
-  transform: translate(-50%, -50%) scale(1.36);
-  opacity: 1;
-  filter: blur(42px);
+  transform: translate(-50%, -50%) scale(1.15);
+  opacity: 0.95;
+  filter: blur(36px);
 }
 
-/* 3. Emanating Concentric Ripple Rings Expand Outward */
+/* 3. Concentric Ripple Rings Subtle Expansion */
 .phone-anchor:hover .phone-emanating-ring.ring-1 {
-  transform: translate(-50%, -50%) scale(1.16);
-  border-color: rgba(112, 148, 240, 0.75);
-  box-shadow: 0 0 36px rgba(76, 116, 219, 0.55);
+  transform: translate(-50%, -50%) scale(1.06);
+  border-color: rgba(112, 148, 240, 0.6);
+  box-shadow: 0 0 28px rgba(76, 116, 219, 0.4);
 }
 
 .phone-anchor:hover .phone-emanating-ring.ring-2 {
-  transform: translate(-50%, -50%) scale(1.24);
-  border-color: rgba(112, 148, 240, 0.5);
-  box-shadow: 0 0 28px rgba(76, 116, 219, 0.35);
+  transform: translate(-50%, -50%) scale(1.09);
+  border-color: rgba(112, 148, 240, 0.4);
 }
 
-/* 4. Floating Side Icons Pushed Outward as the Frame Expands */
+/* 4. Floating Side Icons Disperse Outward Measuredly */
 .phone-anchor:hover .icon-bank {
-  transform: translate(-30px, -12px) scale(1.2);
-  filter: drop-shadow(0 0 24px #93B4FF) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75));
+  transform: translate(-16px, -6px);
+  filter: drop-shadow(0 0 20px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
 }
 
 .phone-anchor:hover .icon-wallet {
-  transform: translate(30px, -12px) scale(1.2);
-  filter: drop-shadow(0 0 24px #93B4FF) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75));
+  transform: translate(16px, -6px);
+  filter: drop-shadow(0 0 20px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
 }
 
 .phone-anchor:hover .icon-piggy {
-  transform: translate(-32px, 12px) scale(1.2);
-  filter: drop-shadow(0 0 24px #93B4FF) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75));
+  transform: translate(-18px, 6px);
+  filter: drop-shadow(0 0 20px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
 }
 
 .phone-anchor:hover .icon-card {
-  transform: translate(32px, 12px) scale(1.2);
-  filter: drop-shadow(0 0 24px #93B4FF) drop-shadow(0 8px 18px rgba(0, 0, 0, 0.75));
+  transform: translate(18px, 6px);
+  filter: drop-shadow(0 0 20px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
 }
 
-/* 5. Outer Perimeter Shapes Enlarge & Breathe in Resonance */
+/* 5. Outer Perimeter Shapes Subtle Resonance */
 .hero-section:has(.phone-anchor:hover) .hero-shape-top-left {
-  transform: scale(1.12) translate(-8px, -8px);
-  opacity: 0.8;
-  box-shadow: 0 0 36px rgba(112, 148, 240, 0.65);
+  opacity: 0.7;
+  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
 }
 
 .hero-section:has(.phone-anchor:hover) .hero-shape-top-right {
-  transform: rotate(22deg) scale(1.12) translate(8px, -6px);
-  opacity: 0.75;
-  box-shadow: 0 0 36px rgba(112, 148, 240, 0.65);
+  opacity: 0.65;
+  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
 }
 
 .hero-section:has(.phone-anchor:hover) .hero-shape-bottom-left {
-  transform: scale(1.14) translate(-6px, 6px);
-  opacity: 0.75;
-  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+  opacity: 0.65;
+  box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
 }
 
 .hero-section:has(.phone-anchor:hover) .hero-shape-bottom-right {
-  transform: scale(1.12) translate(8px, 8px);
-  opacity: 0.8;
-  box-shadow: 0 0 36px rgba(112, 148, 240, 0.65);
+  opacity: 0.7;
+  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
 }
 
 .hero-section:has(.phone-anchor:hover) .hero-shape-mid-right {
-  transform: rotate(-26deg) scale(1.14) translate(8px, 0);
-  opacity: 0.75;
-  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+  opacity: 0.65;
+  box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
 }
 
 /* --- HERO SECTION PERIMETER & SIDE SHAPES --- */
@@ -435,7 +437,7 @@ a:hover {
   border-color: var(--accent-color);
   box-shadow: 0 0 24px var(--accent-glow);
   opacity: 0;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease, box-shadow 0.5s ease;
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
 }
 
 /* 1. Top-Left Corner Ring */
@@ -449,8 +451,7 @@ a:hover {
 }
 
 .shape-reveal-1 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.2s both,
-             subtleBreathe 7s ease-in-out 3.4s infinite;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
 }
 
 /* 2. Top-Right Corner Rounded Square */
@@ -465,8 +466,7 @@ a:hover {
 }
 
 .shape-reveal-2 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.3s both,
-             floatSquareMD 11s ease-in-out 3.5s infinite alternate-reverse;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
 }
 
 /* 3. Bottom-Left Perimeter Dashed Ring */
@@ -480,8 +480,7 @@ a:hover {
 }
 
 .shape-reveal-3 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.4s both,
-             rotateDashedMD 32s linear 3.6s infinite;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
 }
 
 /* 4. Bottom-Right Perimeter Ring */
@@ -495,8 +494,7 @@ a:hover {
 }
 
 .shape-reveal-4 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.5s both,
-             floatRingSM 8s ease-in-out 3.7s infinite alternate;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards;
 }
 
 /* 5. Mid-Right Perimeter Pill */
@@ -511,8 +509,7 @@ a:hover {
 }
 
 .shape-reveal-5 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.6s both,
-             floatPillFree 10s ease-in-out 3.8s infinite alternate;
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
 }
 
 /* --- KEYFRAME DEFINITIONS --- */
@@ -529,15 +526,13 @@ a:hover {
   }
 }
 
-/* Hero Perimeter shapes smooth fade */
+/* Hero Perimeter shapes smooth fade (Pure Opacity — preserves custom geometry & rotation) */
 @keyframes heroShapeFadeIn {
   0% {
     opacity: 0;
-    transform: scale(0.92);
   }
   100% {
-    opacity: 0.5;
-    transform: scale(1);
+    opacity: 0.45;
   }
 }
 
@@ -555,7 +550,7 @@ a:hover {
   }
 }
 
-/* Radiant Backlight Aura Fade In & Pulse */
+/* Radiant Backlight Aura Fade In */
 @keyframes auraFadeIn {
   0% {
     opacity: 0;
@@ -564,17 +559,6 @@ a:hover {
   100% {
     opacity: 0.85;
     transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-@keyframes auraPulse {
-  0% {
-    opacity: 0.7;
-    transform: translate(-50%, -50%) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.08);
   }
 }
 
@@ -590,114 +574,44 @@ a:hover {
   }
 }
 
-@keyframes ringEmanate {
-  0% {
-    transform: translate(-50%, -50%) scale(0.97);
-    opacity: 0.4;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.04);
-    opacity: 0.75;
-  }
-}
-
-@keyframes ringEmanateDashed {
-  0% {
-    transform: translate(-50%, -50%) scale(0.96);
-    opacity: 0.3;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1.06);
-    opacity: 0.55;
-  }
-}
-
-/* Finance Icon Pop In & Float */
+/* Finance Icon Pop In (Pure Scale & Opacity) */
 @keyframes financeIconPopIn {
   0% {
     opacity: 0;
-    transform: scale(0.55) translateY(14px);
-  }
-  70% {
-    opacity: 1;
-    transform: scale(1.05) translateY(-2px);
+    transform: scale(0.65);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: scale(1);
   }
 }
 
+/* Nested Continuous Floating Loops */
 @keyframes financeFloat1 {
   0% {
-    transform: translateY(0) scale(1) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
   100% {
-    transform: translateY(-8px) scale(1.04) rotate(6deg);
+    transform: translateY(-6px) rotate(5deg);
   }
 }
 
 @keyframes financeFloat2 {
   0% {
-    transform: translateY(0) scale(1) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
   100% {
-    transform: translateY(-8px) scale(1.04) rotate(-6deg);
+    transform: translateY(-6px) rotate(-5deg);
   }
 }
 
 @keyframes financeFloat3 {
   0% {
-    transform: translateY(0) scale(1) rotate(0deg);
+    transform: translateY(0) rotate(0deg);
   }
   100% {
-    transform: translateY(-7px) scale(1.04) rotate(5deg);
+    transform: translateY(-5px) rotate(4deg);
   }
-}
-
-@keyframes financeFloat4 {
-  0% {
-    transform: translateY(0) scale(1) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-7px) scale(1.04) rotate(-5deg);
-  }
-}
-
-/* Continuous Subtle Breathing Animation */
-@keyframes subtleBreathe {
-  0% {
-    transform: scale(1) translateY(0);
-    box-shadow: 0 0 20px rgba(76, 116, 219, 0.3);
-  }
-  50% {
-    transform: scale(1.035) translateY(-5px);
-    box-shadow: 0 0 35px rgba(76, 116, 219, 0.55);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-    box-shadow: 0 0 20px rgba(76, 116, 219, 0.3);
-  }
-}
-
-@keyframes floatSquareMD {
-  0% { transform: rotate(18deg) translateY(0px); }
-  100% { transform: rotate(14deg) translateY(8px); }
-}
-
-@keyframes floatRingSM {
-  0% { transform: translateY(0px); }
-  100% { transform: translateY(-6px); }
-}
-
-@keyframes rotateDashedMD {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes floatPillFree {
-  0% { transform: rotate(-22deg) translateY(0px); }
-  100% { transform: rotate(-16deg) translateY(-6px); }
 }
 
 /* Squircle Morph & Spin (Smooth ease-out, zero bounce / zero overshoot) */
