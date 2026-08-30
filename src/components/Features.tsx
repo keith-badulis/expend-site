@@ -6,16 +6,17 @@ import addTxImg from '../assets/screenshots/IMG_2301.png';
 import txListImg from '../assets/screenshots/IMG_2303.png';
 import weeklyImg from '../assets/screenshots/IMG_2306.png';
 
-interface GalleryItemData {
+interface FeatureCardProps {
   badge: string;
   title: string;
   description: string;
   tags: string[];
   image: string;
   imageAlt: string;
+  isWide?: boolean;
 }
 
-const leftColItems: GalleryItemData[] = [
+const featureItems: FeatureCardProps[] = [
   {
     badge: '💰 Multi-Account & Net Worth',
     title: 'Track Every Account in One Place',
@@ -23,6 +24,15 @@ const leftColItems: GalleryItemData[] = [
     tags: ['Net Worth', 'Multi-Currency', 'Asset & Debt Tracking'],
     image: accountsImg,
     imageAlt: 'eXpend Accounts Summary and Net Worth screen',
+    isWide: true,
+  },
+  {
+    badge: '📊 Smart Budgeting',
+    title: 'Stay On Track Automatically',
+    description: 'Set realistic monthly limits by category. Visual progress bars, projected totals, and instant "On Track" status prevent overspending before it happens.',
+    tags: ['Custom Categories', 'Projected Totals', 'Status Alerts'],
+    image: budgetImg,
+    imageAlt: 'eXpend Budget Details and spending status screen',
   },
   {
     badge: '📈 Visual Cashflow & Trends',
@@ -33,31 +43,20 @@ const leftColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Filtered Reports with interactive cashflow chart',
   },
   {
-    badge: '🏷️ Tags & Planned Bills',
-    title: 'Organize with Tags & Upcoming Bills',
-    description: 'Attach custom tags like #Impulse or #FundTransfer, search transactions instantly, and keep tabs on upcoming scheduled bills.',
-    tags: ['Custom Tags', 'Planned Transactions', 'Instant Search'],
-    image: txListImg,
-    imageAlt: 'eXpend All Transactions list with tag filters',
-  },
-];
-
-const rightColItems: GalleryItemData[] = [
-  {
-    badge: '📊 Smart Budgeting',
-    title: 'Stay On Track Automatically',
-    description: 'Set realistic monthly limits by category. Visual progress bars, projected totals, and instant "On Track" status prevent overspending before it happens.',
-    tags: ['Custom Categories', 'Projected Totals', 'Status Alerts'],
-    image: budgetImg,
-    imageAlt: 'eXpend Budget Details and spending status screen',
-  },
-  {
     badge: '⚡ Lightning-Fast Entry',
     title: 'Log Expenses in Under 3 Seconds',
     description: 'A built-in calculator keypad lets you log purchases, split amounts, and pick wallets with zero friction.',
     tags: ['Built-in Calculator', '1-Tap Wallets', 'Quick Split'],
     image: addTxImg,
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
+  },
+  {
+    badge: '🏷️ Tags & Planned Bills',
+    title: 'Organize with Tags & Upcoming Bills',
+    description: 'Attach custom tags like #Impulse or #FundTransfer, search transactions instantly, and keep tabs on upcoming scheduled bills.',
+    tags: ['Custom Tags', 'Planned Transactions', 'Instant Search'],
+    image: txListImg,
+    imageAlt: 'eXpend All Transactions list with tag filters',
   },
   {
     badge: '🗓️ Weekly Rhythm Analytics',
@@ -71,14 +70,14 @@ const rightColItems: GalleryItemData[] = [
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="section gallery-features-section">
-      {/* Background Ambient Shapes */}
+    <section id="features" className="section features-section">
+      {/* Background Accent Shapes */}
       <div
         className="edge-shape ring"
         style={{
           width: '380px',
           height: '380px',
-          top: '12%',
+          top: '10%',
           right: '-140px',
         }}
       />
@@ -87,7 +86,7 @@ export const Features: React.FC = () => {
         style={{
           width: '260px',
           height: '260px',
-          bottom: '18%',
+          bottom: '15%',
           left: '-100px',
         }}
       />
@@ -95,83 +94,53 @@ export const Features: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <div className="section-subtitle">Gallery & Features</div>
+          <div className="section-subtitle">Features</div>
           <h2 className="section-title">
-            Crafted for Clarity. <br />
-            <span style={{ color: 'var(--accent-light)' }}>Built for Daily Habits.</span>
+            Everything You Need to <br />
+            <span style={{ color: 'var(--accent-light)' }}>Master Your Money</span>
           </h2>
           <p className="section-description">
-            Explore the interface designed to give you frictionless control, deep insights, and 100% privacy on your device.
+            Thoughtfully crafted tools designed for speed, privacy, and lasting financial clarity—all stored safely on your device.
           </p>
         </div>
 
-        {/* 2-Column Staggered Open Exhibition Gallery (Cardless) */}
-        <div className="gallery-staggered-grid">
-          {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
-          <div className="gallery-column gallery-col-left">
-            {leftColItems.map((item, idx) => (
-              <div key={idx} className="gallery-item caption-left">
-                {/* Caption on Left */}
-                <div className="gallery-caption-box">
-                  <span className="gallery-badge">{item.badge}</span>
-                  <h3 className="gallery-item-title">{item.title}</h3>
-                  <p className="gallery-item-desc">{item.description}</p>
-                  <div className="gallery-tags-wrap">
-                    {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="gallery-tag-pill">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+        {/* Bento Showcase Grid (Cardless) */}
+        <div className="features-bento-grid">
+          {featureItems.map((item, idx) => (
+            <div
+              key={idx}
+              className={`feature-showcase-item ${item.isWide ? 'item-wide' : ''}`}
+            >
+              {/* Text / Copy Column */}
+              <div className="feature-item-content">
+                <span className="feature-badge">{item.badge}</span>
 
-                {/* Screenshot on Right */}
-                <div className="gallery-screen-box">
-                  <div className="gallery-phone-frame">
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt}
-                      className="gallery-screen-img"
-                      loading="lazy"
-                    />
-                  </div>
+                <h3 className="feature-item-title">{item.title}</h3>
+
+                <p className="feature-item-desc">{item.description}</p>
+
+                <div className="feature-tags-list">
+                  {item.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="feature-tag-pill">
+                      {tag}
+                    </span>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* RIGHT COLUMN (Staggered Downward: Screenshot on Left, Caption on Right) */}
-          <div className="gallery-column gallery-col-right">
-            {rightColItems.map((item, idx) => (
-              <div key={idx} className="gallery-item caption-right">
-                {/* Screenshot on Left */}
-                <div className="gallery-screen-box">
-                  <div className="gallery-phone-frame">
-                    <img
-                      src={item.image}
-                      alt={item.imageAlt}
-                      className="gallery-screen-img"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-
-                {/* Caption on Right */}
-                <div className="gallery-caption-box">
-                  <span className="gallery-badge">{item.badge}</span>
-                  <h3 className="gallery-item-title">{item.title}</h3>
-                  <p className="gallery-item-desc">{item.description}</p>
-                  <div className="gallery-tags-wrap">
-                    {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="gallery-tag-pill">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+              {/* Phone Screenshot Showcase Column */}
+              <div className="feature-item-mockup-wrap">
+                <div className="feature-phone-frame">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    className="feature-screen-img"
+                    loading="lazy"
+                  />
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

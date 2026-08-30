@@ -552,57 +552,48 @@ a:hover {
 }
 
 /* =======================================================
-   2-COLUMN STAGGERED OPEN EXHIBITION GALLERY (CARDLESS)
+   FEATURES BENTO SHOWCASE GRID (CARDLESS)
 ======================================================= */
-.gallery-features-section {
-  padding: 7rem 0;
+.features-section {
+  padding: 6.5rem 0;
   position: relative;
 }
 
-.gallery-staggered-grid {
+.features-bento-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: start;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4.5rem 3.5rem;
   width: 100%;
 }
 
-.gallery-column {
+/* Open, cardless feature showcase item */
+.feature-showcase-item {
   display: flex;
   flex-direction: column;
-  gap: 4.5rem;
-}
-
-/* Right column offset downward for open museum gallery rhythm */
-.gallery-col-right {
-  margin-top: 6.5rem;
-}
-
-/* Open, cardless gallery item */
-.gallery-item {
-  display: grid;
-  align-items: center;
+  justify-content: space-between;
   gap: 2rem;
   position: relative;
 }
 
-/* Alternating Caption & Screenshot Placement */
-.gallery-item.caption-left {
+.feature-showcase-item.item-wide {
+  grid-column: span 2;
+  display: grid;
   grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3.5rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1.5px solid rgba(76, 116, 219, 0.2);
 }
 
-.gallery-item.caption-right {
-  grid-template-columns: 0.85fr 1.15fr;
-}
-
-.gallery-caption-box {
+.feature-item-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   z-index: 2;
 }
 
-.gallery-badge {
+.feature-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -614,11 +605,11 @@ a:hover {
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin-bottom: 1.15rem;
+  margin-bottom: 1.25rem;
 }
 
-.gallery-item-title {
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+.feature-item-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
   font-weight: 800;
   letter-spacing: -0.025em;
   color: #FFFFFF;
@@ -626,40 +617,46 @@ a:hover {
   line-height: 1.2;
 }
 
-.gallery-item-desc {
-  font-size: 1.02rem;
+.feature-item-desc {
+  font-size: 1.05rem;
   line-height: 1.65;
   color: var(--text-secondary);
-  margin-bottom: 1.35rem;
+  margin-bottom: 1.5rem;
 }
 
-.gallery-tags-wrap {
+.feature-tags-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.gallery-tag-pill {
-  font-size: 0.78rem;
+.feature-tag-pill {
+  font-size: 0.8rem;
   font-weight: 600;
   color: #CBD5E1;
   background: rgba(23, 32, 54, 0.85);
-  border: 1.2px solid rgba(76, 116, 219, 0.4);
+  border: 1.2px solid rgba(76, 116, 219, 0.35);
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
 }
 
-.gallery-screen-box {
+.feature-item-mockup-wrap {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
   width: 100%;
 }
 
-.gallery-phone-frame {
+.item-wide .feature-item-mockup-wrap {
+  margin-top: 0;
+}
+
+.feature-phone-frame {
   position: relative;
-  width: 100%;
-  max-width: 215px;
+  width: 250px;
+  max-width: 100%;
   border-radius: 28px;
   padding: 6px;
   background: #172036;
@@ -668,13 +665,13 @@ a:hover {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.gallery-item:hover .gallery-phone-frame {
+.feature-showcase-item:hover .feature-phone-frame {
   transform: translateY(-4px) scale(1.02);
   border-color: var(--accent-color);
   box-shadow: 0 26px 56px rgba(0, 0, 0, 0.75), 0 0 35px var(--accent-glow);
 }
 
-.gallery-screen-img {
+.feature-screen-img {
   width: 100%;
   height: auto;
   display: block;
@@ -816,27 +813,26 @@ a:hover {
   .store-badges-container {
     justify-content: center;
   }
-  .gallery-staggered-grid {
+  .features-bento-grid {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 3.5rem;
   }
-  .gallery-col-right {
-    margin-top: 0;
-  }
-  .gallery-item.caption-left,
-  .gallery-item.caption-right {
+  .feature-showcase-item.item-wide {
+    grid-column: span 1;
     grid-template-columns: 1fr;
     text-align: center;
+    border-bottom: none;
+    padding-bottom: 0;
   }
-  .gallery-caption-box {
+  .feature-item-content {
     align-items: center;
+    text-align: center;
   }
-  .gallery-tags-wrap {
+  .feature-tags-list {
     justify-content: center;
   }
-  .gallery-phone-frame {
-    max-width: 230px;
-    margin: 0 auto;
+  .feature-phone-frame {
+    width: 220px;
   }
 }
 
