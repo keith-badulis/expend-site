@@ -212,7 +212,7 @@ a:hover {
   align-items: center;
 }
 
-/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (EXPANSIVE VARIED-DEPTH SCATTER) --- */
+/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (HARMONIC CRESCENT ARCS) --- */
 
 /* 1. Radiant Backlight Aura Glow (Reveals at T = 2.1s) */
 .phone-backlight-aura {
@@ -262,7 +262,7 @@ a:hover {
              ringEmanateDashed 7s ease-in-out 3.45s infinite alternate;
 }
 
-/* 3. Emanating Pure Vector Finance Icons (Varied-Depth Distances & Non-Axis-Aligned) */
+/* 3. Pure Vector Finance Icons (Harmonic Parabolic Crescent Arcs) */
 .emanating-finance-icon {
   position: absolute;
   z-index: 5;
@@ -274,60 +274,64 @@ a:hover {
   opacity: 0;
 }
 
-/* 1. Bank Icon: Far Upper-Left Peak (Y = -85px, X = -110px — Placed Farther Out) */
+/* --- LEFT CRESCENT ARC: Bank -> Tax -> PiggyBank -> Coin --- */
+
+/* 1. Bank: Upper-Left Apex (Y = -35px, X = -50px) */
 .icon-bank {
-  top: -85px;
-  left: -110px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both,
-             financeFloat1 5.4s ease-in-out 3.25s infinite alternate;
-}
-
-/* 2. Wallet Icon: Medium Upper-Right (Y = -45px, X = -85px) */
-.icon-wallet {
-  top: -45px;
-  right: -85px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.46s both,
-             financeFloat2 5.6s ease-in-out 3.31s infinite alternate;
-}
-
-/* 3. Tax Icon: Near Mid-Upper Left (Y = 18%, X = -50px — Close-in Accent) */
-.icon-tax {
-  top: 18%;
+  top: -35px;
   left: -50px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.52s both,
-             financeFloat3 5.0s ease-in-out 3.37s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both,
+             financeFloat1 5.2s ease-in-out 3.25s infinite alternate;
 }
 
-/* 4. Tag Icon: Far Mid-Right (Y = 38%, X = -125px — Placed Farther Out) */
+/* 2. Tax: Mid-Upper Left Outward Arc (Y = 22%, X = -88px) */
+.icon-tax {
+  top: 22%;
+  left: -88px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s both,
+             financeFloat2 5.6s ease-in-out 3.33s infinite alternate;
+}
+
+/* 3. Piggy Bank: Lower-Mid Left Outward Arc (Y = 56%, X = -92px) */
+.icon-piggy {
+  top: 56%;
+  left: -92px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s both,
+             financeFloat3 6.0s ease-in-out 3.41s infinite alternate;
+}
+
+/* 4. Coin: Bottom-Left Base Inward Arc (Y = bottom -28px, X = -45px) */
+.icon-coin {
+  bottom: -28px;
+  left: -45px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both,
+             financeFloat4 4.8s ease-in-out 3.49s infinite alternate;
+}
+
+/* --- RIGHT CRESCENT ARC: Wallet -> Tag -> Card --- */
+
+/* 5. Wallet: Upper-Right Inward Entry (Y = -12px, X = -55px) */
+.icon-wallet {
+  top: -12px;
+  right: -55px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.70s both,
+             financeFloat1 5.4s ease-in-out 3.55s infinite alternate;
+}
+
+/* 6. Tag: Mid-Right Outward Arc (Y = 38%, X = -90px) */
 .icon-tag {
   top: 38%;
-  right: -125px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.58s both,
-             financeFloat4 6.2s ease-in-out 3.43s infinite alternate;
-}
-
-/* 5. Piggy Bank Icon: Far Lower-Mid Left (Y = 65%, X = -120px — Placed Farther Out) */
-.icon-piggy {
-  top: 65%;
-  left: -120px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both,
-             financeFloat2 5.8s ease-in-out 3.49s infinite alternate;
-}
-
-/* 6. Card Icon: Medium Lower-Right (Y = 78%, X = -95px) */
-.icon-card {
-  top: 78%;
-  right: -95px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.70s both,
-             financeFloat1 5.2s ease-in-out 3.55s infinite alternate;
-}
-
-/* 7. Coin Icon: Near Bottom-Left Base (Y = bottom: -45px, X = +35px — Close-in Accent) */
-.icon-coin {
-  bottom: -45px;
-  left: 35px;
+  right: -90px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.76s both,
-             financeFloat3 4.6s ease-in-out 3.61s infinite alternate;
+             financeFloat2 5.0s ease-in-out 3.61s infinite alternate;
+}
+
+/* 7. Card: Lower-Right Inward Arc (Y = 74%, X = -62px) */
+.icon-card {
+  top: 74%;
+  right: -62px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.82s both,
+             financeFloat3 5.5s ease-in-out 3.67s infinite alternate;
 }
 
 .phone-mockup {
@@ -1003,32 +1007,32 @@ a:hover {
     height: 510px;
   }
   .icon-bank {
-    top: -45px;
-    left: -45px;
-  }
-  .icon-wallet {
     top: -25px;
-    right: -45px;
+    left: -30px;
   }
   .icon-tax {
-    top: 18%;
+    top: 22%;
+    left: -45px;
+  }
+  .icon-piggy {
+    top: 56%;
+    left: -48px;
+  }
+  .icon-coin {
+    bottom: -20px;
     left: -25px;
+  }
+  .icon-wallet {
+    top: -10px;
+    right: -30px;
   }
   .icon-tag {
     top: 38%;
-    right: -48px;
-  }
-  .icon-piggy {
-    top: 65%;
-    left: -48px;
-  }
-  .icon-card {
-    top: 78%;
     right: -45px;
   }
-  .icon-coin {
-    bottom: -28px;
-    left: 20px;
+  .icon-card {
+    top: 74%;
+    right: -35px;
   }
   .hero-shape-top-left {
     width: 160px;
