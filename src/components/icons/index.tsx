@@ -16,6 +16,36 @@ const baseStyle = {
   strokeMiterlimit: 1.5,
 };
 
+export const BankIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M47.365 19.935a6.417 6.417 0 0 1 5.268 0L82.03 33.16a2.269 2.269 0 0 1-.931 4.34h-62.2a2.269 2.269 0 0 1-.931-4.34l29.397-13.225Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M24.999 37.5h14.583V75H24.999zM60.416 37.5h14.583V75H60.416zM20.832 75h58.334M16.654 85.417h66.69"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
 export const WalletIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
@@ -151,6 +181,65 @@ export const ReceiptIcon: React.FC<IconProps> = ({
       stroke={color}
       strokeWidth={strokeWidth}
       strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const TagIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M82.877 42.359a6.083 6.083 0 0 1-1.782 4.302L51.215 76.54a8.257 8.257 0 0 1-11.678 0L27.169 64.172a8.259 8.259 0 0 1 0-11.678l29.879-29.879a6.085 6.085 0 0 1 4.303-1.782h15.441a6.085 6.085 0 0 1 6.085 6.085v15.441Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle cx={68.293} cy={35.417} r={2.083} fill="none" stroke={color} strokeWidth={strokeWidth} />
+  </svg>
+);
+
+export const PiggyBankIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M58.595 27.085c.024-.1.049-.2.076-.301 1.34-5.001 6.705-7.908 11.984-6.494l-2.42 9.034c5.871 2.814 10.357 8.057 12.156 14.427h5.026V56.25h-5.026a22.957 22.957 0 0 1-10.599 13.605V75a4.167 4.167 0 0 1-4.167 4.167h-2.083A4.167 4.167 0 0 1 59.375 75v-2.106c-.342.015-.686.023-1.031.023H45.825c-.346 0-.691-.008-1.033-.023V75a4.167 4.167 0 0 1-4.167 4.167h-2.083A4.167 4.167 0 0 1 34.375 75v-5.146c-6.85-3.96-11.458-11.365-11.458-19.846v-.016c0-3.748.9-7.285 2.496-10.409M20.833 45.833A8.337 8.337 0 0 1 12.5 37.5"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle cx={66.667} cy={43.75} r={4.167} fill={color} />
+    <circle
+      cx={40.626}
+      cy={30.208}
+      r={9.375}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      style={{ strokeLinejoin: 'miter' }}
     />
   </svg>
 );
@@ -383,40 +472,6 @@ export const StonksIcon: React.FC<IconProps> = ({
   </svg>
 );
 
-export const PiggyBankIcon: React.FC<IconProps> = ({
-  size = 20,
-  color = 'currentColor',
-  strokeWidth = '6.25px',
-  className,
-  style,
-}) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 100 100"
-    width={size}
-    height={size}
-    className={className}
-    style={{ ...baseStyle, ...style }}
-  >
-    <path
-      d="M58.595 27.085c.024-.1.049-.2.076-.301 1.34-5.001 6.705-7.908 11.984-6.494l-2.42 9.034c5.871 2.814 10.357 8.057 12.156 14.427h5.026V56.25h-5.026a22.957 22.957 0 0 1-10.599 13.605V75a4.167 4.167 0 0 1-4.167 4.167h-2.083A4.167 4.167 0 0 1 59.375 75v-2.106c-.342.015-.686.023-1.031.023H45.825c-.346 0-.691-.008-1.033-.023V75a4.167 4.167 0 0 1-4.167 4.167h-2.083A4.167 4.167 0 0 1 34.375 75v-5.146c-6.85-3.96-11.458-11.365-11.458-19.846v-.016c0-3.748.9-7.285 2.496-10.409M20.833 45.833A8.337 8.337 0 0 1 12.5 37.5"
-      fill="none"
-      stroke={color}
-      strokeWidth={strokeWidth}
-    />
-    <circle cx={66.667} cy={43.75} r={4.167} fill={color} />
-    <circle
-      cx={40.626}
-      cy={30.208}
-      r={9.375}
-      fill="none"
-      stroke={color}
-      strokeWidth={strokeWidth}
-      style={{ strokeLinejoin: 'miter' }}
-    />
-  </svg>
-);
-
 export const LightningBoltIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
@@ -438,31 +493,6 @@ export const LightningBoltIcon: React.FC<IconProps> = ({
       stroke={color}
       strokeWidth={strokeWidth}
     />
-  </svg>
-);
-
-export const TagIcon: React.FC<IconProps> = ({
-  size = 20,
-  color = 'currentColor',
-  strokeWidth = '6.25px',
-  className,
-  style,
-}) => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 105 100"
-    width={size}
-    height={size}
-    className={className}
-    style={{ ...baseStyle, ...style }}
-  >
-    <path
-      d="M82.877 42.359a6.083 6.083 0 0 1-1.782 4.302L51.215 76.54a8.257 8.257 0 0 1-11.678 0L27.169 64.172a8.259 8.259 0 0 1 0-11.678l29.879-29.879a6.085 6.085 0 0 1 4.303-1.782h15.441a6.085 6.085 0 0 1 6.085 6.085v15.441Z"
-      fill="none"
-      stroke={color}
-      strokeWidth={strokeWidth}
-    />
-    <circle cx={68.293} cy={35.417} r={2.083} fill="none" stroke={color} strokeWidth={strokeWidth} />
   </svg>
 );
 

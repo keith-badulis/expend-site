@@ -212,7 +212,7 @@ a:hover {
   align-items: center;
 }
 
-/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (PURE VECTORS, CLEAR OF SCREENSHOT) --- */
+/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (6 BALANCED MONEY ICONS) --- */
 
 /* 1. Radiant Backlight Aura Glow (Reveals at T = 2.1s) */
 .phone-backlight-aura {
@@ -274,32 +274,52 @@ a:hover {
   opacity: 0;
 }
 
-.icon-wallet {
+/* 1. Bank Icon (Top-Left) */
+.icon-bank {
   top: -45px;
+  left: -50px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both,
+             financeFloat1 5.2s ease-in-out 3.25s infinite alternate;
+}
+
+/* 2. Wallet Icon (Top-Right) */
+.icon-wallet {
+  top: -48px;
   right: -55px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.45s both,
-             financeFloat1 5s ease-in-out 3.3s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s both,
+             financeFloat2 5.5s ease-in-out 3.33s infinite alternate;
 }
 
+/* 3. Piggy Bank Icon (Mid-Left) */
 .icon-piggy {
-  top: 30%;
-  left: -65px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.55s both,
-             financeFloat2 6s ease-in-out 3.4s infinite alternate;
+  top: 32%;
+  left: -68px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s both,
+             financeFloat3 6.0s ease-in-out 3.41s infinite alternate;
 }
 
-.icon-card {
-  bottom: 24%;
-  right: -60px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.65s both,
-             financeFloat3 5.5s ease-in-out 3.5s infinite alternate;
+/* 4. Tag Icon (Mid-Right) */
+.icon-tag {
+  top: 34%;
+  right: -65px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both,
+             financeFloat4 5.0s ease-in-out 3.49s infinite alternate;
 }
 
+/* 5. Coin Icon (Bottom-Left) */
 .icon-coin {
   bottom: -35px;
   left: -30px;
-  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.75s both,
-             financeFloat4 4.8s ease-in-out 3.6s infinite alternate;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.72s both,
+             financeFloat1 4.8s ease-in-out 3.57s infinite alternate;
+}
+
+/* 6. Card Icon (Bottom-Right) */
+.icon-card {
+  bottom: -30px;
+  right: -45px;
+  animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.80s both,
+             financeFloat2 5.4s ease-in-out 3.65s infinite alternate;
 }
 
 .phone-mockup {
@@ -542,7 +562,7 @@ a:hover {
     transform: translateY(0) scale(1) rotate(0deg);
   }
   100% {
-    transform: translateY(-6px) scale(1.05) rotate(-6deg);
+    transform: translateY(-8px) scale(1.04) rotate(-6deg);
   }
 }
 
@@ -560,7 +580,7 @@ a:hover {
     transform: translateY(0) scale(1) rotate(0deg);
   }
   100% {
-    transform: translateY(-6px) scale(1.04) rotate(-4deg);
+    transform: translateY(-7px) scale(1.04) rotate(-5deg);
   }
 }
 
@@ -974,6 +994,10 @@ a:hover {
     width: 310px;
     height: 510px;
   }
+  .icon-bank {
+    top: -30px;
+    left: -25px;
+  }
   .icon-wallet {
     top: -30px;
     right: -25px;
@@ -981,11 +1005,16 @@ a:hover {
   .icon-piggy {
     left: -35px;
   }
-  .icon-card {
-    right: -30px;
+  .icon-tag {
+    right: -35px;
   }
   .icon-coin {
-    left: -20px;
+    left: -15px;
+    bottom: -25px;
+  }
+  .icon-card {
+    right: -20px;
+    bottom: -25px;
   }
   .hero-shape-top-left {
     width: 160px;

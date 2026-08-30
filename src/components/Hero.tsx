@@ -1,7 +1,7 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
-import { WalletIcon, PiggyBankIcon, CardIcon, CoinIcon } from './icons';
+import { BankIcon, WalletIcon, PiggyBankIcon, TagIcon, CardIcon, CoinIcon } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 
 export const Hero: React.FC = () => {
@@ -82,12 +82,18 @@ export const Hero: React.FC = () => {
               <div className="phone-emanating-ring ring-1" />
               <div className="phone-emanating-ring ring-2" />
 
-              {/* 3. Emanating Pure Vector Finance Icons (No background tiles, floating completely clear of the phone) */}
+              {/* 3. Emanating Pure Vector Money Icons (Floating completely clear of the phone) */}
+              <div className="emanating-finance-icon icon-bank">
+                <BankIcon size={34} color="var(--accent-light)" />
+              </div>
               <div className="emanating-finance-icon icon-wallet">
                 <WalletIcon size={36} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-piggy">
                 <PiggyBankIcon size={36} color="var(--accent-light)" />
+              </div>
+              <div className="emanating-finance-icon icon-tag">
+                <TagIcon size={34} color="var(--accent-light)" />
               </div>
               <div className="emanating-finance-icon icon-card">
                 <CardIcon size={34} color="var(--accent-light)" />
