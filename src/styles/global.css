@@ -1179,6 +1179,79 @@ a:hover {
   font-size: 1.15rem;
   color: var(--text-secondary);
 }
+/* =======================================================
+   SIMPLE MINIMALIST FOOTER
+======================================================= */
+.simple-footer {
+  background-color: var(--bg-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3.5rem 0 2.5rem 0;
+  position: relative;
+  z-index: 10;
+}
+
+.simple-footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.footer-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
+  user-select: none;
+}
+
+.footer-logo-wrap:hover {
+  opacity: 0.85;
+}
+
+.footer-grayscale-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.2);
+}
+
+.footer-brand-text {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: -0.02em;
+}
+
+.footer-nav-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-link {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #FFFFFF;
+}
+
+.footer-link-divider {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.85rem;
+}
+
+.footer-copyright {
+  font-size: 0.82rem;
+  color: rgba(148, 163, 184, 0.6);
+  margin: 0;
+}
 
 /* Responsive queries */
 @media (max-width: 960px) {
