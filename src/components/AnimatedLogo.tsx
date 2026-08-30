@@ -33,9 +33,8 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
     >
       {/* 
         Parent Frame:
-        1. Static Shadow & Glow Layer (Shadow does not spin)
-        2. Rotating Squircle Shape (Circle -> Crisp Squircle)
-        3. Static Upright Logo Image
+        1. Rotating Squircle Shape with unified attached shadow & glow
+        2. Static Upright Logo Image (does NOT rotate)
       */}
       <div
         className="logo-frame"
@@ -48,13 +47,10 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
           justifyContent: 'center',
         }}
       >
-        {/* Layer 1: Static Shadow & Ambient Glow (No rotation) */}
-        <div className={`logo-static-shadow ${isSpinning ? 'shadow-manual' : 'shadow-initial'}`} />
-
-        {/* Layer 2: Rotating Background Shape (Starts as 50% circle, ends as 26px squircle) */}
+        {/* Layer 1: Unified Rotating Squircle Background (Circle -> 30px Squircle) */}
         <div className={`logo-squircle-shape ${isSpinning ? 'spin-manual' : 'spin-initial'}`} />
 
-        {/* Layer 3: Static Upright Logo Image (Shifted 2px right to align circle with squircle) */}
+        {/* Layer 2: Static Upright Logo Image (Shifted 2px right to align circular coil) */}
         <div
           className="logo-graphic-wrapper"
           style={{
