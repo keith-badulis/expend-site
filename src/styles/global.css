@@ -88,7 +88,7 @@ a:hover {
 
 /* Hero Section (Clean top spacing without App Bar) */
 .hero-section {
-  padding: 5.5rem 0 4.5rem 0;
+  padding: 4.5rem 0 4.5rem 0;
   position: relative;
   overflow: hidden;
 }
@@ -99,6 +99,128 @@ a:hover {
   gap: 3.5rem;
   align-items: center;
   width: 100%;
+}
+
+/* Animated App Logo on Left (Replicating App Setup Wizard) */
+.animated-logo-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.15rem;
+  margin-bottom: 1.75rem;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-logo-container:hover {
+  transform: translateY(-2px);
+}
+
+.logo-bounding-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #282f40;
+  border-radius: 26px;
+  border: 2px solid rgba(76, 116, 219, 0.45);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45), 0 0 25px rgba(76, 116, 219, 0.3);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.logo-bounding-box:hover {
+  transform: scale(1.06);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.55), 0 0 35px rgba(76, 116, 219, 0.5);
+}
+
+.logo-bounding-box.spin-initial {
+  animation: logoSetupWizardSpin 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.logo-bounding-box.spin-manual {
+  animation: logoSetupWizardSpin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.logo-inner-img {
+  display: block;
+  object-fit: contain;
+  animation: logoInnerScale 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.logo-brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+  animation: logoTextFadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.35s both;
+}
+
+.logo-brand-name {
+  font-family: var(--font-family);
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+.logo-brand-sub {
+  font-family: var(--font-family);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent-light);
+  text-transform: uppercase;
+}
+
+/* Keyframes for Setup Wizard Logo Animation */
+@keyframes logoSetupWizardSpin {
+  0% {
+    transform: rotate(-360deg) scale(0.6);
+    border-radius: 50%;
+    background-color: #172036;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+    background-color: #1F2A47;
+  }
+  75% {
+    transform: rotate(12deg) scale(1.08);
+    border-radius: 28px;
+    background-color: #282f40;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    border-radius: 24px;
+    background-color: #282f40;
+    opacity: 1;
+  }
+}
+
+@keyframes logoInnerScale {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes logoTextFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Phone Mockup & Anchored Wrapper */
@@ -410,6 +532,9 @@ a:hover {
   .hero-grid p {
     margin-left: auto;
     margin-right: auto;
+  }
+  .animated-logo-container {
+    justify-content: center;
   }
   .store-badges-container {
     justifyContent: center;

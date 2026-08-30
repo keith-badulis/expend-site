@@ -1,5 +1,6 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
+import { AnimatedLogo } from './AnimatedLogo';
 import appScreenImg from '../assets/app-screen.png';
 
 export const Hero: React.FC = () => {
@@ -7,8 +8,11 @@ export const Hero: React.FC = () => {
     <section className="hero-section">
       <div className="container">
         <div className="hero-grid">
-          {/* Left Column: Typographic hierarchy with Outfit font */}
+          {/* Left Column: Animated App Logo & Typographic hierarchy */}
           <div>
+            {/* Animated Logo (Replicating App Setup Wizard) */}
+            <AnimatedLogo size={78} />
+
             <div style={{ marginBottom: '1.5rem' }}>
               <span style={{
                 fontSize: 'clamp(1.35rem, 2.6vw, 1.95rem)',
