@@ -811,10 +811,10 @@ a:hover {
 }
 
 /* =======================================================
-   WHY CHOOSE EXPEND (SEQUENTIALLY STACKED & SOLID PALETTE)
+   WHY CHOOSE EXPEND (ULTRA-CONCISE & PUNCHY CARDS)
 ======================================================= */
-.why-choose-stacked-section {
-  padding: 6.5rem 0;
+.why-choose-concise-section {
+  padding: 6rem 0;
   position: relative;
 }
 
@@ -833,182 +833,125 @@ a:hover {
   margin-bottom: 1rem;
 }
 
-/* Sequentially Stacked Core Blocks */
-.why-stacked-block {
-  background: #172036;
-  border-radius: var(--radius-xl);
-  padding: clamp(2.25rem, 4vw, 3.25rem);
-  display: grid;
-  grid-template-columns: 1fr 1.35fr;
-  gap: 3rem;
-  align-items: start;
+.why-concise-container {
+  max-width: 860px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   position: relative;
   z-index: 2;
-  margin-bottom: 3.5rem;
+}
+
+.why-punchy-card {
+  background: #172036;
+  border-radius: var(--radius-xl);
+  padding: clamp(2rem, 3.5vw, 2.75rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 1.85rem;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.why-stacked-block:last-child {
-  margin-bottom: 0;
+/* Card 1: Emerald Green Border */
+.why-punchy-card.card-green-theme {
+  border: 2.5px solid rgba(11, 177, 144, 0.55);
 }
 
-/* Block 1: Emerald Green Border (#0BB190) */
-.why-stacked-block.block-privacy {
-  border: 2.5px solid rgba(11, 177, 144, 0.6);
-}
-
-.why-stacked-block.block-privacy:hover {
+.why-punchy-card.card-green-theme:hover {
   border-color: #0BB190;
-  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.65), 0 0 36px rgba(11, 177, 144, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 32px rgba(11, 177, 144, 0.25);
   transform: translateY(-4px);
 }
 
-/* Block 2: Electric Blue Border (#4C74DB) */
-.why-stacked-block.block-ownership {
-  border: 2.5px solid rgba(76, 116, 219, 0.6);
+/* Card 2: Electric Blue Border */
+.why-punchy-card.card-blue-theme {
+  border: 2.5px solid rgba(76, 116, 219, 0.55);
 }
 
-.why-stacked-block.block-ownership:hover {
+.why-punchy-card.card-blue-theme:hover {
   border-color: #4C74DB;
-  box-shadow: 0 22px 52px rgba(0, 0, 0, 0.65), 0 0 36px rgba(76, 116, 219, 0.25);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.65), 0 0 32px rgba(76, 116, 219, 0.25);
   transform: translateY(-4px);
 }
 
-/* Lead Column (Left side of each block) */
-.block-lead-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.lead-badge-row {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-  margin-bottom: 1.35rem;
-}
-
-.lead-icon-box {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
+.punchy-icon-box {
+  width: 60px;
+  height: 60px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.lead-icon-box.icon-green {
+.punchy-icon-box.icon-box-green {
   background: rgba(11, 177, 144, 0.14);
   border: 2px solid #0BB190;
 }
 
-.lead-icon-box.icon-blue {
+.punchy-icon-box.icon-box-blue {
   background: rgba(76, 116, 219, 0.14);
   border: 2px solid #4C74DB;
 }
 
-.lead-badge-pill {
-  font-size: 0.82rem;
+.punchy-text-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.punchy-kicker {
+  font-size: 0.8rem;
   font-weight: 800;
-  padding: 0.35rem 0.95rem;
-  border-radius: 9999px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  margin-bottom: 0.45rem;
 }
 
-.lead-badge-pill.pill-green {
+.punchy-kicker.kicker-green {
   color: #0BB190;
-  background: rgba(11, 177, 144, 0.12);
-  border: 1.5px solid #0BB190;
 }
 
-.lead-badge-pill.pill-blue {
+.punchy-kicker.kicker-blue {
   color: #7094F0;
-  background: rgba(76, 116, 219, 0.12);
-  border: 1.5px solid #4C74DB;
 }
 
-.lead-title {
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+.punchy-headline {
+  font-size: clamp(1.45rem, 2.4vw, 1.85rem);
   font-weight: 900;
   color: #FFFFFF;
   letter-spacing: -0.025em;
-  margin-bottom: 1rem;
-  line-height: 1.2;
+  margin-bottom: 0.65rem;
+  line-height: 1.25;
 }
 
-.lead-desc {
+.punchy-tagline {
   font-size: 1.02rem;
-  line-height: 1.65;
+  line-height: 1.6;
   color: var(--text-secondary);
-  margin: 0;
+  margin-bottom: 1.35rem;
 }
 
-/* 4-Tile Solid Color Grid (Right side of each block) */
-.block-tiles-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
-}
-
-.color-feature-tile {
-  background: rgba(23, 33, 56, 0.9);
-  border: 1.5px solid;
-  border-radius: var(--radius-md);
-  padding: 1.35rem 1.25rem;
+.punchy-pills-wrap {
   display: flex;
-  flex-direction: column;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.color-feature-tile:hover {
-  transform: translateY(-3px);
-  border-color: var(--tile-color) !important;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 20px color-mix(in srgb, var(--tile-color) 30%, transparent);
-}
-
-.tile-top-row {
-  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-bottom: 0.85rem;
 }
 
-.tile-tag-pill {
-  font-size: 0.74rem;
+.solid-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
   font-weight: 800;
-  padding: 0.2rem 0.65rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 9999px;
-  border: 1.2px solid;
+  border: 1.5px solid;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
-}
-
-.tile-check-dot {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.tile-title {
-  font-size: 1.05rem;
-  font-weight: 800;
-  margin-bottom: 0.45rem;
-  line-height: 1.3;
-}
-
-.tile-desc {
-  font-size: 0.88rem;
-  line-height: 1.55;
-  color: var(--text-secondary);
-  margin: 0;
+  background: #172036;
 }
 
 /* Bold Card Styling (Used for Reviews) */
@@ -1167,10 +1110,6 @@ a:hover {
     max-width: 230px;
     margin: 0 auto;
   }
-  .why-stacked-block {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
 }
 
 @media (max-width: 768px) {
@@ -1229,10 +1168,9 @@ a:hover {
   .official-badge-img {
     height: 42px;
   }
-  .why-stacked-block {
-    padding: 1.75rem 1.35rem;
-  }
-  .block-tiles-grid {
-    grid-template-columns: 1fr;
+  .why-punchy-card {
+    flex-direction: column;
+    padding: 1.85rem 1.5rem;
+    gap: 1.25rem;
   }
 }

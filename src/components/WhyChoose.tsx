@@ -6,210 +6,105 @@ import {
 } from './icons';
 
 export const WhyChoose: React.FC = () => {
-  // Block 1: Offline & Privacy Points (Color-coded with solid app palette)
-  const privacyTiles = [
-    {
-      title: 'No Accounts or Sign-Ups',
-      desc: 'Open the app and start logging immediately. No email, passwords, or personal profile needed.',
-      color: '#0BB190', // green-50
-      tag: 'Zero Sign-Up',
-    },
-    {
-      title: 'Zero Cloud Servers',
-      desc: 'We do not collect, store, or sell your data. We have no remote servers tracking your habits.',
-      color: '#9957BD', // purple-50
-      tag: 'No Tracking',
-    },
-    {
-      title: '100% Local Storage',
-      desc: 'Your financial transactions and budgets live strictly in your device’s local secure database.',
-      color: '#37a5d6', // sky-50
-      tag: 'On-Device',
-    },
-    {
-      title: 'Full Offline Freedom',
-      desc: 'Log expenses anytime, anywhere—on planes, in subways, or completely disconnected from the web.',
-      color: '#EAAF3B', // yellow-50
-      tag: 'No Internet Needed',
-    },
+  const privacyPills = [
+    { label: 'No Sign-Ups', color: '#0BB190' }, // green-50
+    { label: 'No Ads', color: '#9957BD' },      // purple-50
+    { label: 'Zero Servers', color: '#37a5d6' }, // sky-50
+    { label: '100% On-Device', color: '#EAAF3B' }, // yellow-50
   ];
 
-  // Block 2: No-Subscriptions / Ownership Points (Color-coded with solid app palette)
-  const ownershipTiles = [
-    {
-      title: 'Pay Once, Keep Forever',
-      desc: 'Say goodbye to recurring monthly fees. Unlock the full app with a single, transparent purchase.',
-      color: '#EF8354', // orange-50
-      tag: 'No Subscriptions',
-    },
-    {
-      title: 'CSV Data Export',
-      desc: 'Export your full transaction history to CSV format for Excel, Google Sheets, or Numbers anytime.',
-      color: '#4fb2b5', // teal-50
-      tag: 'Excel & Sheets',
-    },
-    {
-      title: 'Local JSON Backup',
-      desc: 'Easily backup and restore your financial data safely using local files without cloud lock-in.',
-      color: '#dd56b2', // pink-50
-      tag: 'Offline Backup',
-    },
-    {
-      title: 'Unlimited Everything',
-      desc: 'Create unlimited wallets, budgets, goals, debts, and custom categories without artificial limits.',
-      color: '#88ba4a', // lime-50
-      tag: 'No Limits',
-    },
+  const purchasePills = [
+    { label: 'Zero Subscriptions', color: '#EF8354' }, // orange-50
+    { label: 'Lifetime Access', color: '#88ba4a' },    // lime-50
+    { label: 'Local JSON Backup', color: '#dd56b2' },  // pink-50
+    { label: 'CSV Data Export', color: '#4fb2b5' },    // teal-50
   ];
 
   return (
-    <section id="why-choose" className="section why-choose-stacked-section">
+    <section id="why-choose" className="section why-choose-concise-section">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header" style={{ marginBottom: '3rem' }}>
           <div className="why-section-pill">
             <span>Why Choose eXpend</span>
           </div>
 
-          <h2 className="section-title">
-            100% Offline. <br />
+          <h2 className="section-title" style={{ marginBottom: '0.5rem' }}>
+            Built For Privacy. <br />
             <span style={{ color: '#4C74DB' }}>Zero Subscriptions.</span>
           </h2>
-
-          <p className="section-description" style={{ maxWidth: '620px', margin: '0 auto' }}>
-            No accounts, no cloud servers, and no recurring fees. Built around two simple promises: pure privacy and true ownership.
-          </p>
         </div>
 
-        {/* =======================================================
-            BLOCK 1: 100% OFFLINE & PRIVATE (TOP HERO BLOCK)
-        ======================================================= */}
-        <div className="why-stacked-block block-privacy">
-          {/* Left Column: Core Privacy Manifesto */}
-          <div className="block-lead-column">
-            <div className="lead-badge-row">
-              <div className="lead-icon-box icon-green">
-                <LockIcon size={28} color="#0BB190" />
-              </div>
-              <span className="lead-badge-pill pill-green">
-                100% Offline & Private
-              </span>
+        {/* 2 Concise, Punchy Stacked Cards */}
+        <div className="why-concise-container">
+          {/* Card 1: 100% Offline & Private */}
+          <div className="why-punchy-card card-green-theme">
+            <div className="punchy-icon-box icon-box-green">
+              <LockIcon size={32} color="#0BB190" />
             </div>
 
-            <h3 className="lead-title">
-              Your Financial Data Stays On Your Device.
-            </h3>
+            <div className="punchy-text-content">
+              <span className="punchy-kicker kicker-green">Privacy First</span>
+              <h3 className="punchy-headline">
+                100% Offline & Private. No Sign-Ups. No Ads.
+              </h3>
+              <p className="punchy-tagline">
+                Your data never leaves your device. No cloud sync, no tracking, and no third-party access.
+              </p>
 
-            <p className="lead-desc">
-              eXpend is engineered from day one to be 100% offline. We don't have user databases, telemetry servers, or analytics trackers. Your personal financial habits are private, secure, and entirely yours.
-            </p>
-          </div>
-
-          {/* Right Column: 4 Solid Color Feature Tiles */}
-          <div className="block-tiles-grid">
-            {privacyTiles.map((tile, idx) => (
-              <div
-                key={idx}
-                className="color-feature-tile"
-                style={{
-                  '--tile-color': tile.color,
-                  borderColor: `${tile.color}40`,
-                } as React.CSSProperties}
-              >
-                <div className="tile-top-row">
+              {/* Colorful Solid Pills */}
+              <div className="punchy-pills-wrap">
+                {privacyPills.map((pill, idx) => (
                   <span
-                    className="tile-tag-pill"
+                    key={idx}
+                    className="solid-badge-pill"
                     style={{
-                      color: tile.color,
-                      borderColor: `${tile.color}60`,
-                      backgroundColor: `${tile.color}15`,
+                      color: pill.color,
+                      borderColor: pill.color,
+                      backgroundColor: `${pill.color}15`,
                     }}
                   >
-                    {tile.tag}
+                    <CheckIcon size={12} color={pill.color} />
+                    <span>{pill.label}</span>
                   </span>
-                  <div
-                    className="tile-check-dot"
-                    style={{ backgroundColor: tile.color }}
-                  >
-                    <CheckIcon size={11} color="#172036" />
-                  </div>
-                </div>
-
-                <h4 className="tile-title" style={{ color: '#FFFFFF' }}>
-                  {tile.title}
-                </h4>
-
-                <p className="tile-desc">
-                  {tile.desc}
-                </p>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
 
-        {/* =======================================================
-            BLOCK 2: NO SUBSCRIPTIONS / ONE-TIME PURCHASE (BELOW BLOCK 1)
-        ======================================================= */}
-        <div className="why-stacked-block block-ownership">
-          {/* Left Column: Core Ownership Manifesto */}
-          <div className="block-lead-column">
-            <div className="lead-badge-row">
-              <div className="lead-icon-box icon-blue">
-                <DiamondIcon size={28} color="#4C74DB" />
-              </div>
-              <span className="lead-badge-pill pill-blue">
-                One-Time Purchase • No Subscriptions
-              </span>
+          {/* Card 2: One-Time Purchase, Premium Forever */}
+          <div className="why-punchy-card card-blue-theme">
+            <div className="punchy-icon-box icon-box-blue">
+              <DiamondIcon size={32} color="#4C74DB" />
             </div>
 
-            <h3 className="lead-title">
-              Pay Once. Keep It Forever.
-            </h3>
+            <div className="punchy-text-content">
+              <span className="punchy-kicker kicker-blue">True Ownership</span>
+              <h3 className="punchy-headline">
+                One-Time Purchase. Premium Forever.
+              </h3>
+              <p className="punchy-tagline">
+                Say goodbye to monthly fees. Pay once to unlock the full, unrestricted experience forever.
+              </p>
 
-            <p className="lead-desc">
-              No subscription fatigue. Enjoy the complete, unrestricted feature set of eXpend with a single one-time lifetime purchase. Complete data ownership with local backup and CSV export.
-            </p>
-          </div>
-
-          {/* Right Column: 4 Solid Color Feature Tiles */}
-          <div className="block-tiles-grid">
-            {ownershipTiles.map((tile, idx) => (
-              <div
-                key={idx}
-                className="color-feature-tile"
-                style={{
-                  '--tile-color': tile.color,
-                  borderColor: `${tile.color}40`,
-                } as React.CSSProperties}
-              >
-                <div className="tile-top-row">
+              {/* Colorful Solid Pills */}
+              <div className="punchy-pills-wrap">
+                {purchasePills.map((pill, idx) => (
                   <span
-                    className="tile-tag-pill"
+                    key={idx}
+                    className="solid-badge-pill"
                     style={{
-                      color: tile.color,
-                      borderColor: `${tile.color}60`,
-                      backgroundColor: `${tile.color}15`,
+                      color: pill.color,
+                      borderColor: pill.color,
+                      backgroundColor: `${pill.color}15`,
                     }}
                   >
-                    {tile.tag}
+                    <CheckIcon size={12} color={pill.color} />
+                    <span>{pill.label}</span>
                   </span>
-                  <div
-                    className="tile-check-dot"
-                    style={{ backgroundColor: tile.color }}
-                  >
-                    <CheckIcon size={11} color="#172036" />
-                  </div>
-                </div>
-
-                <h4 className="tile-title" style={{ color: '#FFFFFF' }}>
-                  {tile.title}
-                </h4>
-
-                <p className="tile-desc">
-                  {tile.desc}
-                </p>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
