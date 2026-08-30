@@ -210,9 +210,10 @@ a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
-/* --- EMANATING FINANCE HIGHLIGHTS (STRICTLY ON LEFT & RIGHT SIDES OF SCREENSHOT) --- */
+/* --- EMANATING FINANCE HIGHLIGHTS (STRICTLY ON SIDES) --- */
 
 /* 1. Radiant Backlight Aura Glow (Reveals at T = 2.1s) */
 .phone-backlight-aura {
@@ -228,6 +229,7 @@ a:hover {
   pointer-events: none;
   z-index: 1;
   opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.45s ease, filter 0.45s ease;
   animation: auraFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both,
              auraPulse 6s ease-in-out 3.3s infinite alternate;
 }
@@ -242,6 +244,7 @@ a:hover {
   pointer-events: none;
   z-index: 2;
   opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.45s ease, box-shadow 0.45s ease;
 }
 
 .phone-emanating-ring.ring-1 {
@@ -272,6 +275,7 @@ a:hover {
   justify-content: center;
   filter: drop-shadow(0 0 16px var(--accent-light)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
   opacity: 0;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.45s ease;
 }
 
 /* 1. Bank Icon: Upper-Left Side (Y = 24%, X = -65px) */
@@ -306,6 +310,7 @@ a:hover {
              financeFloat1 5.4s ease-in-out 3.49s infinite alternate;
 }
 
+/* Phone Mockup Frame */
 .phone-mockup {
   position: relative;
   z-index: 4;
@@ -315,6 +320,7 @@ a:hover {
   background: #172036;
   border: 3.5px solid var(--accent-color);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 40px var(--accent-glow);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease;
 }
 
 .phone-screen {
@@ -330,6 +336,57 @@ a:hover {
   height: auto;
   display: block;
   object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =======================================================
+   HOVER INTERACTION: BREATHING EXPANSION & SHINE BLOOM
+======================================================= */
+.phone-anchor:hover .phone-mockup {
+  transform: translateY(-8px) scale(1.035);
+  border-color: var(--accent-light);
+  box-shadow: 0 32px 64px rgba(0, 0, 0, 0.8), 0 0 55px rgba(112, 148, 240, 0.55);
+}
+
+.phone-anchor:hover .phone-screen img {
+  transform: scale(1.015);
+}
+
+.phone-anchor:hover .phone-backlight-aura {
+  transform: translate(-50%, -50%) scale(1.22);
+  opacity: 1;
+  filter: blur(38px);
+}
+
+.phone-anchor:hover .phone-emanating-ring.ring-1 {
+  transform: translate(-50%, -50%) scale(1.09);
+  border-color: rgba(112, 148, 240, 0.65);
+  box-shadow: 0 0 32px rgba(76, 116, 219, 0.45);
+}
+
+.phone-anchor:hover .phone-emanating-ring.ring-2 {
+  transform: translate(-50%, -50%) scale(1.12);
+  border-color: rgba(76, 116, 219, 0.5);
+}
+
+.phone-anchor:hover .icon-bank {
+  transform: translate(-10px, -6px) scale(1.18);
+  filter: drop-shadow(0 0 22px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
+}
+
+.phone-anchor:hover .icon-wallet {
+  transform: translate(10px, -6px) scale(1.18);
+  filter: drop-shadow(0 0 22px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
+}
+
+.phone-anchor:hover .icon-piggy {
+  transform: translate(-12px, 4px) scale(1.18);
+  filter: drop-shadow(0 0 22px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
+}
+
+.phone-anchor:hover .icon-card {
+  transform: translate(12px, 4px) scale(1.18);
+  filter: drop-shadow(0 0 22px #93B4FF) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
 }
 
 /* --- HERO SECTION PERIMETER & SIDE SHAPES --- */
@@ -556,15 +613,6 @@ a:hover {
   }
   100% {
     transform: translateY(-7px) scale(1.04) rotate(5deg);
-  }
-}
-
-@keyframes financeFloat4 {
-  0% {
-    transform: translateY(0) scale(1) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-7px) scale(1.04) rotate(-5deg);
   }
 }
 
