@@ -212,7 +212,7 @@ a:hover {
   align-items: center;
 }
 
-/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (INTENTIONALLY NON-AXIS-ALIGNED) --- */
+/* --- EMANATING FINANCE HIGHLIGHTS & RADIANT AURA (EXPANSIVE VARIED-DEPTH SCATTER) --- */
 
 /* 1. Radiant Backlight Aura Glow (Reveals at T = 2.1s) */
 .phone-backlight-aura {
@@ -262,7 +262,7 @@ a:hover {
              ringEmanateDashed 7s ease-in-out 3.45s infinite alternate;
 }
 
-/* 3. Emanating Pure Vector Finance Icons (Intentionally Non-Axis-Aligned, Floating Clear of Phone) */
+/* 3. Emanating Pure Vector Finance Icons (Varied-Depth Distances & Non-Axis-Aligned) */
 .emanating-finance-icon {
   position: absolute;
   z-index: 5;
@@ -274,60 +274,60 @@ a:hover {
   opacity: 0;
 }
 
-/* 1. Bank Icon: High Upper-Left (Y = -55px, X = -25px) */
+/* 1. Bank Icon: Far Upper-Left Peak (Y = -85px, X = -110px — Placed Farther Out) */
 .icon-bank {
-  top: -55px;
-  left: -25px;
+  top: -85px;
+  left: -110px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both,
-             financeFloat1 5.2s ease-in-out 3.25s infinite alternate;
+             financeFloat1 5.4s ease-in-out 3.25s infinite alternate;
 }
 
-/* 2. Wallet Icon: Upper-Right Accent (Y = -30px, X = -65px) */
+/* 2. Wallet Icon: Medium Upper-Right (Y = -45px, X = -85px) */
 .icon-wallet {
-  top: -30px;
-  right: -65px;
+  top: -45px;
+  right: -85px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.46s both,
-             financeFloat2 5.5s ease-in-out 3.31s infinite alternate;
+             financeFloat2 5.6s ease-in-out 3.31s infinite alternate;
 }
 
-/* 3. Tax Icon: Mid-Upper Left (Y = 22%, X = -75px) */
+/* 3. Tax Icon: Near Mid-Upper Left (Y = 18%, X = -50px — Close-in Accent) */
 .icon-tax {
-  top: 22%;
-  left: -75px;
+  top: 18%;
+  left: -50px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.52s both,
-             financeFloat3 5.8s ease-in-out 3.37s infinite alternate;
+             financeFloat3 5.0s ease-in-out 3.37s infinite alternate;
 }
 
-/* 4. Tag Icon: Mid-Right Accent (Y = 42%, X = -55px) */
+/* 4. Tag Icon: Far Mid-Right (Y = 38%, X = -125px — Placed Farther Out) */
 .icon-tag {
-  top: 42%;
-  right: -55px;
+  top: 38%;
+  right: -125px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.58s both,
-             financeFloat4 4.9s ease-in-out 3.43s infinite alternate;
+             financeFloat4 6.2s ease-in-out 3.43s infinite alternate;
 }
 
-/* 5. Piggy Bank Icon: Lower-Mid Left (Y = 58%, X = -60px) */
+/* 5. Piggy Bank Icon: Far Lower-Mid Left (Y = 65%, X = -120px — Placed Farther Out) */
 .icon-piggy {
-  top: 58%;
-  left: -60px;
+  top: 65%;
+  left: -120px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both,
-             financeFloat2 6.1s ease-in-out 3.49s infinite alternate;
+             financeFloat2 5.8s ease-in-out 3.49s infinite alternate;
 }
 
-/* 6. Card Icon: Lower-Right Accent (Y = 76%, X = -72px) */
+/* 6. Card Icon: Medium Lower-Right (Y = 78%, X = -95px) */
 .icon-card {
-  top: 76%;
-  right: -72px;
+  top: 78%;
+  right: -95px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.70s both,
-             financeFloat1 5.3s ease-in-out 3.55s infinite alternate;
+             financeFloat1 5.2s ease-in-out 3.55s infinite alternate;
 }
 
-/* 7. Coin Icon: Bottom-Center-Left (Y = 106% / bottom: -40px, X = +15px) */
+/* 7. Coin Icon: Near Bottom-Left Base (Y = bottom: -45px, X = +35px — Close-in Accent) */
 .icon-coin {
-  bottom: -40px;
-  left: 15px;
+  bottom: -45px;
+  left: 35px;
   animation: financeIconPopIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.76s both,
-             financeFloat3 4.7s ease-in-out 3.61s infinite alternate;
+             financeFloat3 4.6s ease-in-out 3.61s infinite alternate;
 }
 
 .phone-mockup {
@@ -1003,32 +1003,32 @@ a:hover {
     height: 510px;
   }
   .icon-bank {
-    top: -35px;
-    left: -15px;
+    top: -45px;
+    left: -45px;
   }
   .icon-wallet {
-    top: -20px;
-    right: -25px;
+    top: -25px;
+    right: -45px;
   }
   .icon-tax {
-    top: 20%;
-    left: -35px;
+    top: 18%;
+    left: -25px;
   }
   .icon-tag {
-    top: 40%;
-    right: -30px;
+    top: 38%;
+    right: -48px;
   }
   .icon-piggy {
-    top: 58%;
-    left: -32px;
+    top: 65%;
+    left: -48px;
   }
   .icon-card {
-    top: 76%;
-    right: -35px;
+    top: 78%;
+    right: -45px;
   }
   .icon-coin {
     bottom: -28px;
-    left: 10px;
+    left: 20px;
   }
   .hero-shape-top-left {
     width: 160px;
