@@ -110,30 +110,37 @@ a:hover {
   cursor: default;
 }
 
-.logo-bounding-box {
+.logo-frame {
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* SQUIRCLE BACKGROUND LAYER - ONLY THIS ROTATES & MORPHS */
+.logo-squircle-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: #282f40;
   border-radius: 34px;
   border: 2px solid rgba(76, 116, 219, 0.45);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 25px rgba(76, 116, 219, 0.3);
 }
 
-.logo-bounding-box.spin-initial {
-  animation: logoSetupWizardSpin 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.logo-squircle-bg.spin-initial {
+  animation: logoSquircleSpin 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-.logo-bounding-box.spin-manual {
-  animation: logoSetupWizardSpin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+.logo-squircle-bg.spin-manual {
+  animation: logoSquircleSpin 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Inner Logo Graphic - DOES NOT ROTATE, only scales */
+/* INNER LOGO IMAGE LAYER - STAYS COMPLETELY UPRIGHT (NO ROTATION) */
 .logo-inner-img {
   display: block;
   object-fit: contain;
-  animation: logoInnerScale 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: logoScaleOnly 1.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .logo-brand-text {
@@ -159,8 +166,8 @@ a:hover {
   color: var(--text-secondary);
 }
 
-/* Keyframes for Setup Wizard Squircle Rotation and Color Transition */
-@keyframes logoSetupWizardSpin {
+/* Keyframes for Squircle Rotation & Color Transition */
+@keyframes logoSquircleSpin {
   0% {
     transform: rotate(-360deg) scale(0.6);
     border-radius: 50%;
@@ -184,8 +191,8 @@ a:hover {
   }
 }
 
-/* Inner logo scale ONLY (no rotation) */
-@keyframes logoInnerScale {
+/* Keyframes for Logo Scale ONLY (Strictly zero rotation) */
+@keyframes logoScaleOnly {
   0% {
     transform: scale(0.65);
     opacity: 0;

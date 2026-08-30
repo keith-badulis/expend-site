@@ -11,7 +11,6 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
 
   const triggerAnimation = () => {
     setIsSpinning(false);
-    // Force DOM reflow to re-trigger CSS animation
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         setIsSpinning(true);
@@ -32,21 +31,43 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
         userSelect: 'none',
       }}
     >
-      {/* Outer Spring Rotating Rounded Square Box (Only this rotates & transitions color) */}
+      {/* 
+        Parent Frame: Stays completely static.
+        Houses two independent sibling layers:
+        1. The squircle background that spins & morphs.
+        2. The inner logo image that stays strictly upright.
+      */}
       <div
-        className={`logo-bounding-box ${isSpinning ? 'spin-manual' : 'spin-initial'}`}
+        className="logo-frame"
         style={{
+          position: 'relative',
           width: `${size}px`,
           height: `${size}px`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
         }}
       >
-        {/* Inner App Logo Graphic (Does NOT rotate; shifted slightly right so the circular part aligns with the squircle) */}
+        {/* Layer 1: Animated Rotating Squircle Background */}
         <div
+          className={`logo-squircle-bg ${isSpinning ? 'spin-manual' : 'spin-initial'}`}
           style={{
-            transform: `translateX(${Math.ceil(size * 0.04)}px)`,
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+          }}
+        />
+
+        {/* Layer 2: Static Upright Logo Image (Subtle ~2px optical center shift) */}
+        <div
+          className="logo-graphic-wrapper"
+          style={{
+            position: 'relative',
+            zIndex: 2,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            transform: 'translateX(2px)',
           }}
         >
           <img
@@ -54,8 +75,10 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({ size = 104, showText
             alt="eXpend Logo"
             className="logo-inner-img"
             style={{
-              width: `${Math.round(size * 0.65)}px`,
-              height: `${Math.round(size * 0.65)}px`,
+              width: `${Math.round(size * 0.66)}px`,
+              height: `${Math.round(size * 0.66)}px`,
+              display: 'block',
+              objectFit: 'contain',
             }}
           />
         </div>
