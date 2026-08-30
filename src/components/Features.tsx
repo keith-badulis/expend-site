@@ -1,7 +1,7 @@
 import React from 'react';
 import accountsImg from '../assets/screenshots/IMG_2305.png';
 import budgetImg from '../assets/screenshots/IMG_2304.png';
-import reportsImg from '../assets/screenshots/IMG_2308.png';
+import profileDashboardImg from '../assets/screenshots/IMG_2309.png';
 import addTxImg from '../assets/screenshots/IMG_2301.png';
 import txListImg from '../assets/screenshots/IMG_2303.png';
 import weeklyImg from '../assets/screenshots/IMG_2306.png';
@@ -11,7 +11,7 @@ import {
   StonksIcon,
   LightningBoltIcon,
   TagIcon,
-  BorrowIcon,
+  ProfileIcon,
   DescriptionIcon,
 } from './icons';
 
@@ -36,13 +36,13 @@ const leftColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Accounts Summary and Net Worth screen',
   },
   {
-    icon: <StonksIcon size={16} color="var(--accent-light)" />,
-    badge: 'Filtered & Detailed Reports',
-    title: 'Analyze Spending Habits With Charts',
-    description: 'Get deeper insights with filtered and detailed report views. Interactive cashflow curves and categorical spending breakdowns reveal where your money goes.',
-    tags: ['Cashflow Curves', 'Category Breakdown', 'Filtered Views'],
-    image: reportsImg,
-    imageAlt: 'eXpend Filtered Reports with interactive cashflow chart',
+    icon: <ProfileIcon size={16} color="var(--accent-light)" />,
+    badge: 'Personalized Dashboard',
+    title: 'Everything Accessible in One Place',
+    description: 'You decide which important information takes the spotlight. See your wallets, savings goals, and debts at a single glance with a customizable overview.',
+    tags: ['At-a-Glance View', 'Goals & Milestones', 'Debt Tracking'],
+    image: profileDashboardImg,
+    imageAlt: 'eXpend Profile and Dashboard with Wallets, Goals, and Debts',
   },
   {
     icon: <TagIcon size={16} color="var(--accent-light)" />,
@@ -60,8 +60,8 @@ const rightColItems: GalleryItemData[] = [
     icon: <PiggyBankIcon size={16} color="var(--accent-light)" />,
     badge: 'Flexible Budget Planning',
     title: 'Set Spending Limits & Stay Within Targets',
-    description: 'Set spending limits by category and stay within your monthly targets with clear visual progress bars, projected totals, and instant status indicators.',
-    tags: ['Spending Limits', 'Monthly Targets', 'Projected Totals'],
+    description: 'Set custom spending limits by category across flexible budget periods. Stay in control with clear visual progress bars, projected totals, and instant status indicators.',
+    tags: ['Spending Limits', 'Flexible Periods', 'Projected Totals'],
     image: budgetImg,
     imageAlt: 'eXpend Budget Details and spending status screen',
   },
@@ -75,11 +75,11 @@ const rightColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
   },
   {
-    icon: <BorrowIcon size={16} color="var(--accent-light)" />,
-    badge: 'Comprehensive Debt & Milestones',
-    title: 'Track Debts, Goals & Weekly Rhythm',
-    description: 'Mindfully track all your debts (both payable and receivable), monitor savings progress milestones, and compare weekly income vs expense balance.',
-    tags: ['Debt Management', 'Smart Goal Tracking', 'Weekly Trends'],
+    icon: <StonksIcon size={16} color="var(--accent-light)" />,
+    badge: 'Customizable Spending Reports',
+    title: 'Gain Actionable Spending Insights',
+    description: 'Gain clear insights on your spending by viewing easy-to-digest, customizable reports that let you stay firmly in charge of your finances. Compare income against expenses and analyze weekly trends.',
+    tags: ['Actionable Insights', 'Weekly Breakdown', 'Income vs Expense'],
     image: weeklyImg,
     imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
   },

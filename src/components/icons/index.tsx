@@ -357,6 +357,38 @@ export const BorrowIcon: React.FC<IconProps> = ({
   </svg>
 );
 
+export const ProfileIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <circle
+      cx={49.999}
+      cy={30.729}
+      r={14.063}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M77.083 64.746a12.663 12.663 0 0 0-12.662-12.663h-28.84a12.663 12.663 0 0 0-12.662 12.663v14.421a4.166 4.166 0 0 0 4.166 4.166h45.832a4.166 4.166 0 0 0 4.166-4.166V64.746Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
 export const StarFilledIcon: React.FC<IconProps> = ({
   size = 20,
   color = '#FFB800',
