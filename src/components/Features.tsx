@@ -1,6 +1,5 @@
 import React from 'react';
 import addTxImg from '../assets/screenshots/IMG_2301.png';
-import txListImg from '../assets/screenshots/IMG_2303.png';
 import budgetImg from '../assets/screenshots/IMG_2304.png';
 import filteredReportsImg from '../assets/screenshots/IMG_2308.png';
 import accountsImg from '../assets/screenshots/IMG_2305.png';
@@ -8,7 +7,6 @@ import weeklyReportsImg from '../assets/screenshots/IMG_2306.png';
 import profileDashboardImg from '../assets/screenshots/IMG_2309.png';
 import {
   LightningBoltIcon,
-  TransactionsIcon,
   PiggyBankIcon,
   FilterIcon,
   ReportIcon,
@@ -38,6 +36,27 @@ const leftColItems: GalleryItemData[] = [
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
   },
   {
+    icon: <FilterIcon size={16} color="var(--accent-light)" />,
+    badge: 'Filtered Reports',
+    title: 'View Records Your Way With Flexible Filters',
+    description: 'Flexibly filter your transactions to see where you can improve. Interactive cashflow curves and categorical breakdowns calculate totals automatically.',
+    tags: ['Flexible Filters', 'Automatic Totals', 'Cashflow Curves'],
+    image: filteredReportsImg,
+    imageAlt: 'eXpend Filtered Reports screen with cashflow timeline chart',
+  },
+  {
+    icon: <StonksIcon size={16} color="var(--accent-light)" />,
+    badge: 'Customizable Spending Reports',
+    title: 'Gain Actionable Spending Insights',
+    description: 'Gain clear insights on your spending by viewing easy-to-digest, customizable reports that let you stay firmly in charge of your finances. Compare income against expenses and analyze weekly trends.',
+    tags: ['Actionable Insights', 'Weekly Breakdown', 'Income vs Expense'],
+    image: weeklyReportsImg,
+    imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
+  },
+];
+
+const rightColItems: GalleryItemData[] = [
+  {
     icon: <PiggyBankIcon size={16} color="var(--accent-light)" />,
     badge: 'Flexible Budget Planning',
     title: 'Set Spending Limits & Stay Within Targets',
@@ -63,36 +82,6 @@ const leftColItems: GalleryItemData[] = [
     tags: ['At-a-Glance View', 'Goals & Milestones', 'Debt Tracking'],
     image: profileDashboardImg,
     imageAlt: 'eXpend Profile and Dashboard with Wallets, Goals, and Debts',
-  },
-];
-
-const rightColItems: GalleryItemData[] = [
-  {
-    icon: <TransactionsIcon size={16} color="var(--accent-light)" />,
-    badge: 'Transaction Timeline',
-    title: 'Complete Transaction Timeline',
-    description: 'View your full financial history with planned transactions, custom tags, and detailed notes all organized chronologically for effortless review.',
-    tags: ['Chronological Timeline', 'Planned Transactions', 'Grouped Tags'],
-    image: txListImg,
-    imageAlt: 'eXpend All Transactions list with planned transactions and tags',
-  },
-  {
-    icon: <FilterIcon size={16} color="var(--accent-light)" />,
-    badge: 'Filtered Reports',
-    title: 'View Records Your Way With Flexible Filters',
-    description: 'Flexibly filter your transactions to see where you can improve. Interactive cashflow curves and categorical breakdowns calculate totals automatically.',
-    tags: ['Flexible Filters', 'Automatic Totals', 'Cashflow Curves'],
-    image: filteredReportsImg,
-    imageAlt: 'eXpend Filtered Reports screen with cashflow timeline chart',
-  },
-  {
-    icon: <StonksIcon size={16} color="var(--accent-light)" />,
-    badge: 'Customizable Spending Reports',
-    title: 'Gain Actionable Spending Insights',
-    description: 'Gain clear insights on your spending by viewing easy-to-digest, customizable reports that let you stay firmly in charge of your finances. Compare income against expenses and analyze weekly trends.',
-    tags: ['Actionable Insights', 'Weekly Breakdown', 'Income vs Expense'],
-    image: weeklyReportsImg,
-    imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
   },
 ];
 
@@ -135,7 +124,7 @@ export const Features: React.FC = () => {
           </p>
         </div>
 
-        {/* 2-Column Staggered Exhibition Gallery */}
+        {/* 2-Column Staggered Exhibition Gallery (3 in Left, 3 in Right) */}
         <div className="gallery-staggered-grid">
           {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
           <div className="gallery-column gallery-col-left">
