@@ -30,7 +30,7 @@ export const Footer: React.FC = () => {
 
           {/* Muted Copyright */}
           <p className="footer-copyright">
-            © {new Date().getFullYear()} eXpend. Developed by Subdial. All rights reserved.
+            © {new Date().getFullYear()} eXpend. Developed by subdial. All rights reserved.
           </p>
         </div>
       </div>
