@@ -1,93 +1,68 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import appIcon from '../assets/app-icon.png';
+import { LockIcon, SparklesIcon, DiamondIcon } from './icons';
 
 export const CtaSection: React.FC = () => {
   return (
-    <section id="download" className="section" style={{ position: 'relative' }}>
+    <section id="download" className="section cta-clean-section">
       <div className="container">
-        <div
-          className="bold-card"
-          style={{
-            padding: 'clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem)',
-            background: 'linear-gradient(145deg, #172036 0%, #1F2A47 100%)',
-            border: '3.5px solid var(--accent-color)',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow)',
-            textAlign: 'center',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
-          {/* Shapes inside the card, clipped to corners */}
-          <div
-            className="edge-shape ring"
-            style={{
-              width: '300px',
-              height: '300px',
-              top: '-120px',
-              right: '-100px',
-            }}
-          />
-          <div
-            className="edge-shape square"
-            style={{
-              width: '180px',
-              height: '180px',
-              bottom: '-70px',
-              left: '-50px',
-            }}
-          />
+        <div className="cta-banner-card">
+          {/* Subtle Ambient Backlight */}
+          <div className="cta-ambient-glow" />
 
-          <div style={{ position: 'relative', zIndex: 2, maxWidth: '640px', margin: '0 auto' }}>
-            <div style={{ display: 'inline-block', marginBottom: '1.5rem' }}>
+          <div className="cta-inner-content">
+            {/* App Icon */}
+            <div className="cta-icon-wrapper">
               <img
                 src={appIcon}
                 alt="eXpend App Icon"
-                style={{
-                  width: '84px',
-                  height: '84px',
-                  borderRadius: '22px',
-                  border: '3.5px solid var(--accent-color)',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5), 0 0 25px var(--accent-glow)',
-                }}
+                className="cta-app-icon-img"
               />
             </div>
 
-            <h2 style={{
-              fontSize: 'clamp(2.2rem, 4.5vw, 3rem)',
-              fontWeight: 900,
-              marginBottom: '1rem',
-              letterSpacing: '-0.025em',
-            }}>
-              Embrace the Simplicity of <br />
-              <span style={{ color: 'var(--accent-light)' }}>eXpend Today</span>
+            {/* Kicker Pill */}
+            <div className="clean-section-pill" style={{ marginBottom: '1.25rem' }}>
+              Start In Seconds
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="cta-headline">
+              Make Budgeting a Habit. <br />
+              <span style={{ color: 'var(--accent-light)' }}>Download eXpend Today.</span>
             </h2>
 
-            <p style={{
-              fontSize: '1.12rem',
-              lineHeight: 1.65,
-              color: 'var(--text-secondary)',
-              marginBottom: '2.5rem',
-            }}>
-              Ditch the spreadsheets and notebooks. Start mindful financial journaling and take control of your money—100% private and secure on your device.
+            {/* Subtext */}
+            <p className="cta-description">
+              Take control of your daily finances with a fast, distraction-free expense tracker designed to keep you consistent. 100% offline, zero ads, and no monthly subscriptions.
             </p>
 
-            <div style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginBottom: '1.75rem',
-            }}>
+            {/* Store Download Badges */}
+            <div className="cta-badges-wrap">
               <StoreBadges />
             </div>
 
-            <p style={{
-              fontSize: '0.92rem',
-              color: 'var(--text-muted)',
-              fontWeight: 700,
-              margin: 0,
-            }}>
-              Private & Secure • Zero Subscriptions • Complete Data Freedom
-            </p>
+            {/* Feature Guarantee Micro-Pills */}
+            <div className="cta-guarantee-pills">
+              <span className="cta-guarantee-item">
+                <LockIcon size={14} color="#0BB190" />
+                <span>100% Offline & Private</span>
+              </span>
+
+              <span className="cta-guarantee-separator">•</span>
+
+              <span className="cta-guarantee-item">
+                <SparklesIcon size={14} color="#9957BD" />
+                <span>No Ads or Sign-Ups</span>
+              </span>
+
+              <span className="cta-guarantee-separator">•</span>
+
+              <span className="cta-guarantee-item">
+                <DiamondIcon size={14} color="#4C74DB" />
+                <span>Pay Once, Own Forever</span>
+              </span>
+            </div>
           </div>
         </div>
       </div>

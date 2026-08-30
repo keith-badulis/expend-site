@@ -1028,6 +1028,102 @@ a:hover {
   color: var(--text-muted);
 }
 
+/* =======================================================
+   CTA SECTION (CLEAN MATTE ELEVATED BANNER)
+======================================================= */
+.cta-clean-section {
+  padding: 5.5rem 0 6.5rem 0;
+  position: relative;
+}
+
+.cta-banner-card {
+  background: linear-gradient(145deg, #172036 0%, #1c2742 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+}
+
+.cta-ambient-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(76, 116, 219, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(50px);
+}
+
+.cta-inner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 660px;
+  margin: 0 auto;
+}
+
+.cta-icon-wrapper {
+  display: inline-flex;
+  margin-bottom: 1.25rem;
+}
+
+.cta-app-icon-img {
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(76, 116, 219, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.cta-headline {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.cta-description {
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 2.25rem;
+}
+
+.cta-badges-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.cta-guarantee-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.cta-guarantee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.cta-guarantee-separator {
+  color: rgba(255, 255, 255, 0.2);
+}
+
 /* Official Crisp Vector Store Badge Buttons */
 .store-badges-container {
   display: flex;
@@ -1202,5 +1298,16 @@ a:hover {
   }
   .clean-review-card {
     padding: 1.75rem 1.35rem;
+  }
+  .cta-banner-card {
+    padding: 2.5rem 1.25rem;
+    border-radius: 22px;
+  }
+  .cta-guarantee-separator {
+    display: none;
+  }
+  .cta-guarantee-pills {
+    flex-direction: column;
+    gap: 0.6rem;
   }
 }
