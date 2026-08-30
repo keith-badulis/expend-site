@@ -96,13 +96,15 @@ export const Hero: React.FC = () => {
                 <CardIcon size={34} color="var(--accent-light)" />
               </div>
 
-              {/* 4. Phone Device Container (Reveals gracefully at T = 1.25s) */}
-              <div className="phone-mockup phone-reveal">
-                <div className="phone-screen">
-                  <img
-                    src={appScreenImg}
-                    alt="eXpend App Home Screen"
-                  />
+              {/* 4. Phone Device Container (Separated entrance reveal & interactive mockup) */}
+              <div className="phone-device-container phone-reveal">
+                <div className="phone-mockup">
+                  <div className="phone-screen">
+                    <img
+                      src={appScreenImg}
+                      alt="eXpend App Home Screen"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
