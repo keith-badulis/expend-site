@@ -267,7 +267,7 @@ a:hover {
   width: 100%;
   height: 100%;
   background: #172138;
-  border-radius: 38px;
+  border-radius: 22.5%;
   border: 1.5px solid rgba(76, 116, 219, 0.3);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
 }
@@ -765,7 +765,7 @@ a:hover {
   }
   100% {
     transform: rotate(0deg) scale(1);
-    border-radius: 38px;
+    border-radius: 22.5%;
     opacity: 1;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
@@ -1695,7 +1695,7 @@ a:hover {
   z-index: 50;
   background-color: #ffffff;
   border-bottom: 1px solid #e1e4e8;
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1.25rem;
 }
 
 .privacy-top-bar-inner {
@@ -1703,65 +1703,25 @@ a:hover {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
-.privacy-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: transparent;
-  border: 1px solid #d1d5da;
-  border-radius: 6px;
-  padding: 0.4rem 0.85rem;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #24292e;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.privacy-back-btn:hover {
-  background-color: #f3f4f6;
-  border-color: #c0c4c8;
-}
-
-.privacy-brand-link {
+.privacy-back-link {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  text-decoration: none;
-}
-
-.privacy-brand-mini-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
-}
-
-.privacy-brand-name {
-  font-size: 1.15rem;
-  font-weight: 700;
   color: #24292e;
-}
-
-.privacy-close-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: 1px solid #d1d5da;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.35rem 0.65rem;
   border-radius: 6px;
-  width: 34px;
-  height: 34px;
-  color: #586069;
-  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.privacy-close-btn:hover {
+.privacy-back-link:hover {
   background-color: #f3f4f6;
-  color: #24292e;
+  color: #0366d6;
 }
 
 .privacy-main-content {
@@ -1774,7 +1734,7 @@ a:hover {
   background-color: #ffffff;
   padding: 48px;
   border: 1px solid #e1e4e8;
-  border-radius: 8px;
+  border-radius: 12px;
   box-shadow: 0 1px 3px rgba(27, 31, 35, 0.08), 0 1px 2px rgba(27, 31, 35, 0.12);
 }
 
@@ -1786,8 +1746,8 @@ a:hover {
 .privacy-doc-app-icon {
   width: 72px;
   height: 72px;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 22.5%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
   margin-bottom: 1rem;
 }
 

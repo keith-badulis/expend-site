@@ -10,7 +10,8 @@ export const PrivacyPolicy: React.FC = () => {
     document.title = 'Privacy Policy - eXpend';
   }, []);
 
-  const handleBack = () => {
+  const handleBack = (e: React.MouseEvent) => {
+    e.preventDefault();
     if (window.history.length > 1) {
       navigate(-1);
     } else {
@@ -20,28 +21,17 @@ export const PrivacyPolicy: React.FC = () => {
 
   return (
     <div className="privacy-page-root">
-      {/* Top Bar with Clean Back / Close Navigation */}
-      <div className="privacy-top-bar">
+      {/* Clean Single Back Navigation */}
+      <header className="privacy-top-bar">
         <div className="privacy-top-bar-inner">
-          <button onClick={handleBack} className="privacy-back-btn" aria-label="Go back">
+          <a href="/" onClick={handleBack} className="privacy-back-link">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
-            <span>Back</span>
-          </button>
-
-          <Link to="/" className="privacy-brand-link">
-            <img src={appIcon} alt="eXpend Icon" className="privacy-brand-mini-icon" />
-            <span className="privacy-brand-name">eXpend</span>
-          </Link>
-
-          <button onClick={handleBack} className="privacy-close-btn" aria-label="Close">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M18 6L6 18M6 6l12 12" />
-            </svg>
-          </button>
+            <span>Back to eXpend</span>
+          </a>
         </div>
-      </div>
+      </header>
 
       {/* Main White Document Container */}
       <main className="privacy-main-content">
@@ -180,9 +170,9 @@ export const PrivacyPolicy: React.FC = () => {
 
           {/* Bottom Back Button */}
           <div className="privacy-doc-footer">
-            <button onClick={handleBack} className="privacy-bottom-btn">
+            <a href="/" onClick={handleBack} className="privacy-bottom-btn">
               ← Return to eXpend
-            </button>
+            </a>
           </div>
         </div>
       </main>
