@@ -1016,41 +1016,33 @@ a:hover {
 }
 
 /* =======================================================
-   CTA SECTION (CLEAN MATTE ELEVATED BANNER)
+   CTA SECTION (OPEN & SPOTLIGHTED)
 ======================================================= */
-.cta-clean-section {
-  padding: 5.5rem 0 6.5rem 0;
-  position: relative;
-}
-
-.cta-banner-card {
-  background: linear-gradient(145deg, #172036 0%, #1c2742 100%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 28px;
-  padding: clamp(3rem, 6vw, 4.5rem) clamp(1.5rem, 5vw, 3.5rem);
+.cta-open-section {
+  padding: 6.5rem 0 7.5rem 0;
   position: relative;
   overflow: hidden;
   text-align: center;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
-.cta-ambient-glow {
+.cta-spotlight-aura {
   position: absolute;
-  width: 420px;
-  height: 420px;
+  width: 760px;
+  height: 620px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(76, 116, 219, 0.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.28) 0%, rgba(112, 148, 240, 0.1) 42%, transparent 72%);
+  filter: blur(65px);
   pointer-events: none;
-  filter: blur(50px);
+  z-index: 1;
 }
 
 .cta-inner-content {
   position: relative;
   z-index: 2;
-  max-width: 660px;
+  max-width: 680px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -1368,9 +1360,12 @@ a:hover {
   .clean-review-card {
     padding: 1.75rem 1.35rem;
   }
-  .cta-banner-card {
-    padding: 2.5rem 1.25rem;
-    border-radius: 22px;
+  .cta-open-section {
+    padding: 4.5rem 0 5.5rem 0;
+  }
+  .cta-spotlight-aura {
+    width: 440px;
+    height: 440px;
   }
   .cta-guarantee-separator {
     display: none;
