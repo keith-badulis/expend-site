@@ -551,6 +551,143 @@ a:hover {
   transform: rotate(12deg);
 }
 
+/* =======================================================
+   FEATURES BENTO SHOWCASE GRID & SCREENSHOT MOCKUPS
+======================================================= */
+.features-section {
+  padding: 6.5rem 0;
+  position: relative;
+}
+
+.features-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  width: 100%;
+}
+
+.feature-showcase-card {
+  background: var(--bg-card);
+  border: 2px solid rgba(76, 116, 219, 0.45);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-showcase-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), 0 0 35px var(--accent-glow);
+}
+
+.feature-showcase-card.card-wide {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.feature-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.feature-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(76, 116, 219, 0.15);
+  border: 1.5px solid var(--accent-color);
+  border-radius: 9999px;
+  color: var(--accent-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.25rem;
+}
+
+.feature-card-title {
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+.feature-card-desc {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.feature-tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.feature-tag-pill {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  background: rgba(23, 32, 54, 0.8);
+  border: 1px solid rgba(76, 116, 219, 0.35);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.feature-card-mockup-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.card-wide .feature-card-mockup-wrap {
+  margin-top: 0;
+}
+
+.feature-phone-frame {
+  position: relative;
+  width: 250px;
+  max-width: 100%;
+  border-radius: 28px;
+  padding: 6px;
+  background: #172036;
+  border: 3px solid rgba(76, 116, 219, 0.6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 25px rgba(76, 116, 219, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.feature-showcase-card:hover .feature-phone-frame {
+  transform: scale(1.02);
+  border-color: var(--accent-color);
+}
+
+.feature-screen-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  object-fit: cover;
+}
+
 /* Bold Card Styling */
 .bold-card {
   background: var(--bg-card);
@@ -567,20 +704,6 @@ a:hover {
   background: var(--bg-card-hover);
   box-shadow: 0 12px 32px var(--accent-glow);
   transform: translateY(-4px);
-}
-
-/* Features Component Elements */
-.feature-icon-box {
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
-  background-color: rgba(76, 116, 219, 0.15);
-  border: 2.5px solid var(--accent-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.65rem;
-  margin-bottom: 1.25rem;
 }
 
 /* Reviews Component Elements */
@@ -645,14 +768,14 @@ a:hover {
 
 /* Section Layout */
 .section {
-  padding: 5rem 0;
+  padding: 5.5rem 0;
   position: relative;
   z-index: 1;
 }
 
 .section-header {
   text-align: center;
-  max-width: 660px;
+  max-width: 680px;
   margin: 0 auto 3.5rem auto;
 }
 
@@ -699,6 +822,16 @@ a:hover {
   .store-badges-container {
     justify-content: center;
   }
+  .features-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .feature-showcase-card.card-wide {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
+  }
+  .feature-phone-frame {
+    width: 220px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -706,7 +839,7 @@ a:hover {
     padding: 0 1.25rem;
   }
   .section {
-    padding: 3.5rem 0;
+    padding: 4rem 0;
   }
   .phone-anchor {
     width: 260px;

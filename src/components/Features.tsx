@@ -1,107 +1,144 @@
 import React from 'react';
+import accountsImg from '../assets/screenshots/IMG_2305.png';
+import budgetImg from '../assets/screenshots/IMG_2304.png';
+import reportsImg from '../assets/screenshots/IMG_2308.png';
+import addTxImg from '../assets/screenshots/IMG_2301.png';
+import txListImg from '../assets/screenshots/IMG_2303.png';
+import weeklyImg from '../assets/screenshots/IMG_2306.png';
 
-interface FeatureItem {
-  icon: string;
+interface FeatureCardProps {
+  badge: string;
   title: string;
   description: string;
+  tags: string[];
+  image: string;
+  imageAlt: string;
+  isWide?: boolean;
 }
 
-const features: FeatureItem[] = [
+const featureItems: FeatureCardProps[] = [
   {
-    icon: '💳',
-    title: 'Accounts & Wallets',
-    description: 'Keep track of cash in hand, bank accounts, savings, and credit card cycles in one unified dashboard.',
+    badge: '💰 Multi-Account & Net Worth',
+    title: 'Track Every Account in One Place',
+    description: 'Monitor cash, bank accounts, digital wallets, debts, and savings. Real-time net worth calculation with seamless multi-currency support.',
+    tags: ['Net Worth', 'Multi-Currency', 'Asset & Debt Tracking'],
+    image: accountsImg,
+    imageAlt: 'eXpend Accounts Summary and Net Worth screen',
+    isWide: true,
   },
   {
-    icon: '📊',
-    title: 'Budget Planning',
-    description: 'Set realistic monthly spending limits for each category and see where your money goes with visual charts.',
+    badge: '📊 Smart Budgeting',
+    title: 'Stay On Track Automatically',
+    description: 'Set realistic monthly limits by category. Visual progress bars, projected totals, and instant "On Track" status prevent overspending before it happens.',
+    tags: ['Custom Categories', 'Projected Totals', 'Status Alerts'],
+    image: budgetImg,
+    imageAlt: 'eXpend Budget Details and spending status screen',
   },
   {
-    icon: '🎯',
-    title: 'Goals & Savings',
-    description: 'Create savings targets for vacations, emergency funds, or big purchases and watch your progress grow.',
+    badge: '📈 Visual Cashflow & Trends',
+    title: 'See Where Every Dollar Goes',
+    description: 'Interactive cashflow curves and categorical spending breakdowns reveal your financial habits clearly over custom date ranges.',
+    tags: ['Cashflow Curves', 'Category Bars', 'Filtered Reports'],
+    image: reportsImg,
+    imageAlt: 'eXpend Filtered Reports with interactive cashflow chart',
   },
   {
-    icon: '🤝',
-    title: 'Debts & Lendings',
-    description: 'Track money you owe and money people owe you with clear payment records and due dates.',
+    badge: '⚡ Lightning-Fast Entry',
+    title: 'Log Expenses in Under 3 Seconds',
+    description: 'A built-in calculator keypad lets you log purchases, split amounts, and pick wallets with zero friction.',
+    tags: ['Built-in Calculator', '1-Tap Wallets', 'Quick Split'],
+    image: addTxImg,
+    imageAlt: 'eXpend Add Transaction keypad and calculator screen',
   },
   {
-    icon: '⚡',
-    title: '1-Tap Templates',
-    description: 'Save your frequent everyday purchases to log morning coffee, commute, or lunch in less than two seconds.',
+    badge: '🏷️ Tags & Planned Bills',
+    title: 'Organize with Tags & Upcoming Bills',
+    description: 'Attach custom tags like #Impulse or #FundTransfer, search transactions instantly, and keep tabs on upcoming scheduled bills.',
+    tags: ['Custom Tags', 'Planned Transactions', 'Instant Search'],
+    image: txListImg,
+    imageAlt: 'eXpend All Transactions list with tag filters',
   },
   {
-    icon: '🔒',
-    title: '100% Private & Offline',
-    description: 'No accounts, no logins, and no servers. All your financial data stays strictly on your phone.',
+    badge: '🗓️ Weekly Rhythm Analytics',
+    title: 'Compare Weekly Income vs Expense',
+    description: 'Understand your monthly rhythm across each week with clean, comparative bar charts and income vs. expense balance.',
+    tags: ['Weekly Breakdown', 'Income vs Expense', '100% Offline Realm DB'],
+    image: weeklyImg,
+    imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
   },
 ];
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="section" style={{ position: 'relative' }}>
-      {/* Single shape anchored to bottom-right edge */}
+    <section id="features" className="section features-section">
+      {/* Background Accent Shapes */}
       <div
         className="edge-shape ring"
         style={{
-          width: '340px',
-          height: '340px',
-          bottom: '-100px',
-          right: '-100px',
+          width: '380px',
+          height: '380px',
+          top: '10%',
+          right: '-140px',
+        }}
+      />
+      <div
+        className="edge-shape square"
+        style={{
+          width: '260px',
+          height: '260px',
+          bottom: '15%',
+          left: '-100px',
         }}
       />
 
       <div className="container">
+        {/* Section Header */}
         <div className="section-header">
           <div className="section-subtitle">Features</div>
           <h2 className="section-title">
-            Everything You Need. <br />
-            <span style={{ color: 'var(--accent-light)' }}>Nothing You Don't.</span>
+            Everything You Need to <br />
+            <span style={{ color: 'var(--accent-light)' }}>Master Your Money</span>
           </h2>
           <p className="section-description">
-            Designed to make daily money management fast, straightforward, and completely private.
+            Thoughtfully crafted tools designed for speed, privacy, and lasting financial clarity—all stored safely on your device.
           </p>
         </div>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '2rem',
-        }}>
-          {features.map((feature, idx) => (
+        {/* Bento / Showcase Collage Grid */}
+        <div className="features-bento-grid">
+          {featureItems.map((item, idx) => (
             <div
               key={idx}
-              className="bold-card"
-              style={{
-                padding: '2.25rem 2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'flex-start',
-              }}
+              className={`feature-showcase-card ${item.isWide ? 'card-wide' : ''}`}
             >
-              <div className="feature-icon-box">
-                {feature.icon}
+              {/* Text / Copy Column */}
+              <div className="feature-card-content">
+                <span className="feature-badge">{item.badge}</span>
+
+                <h3 className="feature-card-title">{item.title}</h3>
+
+                <p className="feature-card-desc">{item.description}</p>
+
+                <div className="feature-tags-list">
+                  {item.tags.map((tag, tIdx) => (
+                    <span key={tIdx} className="feature-tag-pill">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
 
-              <h3 style={{
-                fontSize: '1.35rem',
-                fontWeight: 800,
-                marginBottom: '0.75rem',
-                color: '#FFFFFF',
-              }}>
-                {feature.title}
-              </h3>
-
-              <p style={{
-                fontSize: '1rem',
-                lineHeight: 1.65,
-                color: 'var(--text-secondary)',
-                margin: 0,
-              }}>
-                {feature.description}
-              </p>
+              {/* Phone Screenshot Showcase Column */}
+              <div className="feature-card-mockup-wrap">
+                <div className="feature-phone-frame">
+                  <img
+                    src={item.image}
+                    alt={item.imageAlt}
+                    className="feature-screen-img"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
             </div>
           ))}
         </div>
@@ -109,3 +146,5 @@ export const Features: React.FC = () => {
     </section>
   );
 };
+
+export default Features;
