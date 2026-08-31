@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist"
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^6.1.1",
@@ -16,12 +16,14 @@
     "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.54.2",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "eslint": "^10.9.1",
     "gh-pages": "^6.3.0",
     "prettier": "^3.9.6",
     "typescript": "^7.0.2",
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "wrangler": "^4.127.1"
   }
 }
