@@ -14,7 +14,7 @@ Official static landing page and privacy policy website for **eXpend: Make Budge
 2. **Features**: Highlights of multi-account tracking, goals, debt & liability management, recurring planned payments, templates, 100% offline local storage (Realm), and category budget planning.
 3. **Reviews**: 5-star user testimonials from store reviewers.
 4. **Download CTA**: Reiteration banner with store badges and app icon.
-5. **Privacy Policy**: Full ported policy at `/#/privacy-policy` with direct email contact (`subdial.expend@outlook.com`).
+5. **Privacy Policy**: Full ported policy at `/#/privacy-policy` with direct email contact (`hello@subdial.dev`).
 
 ## Getting Started
 

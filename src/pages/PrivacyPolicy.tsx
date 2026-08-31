@@ -164,7 +164,7 @@ export const PrivacyPolicy: React.FC = () => {
             <h2 className="privacy-heading-2">8. Contact Information</h2>
             <p>
               For questions regarding this Privacy Policy or data handling practices, users can reach out through the in-app feedback feature or via email at{' '}
-              <a href="mailto:subdial.expend@outlook.com">subdial.expend@outlook.com</a>.
+              <a href="mailto:hello@subdial.dev">hello@subdial.dev</a>.
             </p>
           </section>
 

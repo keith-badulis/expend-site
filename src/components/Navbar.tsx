@@ -43,7 +43,7 @@ export const Navbar: React.FC = () => {
             <Link to="/" className="nav-link">← Back to Home</Link>
           )}
           <Link to="/privacy-policy" className="nav-link">Privacy Policy</Link>
-          <a href="mailto:subdial.expend@outlook.com" className="nav-link">Contact</a>
+          <a href="mailto:hello@subdial.dev" className="nav-link">Contact</a>
 
           {isHome && (
             <a href="#download" className="btn-primary nav-cta-btn">
@@ -82,7 +82,7 @@ export const Navbar: React.FC = () => {
             <Link to="/" onClick={closeMenu} className="mobile-nav-link">← Back to Home</Link>
           )}
           <Link to="/privacy-policy" onClick={closeMenu} className="mobile-nav-link">Privacy Policy</Link>
-          <a href="mailto:subdial.expend@outlook.com" onClick={closeMenu} className="mobile-nav-link">Contact</a>
+          <a href="mailto:hello@subdial.dev" onClick={closeMenu} className="mobile-nav-link">Contact</a>
           {isHome && (
             <a href="#download" onClick={closeMenu} className="btn-primary mobile-cta-btn">
               Get App

@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
               Privacy Policy
             </Link>
             <span className="footer-link-divider">•</span>
-            <a href="mailto:subdial.expend@outlook.com" className="footer-link">
+            <a href="mailto:hello@subdial.dev" className="footer-link">
               Contact Me
             </a>
           </div>
