@@ -7,6 +7,8 @@
 
 .badge {
   display: inline-block;
+  will-change: transform;
+  transform: translateY(0);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
   line-height: 0;
   text-decoration: none;
