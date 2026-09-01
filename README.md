@@ -5,16 +5,16 @@ Official static landing page and privacy policy website for **eXpend: Make Budge
 ## Tech Stack
 - **Framework**: React 19 + TypeScript
 - **Build Tool**: Vite 8
-- **Routing**: React Router 7 (`HashRouter` for GitHub Pages static compatibility)
+- **Routing**: React Router 7 (`BrowserRouter` for clean, SEO-friendly URLs)
 - **Styling**: Pure CSS Modules & Tokens (Dark Mode `#1F2A47`, Accent `#4C74DB`, Outfit Font)
-- **Deployment**: GitHub Pages (`gh-pages`)
+- **Deployment**: Cloudflare Workers / Pages (`wrangler deploy`)
 
 ## Key Sections
 1. **Hero**: Tagline "Make Budgeting a Habit", description, Google Play & App Store badges, and app screenshot with geometric accent outlines.
 2. **Features**: Highlights of multi-account tracking, goals, debt & liability management, recurring planned payments, templates, 100% offline local storage (Realm), and category budget planning.
 3. **Reviews**: 5-star user testimonials from store reviewers.
 4. **Download CTA**: Reiteration banner with store badges and app icon.
-5. **Privacy Policy**: Full ported policy at `/#/privacy-policy` with direct email contact (`hello@subdial.dev`).
+5. **Privacy Policy**: Full ported policy at `/privacy-policy` with direct email contact (`hello@subdial.dev`).
 
 ## Getting Started
 
