@@ -23,8 +23,10 @@
   user-select: none;
 }
 
-.footerLogoWrap:hover {
-  opacity: 0.85;
+@media (hover: hover) and (pointer: fine) {
+  .footerLogoWrap:hover {
+    opacity: 0.85;
+  }
 }
 
 .footerGrayscaleLogo {
@@ -54,8 +56,10 @@
   transition: color 0.2s ease;
 }
 
-.footerLink:hover {
-  color: #FFFFFF;
+@media (hover: hover) and (pointer: fine) {
+  .footerLink:hover {
+    color: #FFFFFF;
+  }
 }
 
 .footerLinkDivider {

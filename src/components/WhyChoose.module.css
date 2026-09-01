@@ -1,6 +1,7 @@
 .whyChooseCleanSection {
   padding: 5.5rem 0;
   position: relative;
+  overflow: clip;
 }
 
 .cleanCardsContainer {
@@ -25,10 +26,12 @@
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
-.cleanValueCard:hover {
-  transform: translateY(-3px);
-  border-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.38);
+@media (hover: hover) and (pointer: fine) {
+  .cleanValueCard:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.14);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.38);
+  }
 }
 
 .cleanCardIconWrap {

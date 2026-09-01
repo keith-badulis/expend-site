@@ -12,9 +12,11 @@
   text-decoration: none;
 }
 
-.badge:hover {
-  transform: translateY(-3px);
-  filter: drop-shadow(0 6px 18px var(--accent-glow));
+@media (hover: hover) and (pointer: fine) {
+  .badge:hover {
+    transform: translateY(-3px);
+    filter: drop-shadow(0 6px 18px var(--accent-glow));
+  }
 }
 
 .badgeImg {

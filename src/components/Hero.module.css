@@ -1,12 +1,12 @@
 /* Hero Section (Full Window Height presentation) */
 .heroSection {
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
   display: flex;
   align-items: center;
   padding: 3.5rem 0;
   position: relative;
-  overflow: hidden;
+  overflow: clip;
   box-sizing: border-box;
 }
 
@@ -240,86 +240,89 @@
 .phoneScreen img {
   width: 100%;
   height: auto;
+  aspect-ratio: 1206 / 2622;
   display: block;
   object-fit: cover;
 }
 
 /* =======================================================
-   HOVER INTERACTION: SUBTLE & REFINED TRANSITIONS
+   HOVER INTERACTION: PROTECTED FOR DESKTOP POINTERS ONLY
 ======================================================= */
-.phoneAnchor:hover .phoneMockup {
-  transform: scale(1.015) translateY(-3px);
-  border-color: var(--accent-light);
-  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.75), 0 0 42px rgba(112, 148, 240, 0.4);
-}
+@media (hover: hover) and (pointer: fine) {
+  .phoneAnchor:hover .phoneMockup {
+    transform: scale(1.015) translateY(-3px);
+    border-color: var(--accent-light);
+    box-shadow: 0 28px 56px rgba(0, 0, 0, 0.75), 0 0 42px rgba(112, 148, 240, 0.4);
+  }
 
-.phoneAnchor:hover .phoneBacklightAura {
-  transform: translate(-50%, -50%) scale(1.04);
-  opacity: 0.92;
-}
+  .phoneAnchor:hover .phoneBacklightAura {
+    transform: translate(-50%, -50%) scale(1.04);
+    opacity: 0.92;
+  }
 
-.phoneAnchor:hover .ringWrap1 {
-  transform: translate(-50%, -50%) scale(1.025);
-}
+  .phoneAnchor:hover .ringWrap1 {
+    transform: translate(-50%, -50%) scale(1.025);
+  }
 
-.phoneAnchor:hover .ringWrap1 .ring1 {
-  border-color: rgba(112, 148, 240, 0.5);
-  box-shadow: 0 0 24px rgba(76, 116, 219, 0.3);
-  opacity: 0.7;
-}
+  .phoneAnchor:hover .ringWrap1 .ring1 {
+    border-color: rgba(112, 148, 240, 0.5);
+    box-shadow: 0 0 24px rgba(76, 116, 219, 0.3);
+    opacity: 0.7;
+  }
 
-.phoneAnchor:hover .ringWrap2 {
-  transform: translate(-50%, -50%) scale(1.045);
-}
+  .phoneAnchor:hover .ringWrap2 {
+    transform: translate(-50%, -50%) scale(1.045);
+  }
 
-.phoneAnchor:hover .ringWrap2 .ring2 {
-  border-color: rgba(112, 148, 240, 0.35);
-  opacity: 0.55;
-}
+  .phoneAnchor:hover .ringWrap2 .ring2 {
+    border-color: rgba(112, 148, 240, 0.35);
+    opacity: 0.55;
+  }
 
-.phoneAnchor:hover .iconPosBank .emanatingFinanceIcon {
-  transform: translate(-6px, -3px) scale(1.03);
-  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
-}
+  .phoneAnchor:hover .iconPosBank .emanatingFinanceIcon {
+    transform: translate(-6px, -3px) scale(1.03);
+    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+  }
 
-.phoneAnchor:hover .iconPosWallet .emanatingFinanceIcon {
-  transform: translate(6px, -3px) scale(1.03);
-  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
-}
+  .phoneAnchor:hover .iconPosWallet .emanatingFinanceIcon {
+    transform: translate(6px, -3px) scale(1.03);
+    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+  }
 
-.phoneAnchor:hover .iconPosPiggy .emanatingFinanceIcon {
-  transform: translate(-6px, 3px) scale(1.03);
-  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
-}
+  .phoneAnchor:hover .iconPosPiggy .emanatingFinanceIcon {
+    transform: translate(-6px, 3px) scale(1.03);
+    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+  }
 
-.phoneAnchor:hover .iconPosCard .emanatingFinanceIcon {
-  transform: translate(6px, 3px) scale(1.03);
-  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
-}
+  .phoneAnchor:hover .iconPosCard .emanatingFinanceIcon {
+    transform: translate(6px, 3px) scale(1.03);
+    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+  }
 
-.heroSection:has(.phoneAnchor:hover) .shapeTopLeft {
-  opacity: 0.7;
-  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
-}
+  .heroSection:has(.phoneAnchor:hover) .shapeTopLeft {
+    opacity: 0.7;
+    box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+  }
 
-.heroSection:has(.phoneAnchor:hover) .shapeTopRight {
-  opacity: 0.65;
-  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
-}
+  .heroSection:has(.phoneAnchor:hover) .shapeTopRight {
+    opacity: 0.65;
+    box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+  }
 
-.heroSection:has(.phoneAnchor:hover) .shapeBottomLeft {
-  opacity: 0.65;
-  box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
-}
+  .heroSection:has(.phoneAnchor:hover) .shapeBottomLeft {
+    opacity: 0.65;
+    box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
+  }
 
-.heroSection:has(.phoneAnchor:hover) .shapeBottomRight {
-  opacity: 0.7;
-  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
-}
+  .heroSection:has(.phoneAnchor:hover) .shapeBottomRight {
+    opacity: 0.7;
+    box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+  }
 
-.heroSection:has(.phoneAnchor:hover) .shapeMidRight {
-  opacity: 0.65;
-  box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
+  .heroSection:has(.phoneAnchor:hover) .shapeMidRight {
+    opacity: 0.65;
+    box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
+  }
 }
 
 /* --- HERO SECTION PERIMETER & SIDE SHAPES --- */
