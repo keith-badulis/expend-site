@@ -3,7 +3,8 @@
   padding: 5.5rem 0;
   position: relative;
   z-index: 1;
-  overflow: clip;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .section-header {

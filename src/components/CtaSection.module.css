@@ -1,7 +1,8 @@
 .ctaOpenSection {
   padding: 6.5rem 0 7.5rem 0;
   position: relative;
-  overflow: clip;
+  overflow-x: clip;
+  overflow-y: visible;
   text-align: center;
 }
 

@@ -1,7 +1,8 @@
 .whyChooseCleanSection {
   padding: 5.5rem 0;
   position: relative;
-  overflow: clip;
+  overflow-x: clip;
+  overflow-y: visible;
 }
 
 .cleanCardsContainer {
