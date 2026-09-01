@@ -7,17 +7,18 @@
 
 .badge {
   display: inline-block;
-  will-change: transform;
-  transform: translateY(0);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), filter 0.2s ease;
+  will-change: transform, filter;
+  transform: translateY(0) scale(1);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 0 rgba(76, 116, 219, 0));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
   line-height: 0;
   text-decoration: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .badge:hover {
-    transform: translateY(-3px);
-    filter: drop-shadow(0 6px 18px var(--accent-glow));
+    transform: translateY(-3.5px) scale(1.02);
+    filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px var(--accent-glow));
   }
 }
 
