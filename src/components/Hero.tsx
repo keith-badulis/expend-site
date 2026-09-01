@@ -75,32 +75,51 @@ export const Hero: React.FC = () => {
           {/* Right Column: Phone Mockup with 4 Floating Finance Icons */}
           <div className="phone-mockup-wrapper">
             <div className="phone-anchor">
-              {/* 1. Radiant Backlight Aura */}
-              <div className="phone-backlight-aura" />
+              {/* 1. Radiant Backlight Aura (Separated Entrance Reveal & Interactive Glow) */}
+              <div className="phone-aura-container aura-reveal">
+                <div className="phone-backlight-aura" />
+              </div>
 
-              {/* 2. Emanating Concentric Ripple Rings */}
-              <div className="phone-emanating-ring ring-1" />
-              <div className="phone-emanating-ring ring-2" />
+              {/* 2. Emanating Concentric Ripple Rings (Separated Entrance Reveal & Breathing Loops) */}
+              <div className="phone-rings-container rings-reveal">
+                <div className="phone-ring-wrap ring-wrap-1">
+                  <div className="phone-emanating-ring ring-1 pulse-loop-1" />
+                </div>
+                <div className="phone-ring-wrap ring-wrap-2">
+                  <div className="phone-emanating-ring ring-2 pulse-loop-2" />
+                </div>
+              </div>
 
-              {/* 3. Emanating Pure Vector Money Icons (Seamless Entrance + Continuous Float) */}
-              <div className="emanating-finance-icon icon-bank">
-                <div className="finance-icon-inner float-1">
-                  <BankIcon size={34} color="var(--accent-light)" />
+              {/* 3. Emanating Pure Vector Money Icons (Separated Entrance Reveal & Floating Loops) */}
+              <div className="finance-icon-anchor icon-pos-bank icon-reveal-1">
+                <div className="emanating-finance-icon icon-bank">
+                  <div className="finance-icon-inner float-1">
+                    <BankIcon size={34} color="var(--accent-light)" />
+                  </div>
                 </div>
               </div>
-              <div className="emanating-finance-icon icon-wallet">
-                <div className="finance-icon-inner float-2">
-                  <WalletIcon size={36} color="var(--accent-light)" />
+
+              <div className="finance-icon-anchor icon-pos-wallet icon-reveal-2">
+                <div className="emanating-finance-icon icon-wallet">
+                  <div className="finance-icon-inner float-2">
+                    <WalletIcon size={36} color="var(--accent-light)" />
+                  </div>
                 </div>
               </div>
-              <div className="emanating-finance-icon icon-piggy">
-                <div className="finance-icon-inner float-3">
-                  <PiggyBankIcon size={35} color="var(--accent-light)" />
+
+              <div className="finance-icon-anchor icon-pos-piggy icon-reveal-3">
+                <div className="emanating-finance-icon icon-piggy">
+                  <div className="finance-icon-inner float-3">
+                    <PiggyBankIcon size={35} color="var(--accent-light)" />
+                  </div>
                 </div>
               </div>
-              <div className="emanating-finance-icon icon-card">
-                <div className="finance-icon-inner float-1">
-                  <CardIcon size={34} color="var(--accent-light)" />
+
+              <div className="finance-icon-anchor icon-pos-card icon-reveal-4">
+                <div className="emanating-finance-icon icon-card">
+                  <div className="finance-icon-inner float-1">
+                    <CardIcon size={34} color="var(--accent-light)" />
+                  </div>
                 </div>
               </div>
 
