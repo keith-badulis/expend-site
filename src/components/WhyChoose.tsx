@@ -10,6 +10,7 @@ import {
   CloudBackupIcon,
   ReportIcon,
 } from './icons';
+import styles from './WhyChoose.module.css';
 
 export const WhyChoose: React.FC = () => {
   const privacyPills = [
@@ -67,7 +68,7 @@ export const WhyChoose: React.FC = () => {
   ];
 
   return (
-    <section id="why-choose" className="section why-choose-clean-section">
+    <section id="why-choose" className={`section ${styles.whyChooseCleanSection}`}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '3rem' }}>
@@ -83,32 +84,32 @@ export const WhyChoose: React.FC = () => {
         </div>
 
         {/* 2 Clean, Soft-Bordered Stacked Cards */}
-        <div className="clean-cards-container">
+        <div className={styles.cleanCardsContainer}>
           {/* Card 1: 100% Offline & Private */}
-          <div className="clean-value-card">
-            <div className="clean-card-icon-wrap" style={{ background: 'rgba(11, 177, 144, 0.12)' }}>
+          <div className={styles.cleanValueCard}>
+            <div className={styles.cleanCardIconWrap} style={{ background: 'rgba(11, 177, 144, 0.12)' }}>
               <LockIcon size={26} color="#0BB190" />
             </div>
 
-            <div className="clean-card-body">
-              <span className="clean-card-kicker" style={{ color: '#0BB190' }}>
+            <div className={styles.cleanCardBody}>
+              <span className={styles.cleanCardKicker} style={{ color: '#0BB190' }}>
                 Privacy First
               </span>
 
-              <h3 className="clean-card-headline">
+              <h3 className={styles.cleanCardHeadline}>
                 100% Offline & Private. No Sign-Ups. No Ads.
               </h3>
 
-              <p className="clean-card-description">
+              <p className={styles.cleanCardDescription}>
                 Your financial data never leaves your device. No mandatory accounts, no analytics tracking, and no third-party data broker access.
               </p>
 
               {/* Soft, Borderless Icon Chips */}
-              <div className="clean-chips-grid">
+              <div className={styles.cleanChipsGrid}>
                 {privacyPills.map((pill, idx) => (
                   <div
                     key={idx}
-                    className="clean-chip"
+                    className={styles.cleanChip}
                     style={{ backgroundColor: pill.bg }}
                   >
                     {pill.icon}
@@ -120,30 +121,30 @@ export const WhyChoose: React.FC = () => {
           </div>
 
           {/* Card 2: One-Time Purchase, Premium Forever */}
-          <div className="clean-value-card">
-            <div className="clean-card-icon-wrap" style={{ background: 'rgba(76, 116, 219, 0.12)' }}>
+          <div className={styles.cleanValueCard}>
+            <div className={styles.cleanCardIconWrap} style={{ background: 'rgba(76, 116, 219, 0.12)' }}>
               <DiamondIcon size={26} color="#4C74DB" />
             </div>
 
-            <div className="clean-card-body">
-              <span className="clean-card-kicker" style={{ color: '#7094F0' }}>
+            <div className={styles.cleanCardBody}>
+              <span className={styles.cleanCardKicker} style={{ color: '#7094F0' }}>
                 Pay Once
               </span>
 
-              <h3 className="clean-card-headline">
+              <h3 className={styles.cleanCardHeadline}>
                 One-Time Purchase. Premium Forever.
               </h3>
 
-              <p className="clean-card-description">
+              <p className={styles.cleanCardDescription}>
                 Say goodbye to recurring subscription fatigue. Pay once to unlock the full, unrestricted experience forever with complete data freedom.
               </p>
 
               {/* Soft, Borderless Icon Chips */}
-              <div className="clean-chips-grid">
+              <div className={styles.cleanChipsGrid}>
                 {purchasePills.map((pill, idx) => (
                   <div
                     key={idx}
-                    className="clean-chip"
+                    className={styles.cleanChip}
                     style={{ backgroundColor: pill.bg }}
                   >
                     {pill.icon}

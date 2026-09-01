@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg-color: #1F2A47;
+  --bg-surface: #172036;
+  --bg-card: #182238;
+  --bg-card-hover: #1E2B47;
+  --accent-color: #4C74DB;
+  --accent-glow: rgba(76, 116, 219, 0.35);
+  --accent-light: #7094F0;
+  --accent-border: #4C74DB;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --max-width: 1180px;
+}

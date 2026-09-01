@@ -3,26 +3,27 @@ import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
 import { BankIcon, WalletIcon, PiggyBankIcon, CardIcon } from './icons';
 import appScreenImg from '../assets/app-screen.png';
+import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
   return (
-    <section className="hero-section">
+    <section className={styles.heroSection}>
       {/* Decorative Geometric Shapes Framing the Sides & Edges of the Section */}
-      <div className="hero-edge-shape hero-shape-top-left shape-reveal-1" />
-      <div className="hero-edge-shape hero-shape-top-right shape-reveal-2" />
-      <div className="hero-edge-shape hero-shape-bottom-left shape-reveal-3" />
-      <div className="hero-edge-shape hero-shape-bottom-right shape-reveal-4" />
-      <div className="hero-edge-shape hero-shape-mid-right shape-reveal-5" />
+      <div className={`${styles.edgeShape} ${styles.shapeTopLeft} ${styles.shapeReveal1}`} />
+      <div className={`${styles.edgeShape} ${styles.shapeTopRight} ${styles.shapeReveal2}`} />
+      <div className={`${styles.edgeShape} ${styles.shapeBottomLeft} ${styles.shapeReveal3}`} />
+      <div className={`${styles.edgeShape} ${styles.shapeBottomRight} ${styles.shapeReveal4}`} />
+      <div className={`${styles.edgeShape} ${styles.shapeMidRight} ${styles.shapeReveal5}`} />
 
       <div className="container">
-        <div className="hero-grid">
+        <div className={styles.heroGrid}>
           {/* Left Column: Animated App Logo & Orchestrated Typographic Reveal */}
           <div>
             {/* 1. Animated Logo (Starts immediately at T = 0.0s) */}
             <AnimatedLogo size={112} />
 
             {/* 2. Headline & Setup Text (Stagger 1: T = 0.45s) */}
-            <div className="hero-reveal-headline" style={{ marginBottom: '1.5rem' }}>
+            <div className={styles.revealHeadline} style={{ marginBottom: '1.5rem' }}>
               <span style={{
                 fontSize: 'clamp(1.35rem, 2.6vw, 1.95rem)',
                 fontWeight: 300,
@@ -53,7 +54,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* 3. Subtext Paragraph (Stagger 2: T = 0.75s) */}
-            <div className="hero-reveal-subtext">
+            <div className={styles.revealSubtext}>
               <p style={{
                 fontSize: '1.12rem',
                 lineHeight: 1.65,
@@ -67,66 +68,66 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* 4. Official Download Badges (Stagger 3: T = 1.05s) */}
-            <div className="hero-reveal-badges">
+            <div className={styles.revealBadges}>
               <StoreBadges />
             </div>
           </div>
 
           {/* Right Column: Phone Mockup with 4 Floating Finance Icons */}
-          <div className="phone-mockup-wrapper">
-            <div className="phone-anchor">
+          <div className={styles.phoneMockupWrapper}>
+            <div className={styles.phoneAnchor}>
               {/* 1. Radiant Backlight Aura (Separated Entrance Reveal & Interactive Glow) */}
-              <div className="phone-aura-container aura-reveal">
-                <div className="phone-backlight-aura" />
+              <div className={`${styles.phoneAuraContainer} ${styles.auraReveal}`}>
+                <div className={styles.phoneBacklightAura} />
               </div>
 
               {/* 2. Emanating Concentric Ripple Rings (Separated Entrance Reveal & Breathing Loops) */}
-              <div className="phone-rings-container rings-reveal">
-                <div className="phone-ring-wrap ring-wrap-1">
-                  <div className="phone-emanating-ring ring-1 pulse-loop-1" />
+              <div className={`${styles.phoneRingsContainer} ${styles.ringsReveal}`}>
+                <div className={`${styles.phoneRingWrap} ${styles.ringWrap1}`}>
+                  <div className={`${styles.phoneEmanatingRing} ${styles.ring1} ${styles.pulseLoop1}`} />
                 </div>
-                <div className="phone-ring-wrap ring-wrap-2">
-                  <div className="phone-emanating-ring ring-2 pulse-loop-2" />
+                <div className={`${styles.phoneRingWrap} ${styles.ringWrap2}`}>
+                  <div className={`${styles.phoneEmanatingRing} ${styles.ring2} ${styles.pulseLoop2}`} />
                 </div>
               </div>
 
               {/* 3. Emanating Pure Vector Money Icons (Separated Entrance Reveal & Floating Loops) */}
-              <div className="finance-icon-anchor icon-pos-bank icon-reveal-1">
-                <div className="emanating-finance-icon icon-bank">
-                  <div className="finance-icon-inner float-1">
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosBank} ${styles.iconReveal1}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
                     <BankIcon size={34} color="var(--accent-light)" />
                   </div>
                 </div>
               </div>
 
-              <div className="finance-icon-anchor icon-pos-wallet icon-reveal-2">
-                <div className="emanating-finance-icon icon-wallet">
-                  <div className="finance-icon-inner float-2">
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosWallet} ${styles.iconReveal2}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float2}`}>
                     <WalletIcon size={36} color="var(--accent-light)" />
                   </div>
                 </div>
               </div>
 
-              <div className="finance-icon-anchor icon-pos-piggy icon-reveal-3">
-                <div className="emanating-finance-icon icon-piggy">
-                  <div className="finance-icon-inner float-3">
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosPiggy} ${styles.iconReveal3}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float3}`}>
                     <PiggyBankIcon size={35} color="var(--accent-light)" />
                   </div>
                 </div>
               </div>
 
-              <div className="finance-icon-anchor icon-pos-card icon-reveal-4">
-                <div className="emanating-finance-icon icon-card">
-                  <div className="finance-icon-inner float-1">
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal4}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
                     <CardIcon size={34} color="var(--accent-light)" />
                   </div>
                 </div>
               </div>
 
               {/* 4. Phone Device Container (Separated entrance reveal & interactive mockup) */}
-              <div className="phone-device-container phone-reveal">
-                <div className="phone-mockup">
-                  <div className="phone-screen">
+              <div className={`${styles.phoneDeviceContainer} ${styles.phoneReveal}`}>
+                <div className={styles.phoneMockup}>
+                  <div className={styles.phoneScreen}>
                     <img
                       src={appScreenImg}
                       alt="eXpend App Home Screen"

@@ -1,0 +1,72 @@
+/* Shared Section Layouts */
+.section {
+  padding: 5.5rem 0;
+  position: relative;
+  z-index: 1;
+  overflow: clip;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--accent-light);
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 900;
+  margin-bottom: 1rem;
+  letter-spacing: -0.025em;
+}
+
+.section-description {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+}
+
+/* Background Edge Shapes for Visual Balance */
+.edge-shape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  border: 4px solid var(--accent-color);
+  opacity: 0.35;
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.edge-shape.ring {
+  border-radius: 50%;
+}
+
+.edge-shape.square {
+  border-radius: 32px;
+  transform: rotate(12deg);
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 3.75rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 0;
+  }
+  .section-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.15rem);
+    line-height: 1.2;
+  }
+}

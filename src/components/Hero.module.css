@@ -1,0 +1,635 @@
+/* Hero Section (Full Window Height presentation) */
+.heroSection {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 3.5rem 0;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* --- ORCHESTRATED STAGGERED REVEALS --- */
+.revealHeadline {
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+}
+
+.revealSubtext {
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+.revealBadges {
+  animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.05s both;
+}
+
+.phoneDeviceContainer {
+  width: 100%;
+  position: relative;
+  z-index: 4;
+}
+
+.phoneReveal {
+  animation: phoneEaseIn 1.1s cubic-bezier(0.16, 1, 0.3, 1) 1.25s both;
+}
+
+/* Phone Mockup & Anchored Wrapper */
+.phoneMockupWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 540px;
+}
+
+.phoneAnchor {
+  position: relative;
+  width: 290px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* --- EMANATING FINANCE HIGHLIGHTS --- */
+
+/* 1. Radiant Backlight Aura */
+.phoneAuraContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.auraReveal {
+  animation: auraEntranceFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.1s both;
+}
+
+.phoneBacklightAura {
+  position: absolute;
+  width: 380px;
+  height: 520px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.4) 0%, rgba(112, 148, 240, 0.18) 35%, rgba(76, 116, 219, 0.05) 55%, transparent 70%);
+  pointer-events: none;
+  opacity: 0.8;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+/* 2. Concentric Emanating Ripple Rings */
+.phoneRingsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.ringsReveal {
+  animation: ringsEntranceFade 1.1s cubic-bezier(0.16, 1, 0.3, 1) 2.25s both;
+}
+
+.phoneRingWrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.phoneEmanatingRing {
+  pointer-events: none;
+  transition: border-color 0.5s ease, box-shadow 0.5s ease, opacity 0.5s ease;
+}
+
+.ring1 {
+  width: 312px;
+  height: 540px;
+  border-radius: 44px;
+  border: 1.5px solid rgba(112, 148, 240, 0.28);
+  box-shadow: 0 0 16px rgba(76, 116, 219, 0.15);
+  opacity: 0.5;
+}
+
+.ring2 {
+  width: 334px;
+  height: 565px;
+  border: 1.5px dashed rgba(76, 116, 219, 0.18);
+  border-radius: 48px;
+  opacity: 0.35;
+}
+
+.pulseLoop1 {
+  animation: ringBreathePulse1 4.8s ease-in-out infinite alternate;
+}
+
+.pulseLoop2 {
+  animation: ringBreathePulse2 5.4s ease-in-out infinite alternate;
+}
+
+/* 3. Pure Vector Finance Icons */
+.financeIconAnchor {
+  position: absolute;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.iconPosBank {
+  top: 24%;
+  left: -65px;
+}
+
+.iconPosWallet {
+  top: 34%;
+  right: -70px;
+}
+
+.iconPosPiggy {
+  top: 64%;
+  left: -75px;
+}
+
+.iconPosCard {
+  top: 74%;
+  right: -65px;
+}
+
+.iconReveal1 {
+  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.40s both;
+}
+
+.iconReveal2 {
+  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s both;
+}
+
+.iconReveal3 {
+  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s both;
+}
+
+.iconReveal4 {
+  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both;
+}
+
+.emanatingFinanceIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 14px var(--accent-light)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.financeIconInner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.float1 {
+  animation: financeFloat1 5.2s ease-in-out infinite alternate;
+}
+
+.float2 {
+  animation: financeFloat2 5.6s ease-in-out infinite alternate;
+}
+
+.float3 {
+  animation: financeFloat3 6.0s ease-in-out infinite alternate;
+}
+
+/* Phone Mockup Frame */
+.phoneMockup {
+  position: relative;
+  width: 100%;
+  border-radius: 38px;
+  padding: 8px;
+  background: #172036;
+  border: 3.5px solid var(--accent-color);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 40px var(--accent-glow);
+  transform-origin: center center;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.phoneScreen {
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #11141A;
+  display: flex;
+  position: relative;
+}
+
+.phoneScreen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* =======================================================
+   HOVER INTERACTION: SUBTLE & REFINED TRANSITIONS
+======================================================= */
+.phoneAnchor:hover .phoneMockup {
+  transform: scale(1.015) translateY(-3px);
+  border-color: var(--accent-light);
+  box-shadow: 0 28px 56px rgba(0, 0, 0, 0.75), 0 0 42px rgba(112, 148, 240, 0.4);
+}
+
+.phoneAnchor:hover .phoneBacklightAura {
+  transform: translate(-50%, -50%) scale(1.04);
+  opacity: 0.92;
+}
+
+.phoneAnchor:hover .ringWrap1 {
+  transform: translate(-50%, -50%) scale(1.025);
+}
+
+.phoneAnchor:hover .ringWrap1 .ring1 {
+  border-color: rgba(112, 148, 240, 0.5);
+  box-shadow: 0 0 24px rgba(76, 116, 219, 0.3);
+  opacity: 0.7;
+}
+
+.phoneAnchor:hover .ringWrap2 {
+  transform: translate(-50%, -50%) scale(1.045);
+}
+
+.phoneAnchor:hover .ringWrap2 .ring2 {
+  border-color: rgba(112, 148, 240, 0.35);
+  opacity: 0.55;
+}
+
+.phoneAnchor:hover .iconPosBank .emanatingFinanceIcon {
+  transform: translate(-6px, -3px) scale(1.03);
+  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+}
+
+.phoneAnchor:hover .iconPosWallet .emanatingFinanceIcon {
+  transform: translate(6px, -3px) scale(1.03);
+  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+}
+
+.phoneAnchor:hover .iconPosPiggy .emanatingFinanceIcon {
+  transform: translate(-6px, 3px) scale(1.03);
+  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+}
+
+.phoneAnchor:hover .iconPosCard .emanatingFinanceIcon {
+  transform: translate(6px, 3px) scale(1.03);
+  filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+}
+
+.heroSection:has(.phoneAnchor:hover) .shapeTopLeft {
+  opacity: 0.7;
+  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+}
+
+.heroSection:has(.phoneAnchor:hover) .shapeTopRight {
+  opacity: 0.65;
+  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+}
+
+.heroSection:has(.phoneAnchor:hover) .shapeBottomLeft {
+  opacity: 0.65;
+  box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
+}
+
+.heroSection:has(.phoneAnchor:hover) .shapeBottomRight {
+  opacity: 0.7;
+  box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
+}
+
+.heroSection:has(.phoneAnchor:hover) .shapeMidRight {
+  opacity: 0.65;
+  box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
+}
+
+/* --- HERO SECTION PERIMETER & SIDE SHAPES --- */
+.edgeShape {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 24px var(--accent-glow);
+  opacity: 0;
+  transition: opacity 0.4s ease, box-shadow 0.4s ease;
+}
+
+.shapeTopLeft {
+  width: 220px;
+  height: 220px;
+  top: -80px;
+  left: -90px;
+  border: 6px solid var(--accent-color);
+  border-radius: 50%;
+}
+
+.shapeReveal1 {
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+}
+
+.shapeTopRight {
+  width: 190px;
+  height: 190px;
+  top: -50px;
+  right: -70px;
+  border: 6px solid var(--accent-color);
+  border-radius: 46px;
+  transform: rotate(18deg);
+}
+
+.shapeReveal2 {
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
+}
+
+.shapeBottomLeft {
+  width: 150px;
+  height: 150px;
+  bottom: -45px;
+  left: 6%;
+  border: 4.5px dashed var(--accent-color);
+  border-radius: 50%;
+}
+
+.shapeReveal3 {
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+}
+
+.shapeBottomRight {
+  width: 210px;
+  height: 210px;
+  bottom: -75px;
+  right: 5%;
+  border: 6px solid var(--accent-color);
+  border-radius: 50%;
+}
+
+.shapeReveal4 {
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards;
+}
+
+.shapeMidRight {
+  width: 120px;
+  height: 48px;
+  top: 48%;
+  right: -45px;
+  border: 5px solid var(--accent-color);
+  border-radius: 9999px;
+  transform: rotate(-22deg);
+}
+
+.shapeReveal5 {
+  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+}
+
+/* --- KEYFRAME DEFINITIONS --- */
+@keyframes heroFadeSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroShapeFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes phoneEaseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes auraEntranceFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ringsEntranceFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes iconEntrancePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes financeFloat1 {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(5deg);
+  }
+}
+
+@keyframes financeFloat2 {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-6px) rotate(-5deg);
+  }
+}
+
+@keyframes financeFloat3 {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-5px) rotate(4deg);
+  }
+}
+
+@keyframes ringBreathePulse1 {
+  0% {
+    transform: scale(0.993);
+  }
+  100% {
+    transform: scale(1.007);
+  }
+}
+
+@keyframes ringBreathePulse2 {
+  0% {
+    transform: scale(0.99);
+  }
+  100% {
+    transform: scale(1.01);
+  }
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 960px) {
+  .heroSection {
+    min-height: auto;
+    padding: 3.5rem 0 4rem 0;
+  }
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+    text-align: center;
+  }
+  .heroGrid p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .phoneAnchor {
+    width: 240px;
+  }
+  .phoneBacklightAura {
+    width: 300px;
+    height: 400px;
+  }
+  .ring1 {
+    width: 255px;
+    height: 430px;
+  }
+  .ring2 {
+    width: 275px;
+    height: 450px;
+  }
+  .iconPosBank {
+    top: 22%;
+    left: -48px;
+  }
+  .iconPosWallet {
+    top: 32%;
+    right: -48px;
+  }
+  .iconPosPiggy {
+    top: 62%;
+    left: -50px;
+  }
+  .iconPosCard {
+    top: 72%;
+    right: -48px;
+  }
+  .shapeTopLeft {
+    width: 150px;
+    height: 150px;
+    top: -55px;
+    left: -55px;
+  }
+  .shapeTopRight {
+    width: 120px;
+    height: 120px;
+    top: -35px;
+    right: -35px;
+  }
+  .shapeMidRight {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .phoneAnchor {
+    width: 210px;
+  }
+  .phoneBacklightAura {
+    width: 250px;
+    height: 340px;
+  }
+  .ring1 {
+    width: 222px;
+    height: 368px;
+    border-radius: 38px;
+  }
+  .ring2 {
+    width: 238px;
+    height: 388px;
+    border-radius: 42px;
+  }
+  .iconPosBank {
+    top: 20%;
+    left: -44px;
+  }
+  .iconPosWallet {
+    top: 30%;
+    right: -44px;
+  }
+  .iconPosPiggy {
+    top: 60%;
+    left: -46px;
+  }
+  .iconPosCard {
+    top: 70%;
+    right: -44px;
+  }
+  .emanatingFinanceIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+  .shapeTopLeft {
+    width: 110px;
+    height: 110px;
+    top: -40px;
+    left: -40px;
+    border-width: 4px;
+  }
+  .shapeTopRight {
+    width: 90px;
+    height: 90px;
+    top: -25px;
+    right: -25px;
+    border-width: 4px;
+  }
+  .shapeBottomLeft,
+  .shapeBottomRight {
+    display: none;
+  }
+}

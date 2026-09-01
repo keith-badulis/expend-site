@@ -1,0 +1,153 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+  cursor: default;
+}
+
+.logoFrame {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ROTATING SQUIRCLE FILL */
+.squircleShape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #172138;
+  border-radius: 38px;
+  border: 1.5px solid rgba(76, 116, 219, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.spinInitial {
+  animation: logoSquircleMorphSpin 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.spinManual {
+  animation: logoSquircleMorphSpin 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* INNER LOGO IMAGE */
+.innerImg {
+  display: block;
+  object-fit: contain;
+  animation: logoScaleOnly 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  animation: logoTextFadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.35s both;
+}
+
+.brandName {
+  font-family: var(--font-family);
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #FFFFFF;
+}
+
+.brandSub {
+  font-family: var(--font-family);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--text-secondary);
+}
+
+/* KEYFRAMES */
+@keyframes logoSquircleMorphSpin {
+  0% {
+    transform: rotate(-270deg) scale(0.88);
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 0 transparent;
+  }
+  40% {
+    opacity: 1;
+    box-shadow: 0 0 0 transparent;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    border-radius: 38px;
+    opacity: 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+}
+
+@keyframes logoScaleOnly {
+  0% {
+    transform: scale(0.75);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes logoTextFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 960px) {
+  .container {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+  .logoFrame {
+    --logo-frame-size: 84px !important;
+  }
+  .squircleShape {
+    border-radius: 28px !important;
+  }
+  .brandText {
+    align-items: center;
+    text-align: center;
+  }
+  .brandName {
+    font-size: 1.85rem;
+  }
+  .brandSub {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoFrame {
+    --logo-frame-size: 76px !important;
+  }
+  .squircleShape {
+    border-radius: 25px !important;
+  }
+  .brandName {
+    font-size: 1.65rem;
+  }
+  .brandSub {
+    font-size: 0.82rem;
+  }
+}

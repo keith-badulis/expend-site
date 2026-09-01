@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import appIcon from '../assets/app-icon.png';
+import styles from './PrivacyPolicy.module.css';
 
 export const PrivacyPolicy: React.FC = () => {
   const navigate = useNavigate();
@@ -20,11 +21,11 @@ export const PrivacyPolicy: React.FC = () => {
   };
 
   return (
-    <div className="privacy-page-root">
+    <div className={styles.privacyPageRoot}>
       {/* Clean Single Back Navigation */}
-      <header className="privacy-top-bar">
-        <div className="privacy-top-bar-inner">
-          <a href="/" onClick={handleBack} className="privacy-back-link">
+      <header className={styles.privacyTopBar}>
+        <div className={styles.privacyTopBarInner}>
+          <a href="/" onClick={handleBack} className={styles.privacyBackLink}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
@@ -34,37 +35,37 @@ export const PrivacyPolicy: React.FC = () => {
       </header>
 
       {/* Main White Document Container */}
-      <main className="privacy-main-content">
-        <div className="privacy-doc-container">
+      <main className={styles.privacyMainContent}>
+        <div className={styles.privacyDocContainer}>
           {/* Header */}
-          <div className="privacy-doc-header">
-            <img src={appIcon} alt="eXpend Icon" className="privacy-doc-app-icon" />
-            <h1 className="privacy-doc-title">Privacy Policy for eXpend</h1>
-            <div className="privacy-doc-tagline">Make Budgeting a Habit</div>
+          <div className={styles.privacyDocHeader}>
+            <img src={appIcon} alt="eXpend Icon" className={styles.privacyDocAppIcon} />
+            <h1 className={styles.privacyDocTitle}>Privacy Policy for eXpend</h1>
+            <div className={styles.privacyDocTagline}>Make Budgeting a Habit</div>
           </div>
 
-          <p className="privacy-last-updated">
+          <p className={styles.privacyLastUpdated}>
             <strong>Last Updated: August 31, 2026</strong>
           </p>
 
           {/* Section 1 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">1. Introduction</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>1. Introduction</h2>
             <p>
               eXpend is an offline-first personal finance management application designed with user privacy as a foundational principle. This Privacy Policy explains how data is handled, stored, backed up, and protected when using the eXpend mobile application.
             </p>
           </section>
 
           {/* Section 2 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">2. Data Collection and Usage</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>2. Data Collection and Usage</h2>
 
-            <h3 className="privacy-heading-3">2.1 Financial Data</h3>
+            <h3 className={styles.privacyHeading3}>2.1 Financial Data</h3>
             <p>
               eXpend allows users to track transactions, budgets, wallets, goals, and debts. All financial records and account balances are stored <strong>strictly locally on the user's device</strong> inside an encrypted database. eXpend does not maintain central database servers, nor does it collect, monetize, or transmit financial data to any external parties.
             </p>
 
-            <h3 className="privacy-heading-3">2.2 Personal Information</h3>
+            <h3 className={styles.privacyHeading3}>2.2 Personal Information</h3>
             <ul>
               <li>
                 <strong>Profile Name:</strong> Users may optionally provide a display name to personalize their profile. This information is stored exclusively on the local device.
@@ -77,17 +78,17 @@ export const PrivacyPolicy: React.FC = () => {
               </li>
             </ul>
 
-            <h3 className="privacy-heading-3">2.3 Settings and Preferences</h3>
+            <h3 className={styles.privacyHeading3}>2.3 Settings and Preferences</h3>
             <p>
               App configuration settings (such as base currency, active language, color themes, display preferences, and backup settings) are stored locally on the device to maintain application functionality.
             </p>
 
-            <h3 className="privacy-heading-3">2.4 Biometric Data</h3>
+            <h3 className={styles.privacyHeading3}>2.4 Biometric Data</h3>
             <p>
               If the "Screen Lock" security feature is enabled, eXpend interacts with the device's native biometric authentication mechanisms (such as Face ID, Touch ID, or Android Biometric Prompt). eXpend <strong>never</strong> accesses, processes, or stores biometric identifiers; authentication is handled entirely by the device's secure hardware and operating system.
             </p>
 
-            <h3 className="privacy-heading-3">2.5 Backup and Export Files</h3>
+            <h3 className={styles.privacyHeading3}>2.5 Backup and Export Files</h3>
             <p>
               eXpend provides multiple user-initiated and automated options to safeguard and export financial data:
             </p>
@@ -103,7 +104,7 @@ export const PrivacyPolicy: React.FC = () => {
               </li>
             </ul>
 
-            <h3 className="privacy-heading-3">2.6 Device Diagnostics and Error Logs</h3>
+            <h3 className={styles.privacyHeading3}>2.6 Device Diagnostics and Error Logs</h3>
             <p>
               When user feedback is submitted or when an unexpected application error occurs during operations (such as backup or restore tasks), technical diagnostics may be transmitted to developer logging channels solely for troubleshooting and maintenance. These diagnostics include:
             </p>
@@ -119,8 +120,8 @@ export const PrivacyPolicy: React.FC = () => {
           </section>
 
           {/* Section 3 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">3. Data Storage and Security</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>3. Data Storage and Security</h2>
             <ul>
               <li>
                 <strong>Local Encrypted Storage:</strong> All personal and financial records are stored within an encrypted local Realm database directly on the user's device.
@@ -149,8 +150,8 @@ export const PrivacyPolicy: React.FC = () => {
           </section>
 
           {/* Section 4 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">4. Third-Party Services</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>4. Third-Party Services</h2>
             <p>
               eXpend integrates a minimal set of third-party services to support core functionality:
             </p>
@@ -190,8 +191,8 @@ export const PrivacyPolicy: React.FC = () => {
           </section>
 
           {/* Section 5 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">5. User Rights and Data Control</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>5. User Rights and Data Control</h2>
             <ul>
               <li>
                 <strong>Full Data Ownership:</strong> Because data is stored locally on the device (and optionally in the user's personal Google Drive), users maintain complete control to create, modify, or delete any record at any time.
@@ -209,24 +210,24 @@ export const PrivacyPolicy: React.FC = () => {
           </section>
 
           {/* Section 6 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">6. Children's Privacy</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>6. Children's Privacy</h2>
             <p>
               eXpend is not directed at children under the age of 13 and does not knowingly collect personal information from children.
             </p>
           </section>
 
           {/* Section 7 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">7. Policy Updates</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>7. Policy Updates</h2>
             <p>
               This Privacy Policy may be updated periodically to reflect application enhancements, new features, or regulatory requirements. Any updates will be indicated by the "Last Updated" date at the top of this document.
             </p>
           </section>
 
           {/* Section 8 */}
-          <section className="privacy-section">
-            <h2 className="privacy-heading-2">8. Contact Information</h2>
+          <section className={styles.privacySection}>
+            <h2 className={styles.privacyHeading2}>8. Contact Information</h2>
             <p>
               For questions or feedback regarding this Privacy Policy or data handling practices, users can reach out through the in-app feedback feature or via email at{' '}
               <a href="mailto:hello@subdial.dev">hello@subdial.dev</a>.
@@ -234,8 +235,8 @@ export const PrivacyPolicy: React.FC = () => {
           </section>
 
           {/* Bottom Back Button */}
-          <div className="privacy-doc-footer">
-            <a href="/" onClick={handleBack} className="privacy-bottom-btn">
+          <div className={styles.privacyDocFooter}>
+            <a href="/" onClick={handleBack} className={styles.privacyBottomBtn}>
               ← Return to eXpend
             </a>
           </div>

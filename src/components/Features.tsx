@@ -14,6 +14,7 @@ import {
   ProfileIcon,
   DescriptionIcon,
 } from './icons';
+import styles from './Features.module.css';
 
 interface GalleryItemData {
   icon: React.ReactNode;
@@ -87,7 +88,7 @@ const rightColItems: GalleryItemData[] = [
 
 export const Features: React.FC = () => {
   return (
-    <section id="features" className="section gallery-features-section">
+    <section id="features" className={`section ${styles.galleryFeaturesSection}`}>
       {/* Background Ambient Shapes */}
       <div
         className="edge-shape ring"
@@ -125,22 +126,22 @@ export const Features: React.FC = () => {
         </div>
 
         {/* 2-Column Staggered Exhibition Gallery (3 in Left, 3 in Right) */}
-        <div className="gallery-staggered-grid">
+        <div className={styles.galleryStaggeredGrid}>
           {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
-          <div className="gallery-column gallery-col-left">
+          <div className={`${styles.galleryColumn} ${styles.galleryColLeft}`}>
             {leftColItems.map((item, idx) => (
-              <div key={idx} className="gallery-item caption-left">
+              <div key={idx} className={`${styles.galleryItem} ${styles.captionLeft}`}>
                 {/* Caption on Left */}
-                <div className="gallery-caption-box">
-                  <span className="gallery-badge">
+                <div className={styles.galleryCaptionBox}>
+                  <span className={styles.galleryBadge}>
                     {item.icon}
                     <span>{item.badge}</span>
                   </span>
-                  <h3 className="gallery-item-title">{item.title}</h3>
-                  <p className="gallery-item-desc">{item.description}</p>
-                  <div className="gallery-tags-wrap">
+                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
+                  <p className={styles.galleryItemDesc}>{item.description}</p>
+                  <div className={styles.galleryTagsWrap}>
                     {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="gallery-tag-pill">
+                      <span key={tIdx} className={styles.galleryTagPill}>
                         {tag}
                       </span>
                     ))}
@@ -148,12 +149,12 @@ export const Features: React.FC = () => {
                 </div>
 
                 {/* Screenshot on Right */}
-                <div className="gallery-screen-box">
-                  <div className="gallery-phone-frame">
+                <div className={styles.galleryScreenBox}>
+                  <div className={styles.galleryPhoneFrame}>
                     <img
                       src={item.image}
                       alt={item.imageAlt}
-                      className="gallery-screen-img"
+                      className={styles.galleryScreenImg}
                       loading="lazy"
                     />
                   </div>
@@ -163,32 +164,32 @@ export const Features: React.FC = () => {
           </div>
 
           {/* RIGHT COLUMN (Staggered Downward: Screenshot on Left, Caption on Right) */}
-          <div className="gallery-column gallery-col-right">
+          <div className={`${styles.galleryColumn} ${styles.galleryColRight}`}>
             {rightColItems.map((item, idx) => (
-              <div key={idx} className="gallery-item caption-right">
+              <div key={idx} className={`${styles.galleryItem} ${styles.captionRight}`}>
                 {/* Screenshot on Left */}
-                <div className="gallery-screen-box">
-                  <div className="gallery-phone-frame">
+                <div className={styles.galleryScreenBox}>
+                  <div className={styles.galleryPhoneFrame}>
                     <img
                       src={item.image}
                       alt={item.imageAlt}
-                      className="gallery-screen-img"
+                      className={styles.galleryScreenImg}
                       loading="lazy"
                     />
                   </div>
                 </div>
 
                 {/* Caption on Right */}
-                <div className="gallery-caption-box">
-                  <span className="gallery-badge">
+                <div className={styles.galleryCaptionBox}>
+                  <span className={styles.galleryBadge}>
                     {item.icon}
                     <span>{item.badge}</span>
                   </span>
-                  <h3 className="gallery-item-title">{item.title}</h3>
-                  <p className="gallery-item-desc">{item.description}</p>
-                  <div className="gallery-tags-wrap">
+                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
+                  <p className={styles.galleryItemDesc}>{item.description}</p>
+                  <div className={styles.galleryTagsWrap}>
                     {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className="gallery-tag-pill">
+                      <span key={tIdx} className={styles.galleryTagPill}>
                         {tag}
                       </span>
                     ))}

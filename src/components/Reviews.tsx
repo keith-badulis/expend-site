@@ -1,5 +1,6 @@
 import React from 'react';
 import { StarFilledIcon, StarOutlineIcon } from './icons';
+import styles from './Reviews.module.css';
 
 interface Review {
   name: string;
@@ -50,7 +51,7 @@ const reviews: Review[] = [
 
 export const Reviews: React.FC = () => {
   return (
-    <section id="reviews" className="section reviews-section" style={{ position: 'relative' }}>
+    <section id="reviews" className={`section ${styles.reviewsSection}`} style={{ position: 'relative' }}>
       {/* Single subtle geometric shape anchored to top-left edge */}
       <div
         className="edge-shape square"
@@ -82,13 +83,13 @@ export const Reviews: React.FC = () => {
         </div>
 
         {/* 3 Review Cards Grid */}
-        <div className="reviews-cards-grid">
+        <div className={styles.reviewsCardsGrid}>
           {reviews.map((rev, idx) => (
-            <div key={idx} className="clean-review-card">
+            <div key={idx} className={styles.cleanReviewCard}>
               <div>
                 {/* Top Row: 5 Stars + Google Play Pill */}
-                <div className="review-top-row">
-                  <div className="review-stars-wrap">
+                <div className={styles.reviewTopRow}>
+                  <div className={styles.reviewStarsWrap}>
                     {Array.from({ length: rev.rating }).map((_, sIdx) => (
                       <StarFilledIcon
                         key={sIdx}
@@ -99,35 +100,35 @@ export const Reviews: React.FC = () => {
                     ))}
                   </div>
 
-                  <span className="review-store-pill">
+                  <span className={styles.reviewStorePill}>
                     {rev.store}
                   </span>
                 </div>
 
                 {/* Highlight Headline */}
-                <h3 className="review-highlight-text">
+                <h3 className={styles.reviewHighlightText}>
                   "{rev.highlight}"
                 </h3>
 
                 {/* Comment Body */}
-                <p className="review-comment-text">
+                <p className={styles.reviewCommentText}>
                   "{rev.comment}"
                 </p>
               </div>
 
               {/* Author Footer */}
-              <div className="review-author-footer">
+              <div className={styles.reviewAuthorFooter}>
                 <div
-                  className="review-author-avatar"
+                  className={styles.reviewAuthorAvatar}
                   style={{ backgroundColor: `${rev.avatarColor}20`, color: rev.avatarColor, borderColor: `${rev.avatarColor}60` }}
                 >
                   {rev.name.charAt(0)}
                 </div>
                 <div>
-                  <div className="review-author-name">
+                  <div className={styles.reviewAuthorName}>
                     {rev.name}
                   </div>
-                  <div className="review-author-role">
+                  <div className={styles.reviewAuthorRole}>
                     {rev.role}
                   </div>
                 </div>

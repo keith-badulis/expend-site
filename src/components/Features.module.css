@@ -1,0 +1,177 @@
+.galleryFeaturesSection {
+  padding: 7rem 0;
+  position: relative;
+}
+
+.galleryStaggeredGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  width: 100%;
+}
+
+.galleryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+/* Right column offset downward so the 2 columns are not on the same row */
+.galleryColRight {
+  margin-top: 6.5rem;
+}
+
+/* Open, cardless gallery item */
+.galleryItem {
+  display: grid;
+  align-items: center;
+  gap: 1.75rem;
+  position: relative;
+}
+
+/* Left column: Caption on Left, Screenshot on Right */
+.captionLeft {
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+/* Right column: Screenshot on Left, Caption on Right */
+.captionRight {
+  grid-template-columns: 0.9fr 1.1fr;
+}
+
+.galleryCaptionBox {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+}
+
+.galleryBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  background: rgba(76, 116, 219, 0.15);
+  border: 1.5px solid var(--accent-color);
+  border-radius: 9999px;
+  color: var(--accent-light);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.15rem;
+}
+
+.galleryItemTitle {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #FFFFFF;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+.galleryItemDesc {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 1.35rem;
+}
+
+.galleryTagsWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.galleryTagPill {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  background: rgba(23, 32, 54, 0.85);
+  border: 1.2px solid rgba(76, 116, 219, 0.4);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.galleryScreenBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.galleryPhoneFrame {
+  position: relative;
+  width: 100%;
+  max-width: 215px;
+  border-radius: 28px;
+  padding: 6px;
+  background: #172036;
+  border: 3px solid rgba(76, 116, 219, 0.55);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 26px rgba(76, 116, 219, 0.2);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.galleryItem:hover .galleryPhoneFrame {
+  transform: translateY(-4px) scale(1.02);
+  border-color: var(--accent-color);
+  box-shadow: 0 26px 56px rgba(0, 0, 0, 0.75), 0 0 35px var(--accent-glow);
+}
+
+.galleryScreenImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  object-fit: cover;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 960px) {
+  .galleryStaggeredGrid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .galleryColRight {
+    margin-top: 0;
+  }
+  /* On mobile/tablet, ALWAYS put Caption on Top, Screenshot on Bottom */
+  .galleryItem.captionLeft,
+  .galleryItem.captionRight {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .galleryCaptionBox {
+    order: 1;
+    align-items: center;
+    width: 100%;
+  }
+  .galleryScreenBox {
+    order: 2;
+    width: 100%;
+    margin-top: 0;
+  }
+  .galleryTagsWrap {
+    justify-content: center;
+  }
+  .galleryPhoneFrame {
+    max-width: 225px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryPhoneFrame {
+    max-width: 195px;
+  }
+  .galleryItemTitle {
+    font-size: 1.3rem;
+  }
+  .galleryItemDesc {
+    font-size: 0.94rem;
+  }
+}

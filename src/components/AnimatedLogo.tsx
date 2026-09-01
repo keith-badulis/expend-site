@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import appLogoImg from '../assets/app-logo.png';
+import styles from './AnimatedLogo.module.css';
 
 interface AnimatedLogoProps {
   size?: number;
@@ -59,14 +60,11 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`animated-logo-container ${className}`}
+      className={`${styles.container} ${className}`}
       onClick={interactive ? triggerAnimation : undefined}
       title={interactive ? 'Click to animate' : undefined}
       style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '1.25rem',
-        marginBottom: showText ? '2rem' : '0',
+        marginBottom: showText ? undefined : '0',
         userSelect: 'none',
         cursor: interactive ? 'pointer' : 'default',
         ['--logo-frame-size' as any]: `${size}px`,
@@ -79,9 +77,8 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
         2. Static Upright Logo Image (does NOT rotate)
       */}
       <div
-        className="logo-frame"
+        className={styles.logoFrame}
         style={{
-          position: 'relative',
           width: 'var(--logo-frame-size)',
           height: 'var(--logo-frame-size)',
           display: 'flex',
@@ -91,14 +88,13 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       >
         {/* Layer 1: Unified Rotating Squircle Background */}
         <div
-          className={`logo-squircle-shape ${
-            isSpinning ? 'spin-manual' : animateOnScroll && !hasScrolledIn ? '' : 'spin-initial'
+          className={`${styles.squircleShape} ${
+            isSpinning ? styles.spinManual : animateOnScroll && !hasScrolledIn ? '' : styles.spinInitial
           }`}
         />
 
         {/* Layer 2: Static Upright Logo Image (Shifted 2px right to align circular coil) */}
         <div
-          className="logo-graphic-wrapper"
           style={{
             position: 'relative',
             zIndex: 3,
@@ -111,7 +107,7 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
           <img
             src={appLogoImg}
             alt="eXpend Logo"
-            className={isSpinning || (!animateOnScroll) ? 'logo-inner-img' : ''}
+            className={isSpinning || (!animateOnScroll) ? styles.innerImg : ''}
             style={{
               width: 'calc(var(--logo-frame-size) * 0.66)',
               height: 'calc(var(--logo-frame-size) * 0.66)',
@@ -125,9 +121,9 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       </div>
 
       {showText && (
-        <div className="logo-brand-text">
-          <span className="logo-brand-name">eXpend</span>
-          <span className="logo-brand-sub">Make budgeting a habit</span>
+        <div className={styles.brandText}>
+          <span className={styles.brandName}>eXpend</span>
+          <span className={styles.brandSub}>Make budgeting a habit</span>
         </div>
       )}
     </div>
