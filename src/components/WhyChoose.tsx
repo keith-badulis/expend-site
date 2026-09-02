@@ -4,156 +4,250 @@ import {
   DiamondIcon,
   SparklesIcon,
   LightningBoltIcon,
+  CheckIcon,
+  PaletteIcon,
   WalletIcon,
   CoinIcon,
   StarOutlineIcon,
   CloudBackupIcon,
-  ReportIcon,
+  TagIcon,
 } from './icons';
 import styles from './WhyChoose.module.css';
 
+interface PillarCard {
+  kicker: string;
+  title: string;
+  description: string;
+  accentColor: string;
+  kickerColor: string;
+  borderColor: string;
+  iconBg: string;
+  glowColor: string;
+  ambientGlow: string;
+  glareColor: string;
+  icon: React.ReactNode;
+  chips: Array<{
+    label: string;
+    icon: React.ReactNode;
+  }>;
+}
+
 export const WhyChoose: React.FC = () => {
-  const privacyPills = [
+  const pillars: PillarCard[] = [
     {
-      label: 'No Sign-Ups',
-      icon: <LightningBoltIcon size={16} color="#0BB190" />,
-      color: '#0BB190',
-      bg: 'rgba(11, 177, 144, 0.12)',
+      kicker: 'Privacy by Default',
+      title: 'Your money, your business.',
+      description:
+        'No accounts to create and no ads watching your spending. Everything stays safely on your phone.',
+      accentColor: '#0BB190',
+      kickerColor: '#0BB190',
+      borderColor: 'rgba(11, 177, 144, 0.3)',
+      iconBg: 'rgba(11, 177, 144, 0.12)',
+      glowColor: 'rgba(11, 177, 144, 0.20)',
+      ambientGlow: 'rgba(11, 177, 144, 0.12)',
+      glareColor: 'rgba(215, 252, 245, 0.035)',
+      icon: <LockIcon size={24} color="#0BB190" />,
+      chips: [
+        {
+          label: 'No Sign-Ups Needed',
+          icon: <CheckIcon size={14} color="#0BB190" />,
+        },
+        {
+          label: 'No Ads or Trackers',
+          icon: <SparklesIcon size={14} color="#0BB190" />,
+        },
+        {
+          label: 'Works Fully Offline',
+          icon: <CloudBackupIcon size={14} color="#0BB190" />,
+        },
+      ],
     },
     {
-      label: 'No Ads or Trackers',
-      icon: <SparklesIcon size={16} color="#9957BD" />,
-      color: '#9957BD',
-      bg: 'rgba(153, 87, 189, 0.12)',
+      kicker: 'Honest Pricing',
+      title: 'Zero monthly subscriptions.',
+      description:
+        'Skip recurring fees. Pay once for full access forever, with every future update included.',
+      accentColor: '#4C74DB',
+      kickerColor: '#7094F0',
+      borderColor: 'rgba(76, 116, 219, 0.3)',
+      iconBg: 'rgba(76, 116, 219, 0.12)',
+      glowColor: 'rgba(76, 116, 219, 0.20)',
+      ambientGlow: 'rgba(76, 116, 219, 0.12)',
+      glareColor: 'rgba(225, 238, 255, 0.035)',
+      icon: <DiamondIcon size={24} color="#4C74DB" />,
+      chips: [
+        {
+          label: 'One-Time Purchase',
+          icon: <CoinIcon size={14} color="#7094F0" />,
+        },
+        {
+          label: 'Lifetime Updates',
+          icon: <StarOutlineIcon size={14} color="#7094F0" />,
+        },
+        {
+          label: 'No Hidden Fees',
+          icon: <CheckIcon size={14} color="#7094F0" />,
+        },
+      ],
     },
     {
-      label: 'Zero Cloud Servers',
-      icon: <LockIcon size={16} color="#37a5d6" />,
-      color: '#37a5d6',
-      bg: 'rgba(55, 165, 214, 0.12)',
+      kicker: 'Effortless Logging',
+      title: 'Log expenses in a snap.',
+      description:
+        'Built-in calculator and reusable quick templates so you can log transactions and get right on with your day.',
+      accentColor: '#EF8354',
+      kickerColor: '#EF8354',
+      borderColor: 'rgba(239, 131, 84, 0.3)',
+      iconBg: 'rgba(239, 131, 84, 0.12)',
+      glowColor: 'rgba(239, 131, 84, 0.20)',
+      ambientGlow: 'rgba(239, 131, 84, 0.12)',
+      glareColor: 'rgba(255, 240, 230, 0.035)',
+      icon: <LightningBoltIcon size={24} color="#EF8354" />,
+      chips: [
+        {
+          label: 'Built-in Calculator',
+          icon: <TagIcon size={14} color="#EF8354" />,
+        },
+        {
+          label: 'Quick Templates',
+          icon: <LightningBoltIcon size={14} color="#EF8354" />,
+        },
+        {
+          label: 'Zero Clutter',
+          icon: <CheckIcon size={14} color="#EF8354" />,
+        },
+      ],
     },
     {
-      label: '100% On-Device',
-      icon: <WalletIcon size={16} color="#EAAF3B" />,
-      color: '#EAAF3B',
-      bg: 'rgba(234, 175, 59, 0.12)',
+      kicker: 'Made with Care',
+      title: 'Smooth, fun & customizable.',
+      description:
+        'Fluid animations and vibrant themes make daily money tracking feel satisfying instead of like a chore.',
+      accentColor: '#9957BD',
+      kickerColor: '#BA7DE0',
+      borderColor: 'rgba(153, 87, 189, 0.3)',
+      iconBg: 'rgba(153, 87, 189, 0.12)',
+      glowColor: 'rgba(153, 87, 189, 0.20)',
+      ambientGlow: 'rgba(153, 87, 189, 0.12)',
+      glareColor: 'rgba(248, 232, 255, 0.035)',
+      icon: <SparklesIcon size={24} color="#9957BD" />,
+      chips: [
+        {
+          label: 'Smooth Animations',
+          icon: <SparklesIcon size={14} color="#BA7DE0" />,
+        },
+        {
+          label: '17 Color Themes',
+          icon: <PaletteIcon size={14} color="#BA7DE0" />,
+        },
+        {
+          label: '130+ Custom Icons',
+          icon: <WalletIcon size={14} color="#BA7DE0" />,
+        },
+      ],
     },
   ];
 
-  const purchasePills = [
-    {
-      label: 'Zero Subscriptions',
-      icon: <CoinIcon size={16} color="#EF8354" />,
-      color: '#EF8354',
-      bg: 'rgba(239, 131, 84, 0.12)',
-    },
-    {
-      label: 'Lifetime Access',
-      icon: <StarOutlineIcon size={16} color="#88ba4a" />,
-      color: '#88ba4a',
-      bg: 'rgba(136, 186, 74, 0.12)',
-    },
-    {
-      label: 'Cloud & Local Backups',
-      icon: <CloudBackupIcon size={16} color="#dd56b2" />,
-      color: '#dd56b2',
-      bg: 'rgba(221, 86, 178, 0.12)',
-    },
-    {
-      label: 'CSV Data Export',
-      icon: <ReportIcon size={16} color="#4fb2b5" />,
-      color: '#4fb2b5',
-      bg: 'rgba(79, 178, 181, 0.12)',
-    },
-  ];
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = ((y - centerY) / centerY) * -6.5;
+    const rotateY = ((x - centerX) / centerX) * 6.5;
+    const glareX = (x / rect.width) * 100;
+    const glareY = (y / rect.height) * 100;
+
+    card.style.setProperty('--rot-x', `${rotateX.toFixed(2)}deg`);
+    card.style.setProperty('--rot-y', `${rotateY.toFixed(2)}deg`);
+    card.style.setProperty('--glare-x', `${glareX.toFixed(1)}%`);
+    card.style.setProperty('--glare-y', `${glareY.toFixed(1)}%`);
+  };
+
+  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    card.style.removeProperty('--rot-x');
+    card.style.removeProperty('--rot-y');
+    card.style.removeProperty('--glare-x');
+    card.style.removeProperty('--glare-y');
+  };
 
   return (
-    <section id="why-choose" className={`section ${styles.whyChooseCleanSection}`}>
+    <section id="why-choose" className={`section ${styles.whyChooseSection}`}>
       <div className="container">
         {/* Section Header */}
-        <div className="section-header" style={{ marginBottom: '3rem' }}>
+        <div className="section-header" style={{ marginBottom: '3.5rem' }}>
           <div className="section-subtitle">
             <SparklesIcon size={16} color="var(--accent-light)" />
             <span>Why Choose eXpend</span>
           </div>
 
           <h2 className="section-title" style={{ fontWeight: 700 }}>
-            Built For Privacy. <br />
-            <span style={{ color: 'var(--accent-light)' }}>Zero Subscriptions.</span>
+            Simple to use. <br />
+            <span style={{ color: 'var(--accent-light)' }}>
+              Respects your privacy & wallet.
+            </span>
           </h2>
         </div>
 
-        {/* 2 Clean, Soft-Bordered Stacked Cards */}
-        <div className={styles.cleanCardsContainer}>
-          {/* Card 1: 100% Offline & Private */}
-          <div className={styles.cleanValueCard}>
-            <div className={styles.cleanCardIconWrap} style={{ background: 'rgba(11, 177, 144, 0.12)' }}>
-              <LockIcon size={26} color="#0BB190" />
-            </div>
+        {/* 4 Feature Pillar Cards with Neutral Surface & Accent Highlights */}
+        <div className={styles.pillarsGrid}>
+          {pillars.map((pillar, idx) => (
+            <div
+              key={idx}
+              className={styles.pillarCard}
+              style={
+                {
+                  '--card-accent': pillar.accentColor,
+                  '--card-glow': pillar.glowColor,
+                  '--card-ambient': pillar.ambientGlow,
+                  '--card-border': pillar.borderColor,
+                  '--glare-color': pillar.glareColor,
+                } as React.CSSProperties
+              }
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+            >
+              {/* Masked Radial Glare Following Cursor */}
+              <div className={styles.glareMask}>
+                <div className={styles.radialGlare} />
+              </div>
 
-            <div className={styles.cleanCardBody}>
-              <span className={styles.cleanCardKicker} style={{ color: '#0BB190' }}>
-                Privacy First
-              </span>
-
-              <h3 className={styles.cleanCardHeadline}>
-                100% Offline & Private. No Sign-Ups. No Ads.
-              </h3>
-
-              <p className={styles.cleanCardDescription}>
-                Your financial data never leaves your device. No mandatory accounts, no analytics tracking, and no third-party data broker access.
-              </p>
-
-              {/* Soft, Borderless Icon Chips */}
-              <div className={styles.cleanChipsGrid}>
-                {privacyPills.map((pill, idx) => (
+              <div className={styles.cardInnerContent}>
+                {/* Card Header: Accent Icon Wrap + Kicker */}
+                <div className={styles.cardHeader}>
                   <div
-                    key={idx}
-                    className={styles.cleanChip}
-                    style={{ backgroundColor: pill.bg }}
+                    className={styles.iconWrap}
+                    style={{ backgroundColor: pillar.iconBg }}
                   >
-                    {pill.icon}
-                    <span style={{ color: pill.color }}>{pill.label}</span>
+                    {pillar.icon}
                   </div>
-                ))}
+                  <span
+                    className={styles.kicker}
+                    style={{ color: pillar.kickerColor }}
+                  >
+                    {pillar.kicker}
+                  </span>
+                </div>
+
+                {/* Title & Body */}
+                <h3 className={styles.cardTitle}>{pillar.title}</h3>
+                <p className={styles.cardDesc}>{pillar.description}</p>
+
+                {/* Neutral Action Chips with Colored Icon Highlights */}
+                <div className={styles.chipsRow}>
+                  {pillar.chips.map((chip, cIdx) => (
+                    <div key={cIdx} className={styles.chip}>
+                      {chip.icon}
+                      <span>{chip.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
-
-          {/* Card 2: One-Time Purchase, Premium Forever */}
-          <div className={styles.cleanValueCard}>
-            <div className={styles.cleanCardIconWrap} style={{ background: 'rgba(76, 116, 219, 0.12)' }}>
-              <DiamondIcon size={26} color="#4C74DB" />
-            </div>
-
-            <div className={styles.cleanCardBody}>
-              <span className={styles.cleanCardKicker} style={{ color: '#7094F0' }}>
-                Pay Once
-              </span>
-
-              <h3 className={styles.cleanCardHeadline}>
-                One-Time Purchase. Premium Forever.
-              </h3>
-
-              <p className={styles.cleanCardDescription}>
-                Say goodbye to recurring subscription fatigue. Pay once to unlock the full, unrestricted experience forever with complete data freedom.
-              </p>
-
-              {/* Soft, Borderless Icon Chips */}
-              <div className={styles.cleanChipsGrid}>
-                {purchasePills.map((pill, idx) => (
-                  <div
-                    key={idx}
-                    className={styles.cleanChip}
-                    style={{ backgroundColor: pill.bg }}
-                  >
-                    {pill.icon}
-                    <span style={{ color: pill.color }}>{pill.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>
