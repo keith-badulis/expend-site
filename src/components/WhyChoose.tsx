@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   LockIcon,
   DiamondIcon,
@@ -33,6 +33,28 @@ interface PillarCard {
 }
 
 export const WhyChoose: React.FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [hasEntered, setHasEntered] = useState(false);
+  const [cardsEntered, setCardsEntered] = useState<Record<number, boolean>>({});
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHasEntered(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   const pillars: PillarCard[] = [
     {
       kicker: 'Privacy by Default',
@@ -43,8 +65,8 @@ export const WhyChoose: React.FC = () => {
       kickerColor: '#0BB190',
       borderColor: 'rgba(11, 177, 144, 0.3)',
       iconBg: 'rgba(11, 177, 144, 0.12)',
-      glowColor: 'rgba(11, 177, 144, 0.20)',
-      ambientGlow: 'rgba(11, 177, 144, 0.12)',
+      glowColor: 'rgba(11, 177, 144, 0.15)',
+      ambientGlow: 'rgba(11, 177, 144, 0.08)',
       glareColor: 'rgba(215, 252, 245, 0.035)',
       icon: <LockIcon size={24} color="#0BB190" />,
       chips: [
@@ -71,8 +93,8 @@ export const WhyChoose: React.FC = () => {
       kickerColor: '#7094F0',
       borderColor: 'rgba(76, 116, 219, 0.3)',
       iconBg: 'rgba(76, 116, 219, 0.12)',
-      glowColor: 'rgba(76, 116, 219, 0.20)',
-      ambientGlow: 'rgba(76, 116, 219, 0.12)',
+      glowColor: 'rgba(76, 116, 219, 0.18)',
+      ambientGlow: 'rgba(76, 116, 219, 0.10)',
       glareColor: 'rgba(225, 238, 255, 0.035)',
       icon: <DiamondIcon size={24} color="#4C74DB" />,
       chips: [
@@ -99,8 +121,8 @@ export const WhyChoose: React.FC = () => {
       kickerColor: '#EF8354',
       borderColor: 'rgba(239, 131, 84, 0.3)',
       iconBg: 'rgba(239, 131, 84, 0.12)',
-      glowColor: 'rgba(239, 131, 84, 0.20)',
-      ambientGlow: 'rgba(239, 131, 84, 0.12)',
+      glowColor: 'rgba(239, 131, 84, 0.14)',
+      ambientGlow: 'rgba(239, 131, 84, 0.07)',
       glareColor: 'rgba(255, 240, 230, 0.035)',
       icon: <LightningBoltIcon size={24} color="#EF8354" />,
       chips: [
@@ -127,8 +149,8 @@ export const WhyChoose: React.FC = () => {
       kickerColor: '#BA7DE0',
       borderColor: 'rgba(153, 87, 189, 0.3)',
       iconBg: 'rgba(153, 87, 189, 0.12)',
-      glowColor: 'rgba(153, 87, 189, 0.20)',
-      ambientGlow: 'rgba(153, 87, 189, 0.12)',
+      glowColor: 'rgba(153, 87, 189, 0.18)',
+      ambientGlow: 'rgba(153, 87, 189, 0.10)',
       glareColor: 'rgba(248, 232, 255, 0.035)',
       icon: <SparklesIcon size={24} color="#9957BD" />,
       chips: [
@@ -168,14 +190,18 @@ export const WhyChoose: React.FC = () => {
 
   const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
     const card = e.currentTarget;
-    card.style.removeProperty('--rot-x');
-    card.style.removeProperty('--rot-y');
+    card.style.setProperty('--rot-x', '0deg');
+    card.style.setProperty('--rot-y', '0deg');
     card.style.removeProperty('--glare-x');
     card.style.removeProperty('--glare-y');
   };
 
   return (
-    <section id="why-choose" className={`section ${styles.whyChooseSection}`}>
+    <section
+      id="why-choose"
+      ref={sectionRef}
+      className={`section ${styles.whyChooseSection}`}
+    >
       <div className="container">
         {/* Section Header */}
         <div className="section-header" style={{ marginBottom: '3.5rem' }}>
@@ -192,12 +218,14 @@ export const WhyChoose: React.FC = () => {
           </h2>
         </div>
 
-        {/* 4 Feature Pillar Cards with Neutral Surface & Accent Highlights */}
+        {/* 4 Feature Pillar Cards with Staggered Perspective Entrance on First Scroll */}
         <div className={styles.pillarsGrid}>
           {pillars.map((pillar, idx) => (
             <div
               key={idx}
-              className={styles.pillarCard}
+              className={`${styles.pillarCard} ${
+                hasEntered && !cardsEntered[idx] ? styles.cardEntering : ''
+              }`}
               style={
                 {
                   '--card-accent': pillar.accentColor,
@@ -205,8 +233,12 @@ export const WhyChoose: React.FC = () => {
                   '--card-ambient': pillar.ambientGlow,
                   '--card-border': pillar.borderColor,
                   '--glare-color': pillar.glareColor,
+                  '--stagger-delay': `${idx * 90}ms`,
                 } as React.CSSProperties
               }
+              onAnimationEnd={() => {
+                setCardsEntered((prev) => ({ ...prev, [idx]: true }));
+              }}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
             >

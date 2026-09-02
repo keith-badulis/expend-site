@@ -1,7 +1,6 @@
 .whyChooseSection {
   padding: 5.5rem 0;
   position: relative;
-  perspective: 1200px;
 }
 
 .pillarsGrid {
@@ -14,7 +13,7 @@
   z-index: 2;
 }
 
-/* Neutral Dark Surface Card with Gentle 3D Perspective */
+/* Neutral Dark Surface Card with Local 3D Perspective */
 .pillarCard {
   background: #172036;
   border: 1px solid rgba(255, 255, 255, 0.07);
@@ -27,22 +26,58 @@
     0 10px 24px -4px rgba(0, 0, 0, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   position: relative;
-  transform-style: preserve-3d;
-  will-change: transform, box-shadow, border-color;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  will-change: transform, box-shadow, border-color, opacity;
+  -webkit-transform: perspective(850px) rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg));
   transform: perspective(850px) rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg));
-  /* Smooth, graceful return at ease when cursor exits */
-  transition: transform 0.65s cubic-bezier(0.2, 0.9, 0.3, 1),
-    box-shadow 0.65s cubic-bezier(0.2, 0.9, 0.3, 1),
+  /* Luxurious, smooth ease-out return when losing focus */
+  transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    -webkit-transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.75s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.4s ease;
+}
+
+/* Staggered Animated Perspective Entrance on First Scroll (Matching WalletDetailsCard) */
+.cardEntering {
+  -webkit-animation: perspectiveEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms);
+  animation: perspectiveEntrance 0.75s cubic-bezier(0.16, 1, 0.3, 1) var(--stagger-delay, 0ms);
+}
+
+@-webkit-keyframes perspectiveEntrance {
+  0% {
+    opacity: 0;
+    -webkit-transform: perspective(850px) rotateX(4deg) rotateY(-8deg) scale3d(0.95, 0.95, 0.95);
+  }
+  65% {
+    -webkit-transform: perspective(850px) rotateX(-1deg) rotateY(1deg) scale3d(1.006, 1.006, 1.006);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: perspective(850px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  }
+}
+
+@keyframes perspectiveEntrance {
+  0% {
+    opacity: 0;
+    transform: perspective(850px) rotateX(4deg) rotateY(-8deg) scale3d(0.95, 0.95, 0.95);
+  }
+  65% {
+    transform: perspective(850px) rotateX(-1deg) rotateY(1deg) scale3d(1.006, 1.006, 1.006);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(850px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
   .pillarCard:hover {
-    /* Responsive tracking while hovering */
+    /* Responsive real-time tracking while hovering */
     transition: transform 0.1s ease-out,
       box-shadow 0.35s ease,
       border-color 0.35s ease;
-    transform: perspective(850px) rotateX(var(--rot-x, 0deg)) rotateY(var(--rot-y, 0deg));
     border-color: rgba(112, 148, 240, 0.35);
     box-shadow:
       /* 1. Crisp grounding base */
