@@ -15,9 +15,11 @@ import {
 import styles from './WhyChoose.module.css';
 
 interface PillarCard {
-  kicker: string;
+  index: string;
+  category: string;
   title: string;
   description: string;
+  highlight: string;
   accentColor: string;
   kickerColor: string;
   borderColor: string;
@@ -26,10 +28,6 @@ interface PillarCard {
   ambientGlow: string;
   glareColor: string;
   icon: React.ReactNode;
-  chips: Array<{
-    label: string;
-    icon: React.ReactNode;
-  }>;
 }
 
 export const WhyChoose: React.FC = () => {
@@ -57,10 +55,12 @@ export const WhyChoose: React.FC = () => {
 
   const pillars: PillarCard[] = [
     {
-      kicker: 'Privacy by Default',
+      index: '01',
+      category: 'Privacy by Default',
       title: 'Your money, your business.',
       description:
-        'No accounts to create and no ads watching your spending. Everything stays safely on your phone.',
+        'No sign-ups, no tracking, and no ads. Everything is stored directly on your phone, so your financial data stays completely private.',
+      highlight: '100% On-Device & Offline',
       accentColor: '#0BB190',
       kickerColor: '#0BB190',
       borderColor: 'rgba(11, 177, 144, 0.3)',
@@ -68,27 +68,15 @@ export const WhyChoose: React.FC = () => {
       glowColor: 'rgba(11, 177, 144, 0.15)',
       ambientGlow: 'rgba(11, 177, 144, 0.08)',
       glareColor: 'rgba(215, 252, 245, 0.035)',
-      icon: <LockIcon size={24} color="#0BB190" />,
-      chips: [
-        {
-          label: 'No Sign-Ups Needed',
-          icon: <CheckIcon size={14} color="#0BB190" />,
-        },
-        {
-          label: 'No Ads or Trackers',
-          icon: <SparklesIcon size={14} color="#0BB190" />,
-        },
-        {
-          label: 'Works Fully Offline',
-          icon: <CloudBackupIcon size={14} color="#0BB190" />,
-        },
-      ],
+      icon: <LockIcon size={22} color="#0BB190" />,
     },
     {
-      kicker: 'Honest Pricing',
+      index: '02',
+      category: 'Honest Pricing',
       title: 'Zero monthly subscriptions.',
       description:
-        'Skip recurring fees. Pay once for full access forever, with every future update included.',
+        'Pay once for full lifetime access. No recurring charges, no renewal anxiety, and every future update is included forever.',
+      highlight: 'Pay Once • Lifetime Updates',
       accentColor: '#4C74DB',
       kickerColor: '#7094F0',
       borderColor: 'rgba(76, 116, 219, 0.3)',
@@ -96,27 +84,15 @@ export const WhyChoose: React.FC = () => {
       glowColor: 'rgba(76, 116, 219, 0.18)',
       ambientGlow: 'rgba(76, 116, 219, 0.10)',
       glareColor: 'rgba(225, 238, 255, 0.035)',
-      icon: <DiamondIcon size={24} color="#4C74DB" />,
-      chips: [
-        {
-          label: 'One-Time Purchase',
-          icon: <CoinIcon size={14} color="#7094F0" />,
-        },
-        {
-          label: 'Lifetime Updates',
-          icon: <StarOutlineIcon size={14} color="#7094F0" />,
-        },
-        {
-          label: 'No Hidden Fees',
-          icon: <CheckIcon size={14} color="#7094F0" />,
-        },
-      ],
+      icon: <DiamondIcon size={22} color="#4C74DB" />,
     },
     {
-      kicker: 'Effortless Logging',
+      index: '03',
+      category: 'Effortless Logging',
       title: 'Log expenses in a snap.',
       description:
-        'Built-in calculator and reusable quick templates so you can log transactions and get right on with your day.',
+        'A built-in calculator and reusable quick templates make adding transactions fast and frictionless so you can get right back to your day.',
+      highlight: 'Built-in Calculator & Templates',
       accentColor: '#EF8354',
       kickerColor: '#EF8354',
       borderColor: 'rgba(239, 131, 84, 0.3)',
@@ -124,27 +100,15 @@ export const WhyChoose: React.FC = () => {
       glowColor: 'rgba(239, 131, 84, 0.14)',
       ambientGlow: 'rgba(239, 131, 84, 0.07)',
       glareColor: 'rgba(255, 240, 230, 0.035)',
-      icon: <LightningBoltIcon size={24} color="#EF8354" />,
-      chips: [
-        {
-          label: 'Built-in Calculator',
-          icon: <TagIcon size={14} color="#EF8354" />,
-        },
-        {
-          label: 'Quick Templates',
-          icon: <LightningBoltIcon size={14} color="#EF8354" />,
-        },
-        {
-          label: 'Zero Clutter',
-          icon: <CheckIcon size={14} color="#EF8354" />,
-        },
-      ],
+      icon: <LightningBoltIcon size={22} color="#EF8354" />,
     },
     {
-      kicker: 'Made with Care',
-      title: 'Smooth, fun & customizable.',
+      index: '04',
+      category: 'Craft & Polish',
+      title: 'Crafted for daily use.',
       description:
-        'Fluid animations and vibrant themes make daily money tracking feel satisfying instead of like a chore.',
+        'Fluid interactions, responsive tactile feedback, and comprehensive theme customization make managing your finances intuitive and effortless.',
+      highlight: 'Fluid Motion • Custom Themes',
       accentColor: '#9957BD',
       kickerColor: '#BA7DE0',
       borderColor: 'rgba(153, 87, 189, 0.3)',
@@ -152,21 +116,7 @@ export const WhyChoose: React.FC = () => {
       glowColor: 'rgba(153, 87, 189, 0.18)',
       ambientGlow: 'rgba(153, 87, 189, 0.10)',
       glareColor: 'rgba(248, 232, 255, 0.035)',
-      icon: <SparklesIcon size={24} color="#9957BD" />,
-      chips: [
-        {
-          label: 'Smooth Animations',
-          icon: <SparklesIcon size={14} color="#BA7DE0" />,
-        },
-        {
-          label: '17 Color Themes',
-          icon: <PaletteIcon size={14} color="#BA7DE0" />,
-        },
-        {
-          label: '130+ Custom Icons',
-          icon: <WalletIcon size={14} color="#BA7DE0" />,
-        },
-      ],
+      icon: <SparklesIcon size={22} color="#9957BD" />,
     },
   ];
 
@@ -248,34 +198,40 @@ export const WhyChoose: React.FC = () => {
               </div>
 
               <div className={styles.cardInnerContent}>
-                {/* Card Header: Accent Icon Wrap + Kicker */}
-                <div className={styles.cardHeader}>
-                  <div
-                    className={styles.iconWrap}
-                    style={{ backgroundColor: pillar.iconBg }}
-                  >
-                    {pillar.icon}
+                {/* Architectural Header: Icon + Category on Left, Watermark Index on Right */}
+                <div className={styles.archHeader}>
+                  <div className={styles.archLeft}>
+                    <div
+                      className={styles.iconWrap}
+                      style={{ backgroundColor: pillar.iconBg }}
+                    >
+                      {pillar.icon}
+                    </div>
+                    <span
+                      className={styles.categoryName}
+                      style={{ color: pillar.kickerColor }}
+                    >
+                      {pillar.category}
+                    </span>
                   </div>
-                  <span
-                    className={styles.kicker}
-                    style={{ color: pillar.kickerColor }}
-                  >
-                    {pillar.kicker}
-                  </span>
+                  <span className={styles.watermarkIndex}>{pillar.index}</span>
                 </div>
 
-                {/* Title & Body */}
+                {/* Title & Description */}
                 <h3 className={styles.cardTitle}>{pillar.title}</h3>
                 <p className={styles.cardDesc}>{pillar.description}</p>
 
-                {/* Neutral Action Chips with Colored Icon Highlights */}
-                <div className={styles.chipsRow}>
-                  {pillar.chips.map((chip, cIdx) => (
-                    <div key={cIdx} className={styles.chip}>
-                      {chip.icon}
-                      <span>{chip.label}</span>
-                    </div>
-                  ))}
+                {/* Clean Structural Hairline */}
+                <div className={styles.hairlineDivider} />
+
+                {/* Grounded Highlight Anchor */}
+                <div className={styles.cardFooter}>
+                  <span
+                    className={styles.highlightBadge}
+                    style={{ color: pillar.kickerColor }}
+                  >
+                    {pillar.highlight}
+                  </span>
                 </div>
               </div>
             </div>
