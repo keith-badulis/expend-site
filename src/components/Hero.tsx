@@ -5,6 +5,8 @@ import {
   BankIcon,
   PiggyBankIcon,
   CardIcon,
+  AirplaneIcon,
+  WalletIcon,
 } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 import styles from './Hero.module.css';
@@ -144,66 +146,42 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 5: Authentic eXpend App Component 1 — Maya WalletItem (Top-Left) */}
+              {/* Layer 5: Authentic eXpend App Component 1 — Savings WalletItem (Top-Left) */}
               <div className={`${styles.appFloatingCard} ${styles.walletCardWrap} ${styles.cardReveal1}`}>
                 <div className={styles.walletCardGradient}>
-                  {/* Top Squircle Icon (Matches App's Phone Icon) */}
+                  {/* Top Squircle Icon (Matches App's Wallet Icon) */}
                   <div className={styles.walletIconSquircle}>
-                    <svg
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="#FFFFFF"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <rect x="5" y="2" width="14" height="20" rx="3" />
-                      <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="3" />
-                    </svg>
+                    <WalletIcon size={16} color="#FFFFFF" strokeWidth="6.5px" />
                   </div>
 
                   <div className={styles.walletDetails}>
-                    <div className={styles.walletName}>Maya</div>
+                    <div className={styles.walletName}>Savings</div>
                     <div className={styles.walletAmount}>$2,247.99</div>
                   </div>
                 </div>
               </div>
 
-              {/* Layer 5: Authentic eXpend App Component 2 — Emergency Fund GoalListItem (Bottom-Right) */}
+              {/* Layer 5: Authentic eXpend App Component 2 — Vacation GoalListItem (Bottom-Right) */}
               <div className={`${styles.appFloatingCard} ${styles.goalCardWrap} ${styles.cardReveal2}`}>
                 <div className={styles.goalCardBody}>
                   <div className={styles.goalTopRow}>
-                    {/* Lime Squircle Icon (Matches App's Goal Plus Icon) */}
+                    {/* Orange Squircle Icon with Airplane */}
                     <div className={styles.goalIconSquircle}>
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#FFFFFF"
-                        strokeWidth="3.2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <line x1="12" y1="6" x2="12" y2="18" />
-                        <line x1="6" y1="12" x2="18" y2="12" />
-                      </svg>
+                      <AirplaneIcon size={18} color="#FFFFFF" strokeWidth="6.25px" />
                     </div>
 
                     <div className={styles.goalInfo}>
-                      <div className={styles.goalTitle}>Emergency Fund</div>
+                      <div className={styles.goalTitle}>Vacation</div>
                       <div className={styles.goalAmountRow}>
-                        <span className={styles.goalNumbers}>$9,656.00 / $50,000.00</span>
-                        <span className={styles.goalPercent}>19%</span>
+                        <span className={styles.goalNumbers}>$3,250.00 / $5,000.00</span>
+                        <span className={styles.goalPercent}>65%</span>
                       </div>
                     </div>
                   </div>
 
                   {/* Real eXpend Goal Progress Bar */}
                   <div className={styles.goalProgressTrack}>
-                    <div className={styles.goalProgressFill} style={{ width: '19%' }} />
+                    <div className={styles.goalProgressFill} style={{ width: '65%' }} />
                   </div>
                 </div>
               </div>

@@ -784,3 +784,27 @@ export const DescriptionIcon: React.FC<IconProps> = ({
     />
   </svg>
 );
+
+export const AirplaneIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M30.113 43.75h15.532l-4.157-17.146a7.042 7.042 0 0 1 1.181-5.428 6.945 6.945 0 0 1 4.997-2.427l.209-.001a6.386 6.386 0 0 1 5.852 3.874l8.962 21.126h12.319c4.598 0 8.325 3.727 8.325 8.325v.016c0 4.598-3.727 8.325-8.325 8.325H62.689l-8.962 21.126a6.386 6.386 0 0 1-5.852 3.874l-.209-.001a6.945 6.945 0 0 1-4.997-2.427 7.042 7.042 0 0 1-1.181-5.428l4.157-17.146H30.113l-2.909 5.868a5.526 5.526 0 0 1-4.815 2.987l-.347.001a5.418 5.418 0 0 1-4.154-1.964 5.417 5.417 0 0 1-1.118-4.456l2.135-10.768-2.135-10.768a5.417 5.417 0 0 1 1.118-4.456 5.418 5.418 0 0 1 4.154-1.964l.347-.001a5.526 5.526 0 0 1 4.815 2.987l2.909 5.868Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
