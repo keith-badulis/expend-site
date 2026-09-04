@@ -219,18 +219,6 @@ export const Reviews: React.FC = () => {
 
           {/* Social Proof Trust Pill */}
           <div className={styles.trustPill}>
-            <div className={styles.trustStars}>
-              {Array.from({ length: 5 }).map((_, sIdx) => (
-                <StarFilledIcon
-                  key={sIdx}
-                  size={14}
-                  color="#FBBF24"
-                  strokeWidth="2px"
-                />
-              ))}
-            </div>
-            <span className={styles.trustScore}>4.9 / 5.0 Rating</span>
-            <span className={styles.trustDot}>•</span>
             <span className={styles.trustLabel}>App Store & Google Play Verified</span>
           </div>
         </div>
