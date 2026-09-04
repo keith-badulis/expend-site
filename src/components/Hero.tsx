@@ -1,7 +1,11 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
-import { BankIcon, WalletIcon, PiggyBankIcon, CardIcon } from './icons';
+import {
+  BankIcon,
+  PiggyBankIcon,
+  CardIcon,
+} from './icons';
 import appScreenImg from '../assets/app-screen.png';
 import styles from './Hero.module.css';
 
@@ -73,15 +77,16 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Phone Mockup with 4 Floating Finance Icons */}
+          {/* Right Column: 3D Perspective Phone Stage with Orbiting Highlights & Layered App Components */}
           <div className={styles.phoneMockupWrapper}>
-            <div className={styles.phoneAnchor}>
-              {/* 1. Radiant Backlight Aura (Separated Entrance Reveal & Interactive Glow) */}
+            {/* Dedicated Background Layer (Guaranteed Behind Phone & Chips) */}
+            <div className={styles.phoneBackdropGroup}>
+              {/* Layer 1: Radiant Backlight Aura */}
               <div className={`${styles.phoneAuraContainer} ${styles.auraReveal}`}>
                 <div className={styles.phoneBacklightAura} />
               </div>
 
-              {/* 2. Emanating Concentric Ripple Rings (Separated Entrance Reveal & Breathing Loops) */}
+              {/* Layer 2: Emanating Concentric Ripple Rings */}
               <div className={`${styles.phoneRingsContainer} ${styles.ringsReveal}`}>
                 <div className={`${styles.phoneRingWrap} ${styles.ringWrap1}`}>
                   <div className={`${styles.phoneEmanatingRing} ${styles.ring1} ${styles.pulseLoop1}`} />
@@ -90,8 +95,31 @@ export const Hero: React.FC = () => {
                   <div className={`${styles.phoneEmanatingRing} ${styles.ring2} ${styles.pulseLoop2}`} />
                 </div>
               </div>
+            </div>
 
-              {/* 3. Emanating Pure Vector Money Icons (Separated Entrance Reveal & Floating Loops) */}
+            {/* Interactive Phone Mockup & Floating Overlay Components */}
+            <div className={styles.phoneAnchor}>
+              {/* Layer 3: Phone Device Container (Centerpiece hardware) */}
+              <div className={`${styles.phoneDeviceContainer} ${styles.phoneReveal}`}>
+                <div className={styles.phoneMockup}>
+                  {/* Dynamic Island Notch */}
+                  <div className={styles.dynamicIsland}>
+                    <div className={styles.cameraLens} />
+                  </div>
+
+                  {/* Specular Diagonal Glass Sheen */}
+                  <div className={styles.screenSheen} />
+
+                  <div className={styles.phoneScreen}>
+                    <img
+                      src={appScreenImg}
+                      alt="eXpend App Home Screen"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Layer 4: Emanating Pure Vector Money Icons (Floating in front of phone) */}
               <div className={`${styles.financeIconAnchor} ${styles.iconPosBank} ${styles.iconReveal1}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float1}`}>
@@ -100,10 +128,10 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosWallet} ${styles.iconReveal2}`}>
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal2}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float2}`}>
-                    <WalletIcon size={36} color="var(--accent-light)" />
+                    <CardIcon size={34} color="var(--accent-light)" />
                   </div>
                 </div>
               </div>
@@ -116,22 +144,66 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal4}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <CardIcon size={34} color="var(--accent-light)" />
+              {/* Layer 5: Authentic eXpend App Component 1 — Maya WalletItem (Top-Left) */}
+              <div className={`${styles.appFloatingCard} ${styles.walletCardWrap} ${styles.cardReveal1}`}>
+                <div className={styles.walletCardGradient}>
+                  {/* Top Squircle Icon (Matches App's Phone Icon) */}
+                  <div className={styles.walletIconSquircle}>
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="#FFFFFF"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <rect x="5" y="2" width="14" height="20" rx="3" />
+                      <line x1="12" y1="18" x2="12.01" y2="18" strokeWidth="3" />
+                    </svg>
+                  </div>
+
+                  <div className={styles.walletDetails}>
+                    <div className={styles.walletName}>Maya</div>
+                    <div className={styles.walletAmount}>$2,247.99</div>
                   </div>
                 </div>
               </div>
 
-              {/* 4. Phone Device Container (Separated entrance reveal & interactive mockup) */}
-              <div className={`${styles.phoneDeviceContainer} ${styles.phoneReveal}`}>
-                <div className={styles.phoneMockup}>
-                  <div className={styles.phoneScreen}>
-                    <img
-                      src={appScreenImg}
-                      alt="eXpend App Home Screen"
-                    />
+              {/* Layer 5: Authentic eXpend App Component 2 — Emergency Fund GoalListItem (Bottom-Right) */}
+              <div className={`${styles.appFloatingCard} ${styles.goalCardWrap} ${styles.cardReveal2}`}>
+                <div className={styles.goalCardBody}>
+                  <div className={styles.goalTopRow}>
+                    {/* Lime Squircle Icon (Matches App's Goal Plus Icon) */}
+                    <div className={styles.goalIconSquircle}>
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="#FFFFFF"
+                        strokeWidth="3.2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <line x1="12" y1="6" x2="12" y2="18" />
+                        <line x1="6" y1="12" x2="18" y2="12" />
+                      </svg>
+                    </div>
+
+                    <div className={styles.goalInfo}>
+                      <div className={styles.goalTitle}>Emergency Fund</div>
+                      <div className={styles.goalAmountRow}>
+                        <span className={styles.goalNumbers}>$9,656.00 / $50,000.00</span>
+                        <span className={styles.goalPercent}>19%</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Real eXpend Goal Progress Bar */}
+                  <div className={styles.goalProgressTrack}>
+                    <div className={styles.goalProgressFill} style={{ width: '19%' }} />
                   </div>
                 </div>
               </div>

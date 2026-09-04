@@ -11,6 +11,11 @@
   box-sizing: border-box;
 }
 
+.heroSection > :global(.container) {
+  position: relative;
+  z-index: 3;
+}
+
 .heroGrid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -36,6 +41,7 @@
   width: 100%;
   position: relative;
   z-index: 4;
+  transform: translateZ(0px);
 }
 
 .phoneReveal {
@@ -52,6 +58,21 @@
   min-height: 540px;
 }
 
+/* Dedicated Background Layer (Guaranteed Behind Phone & Chips) */
+.phoneBackdropGroup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 290px;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .phoneAnchor {
   position: relative;
   width: 290px;
@@ -60,6 +81,9 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  z-index: 3;
+  perspective: 1200px;
+  transform-style: preserve-3d;
 }
 
 /* --- EMANATING FINANCE HIGHLIGHTS --- */
@@ -150,28 +174,24 @@
 /* 3. Pure Vector Finance Icons */
 .financeIconAnchor {
   position: absolute;
-  z-index: 5;
+  z-index: 6;
   pointer-events: none;
+  transform: translateZ(25px);
 }
 
 .iconPosBank {
-  top: 24%;
-  left: -65px;
-}
-
-.iconPosWallet {
-  top: 34%;
-  right: -70px;
-}
-
-.iconPosPiggy {
-  top: 64%;
-  left: -75px;
+  top: 9%;
+  right: -80px;
 }
 
 .iconPosCard {
-  top: 74%;
-  right: -65px;
+  top: 45%;
+  left: -62px;
+}
+
+.iconPosPiggy {
+  top: 66%;
+  right: -70px;
 }
 
 .iconReveal1 {
@@ -179,24 +199,20 @@
 }
 
 .iconReveal2 {
-  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.48s both;
+  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.50s both;
 }
 
 .iconReveal3 {
-  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.56s both;
-}
-
-.iconReveal4 {
-  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.64s both;
+  animation: iconEntrancePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 2.60s both;
 }
 
 .emanatingFinanceIcon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  filter: drop-shadow(0 0 14px var(--accent-light)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6));
-  opacity: 1;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.45)) drop-shadow(0 0 10px rgba(112, 148, 240, 0.25));
+  opacity: 0.55;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, opacity 0.4s ease;
 }
 
 .financeIconInner {
@@ -217,21 +233,70 @@
   animation: financeFloat3 6.0s ease-in-out infinite alternate;
 }
 
-/* Phone Mockup Frame */
+/* Phone Mockup Frame with Hardware Polish */
 .phoneMockup {
   position: relative;
   width: 100%;
-  border-radius: 38px;
+  border-radius: 40px;
   padding: 8px;
   background: #172036;
   border: 3.5px solid var(--accent-color);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 40px var(--accent-glow);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 25px 55px -10px rgba(0, 0, 0, 0.8),
+    0 0 45px var(--accent-glow);
   transform-origin: center center;
+  transform-style: preserve-3d;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
+/* Hardware Dynamic Island Notch */
+.dynamicIsland {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 18px;
+  background: #06090F;
+  border-radius: 999px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 7px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 0 1px rgba(255, 255, 255, 0.18);
+  pointer-events: none;
+}
+
+.cameraLens {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #1A284A 0%, #06090F 70%);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Specular Diagonal Glass Sheen */
+.screenSheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 32px;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.03) 28%,
+    transparent 52%
+  );
+  pointer-events: none;
+  z-index: 9;
+}
+
 .phoneScreen {
-  border-radius: 30px;
+  border-radius: 32px;
   overflow: hidden;
   background-color: #11141A;
   display: flex;
@@ -247,56 +312,257 @@
 }
 
 /* =======================================================
+   RECREATED AUTHENTIC EXPEND APP COMPONENTS
+======================================================= */
+.appFloatingCard {
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  user-select: none;
+  transform: translateZ(50px);
+  will-change: transform;
+}
+
+.walletCardWrap {
+  top: 10%;
+  left: -115px;
+}
+
+.goalCardWrap {
+  bottom: 10%;
+  right: -135px;
+}
+
+.cardReveal1 {
+  animation: cardEntrancePop 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.65s both;
+}
+
+.cardReveal2 {
+  animation: cardEntrancePop 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.80s both;
+}
+
+@keyframes cardEntrancePop {
+  0% {
+    opacity: 0;
+    transform: translateZ(50px) scale(0.7) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateZ(50px) scale(1) translateY(0);
+  }
+}
+
+/* 1. Maya WalletItem Style (Authentic Gradient & Squircle) */
+.walletCardGradient {
+  width: 140px;
+  background: linear-gradient(135deg, #0BB190 0%, #0f8a78 100%);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    0 16px 36px -4px rgba(11, 177, 144, 0.45),
+    0 8px 18px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.walletIconSquircle {
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.walletDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.walletName {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #FFFFFF;
+  opacity: 0.92;
+  line-height: 1.2;
+}
+
+.walletAmount {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* 2. Emergency Fund GoalListItem Style (Authentic Dark Card & Progress) */
+.goalCardBody {
+  width: 205px;
+  background: #1C1E22;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 11px 13px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow:
+    0 16px 36px -4px rgba(0, 0, 0, 0.7),
+    0 0 24px rgba(136, 186, 74, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.goalTopRow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.goalIconSquircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #88ba4a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(136, 186, 74, 0.3);
+}
+
+.goalInfo {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.goalTitle {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.goalAmountRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px;
+  width: 100%;
+}
+
+.goalNumbers {
+  font-size: 0.62rem;
+  color: #94A3B8;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.goalPercent {
+  font-size: 0.62rem;
+  color: #94A3B8;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.goalProgressTrack {
+  height: 4.5px;
+  width: 100%;
+  background: #282828;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 9px;
+}
+
+.goalProgressFill {
+  height: 100%;
+  background: #88ba4a;
+  border-radius: 999px;
+}
+
+/* =======================================================
    HOVER INTERACTION: PROTECTED FOR DESKTOP POINTERS ONLY
 ======================================================= */
 @media (hover: hover) and (pointer: fine) {
   .phoneAnchor:hover .phoneMockup {
-    transform: scale(1.015) translateY(-3px);
+    transform: scale(1.02) translateY(-4px) rotateX(2deg) rotateY(-2deg);
     border-color: var(--accent-light);
-    box-shadow: 0 28px 56px rgba(0, 0, 0, 0.75), 0 0 42px rgba(112, 148, 240, 0.4);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.2) inset,
+      0 32px 64px rgba(0, 0, 0, 0.8),
+      0 0 48px rgba(112, 148, 240, 0.45);
   }
 
+  .phoneAnchor:hover .walletCardGradient {
+    transform: translate(-8px, -4px) scale(1.04);
+    box-shadow: 0 20px 44px -4px rgba(11, 177, 144, 0.55), 0 10px 22px rgba(0, 0, 0, 0.6);
+  }
+
+  .phoneAnchor:hover .goalCardBody {
+    transform: translate(8px, 4px) scale(1.04);
+    box-shadow: 0 20px 44px -4px rgba(0, 0, 0, 0.8), 0 0 28px rgba(136, 186, 74, 0.25);
+  }
+
+  .phoneMockupWrapper:hover .phoneBacklightAura,
   .phoneAnchor:hover .phoneBacklightAura {
-    transform: translate(-50%, -50%) scale(1.04);
-    opacity: 0.92;
+    transform: translate(-50%, -50%) scale(1.05);
+    opacity: 0.95;
   }
 
+  .phoneMockupWrapper:hover .ringWrap1,
   .phoneAnchor:hover .ringWrap1 {
-    transform: translate(-50%, -50%) scale(1.025);
+    transform: translate(-50%, -50%) scale(1.03);
   }
 
+  .phoneMockupWrapper:hover .ringWrap1 .ring1,
   .phoneAnchor:hover .ringWrap1 .ring1 {
     border-color: rgba(112, 148, 240, 0.5);
     box-shadow: 0 0 24px rgba(76, 116, 219, 0.3);
     opacity: 0.7;
   }
 
+  .phoneMockupWrapper:hover .ringWrap2,
   .phoneAnchor:hover .ringWrap2 {
-    transform: translate(-50%, -50%) scale(1.045);
+    transform: translate(-50%, -50%) scale(1.05);
   }
 
+  .phoneMockupWrapper:hover .ringWrap2 .ring2,
   .phoneAnchor:hover .ringWrap2 .ring2 {
     border-color: rgba(112, 148, 240, 0.35);
     opacity: 0.55;
   }
 
+  .phoneAnchor:hover .emanatingFinanceIcon {
+    opacity: 0.85;
+  }
+
   .phoneAnchor:hover .iconPosBank .emanatingFinanceIcon {
-    transform: translate(-6px, -3px) scale(1.03);
-    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
-  }
-
-  .phoneAnchor:hover .iconPosWallet .emanatingFinanceIcon {
-    transform: translate(6px, -3px) scale(1.03);
-    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
-  }
-
-  .phoneAnchor:hover .iconPosPiggy .emanatingFinanceIcon {
-    transform: translate(-6px, 3px) scale(1.03);
+    transform: translate(8px, -4px) scale(1.04);
     filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
   }
 
   .phoneAnchor:hover .iconPosCard .emanatingFinanceIcon {
-    transform: translate(6px, 3px) scale(1.03);
+    transform: translate(-5px, 0px) scale(1.04);
+    filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
+  }
+
+  .phoneAnchor:hover .iconPosPiggy .emanatingFinanceIcon {
+    transform: translate(7px, 3px) scale(1.04);
     filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
   }
 
@@ -330,7 +596,7 @@
 .edgeShape {
   position: absolute;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
   border-color: var(--accent-color);
   box-shadow: 0 0 24px var(--accent-glow);
   opacity: 0;
@@ -514,11 +780,101 @@
   }
 }
 
+/* =======================================================
+   MOBILE / TOUCH AMBIENT LIVING CHOREOGRAPHY
+   (Runs continuously on touch screens & mobile viewports)
+======================================================= */
+@media (hover: none), (max-width: 960px) {
+  .phoneDeviceContainer {
+    animation: heroMobileFloat 6s ease-in-out infinite alternate;
+  }
+
+  .phoneBacklightAura {
+    animation: auraMobileBreathe 4.8s ease-in-out infinite alternate;
+  }
+
+  .walletCardWrap {
+    animation: chipFloatA 4.8s ease-in-out infinite alternate;
+  }
+
+  .goalCardWrap {
+    animation: chipFloatB 5.4s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes heroMobileFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes auraMobileBreathe {
+  0% {
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0.72;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.96);
+    opacity: 0.72;
+  }
+}
+
+@keyframes chipFloatA {
+  0% {
+    transform: translateZ(50px) translateY(0px);
+  }
+  50% {
+    transform: translateZ(50px) translateY(-7px);
+  }
+  100% {
+    transform: translateZ(50px) translateY(0px);
+  }
+}
+
+@keyframes chipFloatB {
+  0% {
+    transform: translateZ(50px) translateY(0px);
+  }
+  50% {
+    transform: translateZ(50px) translateY(7px);
+  }
+  100% {
+    transform: translateZ(50px) translateY(0px);
+  }
+}
+
+/* Tactile Spring Tap Response on Mobile */
+.phoneAnchor:active .phoneMockup {
+  transform: scale(0.965) translateY(2px) !important;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow) !important;
+  transition: transform 0.15s ease !important;
+}
+
+.phoneAnchor:active .walletCardWrap {
+  transform: translateZ(50px) scale(0.94) translate(-3px, -3px) !important;
+  transition: transform 0.15s ease !important;
+}
+
+.phoneAnchor:active .goalCardWrap {
+  transform: translateZ(50px) scale(0.94) translate(3px, 3px) !important;
+  transition: transform 0.15s ease !important;
+}
+
 /* RESPONSIVE MEDIA QUERIES */
 @media (max-width: 960px) {
   .heroSection {
     min-height: auto;
-    padding: 3.5rem 0 4rem 0;
+    padding: 3.5rem 0 4.5rem 0;
   }
   .heroGrid {
     grid-template-columns: 1fr;
@@ -529,39 +885,60 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .phoneMockupWrapper {
+    min-height: 520px;
+  }
+  .phoneAnchor,
+  .phoneBackdropGroup {
+    width: 280px;
+  }
 }
 
 @media (max-width: 768px) {
-  .phoneAnchor {
-    width: 240px;
+  .phoneMockupWrapper {
+    min-height: 500px;
+  }
+  .phoneAnchor,
+  .phoneBackdropGroup {
+    width: 270px;
   }
   .phoneBacklightAura {
-    width: 300px;
-    height: 400px;
+    width: 320px;
+    height: 440px;
   }
   .ring1 {
-    width: 255px;
-    height: 430px;
+    width: 285px;
+    height: 465px;
   }
   .ring2 {
-    width: 275px;
-    height: 450px;
+    width: 305px;
+    height: 485px;
+  }
+  .walletCardWrap {
+    top: -14px;
+    left: -28px;
+  }
+  .walletCardGradient {
+    width: 132px;
+  }
+  .goalCardWrap {
+    bottom: -14px;
+    right: -28px;
+  }
+  .goalCardBody {
+    width: 195px;
   }
   .iconPosBank {
-    top: 22%;
-    left: -48px;
-  }
-  .iconPosWallet {
-    top: 32%;
-    right: -48px;
-  }
-  .iconPosPiggy {
-    top: 62%;
-    left: -50px;
+    top: 8%;
+    right: -58px;
   }
   .iconPosCard {
-    top: 72%;
-    right: -48px;
+    top: 44%;
+    left: -50px;
+  }
+  .iconPosPiggy {
+    top: 64%;
+    right: -50px;
   }
   .shapeTopLeft {
     width: 150px;
@@ -575,48 +952,129 @@
     top: -35px;
     right: -35px;
   }
-  .shapeMidRight {
+  .shapeMidRight,
+  .shapeBottomLeft,
+  .shapeBottomRight {
     display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .phoneAnchor {
-    width: 210px;
+  .heroSection {
+    padding: 2.75rem 0 3.5rem 0;
+  }
+  .phoneMockupWrapper {
+    min-height: 470px;
+    padding: 1.5rem 0 0.5rem 0;
+  }
+  .phoneAnchor,
+  .phoneBackdropGroup {
+    width: clamp(245px, 68vw, 275px);
   }
   .phoneBacklightAura {
-    width: 250px;
-    height: 340px;
+    width: 290px;
+    height: 400px;
   }
   .ring1 {
-    width: 222px;
-    height: 368px;
-    border-radius: 38px;
+    width: 265px;
+    height: 435px;
+    border-radius: 40px;
   }
   .ring2 {
-    width: 238px;
-    height: 388px;
-    border-radius: 42px;
+    width: 285px;
+    height: 455px;
+    border-radius: 44px;
   }
-  .iconPosBank {
-    top: 20%;
-    left: -44px;
+
+  /* Maya WalletItem Mobile Sizing */
+  .walletCardWrap {
+    top: -24px;
+    left: -24px;
   }
-  .iconPosWallet {
-    top: 30%;
-    right: -44px;
+  .walletCardGradient {
+    width: 120px;
+    padding: 8px 10px;
+    border-radius: 13px;
   }
-  .iconPosPiggy {
-    top: 60%;
-    left: -46px;
+  .walletIconSquircle {
+    width: 23px;
+    height: 23px;
+    margin-bottom: 6px;
+    border-radius: 7px;
   }
-  .iconPosCard {
-    top: 70%;
-    right: -44px;
+  .walletIconSquircle svg {
+    width: 12px;
+    height: 12px;
   }
-  .emanatingFinanceIcon svg {
+  .walletName {
+    font-size: 0.68rem;
+  }
+  .walletAmount {
+    font-size: 0.85rem;
+  }
+
+  /* Emergency Fund GoalListItem Mobile Sizing */
+  .goalCardWrap {
+    bottom: -20px;
+    right: -18px;
+  }
+  .goalCardBody {
+    width: 190px;
+    padding: 8px 10px;
+    border-radius: 13px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .goalIconSquircle {
     width: 24px;
     height: 24px;
+    border-radius: 7px;
+  }
+  .goalIconSquircle svg {
+    width: 13px;
+    height: 13px;
+  }
+  .goalTitle {
+    font-size: 0.70rem;
+  }
+  .goalAmountRow {
+    gap: 3px;
+  }
+  .goalNumbers {
+    font-size: 0.53rem;
+    letter-spacing: -0.01em;
+  }
+  .goalPercent {
+    font-size: 0.53rem;
+    font-weight: 700;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .goalProgressTrack {
+    margin-top: 5px;
+    height: 3.5px;
+  }
+
+  .iconPosBank {
+    top: 8%;
+    right: -50px;
+  }
+  .iconPosCard {
+    top: 44%;
+    left: -48px;
+  }
+  .iconPosPiggy {
+    top: 64%;
+    right: -46px;
+  }
+  .emanatingFinanceIcon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .dynamicIsland {
+    width: 62px;
+    height: 15px;
+    top: 11px;
   }
   .shapeTopLeft {
     width: 110px;
@@ -633,7 +1091,8 @@
     border-width: 4px;
   }
   .shapeBottomLeft,
-  .shapeBottomRight {
+  .shapeBottomRight,
+  .shapeMidRight {
     display: none;
   }
 }
