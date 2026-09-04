@@ -3,31 +3,149 @@
   position: relative;
 }
 
-.reviewsCardsGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.75rem;
-  position: relative;
-  z-index: 2;
+/* ==========================================================================
+   Header Social Proof Trust Badge
+   ========================================================================== */
+.trustPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.4rem 1.05rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  margin-top: 0.25rem;
 }
 
-.cleanReviewCard {
-  background: #172036;
+.trustStars {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.trustScore {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.01em;
+}
+
+.trustDot {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.8rem;
+}
+
+.trustLabel {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Edge-to-Edge Infinite Carousel Viewport
+   ========================================================================== */
+.carouselViewport {
+  --card-width: 480px;
+  --card-gap: 24px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  overflow: hidden;
+  padding: 2.5rem 0 2.75rem 0;
+  cursor: grab;
+  /* Smooth edge-to-edge fade masks */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 12%,
+    black 88%,
+    transparent 100%
+  );
+}
+
+.carouselViewport:active {
+  cursor: grabbing;
+}
+
+.carouselTrack {
+  display: flex;
+  gap: var(--card-gap);
+  transform: translateX(
+    calc(
+      50% - (var(--card-width) / 2) -
+        (var(--active-index) * (var(--card-width) + var(--card-gap)))
+    )
+  );
+  will-change: transform;
+}
+
+.trackAnimated {
+  transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.trackInstant,
+.trackInstant * {
+  transition: none !important;
+}
+
+/* ==========================================================================
+   Review Card Component
+   ========================================================================== */
+.reviewCard {
+  width: var(--card-width);
+  min-width: var(--card-width);
+  max-width: var(--card-width);
+  min-height: 275px;
+  background: rgba(23, 32, 54, 0.62);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 20px;
-  padding: 2rem 1.85rem;
+  border-radius: 22px;
+  padding: 2rem 2.2rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-  will-change: transform;
-  transform: translateY(0);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+  user-select: none;
+  cursor: pointer;
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    filter 0.4s ease;
+}
+
+/* Spotlight Focus for Active Card */
+.cardActive {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(112, 148, 240, 0.35);
+  box-shadow:
+    0 16px 44px -4px rgba(0, 0, 0, 0.5),
+    0 0 32px rgba(76, 116, 219, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+/* Dimmed / Receded State for Inactive Cards */
+.cardInactive {
+  opacity: 0.45;
+  transform: scale(0.93);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.35);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .cleanReviewCard:hover {
-    transform: translateY(-4px);
+  .cardInactive:hover {
+    opacity: 0.75;
+    transform: scale(0.95);
     border-color: rgba(255, 255, 255, 0.15);
   }
 }
@@ -39,48 +157,60 @@
   margin-bottom: 1.15rem;
 }
 
-.reviewStarsWrap {
+.starsWrap {
   display: flex;
   align-items: center;
   gap: 3px;
 }
 
-.reviewStorePill {
-  font-size: 0.76rem;
+.storePill {
+  font-size: 0.74rem;
   font-weight: 600;
-  color: var(--accent-light);
-  background: rgba(76, 116, 219, 0.12);
-  padding: 0.25rem 0.65rem;
+  padding: 0.22rem 0.65rem;
   border-radius: 8px;
   letter-spacing: 0.02em;
 }
 
-.reviewHighlightText {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  margin-bottom: 0.65rem;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
+.storeAppStore {
+  color: #7094F0;
+  background: rgba(76, 116, 219, 0.12);
+  border: 1px solid rgba(76, 116, 219, 0.24);
 }
 
-.reviewCommentText {
-  font-size: 0.94rem;
+.storeGooglePlay {
+  color: #0BB190;
+  background: rgba(11, 177, 144, 0.12);
+  border: 1px solid rgba(11, 177, 144, 0.24);
+}
+
+.reviewHighlight {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+
+.reviewComment {
+  font-size: 0.96rem;
   font-weight: 400;
   line-height: 1.62;
   color: var(--text-secondary);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.6rem;
+  flex-grow: 1;
 }
 
-.reviewAuthorFooter {
+.authorFooter {
   display: flex;
   align-items: center;
   gap: 0.85rem;
-  padding-top: 1.15rem;
+  padding-top: 1.2rem;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
+  margin-top: auto;
 }
 
-.reviewAuthorAvatar {
+.authorAvatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -88,48 +218,176 @@
   align-items: center;
   justify-content: center;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
+  letter-spacing: 0.02em;
   border: 1.5px solid;
   flex-shrink: 0;
 }
 
-.reviewAuthorName {
-  font-weight: 700;
+.authorInfo {
+  flex-grow: 1;
+}
+
+.authorName {
   font-size: 0.98rem;
+  font-weight: 700;
   color: #FFFFFF;
-  line-height: 1.2;
+  line-height: 1.22;
 }
 
-.reviewAuthorRole {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-muted);
+.authorRole {
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  margin-top: 0.12rem;
 }
 
-@media (max-width: 960px) {
-  .reviewsCardsGrid {
-    grid-template-columns: 1fr;
-    max-width: 580px;
-    margin: 0 auto;
+/* ==========================================================================
+   Carousel Navigation & Pagination Controls
+   ========================================================================== */
+.controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.arrowButton {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(23, 32, 54, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.arrowButton:hover {
+  background: rgba(35, 48, 80, 0.9);
+  border-color: rgba(112, 148, 240, 0.4);
+  transform: scale(1.06);
+}
+
+.arrowButton:active {
+  transform: scale(0.95);
+}
+
+.paginationDots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  height: 8px;
+  width: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.35s ease;
+}
+
+.dotActive {
+  width: 24px;
+  background: var(--accent-light, #7094F0);
+  box-shadow: 0 0 10px rgba(112, 148, 240, 0.5);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 820px) {
+  .carouselViewport {
+    --card-width: 400px;
+    --card-gap: 18px;
+    padding: 1.75rem 0 2rem 0;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 8%,
+      black 92%,
+      transparent 100%
+    );
   }
-}
 
-@media (max-width: 768px) {
-  .cleanReviewCard {
-    padding: 1.6rem 1.25rem;
+  .reviewCard {
+    padding: 1.75rem 1.8rem;
+    min-height: 260px;
+  }
+
+  .reviewHighlight {
+    font-size: 1.15rem;
   }
 }
 
 @media (max-width: 480px) {
-  .cleanReviewCard {
-    padding: 1.35rem 1rem;
+  .carouselViewport {
+    --card-width: 320px;
+    --card-gap: 14px;
+    padding: 1.25rem 0 1.75rem 0;
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 4%,
+      black 96%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 4%,
+      black 96%,
+      transparent 100%
+    );
+  }
+
+  .reviewCard {
+    padding: 1.4rem 1.35rem;
     border-radius: 18px;
+    min-height: 250px;
   }
-  .reviewHighlightText {
+
+  .reviewHighlight {
     font-size: 1.05rem;
+    margin-bottom: 0.5rem;
   }
-  .reviewCommentText {
+
+  .reviewComment {
     font-size: 0.88rem;
     margin-bottom: 1.25rem;
+  }
+
+  .arrowButton {
+    width: 36px;
+    height: 36px;
+  }
+
+  .trustPill {
+    padding: 0.35rem 0.85rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .carouselViewport {
+    --card-width: 290px;
+    --card-gap: 12px;
   }
 }
