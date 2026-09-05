@@ -250,33 +250,6 @@
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-/* Hardware Dynamic Island Notch */
-.dynamicIsland {
-  position: absolute;
-  top: 13px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 72px;
-  height: 18px;
-  background: #06090F;
-  border-radius: 999px;
-  z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 7px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), inset 0 0 1px rgba(255, 255, 255, 0.18);
-  pointer-events: none;
-}
-
-.cameraLens {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #1A284A 0%, #06090F 70%);
-  border: 0.5px solid rgba(255, 255, 255, 0.15);
-}
-
 /* Specular Diagonal Glass Sheen */
 .screenSheen {
   position: absolute;
@@ -1070,11 +1043,6 @@
   .emanatingFinanceIcon svg {
     width: 22px;
     height: 22px;
-  }
-  .dynamicIsland {
-    width: 62px;
-    height: 15px;
-    top: 11px;
   }
   .shapeTopLeft {
     width: 110px;

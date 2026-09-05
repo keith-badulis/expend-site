@@ -104,11 +104,6 @@ export const Hero: React.FC = () => {
               {/* Layer 3: Phone Device Container (Centerpiece hardware) */}
               <div className={`${styles.phoneDeviceContainer} ${styles.phoneReveal}`}>
                 <div className={styles.phoneMockup}>
-                  {/* Dynamic Island Notch */}
-                  <div className={styles.dynamicIsland}>
-                    <div className={styles.cameraLens} />
-                  </div>
-
                   {/* Specular Diagonal Glass Sheen */}
                   <div className={styles.screenSheen} />
 
