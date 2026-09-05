@@ -196,6 +196,7 @@ export const Features: React.FC = () => {
   };
 
   const activeItems = featureItems.filter((item) => item.category === activeCategory);
+  const activeCategoryIndex = categories.findIndex((cat) => cat.id === activeCategory);
 
   return (
     <section ref={sectionRef} id="features" className={`section ${styles.galleryFeaturesSection}`}>
@@ -271,6 +272,15 @@ export const Features: React.FC = () => {
                 aria-label="Features category tabs"
               >
                 <div className={styles.mobileSegmentTrack} role="tablist" aria-label="Feature categories">
+                  {/* Animated sliding active indicator pill (matching eXpend InlineTabs) */}
+                  <div
+                    className={styles.slidingPillIndicator}
+                    style={{
+                      transform: `translateX(${activeCategoryIndex * 100}%)`,
+                    }}
+                    aria-hidden="true"
+                  />
+
                   {categories.map((cat) => {
                     const isActive = activeCategory === cat.id;
                     return (
@@ -282,9 +292,10 @@ export const Features: React.FC = () => {
                         onClick={() => handleCategoryChange(cat.id)}
                         className={`${styles.mobileSegmentBtn} ${isActive ? styles.segmentActive : ''}`}
                       >
-                        <span className={styles.segmentIconWrap}>{cat.icon(isActive ? '#FFFFFF' : 'currentColor')}</span>
-                        <span className={styles.segmentLabelFull}>{cat.label}</span>
-                        <span className={styles.segmentLabelShort}>{cat.shortLabel}</span>
+                        <span className={styles.segmentIconWrap}>
+                          {cat.icon(isActive ? '#FFFFFF' : '#94A3B8')}
+                        </span>
+                        <span className={styles.segmentLabel}>{cat.shortLabel}</span>
                       </button>
                     );
                   })}
