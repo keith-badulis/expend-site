@@ -3,6 +3,108 @@
   position: relative;
 }
 
+/* =======================================================
+   HARDWARE PHONE MOCKUP STAGE (Shared Across Viewports)
+======================================================= */
+.phoneStage {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.phoneBacklightStage {
+  position: absolute;
+  width: 140%;
+  height: 95%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  filter: blur(36px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.65;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.galleryPhoneFrame {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  border-radius: 28px;
+  padding: 6px;
+  background: #11141A;
+  border: 3px solid rgba(76, 116, 219, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 22px 50px -8px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(76, 116, 219, 0.25);
+  will-change: transform;
+  transform: translateY(0);
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  z-index: 2;
+}
+
+/* Specular Diagonal Glass Sheen */
+.screenSheen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 22px;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.14) 0%,
+    rgba(255, 255, 255, 0.03) 28%,
+    transparent 52%
+  );
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* Sleek Camera Island Notch */
+.dynamicIsland {
+  position: absolute;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 13px;
+  background: #000000;
+  border-radius: 999px;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+.galleryScreenImg {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1206 / 2622;
+  display: block;
+  border-radius: 22px;
+  object-fit: cover;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .phoneStage:hover .galleryPhoneFrame {
+    transform: translateY(-6px) scale(1.02);
+  }
+  .phoneStage:hover .phoneBacklightStage {
+    opacity: 0.9;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+/* =======================================================
+   DESKTOP 2-COLUMN STAGGERED EXHIBITION GALLERY (>= 961px)
+======================================================= */
 .galleryStaggeredGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -60,6 +162,7 @@
   font-weight: 700;
   letter-spacing: 0.02em;
   margin-bottom: 1.15rem;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .galleryItemTitle {
@@ -92,6 +195,7 @@
   border: 1.2px solid rgba(76, 116, 219, 0.4);
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
+  transition: border-color 0.3s ease;
 }
 
 .galleryScreenBox {
@@ -101,78 +205,231 @@
   width: 100%;
 }
 
-.galleryPhoneFrame {
-  position: relative;
-  width: 100%;
-  max-width: 215px;
-  border-radius: 28px;
-  padding: 6px;
-  background: #172036;
-  border: 3px solid rgba(76, 116, 219, 0.55);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), 0 0 26px rgba(76, 116, 219, 0.2);
-  will-change: transform;
-  transform: translateY(0);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s ease;
+/* =======================================================
+   MOBILE-ONLY CATEGORY SWITCHER & SHOWCASE CARDS (<= 960px)
+======================================================= */
+.mobileFloatingDock {
+  display: none;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .galleryPhoneFrame:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-color);
+.mobileCategoryShowcase {
+  display: none;
+}
+
+@keyframes cardTabFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 }
 
-.galleryScreenImg {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 1206 / 2622;
-  display: block;
-  border-radius: 22px;
-  object-fit: cover;
-}
-
-/* RESPONSIVE MEDIA QUERIES */
 @media (max-width: 960px) {
+  .galleryFeaturesSection {
+    padding: 4.5rem 0 3.5rem 0;
+  }
+
+  /* Hide desktop staggered grid */
   .galleryStaggeredGrid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
+    display: none;
   }
-  .galleryColRight {
-    margin-top: 0;
+
+  /* Floating Sticky Bottom Dock */
+  .mobileFloatingDock {
+    display: flex;
+    position: fixed;
+    bottom: max(1.25rem, env(safe-area-inset-bottom, 1.25rem));
+    left: 50%;
+    transform: translateX(-50%) translateY(0);
+    width: calc(100% - 2rem);
+    max-width: 440px;
+    z-index: 99999;
+    transition:
+      transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.35s ease;
   }
-  /* On mobile/tablet, ALWAYS put Caption on Top, Screenshot on Bottom */
-  .galleryItem.captionLeft,
-  .galleryItem.captionRight {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 1.5rem;
+
+  .dockVisible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
   }
-  .galleryCaptionBox {
-    order: 1;
-    align-items: center;
+
+  .dockHidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(36px);
+    pointer-events: none;
   }
-  .galleryScreenBox {
-    order: 2;
+
+  .mobileSegmentTrack {
+    display: flex;
+    background: rgba(17, 24, 39, 0.88);
+    border: 1.5px solid rgba(112, 148, 240, 0.3);
+    border-radius: 9999px;
+    padding: 5px;
     width: 100%;
-    margin-top: 0;
+    box-shadow:
+      0 16px 40px -6px rgba(0, 0, 0, 0.75),
+      0 0 24px rgba(76, 116, 219, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    gap: 4px;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
   }
-  .galleryTagsWrap {
+
+  .mobileSegmentBtn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.72rem 0.65rem;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: #94A3B8;
+    font-size: 0.86rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .segmentIconWrap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .segmentLabelFull {
+    display: inline;
+  }
+
+  .segmentLabelShort {
+    display: none;
+  }
+
+  .segmentActive {
+    background: var(--accent-color);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: #FFFFFF;
+    box-shadow:
+      0 4px 14px rgba(76, 116, 219, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  /* Show mobile category showcase */
+  .mobileCategoryShowcase {
+    display: flex;
+    flex-direction: column;
+    gap: 2.25rem;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    padding-bottom: 5.5rem; /* Generous bottom clearance for floating dock */
+    animation: cardTabFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .mobileFeatureCard {
+    background: #172036;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 2.25rem 1.75rem 2.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow:
+      0 12px 32px -4px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .mobileCardHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .mobileCardHeader .galleryItemTitle {
+    font-size: 1.45rem;
+  }
+
+  .mobileCardHeader .galleryItemDesc {
+    font-size: 0.98rem;
+    max-width: 460px;
+  }
+
+  .mobileCardHeader .galleryTagsWrap {
     justify-content: center;
   }
-  .galleryPhoneFrame {
+
+  .mobileScreenStage {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mobileFeatureCard .galleryPhoneFrame {
     max-width: 225px;
     margin: 0 auto;
   }
 }
 
-@media (max-width: 480px) {
-  .galleryPhoneFrame {
-    max-width: 195px;
+@media (max-width: 540px) {
+  .galleryFeaturesSection {
+    padding: 3.5rem 0 3rem 0;
   }
-  .galleryItemTitle {
+
+  .segmentLabelFull {
+    display: none;
+  }
+
+  .segmentLabelShort {
+    display: inline;
+  }
+
+  .mobileSegmentBtn {
+    padding: 0.65rem 0.4rem;
+    font-size: 0.82rem;
+    gap: 0.35rem;
+  }
+
+  .mobileCategoryShowcase {
+    gap: 1.75rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .mobileFeatureCard {
+    padding: 1.75rem 1.25rem 2rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .mobileCardHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .mobileCardHeader .galleryItemTitle {
     font-size: 1.3rem;
   }
-  .galleryItemDesc {
-    font-size: 0.94rem;
+
+  .mobileCardHeader .galleryItemDesc {
+    font-size: 0.92rem;
+  }
+
+  .mobileFeatureCard .galleryPhoneFrame {
+    max-width: 205px;
   }
 }
