@@ -56,6 +56,7 @@
   align-items: center;
   width: 100%;
   min-height: 540px;
+  text-align: left;
 }
 
 /* Dedicated Background Layer (Guaranteed Behind Phone & Chips) */
@@ -80,10 +81,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  cursor: default;
   z-index: 3;
   perspective: 1200px;
   transform-style: preserve-3d;
+  text-align: left;
 }
 
 /* --- EMANATING FINANCE HIGHLIGHTS --- */
@@ -294,6 +296,7 @@
   user-select: none;
   transform: translateZ(50px);
   will-change: transform;
+  text-align: left;
 }
 
 .walletCardWrap {
@@ -333,6 +336,8 @@
   padding: 12px 14px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   box-shadow:
     0 16px 36px -4px rgba(11, 177, 144, 0.45),
     0 8px 18px rgba(0, 0, 0, 0.5),
@@ -355,6 +360,8 @@
 .walletDetails {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   gap: 2px;
 }
 
@@ -364,6 +371,7 @@
   color: #FFFFFF;
   opacity: 0.92;
   line-height: 1.2;
+  text-align: left;
 }
 
 .walletAmount {
@@ -372,6 +380,7 @@
   color: #FFFFFF;
   line-height: 1.2;
   letter-spacing: -0.01em;
+  text-align: left;
 }
 
 /* 2. Vacation GoalListItem Style (Authentic Dark Card & Orange Progress) */
@@ -385,6 +394,7 @@
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
+  text-align: left;
   box-shadow:
     0 16px 36px -4px rgba(0, 0, 0, 0.7),
     0 0 24px rgba(239, 131, 84, 0.18),
@@ -414,6 +424,8 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   gap: 2px;
   min-width: 0;
   overflow: hidden;
@@ -427,6 +439,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  text-align: left;
 }
 
 .goalAmountRow {
@@ -435,6 +448,7 @@
   align-items: baseline;
   gap: 4px;
   width: 100%;
+  text-align: left;
 }
 
 .goalNumbers {
@@ -442,6 +456,7 @@
   color: #94A3B8;
   line-height: 1.2;
   white-space: nowrap;
+  text-align: left;
 }
 
 .goalPercent {
@@ -824,23 +839,6 @@
   100% {
     transform: translateZ(50px) translateY(0px);
   }
-}
-
-/* Tactile Spring Tap Response on Mobile */
-.phoneAnchor:active .phoneMockup {
-  transform: scale(0.965) translateY(2px) !important;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow) !important;
-  transition: transform 0.15s ease !important;
-}
-
-.phoneAnchor:active .walletCardWrap {
-  transform: translateZ(50px) scale(0.94) translate(-3px, -3px) !important;
-  transition: transform 0.15s ease !important;
-}
-
-.phoneAnchor:active .goalCardWrap {
-  transform: translateZ(50px) scale(0.94) translate(3px, 3px) !important;
-  transition: transform 0.15s ease !important;
 }
 
 /* RESPONSIVE MEDIA QUERIES */
