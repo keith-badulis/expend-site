@@ -69,7 +69,7 @@ export const Hero: React.FC = () => {
                 maxWidth: '520px',
                 fontWeight: 400,
               }}>
-                Take control of your money with <strong>eXpend</strong>—the thoughtfully-designed, all-in-one expense tracker and budget planner. Simplify personal finances, track spending habits, and reach your goals—all while keeping your data private and secure on your device.
+                Take control of your money with <strong>eXpend</strong>, the thoughtfully-designed, all-in-one expense tracker and budget planner. Simplify your personal finances, track spending habits, and reach your financial goals, all while keeping your data private and secure on your device.
               </p>
             </div>
 
@@ -141,7 +141,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 5: Authentic eXpend App Component 1 — Savings WalletItem (Top-Left) */}
+              {/* Layer 5: Authentic eXpend App Component 1: Savings WalletItem (Top-Left) */}
               <div className={`${styles.appFloatingCard} ${styles.walletCardWrap} ${styles.cardReveal1}`}>
                 <div className={styles.walletCardGradient}>
                   {/* Top Squircle Icon (Matches App's Wallet Icon) */}
@@ -156,7 +156,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 5: Authentic eXpend App Component 2 — Vacation GoalListItem (Bottom-Right) */}
+              {/* Layer 5: Authentic eXpend App Component 2: Vacation GoalListItem (Bottom-Right) */}
               <div className={`${styles.appFloatingCard} ${styles.goalCardWrap} ${styles.cardReveal2}`}>
                 <div className={styles.goalCardBody}>
                   <div className={styles.goalTopRow}>

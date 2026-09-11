@@ -65,10 +65,10 @@ const featureItems: FeatureItem[] = [
     category: 'tracking',
     icon: (color) => <LightningBoltIcon size={16} color={color} />,
     badge: 'Quick & Easy Recording',
-    title: 'Log Transactions within Seconds',
+    title: 'Log Transactions in Seconds',
     description:
-      'Log income, expenses, and money transfers in seconds with a fast, built-in keypad calculator. Use customizable reusable templates to record common everyday transactions instantly.',
-    tags: ['Income & Expenses', 'Transfers', 'Customizable Templates'],
+      'Log income, expenses, and money transfers in seconds with a built-in keypad calculator. Use customizable, reusable templates to record common transactions instantly, or schedule recurring transactions for a hassle-free routine.',
+    tags: ['Income & Expenses', 'Custom Templates', 'Recurring Transactions'],
     image: addTxImg,
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
   },
@@ -77,10 +77,10 @@ const featureItems: FeatureItem[] = [
     category: 'tracking',
     icon: (color) => <PiggyBankIcon size={16} color={color} />,
     badge: 'Flexible Budget Planning',
-    title: 'Set Spending Limits & Stay Within Targets',
+    title: 'Set Spending Limits & Stay on Target',
     description:
-      'Set custom spending limits by category across flexible budget periods. Stay in control with clear visual progress bars, projected totals, and instant status indicators.',
-    tags: ['Spending Limits', 'Flexible Periods', 'Projected Totals'],
+      'Plan and set budgets to stay within your target spending limits. Keep in control with clear visual progress bars, category breakdowns, and flexible budget periods.',
+    tags: ['Spending Limits', 'Flexible Periods', 'Progress Tracking'],
     image: budgetImg,
     imageAlt: 'eXpend Budget Details and spending status screen',
   },
@@ -88,11 +88,11 @@ const featureItems: FeatureItem[] = [
     id: 'filtered-reports',
     category: 'reports',
     icon: (color) => <FilterIcon size={16} color={color} />,
-    badge: 'Filtered Reports',
-    title: 'View Records Your Way With Flexible Filters',
+    badge: 'Organize with Tags & Filters',
+    title: 'Filter and Analyze Exactly How You Want',
     description:
-      'Flexibly filter your transactions to see where you can improve. Interactive cashflow curves and categorical breakdowns calculate totals automatically.',
-    tags: ['Flexible Filters', 'Automatic Totals', 'Cashflow Curves'],
+      'Group transactions and accounts with custom tags. Filter records by date, category, or tag to see where your money goes, complete with interactive cashflow curves and automatic totals.',
+    tags: ['Custom Tags', 'Flexible Filters', 'Cashflow Curves'],
     image: filteredReportsImg,
     imageAlt: 'eXpend Filtered Reports screen with cashflow timeline chart',
   },
@@ -100,11 +100,11 @@ const featureItems: FeatureItem[] = [
     id: 'spending-insights',
     category: 'reports',
     icon: (color) => <StonksIcon size={16} color={color} />,
-    badge: 'Customizable Spending Reports',
-    title: 'Gain Actionable Spending Insights',
+    badge: 'Detailed Financial Reports',
+    title: 'Analyze Spending Habits and Trends',
     description:
-      'Gain clear insights on your spending by viewing easy-to-digest, customizable reports that let you stay firmly in charge of your finances. Compare income against expenses and analyze weekly trends.',
-    tags: ['Actionable Insights', 'Weekly Breakdown', 'Income vs Expense'],
+      'Visualize and analyze your spending habits and earnings with detailed, flexible reports. Compare income against expenses and view weekly trends to stay firmly in control of your finances.',
+    tags: ['Income vs Expense', 'Weekly Trends', 'Detailed Reports'],
     image: weeklyReportsImg,
     imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
   },
@@ -112,10 +112,10 @@ const featureItems: FeatureItem[] = [
     id: 'accounts-summary',
     category: 'overview',
     icon: (color) => <ReportIcon size={16} color={color} />,
-    badge: 'Detailed Financial Reports',
-    title: 'Visualize Net Worth, Assets & Liabilities',
+    badge: 'Comprehensive Accounts',
+    title: 'Track Net Worth, Assets & Liabilities',
     description:
-      'Comprehensive finance tools in one place. Monitor cash, digital wallets, bank accounts, and debts with real-time net worth and multi-currency support.',
+      'Keep track of cash, savings, credit cards, and debts in one place. Monitor your real-time net worth and view a clear breakdown of your accounts across multiple currencies.',
     tags: ['Net Worth', 'Assets & Liabilities', 'Multi-Currency'],
     image: accountsImg,
     imageAlt: 'eXpend Accounts Summary and Net Worth screen',
@@ -125,10 +125,10 @@ const featureItems: FeatureItem[] = [
     category: 'overview',
     icon: (color) => <ProfileIcon size={16} color={color} />,
     badge: 'Personalized Dashboard',
-    title: 'Everything Accessible in One Place',
+    title: 'Everything in One Place',
     description:
-      'You decide which important information takes the spotlight. See your wallets, savings goals, and debts at a single glance with a customizable overview.',
-    tags: ['At-a-Glance View', 'Goals & Milestones', 'Debt Tracking'],
+      'Stay focused on reaching your personal goals by monitoring your savings milestones. Mindfully track debts, payable and receivable, all from a clean and customizable overview.',
+    tags: ['Smart Goal Tracking', 'Debt Management', 'At-a-Glance View'],
     image: profileDashboardImg,
     imageAlt: 'eXpend Profile and Dashboard with Wallets, Goals, and Debts',
   },
@@ -147,7 +147,6 @@ const PhoneMockupFrame: React.FC<{
     <div className={styles.phoneBacklightStage} />
     <div className={styles.galleryPhoneFrame}>
       <div className={styles.screenSheen} />
-      <div className={styles.dynamicIsland} />
       <img
         src={image}
         alt={alt}
@@ -232,7 +231,7 @@ export const Features: React.FC = () => {
             <span style={{ color: 'var(--accent-light)' }}>Reach Your Goals.</span>
           </h2>
           <p className="section-description">
-            Ditch the spreadsheets and notebooks. Embrace the simplicity of eXpend and make mindful financial journaling a habit today.
+            Ditch the spreadsheets and notebooks. Embrace the simplicity of eXpend and make mindful financial journaling a habit today!
           </p>
         </div>
 

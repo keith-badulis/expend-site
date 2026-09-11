@@ -62,7 +62,7 @@ const reviews: Review[] = [
     name: 'Jurij M.',
     role: 'Verified Google Play Review',
     rating: 5,
-    highlight: 'Design is just soo clean — bought lifetime premium!',
+    highlight: 'Design is just soo clean, bought lifetime premium!',
     comment:
       'This is honestly the best app for tracking expenses. I tried a bunch of others and always stopped tracking, but here the design is just soo clean, I actually love it! After two months I decided this is it and bought premium. Huge thank you for making it a ONE-TIME purchase!',
     store: 'Google Play',
@@ -214,7 +214,7 @@ export const Reviews: React.FC = () => {
             className="section-description"
             style={{ maxWidth: '560px', margin: '0 auto 1.35rem auto' }}
           >
-            Real reviews from verified budgeters managing their daily money with eXpend.
+            Real reviews from users managing their personal finances with eXpend.
           </p>
 
           {/* Social Proof Trust Pill */}

@@ -56,10 +56,10 @@ export const WhyChoose: React.FC = () => {
   const pillars: PillarCard[] = [
     {
       index: '01',
-      category: 'Privacy by Default',
-      title: 'Your money, your business.',
+      category: 'Private & Secure',
+      title: 'Your data never leaves your device.',
       description:
-        'No sign-ups, no tracking, and no ads. Everything is stored directly on your phone, so your financial data stays completely private.',
+        'Completely serverless app design. No servers, no tracking, and no ads. Your data is yours and only yours, always.',
       highlight: '100% On-Device & Offline',
       accentColor: '#0BB190',
       kickerColor: '#0BB190',
@@ -72,11 +72,11 @@ export const WhyChoose: React.FC = () => {
     },
     {
       index: '02',
-      category: 'Honest Pricing',
+      category: 'One-Time Payment',
       title: 'Zero monthly subscriptions.',
       description:
-        'Pay once for full lifetime access. No recurring charges, no renewal anxiety, and every future update is included forever.',
-      highlight: 'Pay Once • Lifetime Updates',
+        'Unlock the full power of eXpend with a single one-time purchase. No recurring subscriptions, and every future update is included forever.',
+      highlight: 'Pay Once • Lifetime Access',
       accentColor: '#4C74DB',
       kickerColor: '#7094F0',
       borderColor: 'rgba(76, 116, 219, 0.3)',
@@ -84,15 +84,15 @@ export const WhyChoose: React.FC = () => {
       glowColor: 'rgba(76, 116, 219, 0.18)',
       ambientGlow: 'rgba(76, 116, 219, 0.10)',
       glareColor: 'rgba(225, 238, 255, 0.035)',
-      icon: <DiamondIcon size={22} color="#4C74DB" />,
+      icon: <CoinIcon size={22} color="#4C74DB" />,
     },
     {
       index: '03',
-      category: 'Effortless Logging',
-      title: 'Log expenses in a snap.',
+      category: 'User-Friendly & Intuitive',
+      title: 'Log transactions in seconds.',
       description:
-        'A built-in calculator and reusable quick templates make adding transactions fast and frictionless so you can get right back to your day.',
-      highlight: 'Built-in Calculator & Templates',
+        'A clean, modern interface with a built-in keypad calculator and reusable templates. Record income, expenses, and money transfers easily and effortlessly.',
+      highlight: 'Keypad Calculator & Templates',
       accentColor: '#EF8354',
       kickerColor: '#EF8354',
       borderColor: 'rgba(239, 131, 84, 0.3)',
@@ -104,11 +104,11 @@ export const WhyChoose: React.FC = () => {
     },
     {
       index: '04',
-      category: 'Craft & Polish',
-      title: 'Crafted for daily use.',
+      category: 'Beautifully Customizable',
+      title: 'Personalized to your style.',
       description:
-        'Fluid interactions, responsive tactile feedback, and comprehensive theme customization make managing your finances intuitive and effortless.',
-      highlight: 'Fluid Motion • Custom Themes',
+        'Thoughtfully designed with handcrafted icons and smooth interactions. Personalize your experience with dynamic themes and full Dark Mode support.',
+      highlight: 'Dynamic Themes • Dark Mode',
       accentColor: '#9957BD',
       kickerColor: '#BA7DE0',
       borderColor: 'rgba(153, 87, 189, 0.3)',
@@ -116,7 +116,7 @@ export const WhyChoose: React.FC = () => {
       glowColor: 'rgba(153, 87, 189, 0.18)',
       ambientGlow: 'rgba(153, 87, 189, 0.10)',
       glareColor: 'rgba(248, 232, 255, 0.035)',
-      icon: <SparklesIcon size={22} color="#9957BD" />,
+      icon: <PaletteIcon size={22} color="#9957BD" />,
     },
   ];
 
@@ -161,9 +161,9 @@ export const WhyChoose: React.FC = () => {
           </div>
 
           <h2 className="section-title" style={{ fontWeight: 700 }}>
-            Simple to use. <br />
+            Simple and intuitive. <br />
             <span style={{ color: 'var(--accent-light)' }}>
-              Respects your privacy & wallet.
+              Private and secure on your device.
             </span>
           </h2>
         </div>

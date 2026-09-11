@@ -24,13 +24,13 @@ export const CtaSection: React.FC = () => {
 
           {/* Main Headline */}
           <h2 className={styles.ctaHeadline}>
-            Make Budgeting a Habit. <br />
+            Let's Make Budgeting a Habit. <br />
             <span style={{ color: 'var(--accent-light)' }}>Download eXpend Today.</span>
           </h2>
 
           {/* Subtext */}
           <p className={styles.ctaDescription}>
-            Take control of your daily finances with a fast, distraction-free expense tracker designed to keep you consistent. 100% offline, zero ads, and no monthly subscriptions.
+            Take control of your personal finances with a simple, thoughtfully-designed expense tracker and budget planner. Everything stays locally on your device, with no ads, no trackers, and no monthly subscriptions.
           </p>
 
           {/* Store Download Badges */}
@@ -49,14 +49,14 @@ export const CtaSection: React.FC = () => {
 
             <span className={styles.ctaGuaranteeItem}>
               <SparklesIcon size={14} color="#9957BD" />
-              <span>No Ads or Sign-Ups</span>
+              <span>No Ads or Tracking</span>
             </span>
 
             <span className={styles.ctaGuaranteeSeparator}>•</span>
 
             <span className={styles.ctaGuaranteeItem}>
               <DiamondIcon size={14} color="#4C74DB" />
-              <span>Pay Once, Own Forever</span>
+              <span>One-Time Payment, Lifetime Access</span>
             </span>
           </div>
         </div>
