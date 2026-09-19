@@ -69,7 +69,7 @@ export const Hero: React.FC = () => {
                 maxWidth: '520px',
                 fontWeight: 400,
               }}>
-                Take control of your money with <strong>eXpend</strong>, the thoughtfully-designed, all-in-one expense tracker and budget planner. Simplify your personal finances, track spending habits, and reach your financial goals, all while keeping your data private and secure on your device.
+                Take control of your money with <strong>eXpend</strong>, your all-in-one expense tracker and budget planner. Simplify your personal finances, track spending habits, and reach your financial goals, all while keeping your data private and secure on your device.
               </p>
             </div>
 
