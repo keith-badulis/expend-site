@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
-import addTxImg from '../assets/screenshots/IMG_2301.png';
-import budgetImg from '../assets/screenshots/IMG_2304.png';
-import filteredReportsImg from '../assets/screenshots/IMG_2308.png';
-import accountsImg from '../assets/screenshots/IMG_2305.png';
-import weeklyReportsImg from '../assets/screenshots/IMG_2306.png';
-import profileDashboardImg from '../assets/screenshots/IMG_2309.png';
+import addTxImg from '../assets/screenshots/IMG_2926.png';
+import budgetImg from '../assets/screenshots/IMG_2932.png';
+import filteredReportsImg from '../assets/screenshots/IMG_2940.png';
+import accountsImg from '../assets/screenshots/IMG_2935.png';
+import weeklyReportsImg from '../assets/screenshots/IMG_2936.png';
+import profileDashboardImg from '../assets/screenshots/IMG_2939.png';
 import {
   LightningBoltIcon,
   PiggyBankIcon,
