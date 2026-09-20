@@ -79,15 +79,15 @@
 .galleryPhoneFrame {
   position: relative;
   width: 100%;
-  max-width: 220px;
-  border-radius: 28px;
-  padding: 6px;
-  background: #11141A;
-  border: 3px solid rgba(76, 116, 219, 0.55);
+  max-width: 245px;
+  border-radius: 36px;
+  padding: 7px;
+  background: #172036;
+  border: 3.5px solid var(--accent-color);
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.12) inset,
-    0 22px 50px -8px rgba(0, 0, 0, 0.8),
-    0 0 35px rgba(76, 116, 219, 0.25);
+    0 25px 55px -10px rgba(0, 0, 0, 0.8),
+    0 0 45px var(--accent-glow);
   will-change: transform;
   transform: translateY(0);
   transition:
@@ -105,7 +105,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 22px;
+  border-radius: 28px;
   background: linear-gradient(
     130deg,
     rgba(255, 255, 255, 0.14) 0%,
@@ -121,7 +121,7 @@
   height: auto;
   aspect-ratio: 1206 / 2622;
   display: block;
-  border-radius: 22px;
+  border-radius: 28px;
   object-fit: cover;
 }
 
@@ -508,8 +508,15 @@
   }
 
   .mobileFeatureCard .galleryPhoneFrame {
-    max-width: 215px;
+    max-width: clamp(245px, 68vw, 265px);
+    border-radius: 34px;
+    padding: 7px;
     margin: 0 auto;
+  }
+
+  .mobileFeatureCard .galleryPhoneFrame .screenSheen,
+  .mobileFeatureCard .galleryPhoneFrame .galleryScreenImg {
+    border-radius: 26px;
   }
 
   /* Carousel Pagination Dots Indicator */
@@ -518,7 +525,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 1.25rem;
     user-select: none;
   }
 
@@ -557,7 +564,7 @@
   }
 
   .mobileCardHeader {
-    max-width: 320px;
+    max-width: 340px;
     margin-bottom: 1rem;
   }
 
@@ -569,21 +576,21 @@
   }
 
   .mobileCardHeader .galleryItemTitle {
-    font-size: 1.15rem;
+    font-size: 1.18rem;
     margin-bottom: 0.3rem;
-    min-height: 2.65rem;
+    min-height: auto;
   }
 
   .mobileCardHeader .galleryItemDesc {
-    font-size: 0.80rem;
-    line-height: 1.45;
+    font-size: 0.82rem;
+    line-height: 1.48;
     color: #94A3B8;
     margin-bottom: 0;
-    min-height: 2.55rem;
+    min-height: auto;
   }
 
   .mobileFeatureCard .galleryPhoneFrame {
-    max-width: 190px;
+    max-width: clamp(245px, 68vw, 265px);
   }
 }
 

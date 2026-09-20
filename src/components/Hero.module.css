@@ -1172,7 +1172,7 @@
   }
   .phoneAnchor,
   .phoneBackdropGroup {
-    width: clamp(235px, 65vw, 260px);
+    width: clamp(245px, 68vw, 265px);
   }
   .phoneBacklightAura {
     width: 270px;
