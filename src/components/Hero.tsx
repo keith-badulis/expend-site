@@ -7,6 +7,9 @@ import {
   CardIcon,
   AirplaneIcon,
   WalletIcon,
+  LockIcon,
+  LightningBoltIcon,
+  CoinIcon,
 } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 import styles from './Hero.module.css';
@@ -14,12 +17,59 @@ import styles from './Hero.module.css';
 export const Hero: React.FC = () => {
   return (
     <section className={styles.heroSection}>
-      {/* Decorative Geometric Shapes Framing the Sides & Edges of the Section */}
-      <div className={`${styles.edgeShape} ${styles.shapeTopLeft} ${styles.shapeReveal1}`} />
-      <div className={`${styles.edgeShape} ${styles.shapeTopRight} ${styles.shapeReveal2}`} />
-      <div className={`${styles.edgeShape} ${styles.shapeBottomLeft} ${styles.shapeReveal3}`} />
-      <div className={`${styles.edgeShape} ${styles.shapeBottomRight} ${styles.shapeReveal4}`} />
-      <div className={`${styles.edgeShape} ${styles.shapeMidRight} ${styles.shapeReveal5}`} />
+      {/* 1. Ambient Aurora Mesh & Radial Glow Orbs */}
+      <div className={styles.heroAuroraContainer} aria-hidden="true">
+        <div className={`${styles.auroraOrb} ${styles.auroraOrbEmerald}`} />
+        <div className={`${styles.auroraOrb} ${styles.auroraOrbCobalt}`} />
+        <div className={`${styles.auroraOrb} ${styles.auroraOrbSunset}`} />
+      </div>
+
+      {/* 2. Delicate Radial Masked Dot Matrix Grid */}
+      <div className={styles.heroDotGrid} aria-hidden="true" />
+
+      {/* 3. Subtle Boundary Seam Light Sweeps */}
+      <div className={styles.topLightSweep} aria-hidden="true" />
+      <div className={styles.bottomLightSweep} aria-hidden="true" />
+
+      {/* 4. Floating Frosted Glass Micro-Cards */}
+      {/* Badge 1: Private & Offline (Top-Right) */}
+      <div className={`${styles.perimeterGlassCard} ${styles.glassCardOffline} ${styles.glassReveal1}`}>
+        <div className={`${styles.glassCardInner} ${styles.floatCardA}`}>
+          <div className={styles.glassIconSquircleEmerald}>
+            <LockIcon size={16} color="#0DBF96" strokeWidth="6.25px" />
+          </div>
+          <div className={styles.glassCardContent}>
+            <span className={styles.glassCardTitle}>Private & Offline</span>
+            <span className={styles.glassCardSub}>No Accounts</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Badge 2: Quickly Record Transactions (Top-Left) */}
+      <div className={`${styles.perimeterGlassCard} ${styles.glassCardHierarchy} ${styles.glassReveal2}`}>
+        <div className={`${styles.glassCardInner} ${styles.floatCardB}`}>
+          <div className={styles.glassIconSquircleSunset}>
+            <LightningBoltIcon size={16} color="#EF8354" strokeWidth="6.25px" />
+          </div>
+          <div className={styles.glassCardContent}>
+            <span className={styles.glassCardTitle}>Quickly Record Transactions</span>
+            <span className={styles.glassCardSub}>Apply Templates to Eliminate the Hassle!</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Badge 3: Zero Subscriptions (Bottom-Left) */}
+      <div className={`${styles.perimeterGlassCard} ${styles.glassCardBudgets} ${styles.glassReveal3}`}>
+        <div className={`${styles.glassCardInner} ${styles.floatCardC}`}>
+          <div className={styles.glassIconSquircleCobalt}>
+            <CoinIcon size={16} color="#7094F0" strokeWidth="6.25px" />
+          </div>
+          <div className={styles.glassCardContent}>
+            <span className={styles.glassCardTitle}>Zero Subscriptions</span>
+            <span className={styles.glassCardSub}>Pay Once, Premium Forever</span>
+          </div>
+        </div>
+      </div>
 
       <div className="container">
         <div className={styles.heroGrid}>

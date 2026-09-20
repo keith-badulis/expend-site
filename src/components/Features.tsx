@@ -14,6 +14,9 @@ import {
   StonksIcon,
   ProfileIcon,
   DescriptionIcon,
+  CloseIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
 } from './icons';
 import styles from './Features.module.css';
 
@@ -138,12 +141,29 @@ const featureItems: FeatureItem[] = [
 const leftColItems = [featureItems[0], featureItems[2], featureItems[3]];
 const rightColItems = [featureItems[1], featureItems[4], featureItems[5]];
 
-// Hardware-grade phone mockup with specular sheen and unified brand blue backlight stage
+// Hardware-grade phone mockup with specular sheen, unified backlight, and interactive click affordance
 const PhoneMockupFrame: React.FC<{
   image: string;
   alt: string;
-}> = ({ image, alt }) => (
-  <div className={styles.phoneStage}>
+  onClick?: () => void;
+}> = ({ image, alt, onClick }) => (
+  <div
+    className={`${styles.phoneStage} ${onClick ? styles.clickablePhoneStage : ''}`}
+    onClick={onClick}
+    role={onClick ? 'button' : undefined}
+    tabIndex={onClick ? 0 : undefined}
+    aria-label={onClick ? `View enlarged screenshot: ${alt}` : undefined}
+    onKeyDown={
+      onClick
+        ? (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              onClick();
+            }
+          }
+        : undefined
+    }
+  >
     <div className={styles.phoneBacklightStage} />
     <div className={styles.galleryPhoneFrame}>
       <div className={styles.screenSheen} />
@@ -159,9 +179,16 @@ const PhoneMockupFrame: React.FC<{
 
 export const Features: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isProgrammaticScroll = useRef(false);
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+
   const [activeCategory, setActiveCategory] = useState<FeatureCategory>('tracking');
+  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [isFloatingVisible, setIsFloatingVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -183,9 +210,54 @@ export const Features: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock background scroll and listen for Escape/Arrow keys when preview overlay is open
+  useEffect(() => {
+    if (selectedImageIndex === null) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedImageIndex(null);
+      } else if (e.key === 'ArrowLeft') {
+        setSelectedImageIndex((prev) =>
+          prev === null ? null : (prev - 1 + featureItems.length) % featureItems.length
+        );
+      } else if (e.key === 'ArrowRight') {
+        setSelectedImageIndex((prev) =>
+          prev === null ? null : (prev + 1) % featureItems.length
+        );
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedImageIndex]);
+
   const handleCategoryChange = (newCat: FeatureCategory) => {
-    if (newCat === activeCategory) return;
     setActiveCategory(newCat);
+    const targetIndex = newCat === 'tracking' ? 0 : newCat === 'reports' ? 2 : 4;
+    setActiveSlideIndex(targetIndex);
+
+    if (carouselRef.current) {
+      const cards = carouselRef.current.children;
+      if (cards[targetIndex]) {
+        isProgrammaticScroll.current = true;
+        (cards[targetIndex] as HTMLElement).scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+        setTimeout(() => {
+          isProgrammaticScroll.current = false;
+        }, 400);
+      }
+    }
+
     if (sectionRef.current) {
       const rect = sectionRef.current.getBoundingClientRect();
       if (rect.top < -60) {
@@ -194,7 +266,95 @@ export const Features: React.FC = () => {
     }
   };
 
-  const activeItems = featureItems.filter((item) => item.category === activeCategory);
+  const handleCarouselScroll = () => {
+    if (isProgrammaticScroll.current || !carouselRef.current) return;
+    const container = carouselRef.current;
+    const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    Array.from(container.children).forEach((child, idx) => {
+      const childRect = child.getBoundingClientRect();
+      const childCenter = childRect.left + childRect.width / 2;
+      const dist = Math.abs(childCenter - containerCenter);
+      if (dist < minDistance) {
+        minDistance = dist;
+        closestIndex = idx;
+      }
+    });
+
+    if (closestIndex !== activeSlideIndex) {
+      setActiveSlideIndex(closestIndex);
+      const newCat = closestIndex < 2 ? 'tracking' : closestIndex < 4 ? 'reports' : 'overview';
+      if (newCat !== activeCategory) {
+        setActiveCategory(newCat);
+      }
+    }
+  };
+
+  const scrollToSlide = (index: number) => {
+    if (carouselRef.current) {
+      const cards = carouselRef.current.children;
+      if (cards[index]) {
+        isProgrammaticScroll.current = true;
+        setActiveSlideIndex(index);
+        const newCat = index < 2 ? 'tracking' : index < 4 ? 'reports' : 'overview';
+        setActiveCategory(newCat);
+        (cards[index] as HTMLElement).scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center',
+        });
+        setTimeout(() => {
+          isProgrammaticScroll.current = false;
+        }, 400);
+      }
+    }
+  };
+
+  const handlePrevPreview = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedImageIndex((prev) =>
+      prev === null ? null : (prev - 1 + featureItems.length) % featureItems.length
+    );
+  };
+
+  const handleNextPreview = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setSelectedImageIndex((prev) =>
+      prev === null ? null : (prev + 1) % featureItems.length
+    );
+  };
+
+  const handleClosePreview = () => {
+    setSelectedImageIndex(null);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+    
+    // Horizontal swipe threshold: > 45px and predominantly horizontal
+    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4) {
+      if (deltaX > 0) {
+        handlePrevPreview();
+      } else {
+        handleNextPreview();
+      }
+    } else if (deltaY > 80 && Math.abs(deltaY) > Math.abs(deltaX) * 2) {
+      // Swipe down to dismiss
+      handleClosePreview();
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
   const activeCategoryIndex = categories.findIndex((cat) => cat.id === activeCategory);
 
   return (
@@ -235,34 +395,63 @@ export const Features: React.FC = () => {
           </p>
         </div>
 
-        {/* MOBILE SHOWCASE CARDS (<= 960px) */}
-        <div key={activeCategory} className={styles.mobileCategoryShowcase}>
-          {activeItems.map((item) => (
-            <div key={item.id} className={styles.mobileFeatureCard}>
-              <div className={styles.mobileCardHeader}>
-                <span className={styles.galleryBadge}>
-                  {item.icon('var(--accent-light)')}
-                  <span>{item.badge}</span>
-                </span>
-                <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                <p className={styles.galleryItemDesc}>{item.description}</p>
-                <div className={styles.galleryTagsWrap}>
-                  {item.tags.map((tag, tIdx) => (
-                    <span key={tIdx} className={styles.galleryTagPill}>
-                      {tag}
-                    </span>
-                  ))}
+        {/* MOBILE CONTINUOUS 6-SCREEN CAROUSEL (<= 960px) */}
+        <div className={styles.mobileCarouselWrapper}>
+          <div
+            ref={carouselRef}
+            onScroll={handleCarouselScroll}
+            className={styles.mobileCarouselTrack}
+          >
+            {featureItems.map((item, index) => (
+              <div
+                key={item.id}
+                className={`${styles.mobileFeatureCard} ${activeSlideIndex === index ? styles.activeCard : ''}`}
+              >
+                <div className={styles.mobileCardHeader}>
+                  <div className={styles.mobileKicker}>
+                    {item.icon('var(--accent-light)')}
+                    <span>{item.badge}</span>
+                  </div>
+                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
+                  <p className={styles.galleryItemDesc}>{item.description}</p>
+                  <div className={styles.mobileTagsLine}>
+                    {item.tags.map((tag, tIdx) => (
+                      <React.Fragment key={tIdx}>
+                        {tIdx > 0 && <span className={styles.tagDotSeparator}>•</span>}
+                        <span className={styles.mobileTagText}>{tag}</span>
+                      </React.Fragment>
+                    ))}
+                  </div>
+                </div>
+
+                <div className={styles.mobileScreenStage}>
+                  <PhoneMockupFrame
+                    image={item.image}
+                    alt={item.imageAlt}
+                    onClick={() => setSelectedImageIndex(index)}
+                  />
                 </div>
               </div>
+            ))}
+          </div>
 
-              <div className={styles.mobileScreenStage}>
-                <PhoneMockupFrame image={item.image} alt={item.imageAlt} />
-              </div>
-            </div>
-          ))}
+          {/* 6-Slide Indicator Pagination Bar */}
+          <div className={styles.carouselPaginationDots} role="tablist" aria-label="Feature slides">
+            {featureItems.map((_, dotIdx) => (
+              <button
+                key={dotIdx}
+                type="button"
+                role="tab"
+                aria-selected={activeSlideIndex === dotIdx}
+                aria-label={`Go to feature slide ${dotIdx + 1}`}
+                onClick={() => scrollToSlide(dotIdx)}
+                className={`${styles.paginationDot} ${activeSlideIndex === dotIdx ? styles.dotActive : ''}`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* MOBILE FLOATING STICKY BOTTOM TABS (Portaled to document.body to guarantee topmost z-index immunity against adjacent sections) */}
+        {/* MOBILE FLOATING STICKY BOTTOM TABS (Portaled to document.body) */}
         {mounted && typeof document !== 'undefined'
           ? createPortal(
               <div
@@ -271,7 +460,7 @@ export const Features: React.FC = () => {
                 aria-label="Features category tabs"
               >
                 <div className={styles.mobileSegmentTrack} role="tablist" aria-label="Feature categories">
-                  {/* Animated sliding active indicator pill (matching eXpend InlineTabs) */}
+                  {/* Animated sliding active indicator pill */}
                   <div
                     className={styles.slidingPillIndicator}
                     style={{
@@ -308,63 +497,200 @@ export const Features: React.FC = () => {
         <div className={styles.galleryStaggeredGrid}>
           {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
           <div className={`${styles.galleryColumn} ${styles.galleryColLeft}`}>
-            {leftColItems.map((item) => (
-              <div key={item.id} className={`${styles.galleryItem} ${styles.captionLeft}`}>
-                {/* Caption on Left */}
-                <div className={styles.galleryCaptionBox}>
-                  <span className={styles.galleryBadge}>
-                    {item.icon('var(--accent-light)')}
-                    <span>{item.badge}</span>
-                  </span>
-                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                  <p className={styles.galleryItemDesc}>{item.description}</p>
-                  <div className={styles.galleryTagsWrap}>
-                    {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className={styles.galleryTagPill}>
-                        {tag}
-                      </span>
-                    ))}
+            {leftColItems.map((item) => {
+              const itemIndex = featureItems.findIndex((f) => f.id === item.id);
+              return (
+                <div key={item.id} className={`${styles.galleryItem} ${styles.captionLeft}`}>
+                  {/* Caption on Left */}
+                  <div className={styles.galleryCaptionBox}>
+                    <span className={styles.galleryBadge}>
+                      {item.icon('var(--accent-light)')}
+                      <span>{item.badge}</span>
+                    </span>
+                    <h3 className={styles.galleryItemTitle}>{item.title}</h3>
+                    <p className={styles.galleryItemDesc}>{item.description}</p>
+                    <div className={styles.galleryTagsWrap}>
+                      {item.tags.map((tag, tIdx) => (
+                        <span key={tIdx} className={styles.galleryTagPill}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Screenshot on Right */}
+                  <div className={styles.galleryScreenBox}>
+                    <PhoneMockupFrame
+                      image={item.image}
+                      alt={item.imageAlt}
+                      onClick={() => setSelectedImageIndex(itemIndex)}
+                    />
                   </div>
                 </div>
-
-                {/* Screenshot on Right */}
-                <div className={styles.galleryScreenBox}>
-                  <PhoneMockupFrame image={item.image} alt={item.imageAlt} />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* RIGHT COLUMN (Staggered Downward: Screenshot on Left, Caption on Right) */}
           <div className={`${styles.galleryColumn} ${styles.galleryColRight}`}>
-            {rightColItems.map((item) => (
-              <div key={item.id} className={`${styles.galleryItem} ${styles.captionRight}`}>
-                {/* Screenshot on Left */}
-                <div className={styles.galleryScreenBox}>
-                  <PhoneMockupFrame image={item.image} alt={item.imageAlt} />
+            {rightColItems.map((item) => {
+              const itemIndex = featureItems.findIndex((f) => f.id === item.id);
+              return (
+                <div key={item.id} className={`${styles.galleryItem} ${styles.captionRight}`}>
+                  {/* Screenshot on Left */}
+                  <div className={styles.galleryScreenBox}>
+                    <PhoneMockupFrame
+                      image={item.image}
+                      alt={item.imageAlt}
+                      onClick={() => setSelectedImageIndex(itemIndex)}
+                    />
+                  </div>
+
+                  {/* Caption on Right */}
+                  <div className={styles.galleryCaptionBox}>
+                    <span className={styles.galleryBadge}>
+                      {item.icon('var(--accent-light)')}
+                      <span>{item.badge}</span>
+                    </span>
+                    <h3 className={styles.galleryItemTitle}>{item.title}</h3>
+                    <p className={styles.galleryItemDesc}>{item.description}</p>
+                    <div className={styles.galleryTagsWrap}>
+                      {item.tags.map((tag, tIdx) => (
+                        <span key={tIdx} className={styles.galleryTagPill}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* SCREENSHOT DETAIL PREVIEW OVERLAY / LIGHTBOX MODAL */}
+      {mounted && selectedImageIndex !== null && typeof document !== 'undefined'
+        ? createPortal(
+            <div
+              className={styles.lightboxOverlay}
+              role="dialog"
+              aria-modal="true"
+              aria-label="Screenshot detail preview modal"
+            >
+              {/* Semi-transparent dark blur backdrop */}
+              <div
+                className={styles.lightboxBackdrop}
+                onClick={handleClosePreview}
+              />
+
+              {/* Lightbox Modal Container */}
+              <div
+                className={styles.lightboxContainer}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
+                {/* Header Bar */}
+                <div className={styles.lightboxHeader}>
+                  <div className={styles.lightboxMetaInfo}>
+                    <div className={styles.lightboxBadge}>
+                      {featureItems[selectedImageIndex].icon('var(--accent-light)')}
+                      <span>{featureItems[selectedImageIndex].badge}</span>
+                    </div>
+                    <span className={styles.lightboxIndexIndicator}>
+                      {selectedImageIndex + 1} / {featureItems.length}
+                    </span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={handleClosePreview}
+                    className={styles.lightboxCloseBtn}
+                    aria-label="Close screenshot preview"
+                  >
+                    <CloseIcon size={20} color="#FFFFFF" />
+                  </button>
                 </div>
 
-                {/* Caption on Right */}
-                <div className={styles.galleryCaptionBox}>
-                  <span className={styles.galleryBadge}>
-                    {item.icon('var(--accent-light)')}
-                    <span>{item.badge}</span>
-                  </span>
-                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                  <p className={styles.galleryItemDesc}>{item.description}</p>
-                  <div className={styles.galleryTagsWrap}>
-                    {item.tags.map((tag, tIdx) => (
-                      <span key={tIdx} className={styles.galleryTagPill}>
+                {/* Main Visual Stage */}
+                <div className={styles.lightboxVisualStage}>
+                  {/* Previous Button */}
+                  <button
+                    type="button"
+                    onClick={handlePrevPreview}
+                    className={`${styles.lightboxNavBtn} ${styles.lightboxNavPrev}`}
+                    aria-label="Previous screenshot"
+                  >
+                    <ChevronLeftIcon size={24} color="#FFFFFF" />
+                  </button>
+
+                  {/* Phone Mockup Frame */}
+                  <div className={styles.lightboxPhoneContainer}>
+                    <div className={styles.lightboxBacklight} />
+                    <div className={styles.lightboxPhoneFrame}>
+                      <div className={styles.screenSheen} />
+                      <img
+                        key={featureItems[selectedImageIndex].image}
+                        src={featureItems[selectedImageIndex].image}
+                        alt={featureItems[selectedImageIndex].imageAlt}
+                        className={styles.lightboxScreenImg}
+                      />
+                    </div>
+                  </div>
+
+                  {/* Next Button */}
+                  <button
+                    type="button"
+                    onClick={handleNextPreview}
+                    className={`${styles.lightboxNavBtn} ${styles.lightboxNavNext}`}
+                    aria-label="Next screenshot"
+                  >
+                    <ChevronRightIcon size={24} color="#FFFFFF" />
+                  </button>
+                </div>
+
+                {/* Footer Bar */}
+                <div className={styles.lightboxFooter}>
+                  <h3 className={styles.lightboxTitle}>
+                    {featureItems[selectedImageIndex].title}
+                  </h3>
+                  <p className={styles.lightboxDesc}>
+                    {featureItems[selectedImageIndex].description}
+                  </p>
+                  <div className={styles.lightboxTagsWrap}>
+                    {featureItems[selectedImageIndex].tags.map((tag, tIdx) => (
+                      <span key={tIdx} className={styles.lightboxTagPill}>
                         {tag}
                       </span>
                     ))}
                   </div>
+
+                  {/* 6-Slide Quick Jump Pagination Dots */}
+                  <div
+                    className={styles.lightboxDotsTrack}
+                    role="tablist"
+                    aria-label="Lightbox screenshot slides"
+                  >
+                    {featureItems.map((_, dotIdx) => (
+                      <button
+                        key={dotIdx}
+                        type="button"
+                        role="tab"
+                        aria-selected={selectedImageIndex === dotIdx}
+                        aria-label={`Jump to screenshot ${dotIdx + 1}`}
+                        onClick={() => setSelectedImageIndex(dotIdx)}
+                        className={`${styles.lightboxDot} ${
+                          selectedImageIndex === dotIdx ? styles.lightboxDotActive : ''
+                        }`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            </div>,
+            document.body
+          )
+        : null}
     </section>
   );
 };

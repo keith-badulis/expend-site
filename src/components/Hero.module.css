@@ -553,109 +553,257 @@
     transform: translate(7px, 3px) scale(1.04);
     filter: drop-shadow(0 0 16px #93B4FF) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.65));
   }
-
-  .heroSection:has(.phoneAnchor:hover) .shapeTopLeft {
-    opacity: 0.7;
-    box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
-  }
-
-  .heroSection:has(.phoneAnchor:hover) .shapeTopRight {
-    opacity: 0.65;
-    box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
-  }
-
-  .heroSection:has(.phoneAnchor:hover) .shapeBottomLeft {
-    opacity: 0.65;
-    box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
-  }
-
-  .heroSection:has(.phoneAnchor:hover) .shapeBottomRight {
-    opacity: 0.7;
-    box-shadow: 0 0 30px rgba(112, 148, 240, 0.55);
-  }
-
-  .heroSection:has(.phoneAnchor:hover) .shapeMidRight {
-    opacity: 0.65;
-    box-shadow: 0 0 25px rgba(112, 148, 240, 0.45);
-  }
 }
 
-/* --- HERO SECTION PERIMETER & SIDE SHAPES --- */
-.edgeShape {
+/* --- AMBIENT AURORA BACKDROP MESH --- */
+.heroAuroraContainer {
   position: absolute;
+  inset: 0;
   pointer-events: none;
+  overflow: hidden;
   z-index: 0;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 24px var(--accent-glow);
-  opacity: 0;
-  transition: opacity 0.4s ease, box-shadow 0.4s ease;
 }
 
-.shapeTopLeft {
-  width: 220px;
-  height: 220px;
-  top: -80px;
-  left: -90px;
-  border: 6px solid var(--accent-color);
+.auroraOrb {
+  position: absolute;
   border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
-.shapeReveal1 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.2s forwards;
+.auroraOrbEmerald {
+  top: -120px;
+  left: -100px;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(13, 191, 150, 0.18) 0%, rgba(10, 127, 116, 0.08) 50%, transparent 72%);
+  filter: blur(80px);
+  animation: auroraDriftEmerald 14s ease-in-out infinite alternate;
 }
 
-.shapeTopRight {
-  width: 190px;
-  height: 190px;
-  top: -50px;
-  right: -70px;
-  border: 6px solid var(--accent-color);
-  border-radius: 46px;
-  transform: rotate(18deg);
+.auroraOrbCobalt {
+  top: 15%;
+  right: -120px;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(76, 116, 219, 0.22) 0%, rgba(112, 148, 240, 0.12) 40%, rgba(92, 60, 206, 0.05) 60%, transparent 75%);
+  filter: blur(95px);
+  animation: auroraDriftCobalt 16s ease-in-out infinite alternate;
 }
 
-.shapeReveal2 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.3s forwards;
+.auroraOrbSunset {
+  bottom: -100px;
+  left: 20%;
+  width: 500px;
+  height: 380px;
+  background: radial-gradient(ellipse, rgba(239, 131, 84, 0.14) 0%, rgba(223, 68, 51, 0.06) 45%, transparent 70%);
+  filter: blur(85px);
+  animation: auroraDriftSunset 18s ease-in-out infinite alternate;
 }
 
-.shapeBottomLeft {
-  width: 150px;
-  height: 150px;
-  bottom: -45px;
-  left: 6%;
-  border: 4.5px dashed var(--accent-color);
-  border-radius: 50%;
+@keyframes auroraDriftEmerald {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.8; }
+  50% { transform: translate(40px, -25px) scale(1.08); opacity: 1; }
+  100% { transform: translate(-20px, 30px) scale(0.95); opacity: 0.85; }
 }
 
-.shapeReveal3 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.4s forwards;
+@keyframes auroraDriftCobalt {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.9; }
+  50% { transform: translate(-35px, 35px) scale(1.1); opacity: 1; }
+  100% { transform: translate(25px, -20px) scale(0.95); opacity: 0.85; }
 }
 
-.shapeBottomRight {
-  width: 210px;
-  height: 210px;
-  bottom: -75px;
-  right: 5%;
-  border: 6px solid var(--accent-color);
-  border-radius: 50%;
+@keyframes auroraDriftSunset {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.75; }
+  50% { transform: translate(30px, -30px) scale(1.06); opacity: 0.95; }
+  100% { transform: translate(-25px, 15px) scale(1); opacity: 0.8; }
 }
 
-.shapeReveal4 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.5s forwards;
+/* --- MASKED DOT MATRIX GRID --- */
+.heroDotGrid {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(112, 148, 240, 0.18) 1.25px, transparent 1.25px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 50%, black 25%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 50%, black 25%, transparent 80%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.75;
 }
 
-.shapeMidRight {
-  width: 120px;
-  height: 48px;
-  top: 48%;
-  right: -45px;
-  border: 5px solid var(--accent-color);
-  border-radius: 9999px;
-  transform: rotate(-22deg);
+/* --- BOUNDARY SEAM LIGHT SWEEPS --- */
+.topLightSweep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(112, 148, 240, 0.45) 30%, rgba(13, 191, 150, 0.4) 70%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
 }
 
-.shapeReveal5 {
-  animation: heroShapeFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2.6s forwards;
+.bottomLightSweep {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(76, 116, 219, 0.35) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- PERIMETER FROSTED GLASS MICRO-CARDS (CONCEPT 3) --- */
+.perimeterGlassCard {
+  position: absolute;
+  z-index: 2;
+  user-select: none;
+  pointer-events: none;
+}
+
+.glassCardInner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: rgba(23, 32, 54, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 12px 28px -4px rgba(0, 0, 0, 0.45),
+    0 0 16px rgba(76, 116, 219, 0.1);
+}
+
+.glassCardOffline {
+  top: 5.5%;
+  right: 4.5%;
+}
+
+.glassCardHierarchy {
+  top: 8.5%;
+  left: 3.5%;
+}
+
+.glassCardBudgets {
+  bottom: 6.5%;
+  left: 4.5%;
+}
+
+.glassIconSquircleEmerald {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(13, 191, 150, 0.18);
+  border: 1px solid rgba(13, 191, 150, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(13, 191, 150, 0.25);
+}
+
+.glassIconSquircleCobalt {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(76, 116, 219, 0.18);
+  border: 1px solid rgba(112, 148, 240, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(76, 116, 219, 0.25);
+}
+
+.glassIconSquircleSunset {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: rgba(239, 131, 84, 0.18);
+  border: 1px solid rgba(239, 131, 84, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(239, 131, 84, 0.25);
+}
+
+.glassCardContent {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 1px;
+}
+
+.glassCardTitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.glassCardSub {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+/* Staggered Entrance Reveals */
+.glassReveal1 {
+  animation: glassCardPop 0.9s cubic-bezier(0.16, 1, 0.3, 1) 1.8s both;
+}
+
+.glassReveal2 {
+  animation: glassCardPop 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.0s both;
+}
+
+.glassReveal3 {
+  animation: glassCardPop 0.9s cubic-bezier(0.16, 1, 0.3, 1) 2.2s both;
+}
+
+@keyframes glassCardPop {
+  0% {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Ambient Floating Keyframes */
+.floatCardA {
+  animation: glassFloatA 6.8s ease-in-out infinite alternate;
+}
+
+.floatCardB {
+  animation: glassFloatB 7.6s ease-in-out infinite alternate;
+}
+
+.floatCardC {
+  animation: glassFloatC 8.2s ease-in-out infinite alternate;
+}
+
+@keyframes glassFloatA {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-7px) rotate(0.5deg); }
+}
+
+@keyframes glassFloatB {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-8px) rotate(-0.5deg); }
+}
+
+@keyframes glassFloatC {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-6px) rotate(0.5deg); }
 }
 
 /* --- KEYFRAME DEFINITIONS --- */
@@ -842,6 +990,21 @@
 }
 
 /* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 1200px) {
+  .glassCardOffline {
+    top: 3.5%;
+    right: 2%;
+  }
+  .glassCardHierarchy {
+    top: 4.5%;
+    left: 2%;
+  }
+  .glassCardBudgets {
+    bottom: 3.5%;
+    left: 2%;
+  }
+}
+
 @media (max-width: 960px) {
   .heroSection {
     min-height: auto;
@@ -862,6 +1025,9 @@
   .phoneAnchor,
   .phoneBackdropGroup {
     width: 280px;
+  }
+  .perimeterGlassCard {
+    display: none;
   }
 }
 
@@ -911,22 +1077,23 @@
     top: 64%;
     right: -50px;
   }
-  .shapeTopLeft {
-    width: 150px;
-    height: 150px;
-    top: -55px;
-    left: -55px;
+  .auroraOrbEmerald {
+    width: 340px;
+    height: 340px;
+    filter: blur(60px);
   }
-  .shapeTopRight {
-    width: 120px;
-    height: 120px;
-    top: -35px;
-    right: -35px;
+  .auroraOrbCobalt {
+    width: 380px;
+    height: 380px;
+    filter: blur(65px);
   }
-  .shapeMidRight,
-  .shapeBottomLeft,
-  .shapeBottomRight {
-    display: none;
+  .auroraOrbSunset {
+    width: 300px;
+    height: 260px;
+    filter: blur(60px);
+  }
+  .heroDotGrid {
+    opacity: 0.55;
   }
 }
 
@@ -1042,23 +1209,19 @@
     width: 22px;
     height: 22px;
   }
-  .shapeTopLeft {
-    width: 110px;
-    height: 110px;
-    top: -40px;
-    left: -40px;
-    border-width: 4px;
+  .auroraOrbEmerald {
+    width: 260px;
+    height: 260px;
+    filter: blur(50px);
   }
-  .shapeTopRight {
-    width: 90px;
-    height: 90px;
-    top: -25px;
-    right: -25px;
-    border-width: 4px;
+  .auroraOrbCobalt {
+    width: 290px;
+    height: 290px;
+    filter: blur(55px);
   }
-  .shapeBottomLeft,
-  .shapeBottomRight,
-  .shapeMidRight {
-    display: none;
+  .auroraOrbSunset {
+    width: 240px;
+    height: 200px;
+    filter: blur(50px);
   }
 }
