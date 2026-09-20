@@ -4,7 +4,7 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  padding: 3.5rem 0;
+  padding: 4.5rem 0;
   position: relative;
   overflow-x: clip;
   overflow-y: visible;
@@ -27,10 +27,39 @@
 /* --- ORCHESTRATED STAGGERED REVEALS --- */
 .revealHeadline {
   animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.45s both;
+  margin-bottom: 1.5rem;
+}
+
+.heroPreTitle {
+  font-size: clamp(1.35rem, 2.6vw, 1.95rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  display: block;
+  margin-bottom: 0.45rem;
+  line-height: 1.25;
+}
+
+.heroMainTitle {
+  font-size: clamp(2.4rem, 4.8vw, 3.75rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin: 0;
 }
 
 .revealSubtext {
   animation: heroFadeSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.75s both;
+}
+
+.heroDescription {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  margin-bottom: 2.25rem;
+  max-width: 520px;
+  font-weight: 400;
 }
 
 .revealBadges {
@@ -1008,19 +1037,19 @@
 @media (max-width: 960px) {
   .heroSection {
     min-height: auto;
-    padding: 3.5rem 0 4.5rem 0;
+    padding: 2.75rem 0;
   }
   .heroGrid {
     grid-template-columns: 1fr;
-    gap: 3.5rem;
+    gap: 3rem;
     text-align: center;
   }
-  .heroGrid p {
+  .heroDescription {
     margin-left: auto;
     margin-right: auto;
   }
   .phoneMockupWrapper {
-    min-height: 520px;
+    min-height: 500px;
   }
   .phoneAnchor,
   .phoneBackdropGroup {
@@ -1032,196 +1061,232 @@
 }
 
 @media (max-width: 768px) {
+  .heroPreTitle {
+    font-size: 1.18rem;
+    margin-bottom: 0.35rem;
+  }
+  .heroMainTitle {
+    font-size: clamp(2rem, 4.5vw, 2.65rem);
+    line-height: 1.14;
+  }
+  .heroDescription {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+    max-width: 480px;
+  }
   .phoneMockupWrapper {
-    min-height: 500px;
+    min-height: 480px;
   }
   .phoneAnchor,
   .phoneBackdropGroup {
-    width: 270px;
-  }
-  .phoneBacklightAura {
-    width: 320px;
-    height: 440px;
-  }
-  .ring1 {
-    width: 285px;
-    height: 465px;
-  }
-  .ring2 {
-    width: 305px;
-    height: 485px;
-  }
-  .walletCardWrap {
-    top: -14px;
-    left: -28px;
-  }
-  .walletCardGradient {
-    width: 132px;
-  }
-  .goalCardWrap {
-    bottom: -14px;
-    right: -28px;
-  }
-  .goalCardBody {
-    width: 195px;
-  }
-  .iconPosBank {
-    top: 8%;
-    right: -58px;
-  }
-  .iconPosCard {
-    top: 44%;
-    left: -50px;
-  }
-  .iconPosPiggy {
-    top: 64%;
-    right: -50px;
-  }
-  .auroraOrbEmerald {
-    width: 340px;
-    height: 340px;
-    filter: blur(60px);
-  }
-  .auroraOrbCobalt {
-    width: 380px;
-    height: 380px;
-    filter: blur(65px);
-  }
-  .auroraOrbSunset {
-    width: 300px;
-    height: 260px;
-    filter: blur(60px);
-  }
-  .heroDotGrid {
-    opacity: 0.55;
-  }
-}
-
-@media (max-width: 480px) {
-  .heroSection {
-    padding: 2.75rem 0 3.5rem 0;
-  }
-  .phoneMockupWrapper {
-    min-height: 470px;
-    padding: 1.5rem 0 0.5rem 0;
-  }
-  .phoneAnchor,
-  .phoneBackdropGroup {
-    width: clamp(245px, 68vw, 275px);
-  }
-  .phoneBacklightAura {
-    width: 290px;
-    height: 400px;
-  }
-  .ring1 {
     width: 265px;
-    height: 435px;
-    border-radius: 40px;
+  }
+  .phoneBacklightAura {
+    width: 310px;
+    height: 430px;
+  }
+  .ring1 {
+    width: 280px;
+    height: 455px;
   }
   .ring2 {
-    width: 285px;
-    height: 455px;
-    border-radius: 44px;
+    width: 300px;
+    height: 475px;
   }
-
-  /* Maya WalletItem Mobile Sizing */
   .walletCardWrap {
-    top: -24px;
-    left: -24px;
+    top: -12px;
+    left: -20px;
   }
   .walletCardGradient {
-    width: 120px;
-    padding: 8px 10px;
-    border-radius: 13px;
+    width: 128px;
   }
-  .walletIconSquircle {
-    width: 23px;
-    height: 23px;
-    margin-bottom: 6px;
-    border-radius: 7px;
-  }
-  .walletIconSquircle svg {
-    width: 12px;
-    height: 12px;
-  }
-  .walletName {
-    font-size: 0.68rem;
-  }
-  .walletAmount {
-    font-size: 0.85rem;
-  }
-
-  /* Emergency Fund GoalListItem Mobile Sizing */
   .goalCardWrap {
-    bottom: -20px;
-    right: -18px;
+    bottom: -12px;
+    right: -20px;
   }
   .goalCardBody {
     width: 190px;
-    padding: 8px 10px;
-    border-radius: 13px;
-    box-sizing: border-box;
-    overflow: hidden;
   }
-  .goalIconSquircle {
-    width: 24px;
-    height: 24px;
-    border-radius: 7px;
-  }
-  .goalIconSquircle svg {
-    width: 13px;
-    height: 13px;
-  }
-  .goalTitle {
-    font-size: 0.70rem;
-  }
-  .goalAmountRow {
-    gap: 3px;
-  }
-  .goalNumbers {
-    font-size: 0.53rem;
-    letter-spacing: -0.01em;
-  }
-  .goalPercent {
-    font-size: 0.53rem;
-    font-weight: 700;
-    margin-left: auto;
-    flex-shrink: 0;
-  }
-  .goalProgressTrack {
-    margin-top: 5px;
-    height: 3.5px;
-  }
-
   .iconPosBank {
     top: 8%;
-    right: -50px;
+    right: -52px;
   }
   .iconPosCard {
     top: 44%;
-    left: -48px;
+    left: -46px;
   }
   .iconPosPiggy {
     top: 64%;
     right: -46px;
   }
-  .emanatingFinanceIcon svg {
+  .auroraOrbEmerald {
+    width: 320px;
+    height: 320px;
+    filter: blur(60px);
+  }
+  .auroraOrbCobalt {
+    width: 350px;
+    height: 350px;
+    filter: blur(65px);
+  }
+  .auroraOrbSunset {
+    width: 280px;
+    height: 240px;
+    filter: blur(60px);
+  }
+  .heroDotGrid {
+    opacity: 0.45;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    padding: 2.25rem 0;
+  }
+  .heroGrid {
+    gap: 2.25rem;
+  }
+  .revealHeadline {
+    margin-bottom: 1rem;
+  }
+  .heroPreTitle {
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-bottom: 0.25rem;
+  }
+  .heroMainTitle {
+    font-size: clamp(1.75rem, 6vw, 2.1rem);
+    line-height: 1.16;
+    letter-spacing: -0.025em;
+  }
+  .heroDescription {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 1.4rem;
+    max-width: 100%;
+  }
+  .phoneMockupWrapper {
+    min-height: 430px;
+    padding: 0.5rem 0 0 0;
+  }
+  .phoneAnchor,
+  .phoneBackdropGroup {
+    width: clamp(235px, 65vw, 260px);
+  }
+  .phoneBacklightAura {
+    width: 270px;
+    height: 370px;
+  }
+  .ring1 {
+    width: 250px;
+    height: 410px;
+    border-radius: 38px;
+  }
+  .ring2 {
+    width: 270px;
+    height: 430px;
+    border-radius: 42px;
+  }
+
+  /* Savings WalletItem Mobile Sizing */
+  .walletCardWrap {
+    top: -14px;
+    left: -14px;
+  }
+  .walletCardGradient {
+    width: 116px;
+    padding: 7px 9px;
+    border-radius: 12px;
+  }
+  .walletIconSquircle {
     width: 22px;
     height: 22px;
+    margin-bottom: 5px;
+    border-radius: 6px;
+  }
+  .walletIconSquircle svg {
+    width: 11px;
+    height: 11px;
+  }
+  .walletName {
+    font-size: 0.65rem;
+  }
+  .walletAmount {
+    font-size: 0.82rem;
+  }
+
+  /* Vacation GoalListItem Mobile Sizing */
+  .goalCardWrap {
+    bottom: -14px;
+    right: -12px;
+  }
+  .goalCardBody {
+    width: 180px;
+    padding: 7px 9px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .goalIconSquircle {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+  }
+  .goalIconSquircle svg {
+    width: 12px;
+    height: 12px;
+  }
+  .goalTitle {
+    font-size: 0.68rem;
+  }
+  .goalAmountRow {
+    gap: 3px;
+  }
+  .goalNumbers {
+    font-size: 0.52rem;
+    letter-spacing: -0.01em;
+  }
+  .goalPercent {
+    font-size: 0.52rem;
+    font-weight: 700;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .goalProgressTrack {
+    margin-top: 4px;
+    height: 3px;
+  }
+
+  .iconPosBank {
+    top: 7%;
+    right: -42px;
+  }
+  .iconPosCard {
+    top: 43%;
+    left: -40px;
+  }
+  .iconPosPiggy {
+    top: 63%;
+    right: -38px;
+  }
+  .emanatingFinanceIcon svg {
+    width: 20px;
+    height: 20px;
   }
   .auroraOrbEmerald {
-    width: 260px;
-    height: 260px;
+    width: 240px;
+    height: 240px;
     filter: blur(50px);
   }
   .auroraOrbCobalt {
-    width: 290px;
-    height: 290px;
+    width: 270px;
+    height: 270px;
     filter: blur(55px);
   }
   .auroraOrbSunset {
-    width: 240px;
-    height: 200px;
+    width: 220px;
+    height: 180px;
     filter: blur(50px);
   }
 }

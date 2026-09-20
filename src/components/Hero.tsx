@@ -79,31 +79,14 @@ export const Hero: React.FC = () => {
             <AnimatedLogo size={112} />
 
             {/* 2. Headline & Setup Text (Stagger 1: T = 0.45s) */}
-            <div className={styles.revealHeadline} style={{ marginBottom: '1.5rem' }}>
-              <span style={{
-                fontSize: 'clamp(1.35rem, 2.6vw, 1.95rem)',
-                fontWeight: 300,
-                color: 'var(--text-secondary)',
-                letterSpacing: '-0.01em',
-                display: 'block',
-                marginBottom: '0.45rem',
-                lineHeight: 1.25,
-              }}>
+            <div className={styles.revealHeadline}>
+              <span className={styles.heroPreTitle}>
                 Tracking your finances is a chore.
               </span>
 
-              <h1 style={{
-                fontSize: 'clamp(2.4rem, 4.8vw, 3.75rem)',
-                fontWeight: 700,
-                letterSpacing: '-0.03em',
-                lineHeight: 1.12,
-                color: '#FFFFFF',
-                margin: 0,
-              }}>
+              <h1 className={styles.heroMainTitle}>
                 Let's make it{' '}
-                <span style={{
-                  color: 'var(--accent-light)',
-                }}>
+                <span style={{ color: 'var(--accent-light)' }}>
                   a habit.
                 </span>
               </h1>
@@ -111,15 +94,8 @@ export const Hero: React.FC = () => {
 
             {/* 3. Subtext Paragraph (Stagger 2: T = 0.75s) */}
             <div className={styles.revealSubtext}>
-              <p style={{
-                fontSize: '1.12rem',
-                lineHeight: 1.65,
-                color: 'var(--text-secondary)',
-                marginBottom: '2.25rem',
-                maxWidth: '520px',
-                fontWeight: 400,
-              }}>
-                Take control of your money with <strong>eXpend</strong>, your all-in-one expense tracker and budget planner. Simplify your personal finances, track spending habits, and reach your financial goals, all while keeping your data private and secure on your device.
+              <p className={styles.heroDescription}>
+                Track daily expenses, set flexible budgets, and reach your goals, 100% privately on your device with no monthly subscriptions.
               </p>
             </div>
 

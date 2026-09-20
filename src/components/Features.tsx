@@ -359,6 +359,10 @@ export const Features: React.FC = () => {
 
   return (
     <section ref={sectionRef} id="features" className={`section ${styles.galleryFeaturesSection}`}>
+      {/* Precision Glowing Transition Seams */}
+      <div className={styles.topGlowSeam} aria-hidden="true" />
+      <div className={styles.bottomGlowSeam} aria-hidden="true" />
+
       {/* Background Ambient Shapes */}
       <div
         className="edge-shape ring"
@@ -414,14 +418,6 @@ export const Features: React.FC = () => {
                   </div>
                   <h3 className={styles.galleryItemTitle}>{item.title}</h3>
                   <p className={styles.galleryItemDesc}>{item.description}</p>
-                  <div className={styles.mobileTagsLine}>
-                    {item.tags.map((tag, tIdx) => (
-                      <React.Fragment key={tIdx}>
-                        {tIdx > 0 && <span className={styles.tagDotSeparator}>•</span>}
-                        <span className={styles.mobileTagText}>{tag}</span>
-                      </React.Fragment>
-                    ))}
-                  </div>
                 </div>
 
                 <div className={styles.mobileScreenStage}>

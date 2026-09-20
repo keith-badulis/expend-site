@@ -197,23 +197,24 @@ export const Reviews: React.FC = () => {
 
   return (
     <section id="reviews" className={`section ${styles.reviewsSection}`}>
+      {/* Precision Glowing Transition Seams */}
+      <div className={styles.topGlowSeam} aria-hidden="true" />
+      <div className={styles.bottomGlowSeam} aria-hidden="true" />
+
       <div className="container">
         {/* Section Header with Aggregated Trust Badge */}
-        <div className="section-header" style={{ marginBottom: '2.5rem' }}>
+        <div className="section-header">
           <div className="section-subtitle">
             <StarOutlineIcon size={16} color="var(--accent-light)" />
             <span>Community Feedback</span>
           </div>
 
-          <h2 className="section-title" style={{ fontWeight: 700 }}>
+          <h2 className="section-title">
             Loved by People Who Value <br />
             <span style={{ color: 'var(--accent-light)' }}>Simplicity & Design</span>
           </h2>
 
-          <p
-            className="section-description"
-            style={{ maxWidth: '560px', margin: '0 auto 1.35rem auto' }}
-          >
+          <p className="section-description">
             Real reviews from users managing their personal finances with eXpend.
           </p>
 

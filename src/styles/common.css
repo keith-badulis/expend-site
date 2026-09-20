@@ -1,6 +1,6 @@
 /* Shared Section Layouts */
 .section {
-  padding: 5.5rem 0;
+  padding: 4.5rem 0;
   position: relative;
   z-index: 1;
 }
@@ -8,7 +8,7 @@
 .section-header {
   text-align: center;
   max-width: 680px;
-  margin: 0 auto 3.5rem auto;
+  margin: 0 auto 3.25rem auto;
 }
 
 .section-subtitle {
@@ -16,22 +16,23 @@
   align-items: center;
   gap: 0.45rem;
   color: var(--accent-light);
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  letter-spacing: 0.01em;
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
 .section-title {
-  font-size: clamp(2.2rem, 4vw, 3rem);
-  font-weight: 900;
-  margin-bottom: 1rem;
+  font-size: clamp(2.1rem, 3.8vw, 2.85rem);
+  font-weight: 800;
+  margin-bottom: 0.85rem;
   letter-spacing: -0.025em;
+  line-height: 1.16;
 }
 
 .section-description {
-  font-size: 1.15rem;
+  font-size: 1.08rem;
+  line-height: 1.6;
   color: var(--text-secondary);
 }
 
@@ -56,16 +57,48 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 3.75rem 0;
+    padding: 2.75rem 0;
+  }
+  .section-header {
+    margin: 0 auto 2.25rem auto;
+  }
+  .section-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.15rem);
+    line-height: 1.2;
+    margin-bottom: 0.65rem;
+  }
+  .section-description {
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
+  .edge-shape {
+    opacity: 0.2;
   }
 }
 
 @media (max-width: 480px) {
   .section {
-    padding: 3rem 0;
+    padding: 2.25rem 0;
+  }
+  .section-header {
+    margin: 0 auto 1.75rem auto;
+  }
+  .section-subtitle {
+    font-size: 0.78rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.45rem;
   }
   .section-title {
-    font-size: clamp(1.75rem, 6.5vw, 2.15rem);
-    line-height: 1.2;
+    font-size: clamp(1.45rem, 5.5vw, 1.75rem);
+    line-height: 1.22;
+    margin-bottom: 0.55rem;
+    letter-spacing: -0.02em;
+  }
+  .section-description {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+  .edge-shape {
+    opacity: 0.12;
   }
 }
