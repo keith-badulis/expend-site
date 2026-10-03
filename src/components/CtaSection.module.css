@@ -82,7 +82,7 @@
 
 @media (max-width: 768px) {
   .ctaOpenSection {
-    padding: 2.75rem 0;
+    padding: 3.75rem 0;
   }
   .ctaSpotlightAura {
     width: 360px;
@@ -116,7 +116,7 @@
 
 @media (max-width: 480px) {
   .ctaOpenSection {
-    padding: 2.25rem 0;
+    padding: 3.5rem 0;
   }
   .ctaSpotlightAura {
     width: 270px;

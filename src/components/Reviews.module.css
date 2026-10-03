@@ -6,22 +6,6 @@
   -webkit-backdrop-filter: blur(8px);
 }
 
-.topGlowSeam {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(112, 148, 240, 0.55) 50%,
-    transparent 100%
-  );
-  box-shadow: 0 0 14px rgba(112, 148, 240, 0.35);
-  pointer-events: none;
-  z-index: 10;
-}
 
 .bottomGlowSeam {
   position: absolute;
@@ -329,7 +313,7 @@
    ========================================================================== */
 @media (max-width: 820px) {
   .reviewsSection {
-    padding: 2.75rem 0;
+    padding: 3.75rem 0;
   }
 
   .carouselViewport {
@@ -373,7 +357,7 @@
 
 @media (max-width: 480px) {
   .reviewsSection {
-    padding: 2.25rem 0;
+    padding: 3.5rem 0;
   }
 
   .carouselViewport {

@@ -57,10 +57,10 @@
 
 @media (max-width: 768px) {
   .section {
-    padding: 2.75rem 0;
+    padding: 3.75rem 0;
   }
   .section-header {
-    margin: 0 auto 2.25rem auto;
+    margin: 0 auto 2.5rem auto;
   }
   .section-title {
     font-size: clamp(1.75rem, 3.5vw, 2.15rem);
@@ -78,10 +78,10 @@
 
 @media (max-width: 480px) {
   .section {
-    padding: 2.25rem 0;
+    padding: 3.5rem 0;
   }
   .section-header {
-    margin: 0 auto 1.75rem auto;
+    margin: 0 auto 2.25rem auto;
   }
   .section-subtitle {
     font-size: 0.78rem;

@@ -29,6 +29,7 @@ interface FeatureItem {
   badge: string;
   title: string;
   description: string;
+  shortDescription?: string;
   tags: string[];
   image: string;
   imageAlt: string;
@@ -71,6 +72,8 @@ const featureItems: FeatureItem[] = [
     title: 'Log Transactions in Seconds',
     description:
       'Log income, expenses, and money transfers in seconds with a built-in keypad calculator. Use customizable, reusable templates to record common transactions instantly, or schedule recurring transactions for a hassle-free routine.',
+    shortDescription:
+      'Quickly log income and expenses with the built-in keypad, reusable templates, and recurring transactions.',
     tags: ['Income & Expenses', 'Custom Templates', 'Recurring Transactions'],
     image: addTxImg,
     imageAlt: 'eXpend Add Transaction keypad and calculator screen',
@@ -83,6 +86,8 @@ const featureItems: FeatureItem[] = [
     title: 'Set Spending Limits & Stay on Target',
     description:
       'Plan and set budgets to stay within your target spending limits. Keep in control with clear visual progress bars, category breakdowns, and flexible budget periods.',
+    shortDescription:
+      'Set spending limits with visual progress bars, category breakdowns, and flexible budget periods.',
     tags: ['Spending Limits', 'Flexible Periods', 'Progress Tracking'],
     image: budgetImg,
     imageAlt: 'eXpend Budget Details and spending status screen',
@@ -95,6 +100,8 @@ const featureItems: FeatureItem[] = [
     title: 'Filter and Analyze Exactly How You Want',
     description:
       'Group transactions and accounts with custom tags. Filter records by date, category, or tag to see where your money goes, complete with interactive cashflow curves and automatic totals.',
+    shortDescription:
+      'Group records with custom tags and filter by date or category with interactive cashflow curves.',
     tags: ['Custom Tags', 'Flexible Filters', 'Cashflow Curves'],
     image: filteredReportsImg,
     imageAlt: 'eXpend Filtered Reports screen with cashflow timeline chart',
@@ -107,6 +114,8 @@ const featureItems: FeatureItem[] = [
     title: 'Analyze Spending Habits and Trends',
     description:
       'Visualize and analyze your spending habits and earnings with detailed, flexible reports. Compare income against expenses and view weekly trends to stay firmly in control of your finances.',
+    shortDescription:
+      'Analyze income vs. expenses, spot weekly trends, and view detailed monthly reports.',
     tags: ['Income vs Expense', 'Weekly Trends', 'Detailed Reports'],
     image: weeklyReportsImg,
     imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
@@ -119,6 +128,8 @@ const featureItems: FeatureItem[] = [
     title: 'Track Net Worth, Assets & Liabilities',
     description:
       'Keep track of cash, savings, credit cards, and debts in one place. Monitor your real-time net worth and view a clear breakdown of your accounts across multiple currencies.',
+    shortDescription:
+      'Track cash, savings, credit cards, and multi-currency net worth in one comprehensive view.',
     tags: ['Net Worth', 'Assets & Liabilities', 'Multi-Currency'],
     image: accountsImg,
     imageAlt: 'eXpend Accounts Summary and Net Worth screen',
@@ -131,6 +142,8 @@ const featureItems: FeatureItem[] = [
     title: 'Everything in One Place',
     description:
       'Stay focused on reaching your personal goals by monitoring your savings milestones. Mindfully track debts, payable and receivable, all from a clean and customizable overview.',
+    shortDescription:
+      'Monitor savings milestones and mindfully manage payable and receivable debts at a glance.',
     tags: ['Smart Goal Tracking', 'Debt Management', 'At-a-Glance View'],
     image: profileDashboardImg,
     imageAlt: 'eXpend Profile and Dashboard with Wallets, Goals, and Debts',
@@ -359,9 +372,6 @@ export const Features: React.FC = () => {
 
   return (
     <section ref={sectionRef} id="features" className={`section ${styles.galleryFeaturesSection}`}>
-      {/* Precision Glowing Transition Seams */}
-      <div className={styles.topGlowSeam} aria-hidden="true" />
-      <div className={styles.bottomGlowSeam} aria-hidden="true" />
 
       {/* Background Ambient Shapes */}
       <div
@@ -411,21 +421,23 @@ export const Features: React.FC = () => {
                 key={item.id}
                 className={`${styles.mobileFeatureCard} ${activeSlideIndex === index ? styles.activeCard : ''}`}
               >
-                <div className={styles.mobileCardHeader}>
-                  <div className={styles.mobileKicker}>
-                    {item.icon('var(--accent-light)')}
-                    <span>{item.badge}</span>
-                  </div>
-                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                  <p className={styles.galleryItemDesc}>{item.description}</p>
-                </div>
-
                 <div className={styles.mobileScreenStage}>
                   <PhoneMockupFrame
                     image={item.image}
                     alt={item.imageAlt}
                     onClick={() => setSelectedImageIndex(index)}
                   />
+                </div>
+
+                <div className={styles.mobileCardContent}>
+                  <div className={styles.mobileKicker}>
+                    {item.icon('var(--accent-light)')}
+                    <span>{item.badge}</span>
+                  </div>
+                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
+                  <p className={styles.galleryItemDesc}>
+                    {item.shortDescription || item.description}
+                  </p>
                 </div>
               </div>
             ))}

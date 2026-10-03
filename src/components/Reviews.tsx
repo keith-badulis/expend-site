@@ -198,7 +198,6 @@ export const Reviews: React.FC = () => {
   return (
     <section id="reviews" className={`section ${styles.reviewsSection}`}>
       {/* Precision Glowing Transition Seams */}
-      <div className={styles.topGlowSeam} aria-hidden="true" />
       <div className={styles.bottomGlowSeam} aria-hidden="true" />
 
       <div className="container">
