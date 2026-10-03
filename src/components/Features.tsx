@@ -35,33 +35,6 @@ interface FeatureItem {
   imageAlt: string;
 }
 
-interface CategoryTab {
-  id: FeatureCategory;
-  label: string;
-  shortLabel: string;
-  icon: (color: string) => React.ReactNode;
-}
-
-const categories: CategoryTab[] = [
-  {
-    id: 'tracking',
-    label: 'Tracking & Budgets',
-    shortLabel: 'Tracking',
-    icon: (color) => <LightningBoltIcon size={15} color={color} />,
-  },
-  {
-    id: 'reports',
-    label: 'Reports & Insights',
-    shortLabel: 'Reports',
-    icon: (color) => <ReportIcon size={15} color={color} />,
-  },
-  {
-    id: 'overview',
-    label: 'Accounts & Overview',
-    shortLabel: 'Overview',
-    icon: (color) => <ProfileIcon size={15} color={color} />,
-  },
-];
 
 const featureItems: FeatureItem[] = [
   {
@@ -191,36 +164,17 @@ const PhoneMockupFrame: React.FC<{
 );
 
 export const Features: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   const isProgrammaticScroll = useRef(false);
   const touchStartX = useRef<number | null>(null);
   const touchStartY = useRef<number | null>(null);
 
-  const [activeCategory, setActiveCategory] = useState<FeatureCategory>('tracking');
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [isFloatingVisible, setIsFloatingVisible] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      // Show floating bottom dock when user is actively inside the features section
-      // rect.bottom >= viewportHeight * 0.45 ensures dock smoothly slides away as Why Choose enters
-      const inSection = rect.top <= viewportHeight * 0.75 && rect.bottom >= viewportHeight * 0.45;
-      setIsFloatingVisible(inSection);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Lock background scroll and listen for Escape/Arrow keys when preview overlay is open
@@ -251,34 +205,6 @@ export const Features: React.FC = () => {
     };
   }, [selectedImageIndex]);
 
-  const handleCategoryChange = (newCat: FeatureCategory) => {
-    setActiveCategory(newCat);
-    const targetIndex = newCat === 'tracking' ? 0 : newCat === 'reports' ? 2 : 4;
-    setActiveSlideIndex(targetIndex);
-
-    if (carouselRef.current) {
-      const cards = carouselRef.current.children;
-      if (cards[targetIndex]) {
-        isProgrammaticScroll.current = true;
-        (cards[targetIndex] as HTMLElement).scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center',
-        });
-        setTimeout(() => {
-          isProgrammaticScroll.current = false;
-        }, 400);
-      }
-    }
-
-    if (sectionRef.current) {
-      const rect = sectionRef.current.getBoundingClientRect();
-      if (rect.top < -60) {
-        sectionRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  };
-
   const handleCarouselScroll = () => {
     if (isProgrammaticScroll.current || !carouselRef.current) return;
     const container = carouselRef.current;
@@ -298,10 +224,6 @@ export const Features: React.FC = () => {
 
     if (closestIndex !== activeSlideIndex) {
       setActiveSlideIndex(closestIndex);
-      const newCat = closestIndex < 2 ? 'tracking' : closestIndex < 4 ? 'reports' : 'overview';
-      if (newCat !== activeCategory) {
-        setActiveCategory(newCat);
-      }
     }
   };
 
@@ -311,8 +233,6 @@ export const Features: React.FC = () => {
       if (cards[index]) {
         isProgrammaticScroll.current = true;
         setActiveSlideIndex(index);
-        const newCat = index < 2 ? 'tracking' : index < 4 ? 'reports' : 'overview';
-        setActiveCategory(newCat);
         (cards[index] as HTMLElement).scrollIntoView({
           behavior: 'smooth',
           block: 'nearest',
@@ -368,10 +288,8 @@ export const Features: React.FC = () => {
     touchStartY.current = null;
   };
 
-  const activeCategoryIndex = categories.findIndex((cat) => cat.id === activeCategory);
-
   return (
-    <section ref={sectionRef} id="features" className={`section ${styles.galleryFeaturesSection}`}>
+    <section id="features" className={`section ${styles.galleryFeaturesSection}`}>
 
       {/* Background Ambient Shapes */}
       <div
@@ -459,47 +377,6 @@ export const Features: React.FC = () => {
           </div>
         </div>
 
-        {/* MOBILE FLOATING STICKY BOTTOM TABS (Portaled to document.body) */}
-        {mounted && typeof document !== 'undefined'
-          ? createPortal(
-              <div
-                className={`${styles.mobileFloatingDock} ${isFloatingVisible ? styles.dockVisible : styles.dockHidden}`}
-                role="region"
-                aria-label="Features category tabs"
-              >
-                <div className={styles.mobileSegmentTrack} role="tablist" aria-label="Feature categories">
-                  {/* Animated sliding active indicator pill */}
-                  <div
-                    className={styles.slidingPillIndicator}
-                    style={{
-                      transform: `translateX(${activeCategoryIndex * 100}%)`,
-                    }}
-                    aria-hidden="true"
-                  />
-
-                  {categories.map((cat) => {
-                    const isActive = activeCategory === cat.id;
-                    return (
-                      <button
-                        key={cat.id}
-                        type="button"
-                        role="tab"
-                        aria-selected={isActive}
-                        onClick={() => handleCategoryChange(cat.id)}
-                        className={`${styles.mobileSegmentBtn} ${isActive ? styles.segmentActive : ''}`}
-                      >
-                        <span className={styles.segmentIconWrap}>
-                          {cat.icon(isActive ? '#FFFFFF' : '#94A3B8')}
-                        </span>
-                        <span className={styles.segmentLabel}>{cat.shortLabel}</span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>,
-              document.body
-            )
-          : null}
 
         {/* DESKTOP 2-COLUMN STAGGERED EXHIBITION GALLERY (>= 961px) */}
         <div className={styles.galleryStaggeredGrid}>
@@ -598,14 +475,14 @@ export const Features: React.FC = () => {
                 onTouchStart={handleTouchStart}
                 onTouchEnd={handleTouchEnd}
               >
-                {/* Header Bar */}
-                <div className={styles.lightboxHeader}>
-                  <div className={styles.lightboxMetaInfo}>
-                    <div className={styles.lightboxBadge}>
-                      {featureItems[selectedImageIndex].icon('var(--accent-light)')}
-                      <span>{featureItems[selectedImageIndex].badge}</span>
-                    </div>
-                    <span className={styles.lightboxIndexIndicator}>
+                {/* Top Floating Capsule Bar */}
+                <div className={styles.lightboxTopCapsule}>
+                  <div className={styles.lightboxCapsuleMeta}>
+                    {featureItems[selectedImageIndex].icon('var(--accent-light)')}
+                    <span className={styles.lightboxCapsuleBadge}>
+                      {featureItems[selectedImageIndex].badge}
+                    </span>
+                    <span className={styles.lightboxCapsuleCounter}>
                       {selectedImageIndex + 1} / {featureItems.length}
                     </span>
                   </div>
@@ -613,10 +490,10 @@ export const Features: React.FC = () => {
                   <button
                     type="button"
                     onClick={handleClosePreview}
-                    className={styles.lightboxCloseBtn}
+                    className={styles.lightboxCapsuleCloseBtn}
                     aria-label="Close screenshot preview"
                   >
-                    <CloseIcon size={20} color="#FFFFFF" />
+                    <CloseIcon size={16} color="#FFFFFF" />
                   </button>
                 </div>
 
@@ -657,21 +534,14 @@ export const Features: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Footer Bar */}
-                <div className={styles.lightboxFooter}>
+                {/* Bottom Floating Glass Card */}
+                <div className={styles.lightboxBottomCard}>
                   <h3 className={styles.lightboxTitle}>
                     {featureItems[selectedImageIndex].title}
                   </h3>
                   <p className={styles.lightboxDesc}>
                     {featureItems[selectedImageIndex].description}
                   </p>
-                  <div className={styles.lightboxTagsWrap}>
-                    {featureItems[selectedImageIndex].tags.map((tag, tIdx) => (
-                      <span key={tIdx} className={styles.lightboxTagPill}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
 
                   {/* 6-Slide Quick Jump Pagination Dots */}
                   <div
