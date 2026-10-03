@@ -17,21 +17,14 @@ import styles from './Hero.module.css';
 export const Hero: React.FC = () => {
   return (
     <section className={styles.heroSection}>
-      {/* 1. Ambient Aurora Mesh & Radial Glow Orbs */}
-      <div className={styles.heroAuroraContainer} aria-hidden="true">
-        <div className={`${styles.auroraOrb} ${styles.auroraOrbEmerald}`} />
-        <div className={`${styles.auroraOrb} ${styles.auroraOrbCobalt}`} />
-        <div className={`${styles.auroraOrb} ${styles.auroraOrbSunset}`} />
-      </div>
-
-      {/* 2. Delicate Radial Masked Dot Matrix Grid */}
+      {/* 1. Delicate Radial Masked Dot Matrix Grid */}
       <div className={styles.heroDotGrid} aria-hidden="true" />
 
-      {/* 3. Subtle Boundary Seam Light Sweeps */}
+      {/* 2. Subtle Boundary Seam Light Sweeps */}
       <div className={styles.topLightSweep} aria-hidden="true" />
       <div className={styles.bottomLightSweep} aria-hidden="true" />
 
-      {/* 4. Floating Frosted Glass Micro-Cards */}
+      {/* 3. Floating Frosted Glass Micro-Cards */}
       {/* Badge 1: Private & Offline (Top-Right) */}
       <div className={`${styles.perimeterGlassCard} ${styles.glassCardOffline} ${styles.glassReveal1}`}>
         <div className={`${styles.glassCardInner} ${styles.floatCardA}`}>
