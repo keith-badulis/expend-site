@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
   LockIcon,
   LightningBoltIcon,
-  PaletteIcon,
+  WalletIcon,
   CoinIcon,
 } from './icons';
 import styles from './WhyChoose.module.css';
@@ -121,18 +121,19 @@ export const WhyChoose: React.FC = () => {
     {
       index: '04',
       colorKey: 'purple',
-      title: 'Personalized to your unique style.',
-      accentWord: 'unique style',
+      title: 'A complete toolkit for your finances.',
+      accentWord: 'complete toolkit',
       styledTitle: (color) => (
         <>
-          Personalized to your{' '}
-          <span style={{ color, fontWeight: 800 }}>unique style</span> and flow.
+          A{' '}
+          <span style={{ color, fontWeight: 800 }}>complete toolkit</span>{' '}
+          for your finances.
         </>
       ),
       description:
-        'Thoughtfully designed with 130+ handcrafted vector icons and smooth haptics. Personalize your experience with 17 dynamic themes and true Dark Mode.',
+        'From flexible budgets and savings goals to multiple wallets, planned transactions, quick templates, and debt tracking—everything you need in one app.',
       accentColor: colorSets.purple[50],
-      icon: <PaletteIcon size={19} color={colorSets.purple[50]} strokeWidth="6.25px" />,
+      icon: <WalletIcon size={19} color={colorSets.purple[50]} strokeWidth="6.25px" />,
     },
   ];
 
