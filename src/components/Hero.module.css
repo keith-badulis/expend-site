@@ -598,17 +598,6 @@
 }
 
 /* --- BOUNDARY SEAM LIGHT SWEEPS --- */
-.topLightSweep {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(112, 148, 240, 0.45) 30%, rgba(13, 191, 150, 0.4) 70%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
 .bottomLightSweep {
   position: absolute;
   bottom: 0;

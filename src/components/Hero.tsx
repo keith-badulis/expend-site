@@ -20,8 +20,7 @@ export const Hero: React.FC = () => {
       {/* 1. Delicate Radial Masked Dot Matrix Grid */}
       <div className={styles.heroDotGrid} aria-hidden="true" />
 
-      {/* 2. Subtle Boundary Seam Light Sweeps */}
-      <div className={styles.topLightSweep} aria-hidden="true" />
+      {/* 2. Subtle Boundary Seam Light Sweep */}
       <div className={styles.bottomLightSweep} aria-hidden="true" />
 
       {/* 3. Floating Frosted Glass Micro-Cards */}
