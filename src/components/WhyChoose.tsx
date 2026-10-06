@@ -131,7 +131,7 @@ export const WhyChoose: React.FC = () => {
         </>
       ),
       description:
-        'From flexible budgets and savings goals to multiple wallets, planned transactions, quick templates, and debt tracking—everything you need in one app.',
+        'Manage flexible budgets, savings goals, multiple wallets, planned transactions, templates, and debt tracking. Everything you need in one app.',
       accentColor: colorSets.purple[50],
       icon: <WalletIcon size={19} color={colorSets.purple[50]} strokeWidth="6.25px" />,
     },
