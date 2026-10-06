@@ -7,8 +7,36 @@ import {
 } from './icons';
 import styles from './WhyChoose.module.css';
 
+const opacityToHex = (opacity: number): string => {
+  const clamped = Math.max(0, Math.min(100, opacity));
+  const alpha = Math.round((clamped / 100) * 255);
+  return alpha.toString(16).toUpperCase().padStart(2, '0');
+};
+
+export const colorSets = {
+  green: {
+    50: '#0BB190',
+    10: `#0BB190${opacityToHex(22)}`,
+  },
+  blue: {
+    50: '#7094F0',
+    10: `#7094F0${opacityToHex(22)}`,
+  },
+  orange: {
+    50: '#EF8354',
+    10: `#EF8354${opacityToHex(22)}`,
+  },
+  purple: {
+    50: '#BA7DE0',
+    10: `#BA7DE0${opacityToHex(22)}`,
+  },
+} as const;
+
+export type ColorSetKey = keyof typeof colorSets;
+
 export interface PillarData {
   index: string;
+  colorKey: ColorSetKey;
   title: string;
   accentWord: string;
   styledTitle: (accentColor: string) => React.ReactNode;
@@ -44,6 +72,7 @@ export const WhyChoose: React.FC = () => {
   const pillars: PillarData[] = [
     {
       index: '01',
+      colorKey: 'green',
       title: 'Your data never leaves your device.',
       accentWord: 'never',
       styledTitle: (color) => (
@@ -57,11 +86,12 @@ export const WhyChoose: React.FC = () => {
         'Completely serverless. Zero cloud telemetry, no analytics trackers, and zero ads. Your financial ledger stays securely on your device.',
       highlight: '100% On-Device & Offline',
       specCode: 'SCHEMA_V59',
-      accentColor: '#0BB190',
-      icon: <LockIcon size={19} color="#0BB190" strokeWidth="6.25px" />,
+      accentColor: colorSets.green[50],
+      icon: <LockIcon size={19} color={colorSets.green[50]} strokeWidth="6.25px" />,
     },
     {
       index: '02',
+      colorKey: 'blue',
       title: 'Zero monthly subscriptions.',
       accentWord: 'Zero',
       styledTitle: (color) => (
@@ -74,11 +104,12 @@ export const WhyChoose: React.FC = () => {
         'Unlock everything with a single one-time purchase. No recurring subscription fees, no renewal anxiety, and future updates included forever.',
       highlight: 'Pay Once • Lifetime Access',
       specCode: 'LIFETIME_PRO',
-      accentColor: '#7094F0',
-      icon: <CoinIcon size={19} color="#7094F0" strokeWidth="6.25px" />,
+      accentColor: colorSets.blue[50],
+      icon: <CoinIcon size={19} color={colorSets.blue[50]} strokeWidth="6.25px" />,
     },
     {
       index: '03',
+      colorKey: 'orange',
       title: 'Log transactions in seconds.',
       accentWord: 'seconds',
       styledTitle: (color) => (
@@ -92,11 +123,12 @@ export const WhyChoose: React.FC = () => {
         'A clean interface with an integrated keypad calculator and reusable templates. Logging daily expenses becomes effortless second nature.',
       highlight: 'Calculator & Quick Templates',
       specCode: 'FAST_KEYPAD',
-      accentColor: '#EF8354',
-      icon: <LightningBoltIcon size={19} color="#EF8354" strokeWidth="6.25px" />,
+      accentColor: colorSets.orange[50],
+      icon: <LightningBoltIcon size={19} color={colorSets.orange[50]} strokeWidth="6.25px" />,
     },
     {
       index: '04',
+      colorKey: 'purple',
       title: 'Personalized to your unique style.',
       accentWord: 'unique style',
       styledTitle: (color) => (
@@ -109,8 +141,8 @@ export const WhyChoose: React.FC = () => {
         'Thoughtfully designed with 130+ handcrafted vector icons and smooth haptics. Personalize your experience with 17 dynamic themes and true Dark Mode.',
       highlight: 'Dynamic Themes • Dark Mode',
       specCode: 'DARK_MODE',
-      accentColor: '#BA7DE0',
-      icon: <PaletteIcon size={19} color="#BA7DE0" strokeWidth="6.25px" />,
+      accentColor: colorSets.purple[50],
+      icon: <PaletteIcon size={19} color={colorSets.purple[50]} strokeWidth="6.25px" />,
     },
   ];
 
@@ -144,7 +176,12 @@ export const WhyChoose: React.FC = () => {
               {/* Top Header Row: Quiet Ghost Numeral on Left, Icon on Right */}
               <div className={styles.colTopRow}>
                 <span className={styles.ghostIndexNum}>{pillar.index}</span>
-                <div className={styles.cleanIconBox}>{pillar.icon}</div>
+                <div
+                  className={styles.cleanIconBox}
+                  style={{ backgroundColor: colorSets[pillar.colorKey][10] }}
+                >
+                  {pillar.icon}
+                </div>
               </div>
 
               {/* Content Block */}
