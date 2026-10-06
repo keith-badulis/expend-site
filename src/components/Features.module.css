@@ -154,20 +154,33 @@
   z-index: 2;
 }
 
-.galleryBadge {
+.featureIconSquircle {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.95rem;
-  background: rgba(76, 116, 219, 0.15);
-  border: 1.5px solid var(--accent-color);
-  border-radius: 9999px;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  background: rgba(76, 116, 219, 0.12);
+  border: 1.5px solid rgba(112, 148, 240, 0.3);
   color: var(--accent-light);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  margin-bottom: 1.15rem;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), 0 0 16px rgba(76, 116, 219, 0.12);
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.3s ease,
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+  flex-shrink: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .galleryItem:hover .featureIconSquircle {
+    transform: translateY(-2px) scale(1.05);
+    border-color: var(--accent-light);
+    background: rgba(76, 116, 219, 0.2);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 20px var(--accent-glow);
+  }
 }
 
 .galleryItemTitle {
@@ -331,19 +344,18 @@
     margin-bottom: 0;
   }
 
-  .mobileKicker {
+  .mobileIconSquircle {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    padding: 0.24rem 0.75rem;
-    background: rgba(76, 116, 219, 0.16);
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    background: rgba(76, 116, 219, 0.14);
     border: 1.2px solid rgba(112, 148, 240, 0.35);
-    border-radius: 9999px;
     color: var(--accent-light);
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.01em;
-    margin-bottom: 0.45rem;
+    margin-bottom: 0.65rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     flex-shrink: 0;
   }
 
@@ -446,11 +458,11 @@
     margin-bottom: 0;
   }
 
-  .mobileKicker {
-    font-size: 0.70rem;
-    padding: 0.2rem 0.65rem;
-    gap: 0.35rem;
-    margin-bottom: 0.35rem;
+  .mobileIconSquircle {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
   }
 
   .mobileCardContent .galleryItemTitle,
@@ -551,12 +563,11 @@
   gap: 0.55rem;
 }
 
-.lightboxCapsuleBadge {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #FFFFFF;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
+.lightboxCapsuleIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-light);
 }
 
 .lightboxCapsuleCounter {
@@ -798,10 +809,6 @@
     padding: 0.3rem 0.45rem 0.3rem 0.75rem;
     gap: 0.55rem;
     max-width: calc(100vw - 1.5rem);
-  }
-
-  .lightboxCapsuleBadge {
-    font-size: 0.76rem;
   }
 
   .lightboxCapsuleCounter {

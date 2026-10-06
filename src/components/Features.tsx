@@ -13,7 +13,6 @@ import {
   ReportIcon,
   StonksIcon,
   ProfileIcon,
-  DescriptionIcon,
   CloseIcon,
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -25,8 +24,7 @@ type FeatureCategory = 'tracking' | 'reports' | 'overview';
 interface FeatureItem {
   id: string;
   category: FeatureCategory;
-  icon: (color: string) => React.ReactNode;
-  badge: string;
+  icon: (color?: string, size?: number) => React.ReactNode;
   title: string;
   description: string;
   shortDescription?: string;
@@ -40,11 +38,12 @@ const featureItems: FeatureItem[] = [
   {
     id: 'add-transaction',
     category: 'tracking',
-    icon: (color) => <LightningBoltIcon size={16} color={color} />,
-    badge: 'Quick & Easy Recording',
+    icon: (color = 'var(--accent-light)', size = 20) => (
+      <LightningBoltIcon size={size} color={color} />
+    ),
     title: 'Log Transactions in Seconds',
     description:
-      'Log income, expenses, and money transfers in seconds with a built-in keypad calculator. Use customizable, reusable templates to record common transactions instantly, or schedule recurring transactions for a hassle-free routine.',
+      'Log income, expenses, and transfers in seconds with a built-in calculator. Use reusable templates or schedule recurring transactions for hassle-free tracking.',
     shortDescription:
       'Quickly log income and expenses with the built-in keypad, reusable templates, and recurring transactions.',
     tags: ['Income & Expenses', 'Custom Templates', 'Recurring Transactions'],
@@ -54,11 +53,12 @@ const featureItems: FeatureItem[] = [
   {
     id: 'budget-planning',
     category: 'tracking',
-    icon: (color) => <PiggyBankIcon size={16} color={color} />,
-    badge: 'Flexible Budget Planning',
+    icon: (color = 'var(--accent-light)', size = 20) => (
+      <PiggyBankIcon size={size} color={color} />
+    ),
     title: 'Set Spending Limits & Stay on Target',
     description:
-      'Plan and set budgets to stay within your target spending limits. Keep in control with clear visual progress bars, category breakdowns, and flexible budget periods.',
+      'Set budgets to stay within target spending limits. Stay in control with visual progress bars, category breakdowns, and flexible periods.',
     shortDescription:
       'Set spending limits with visual progress bars, category breakdowns, and flexible budget periods.',
     tags: ['Spending Limits', 'Flexible Periods', 'Progress Tracking'],
@@ -68,11 +68,12 @@ const featureItems: FeatureItem[] = [
   {
     id: 'filtered-reports',
     category: 'reports',
-    icon: (color) => <FilterIcon size={16} color={color} />,
-    badge: 'Organize with Tags & Filters',
+    icon: (color = 'var(--accent-light)', size = 20) => (
+      <FilterIcon size={size} color={color} />
+    ),
     title: 'Filter and Analyze Exactly How You Want',
     description:
-      'Group transactions and accounts with custom tags. Filter records by date, category, or tag to see where your money goes, complete with interactive cashflow curves and automatic totals.',
+      'Group transactions and accounts with custom tags. Filter by date, category, or tag with interactive cashflow curves and automatic totals.',
     shortDescription:
       'Group records with custom tags and filter by date or category with interactive cashflow curves.',
     tags: ['Custom Tags', 'Flexible Filters', 'Cashflow Curves'],
@@ -82,11 +83,12 @@ const featureItems: FeatureItem[] = [
   {
     id: 'spending-insights',
     category: 'reports',
-    icon: (color) => <StonksIcon size={16} color={color} />,
-    badge: 'Detailed Financial Reports',
+    icon: (color = 'var(--accent-light)', size = 20) => (
+      <StonksIcon size={size} color={color} />
+    ),
     title: 'Analyze Spending Habits and Trends',
     description:
-      'Visualize and analyze your spending habits and earnings with detailed, flexible reports. Compare income against expenses and view weekly trends to stay firmly in control of your finances.',
+      'Analyze spending habits and earnings with flexible reports. Compare income against expenses and spot weekly trends at a glance.',
     shortDescription:
       'Analyze income vs. expenses, spot weekly trends, and view detailed monthly reports.',
     tags: ['Income vs Expense', 'Weekly Trends', 'Detailed Reports'],
@@ -96,11 +98,12 @@ const featureItems: FeatureItem[] = [
   {
     id: 'accounts-summary',
     category: 'overview',
-    icon: (color) => <ReportIcon size={16} color={color} />,
-    badge: 'Comprehensive Accounts',
+    icon: (color = 'var(--accent-light)', size = 20) => (
+      <ReportIcon size={size} color={color} />
+    ),
     title: 'Track Net Worth, Assets & Liabilities',
     description:
-      'Keep track of cash, savings, credit cards, and debts in one place. Monitor your real-time net worth and view a clear breakdown of your accounts across multiple currencies.',
+      'Keep track of cash, savings, cards, and debts in one place. Monitor your real-time net worth with multi-currency support.',
     shortDescription:
       'Track cash, savings, credit cards, and multi-currency net worth in one comprehensive view.',
     tags: ['Net Worth', 'Assets & Liabilities', 'Multi-Currency'],
@@ -110,11 +113,12 @@ const featureItems: FeatureItem[] = [
   {
     id: 'personalized-dashboard',
     category: 'overview',
-    icon: (color) => <ProfileIcon size={16} color={color} />,
-    badge: 'Personalized Dashboard',
+    icon: (color = 'var(--accent-light)', size = 20) => (
+      <ProfileIcon size={size} color={color} />
+    ),
     title: 'Everything in One Place',
     description:
-      'Stay focused on reaching your personal goals by monitoring your savings milestones. Mindfully track debts, payable and receivable, all from a clean and customizable overview.',
+      'Stay focused on reaching goals with visual savings milestones. Mindfully track debts, payable and receivable, in one clean overview.',
     shortDescription:
       'Monitor savings milestones and mindfully manage payable and receivable debts at a glance.',
     tags: ['Smart Goal Tracking', 'Debt Management', 'At-a-Glance View'],
@@ -314,16 +318,12 @@ export const Features: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <div className="section-subtitle" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}>
-            <DescriptionIcon size={15} color="var(--accent-light)" />
-            <span>Key Features</span>
-          </div>
           <h2 className="section-title">
             Simplify Your Finances. <br />
             <span style={{ color: 'var(--accent-light)' }}>Reach Your Goals.</span>
           </h2>
           <p className="section-description">
-            Ditch the spreadsheets and notebooks. Embrace the simplicity of eXpend and make mindful financial journaling a habit today!
+            Ditch the spreadsheets and notebooks. Make mindful financial journaling an effortless habit.
           </p>
         </div>
 
@@ -348,9 +348,8 @@ export const Features: React.FC = () => {
                 </div>
 
                 <div className={styles.mobileCardContent}>
-                  <div className={styles.mobileKicker}>
-                    {item.icon('var(--accent-light)')}
-                    <span>{item.badge}</span>
+                  <div className={styles.mobileIconSquircle}>
+                    {item.icon('var(--accent-light)', 18)}
                   </div>
                   <h3 className={styles.galleryItemTitle}>{item.title}</h3>
                   <p className={styles.galleryItemDesc}>
@@ -388,10 +387,9 @@ export const Features: React.FC = () => {
                 <div key={item.id} className={`${styles.galleryItem} ${styles.captionLeft}`}>
                   {/* Caption on Left */}
                   <div className={styles.galleryCaptionBox}>
-                    <span className={styles.galleryBadge}>
-                      {item.icon('var(--accent-light)')}
-                      <span>{item.badge}</span>
-                    </span>
+                    <div className={styles.featureIconSquircle}>
+                      {item.icon('var(--accent-light)', 20)}
+                    </div>
                     <h3 className={styles.galleryItemTitle}>{item.title}</h3>
                     <p className={styles.galleryItemDesc}>{item.description}</p>
                     <div className={styles.galleryTagsWrap}>
@@ -433,10 +431,9 @@ export const Features: React.FC = () => {
 
                   {/* Caption on Right */}
                   <div className={styles.galleryCaptionBox}>
-                    <span className={styles.galleryBadge}>
-                      {item.icon('var(--accent-light)')}
-                      <span>{item.badge}</span>
-                    </span>
+                    <div className={styles.featureIconSquircle}>
+                      {item.icon('var(--accent-light)', 20)}
+                    </div>
                     <h3 className={styles.galleryItemTitle}>{item.title}</h3>
                     <p className={styles.galleryItemDesc}>{item.description}</p>
                     <div className={styles.galleryTagsWrap}>
@@ -478,9 +475,8 @@ export const Features: React.FC = () => {
                 {/* Top Floating Capsule Bar */}
                 <div className={styles.lightboxTopCapsule}>
                   <div className={styles.lightboxCapsuleMeta}>
-                    {featureItems[selectedImageIndex].icon('var(--accent-light)')}
-                    <span className={styles.lightboxCapsuleBadge}>
-                      {featureItems[selectedImageIndex].badge}
+                    <span className={styles.lightboxCapsuleIcon}>
+                      {featureItems[selectedImageIndex].icon('var(--accent-light)', 16)}
                     </span>
                     <span className={styles.lightboxCapsuleCounter}>
                       {selectedImageIndex + 1} / {featureItems.length}

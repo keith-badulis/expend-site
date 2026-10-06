@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
   LockIcon,
-  SparklesIcon,
   LightningBoltIcon,
   PaletteIcon,
   CoinIcon,
@@ -10,7 +9,6 @@ import styles from './WhyChoose.module.css';
 
 export interface PillarData {
   index: string;
-  category: string;
   title: string;
   accentWord: string;
   styledTitle: (accentColor: string) => React.ReactNode;
@@ -46,7 +44,6 @@ export const WhyChoose: React.FC = () => {
   const pillars: PillarData[] = [
     {
       index: '01',
-      category: 'Private & Secure',
       title: 'Your data never leaves your device.',
       accentWord: 'never',
       styledTitle: (color) => (
@@ -57,7 +54,7 @@ export const WhyChoose: React.FC = () => {
         </>
       ),
       description:
-        'Completely serverless app design. No cloud telemetry, no analytics trackers, and zero ads. Your financial ledger lives safely on your device in your local Realm database.',
+        'Completely serverless. Zero cloud telemetry, no analytics trackers, and zero ads. Your financial ledger stays securely on your device.',
       highlight: '100% On-Device & Offline',
       specCode: 'SCHEMA_V59',
       accentColor: '#0BB190',
@@ -65,7 +62,6 @@ export const WhyChoose: React.FC = () => {
     },
     {
       index: '02',
-      category: 'One-Time Payment',
       title: 'Zero monthly subscriptions.',
       accentWord: 'Zero',
       styledTitle: (color) => (
@@ -75,7 +71,7 @@ export const WhyChoose: React.FC = () => {
         </>
       ),
       description:
-        'Unlock the full power of eXpend with a single one-time purchase. No recurring subscription fees, no renewal anxiety, and every future update is included forever.',
+        'Unlock everything with a single one-time purchase. No recurring subscription fees, no renewal anxiety, and future updates included forever.',
       highlight: 'Pay Once • Lifetime Access',
       specCode: 'LIFETIME_PRO',
       accentColor: '#7094F0',
@@ -83,7 +79,6 @@ export const WhyChoose: React.FC = () => {
     },
     {
       index: '03',
-      category: 'Frictionless Input',
       title: 'Log transactions in seconds.',
       accentWord: 'seconds',
       styledTitle: (color) => (
@@ -94,7 +89,7 @@ export const WhyChoose: React.FC = () => {
         </>
       ),
       description:
-        'A clean, lightning-fast interface with an integrated keypad calculator and reusable quick-entry templates. Logging daily expenses becomes effortless second nature.',
+        'A clean interface with an integrated keypad calculator and reusable templates. Logging daily expenses becomes effortless second nature.',
       highlight: 'Calculator & Quick Templates',
       specCode: 'FAST_KEYPAD',
       accentColor: '#EF8354',
@@ -102,7 +97,6 @@ export const WhyChoose: React.FC = () => {
     },
     {
       index: '04',
-      category: 'Craft & Polish',
       title: 'Personalized to your unique style.',
       accentWord: 'unique style',
       styledTitle: (color) => (
@@ -112,7 +106,7 @@ export const WhyChoose: React.FC = () => {
         </>
       ),
       description:
-        'Thoughtfully designed with 130+ handcrafted vector icons and smooth haptic feedback. Personalize your experience with 17 dynamic themes and true Dark Mode.',
+        'Thoughtfully designed with 130+ handcrafted vector icons and smooth haptics. Personalize your experience with 17 dynamic themes and true Dark Mode.',
       highlight: 'Dynamic Themes • Dark Mode',
       specCode: 'DARK_MODE',
       accentColor: '#BA7DE0',
@@ -129,11 +123,6 @@ export const WhyChoose: React.FC = () => {
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
-          <div className="section-subtitle">
-            <SparklesIcon size={16} color="var(--accent-light)" />
-            <span>Why Choose eXpend</span>
-          </div>
-
           <h2 className="section-title">
             Simple and intuitive. <br />
             <span style={{ color: 'var(--accent-light)' }}>
@@ -160,12 +149,6 @@ export const WhyChoose: React.FC = () => {
 
               {/* Content Block */}
               <div className={styles.colBodyBlock}>
-                <span
-                  className={styles.flatCategoryKicker}
-                  style={{ color: pillar.accentColor }}
-                >
-                  {pillar.category}
-                </span>
                 <h3 className={styles.cleanColTitle}>
                   {pillar.styledTitle(pillar.accentColor)}
                 </h3>

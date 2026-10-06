@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import { StarFilledIcon, StarOutlineIcon } from './icons';
+import { StarFilledIcon } from './icons';
 import styles from './Reviews.module.css';
 
 interface Review {
@@ -203,11 +203,6 @@ export const Reviews: React.FC = () => {
       <div className="container">
         {/* Section Header with Aggregated Trust Badge */}
         <div className="section-header">
-          <div className="section-subtitle">
-            <StarOutlineIcon size={16} color="var(--accent-light)" />
-            <span>Community Feedback</span>
-          </div>
-
           <h2 className="section-title">
             Loved by People Who Value <br />
             <span style={{ color: 'var(--accent-light)' }}>Simplicity & Design</span>

@@ -87,15 +87,6 @@
   flex-direction: column;
 }
 
-.flatCategoryKicker {
-  display: block;
-  font-size: 0.76rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 0.65rem;
-}
-
 .cleanColTitle {
   font-size: clamp(1.25rem, 1.6vw, 1.65rem);
   font-weight: 700;

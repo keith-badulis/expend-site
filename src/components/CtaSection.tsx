@@ -1,7 +1,6 @@
 import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
-import { LockIcon, SparklesIcon, DiamondIcon } from './icons';
 import styles from './CtaSection.module.css';
 
 export const CtaSection: React.FC = () => {
@@ -30,7 +29,7 @@ export const CtaSection: React.FC = () => {
 
           {/* Subtext */}
           <p className={styles.ctaDescription}>
-            Take control of your personal finances with a simple, thoughtfully-designed expense tracker and budget planner. Everything stays locally on your device, with no ads, no trackers, and no monthly subscriptions.
+            Take control of your personal finances with a simple, private expense tracker. 100% on-device, zero ads, and no monthly subscriptions.
           </p>
 
           {/* Store Download Badges */}

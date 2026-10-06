@@ -45,8 +45,8 @@ export const Hero: React.FC = () => {
             <LightningBoltIcon size={16} color="#EF8354" strokeWidth="6.25px" />
           </div>
           <div className={styles.glassCardContent}>
-            <span className={styles.glassCardTitle}>Quickly Record Transactions</span>
-            <span className={styles.glassCardSub}>Apply Templates to Eliminate the Hassle!</span>
+            <span className={styles.glassCardTitle}>Quick Recording</span>
+            <span className={styles.glassCardSub}>Templates & Keypad</span>
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export const Hero: React.FC = () => {
           </div>
           <div className={styles.glassCardContent}>
             <span className={styles.glassCardTitle}>Zero Subscriptions</span>
-            <span className={styles.glassCardSub}>Pay Once, Premium Forever</span>
+            <span className={styles.glassCardSub}>Pay Once • Lifetime Access</span>
           </div>
         </div>
       </div>
