@@ -91,10 +91,10 @@ export const Hero: React.FC = () => {
               </p>
             </div>
 
-            {/* 4. Official Download Badges (Temporarily hidden for screenshot asset) */}
-            {/* <div className={styles.revealBadges}>
+            {/* 4. Official Download Badges (Stagger 3: T = 1.05s) */}
+            <div className={styles.revealBadges}>
               <StoreBadges />
-            </div> */}
+            </div>
           </div>
 
           {/* Right Column: 3D Perspective Phone Stage with Orbiting Highlights & Layered App Components */}
