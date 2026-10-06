@@ -348,9 +348,6 @@ export const Features: React.FC = () => {
                 </div>
 
                 <div className={styles.mobileCardContent}>
-                  <div className={styles.mobileIconSquircle}>
-                    {item.icon('var(--accent-light)', 18)}
-                  </div>
                   <h3 className={styles.galleryItemTitle}>{item.title}</h3>
                   <p className={styles.galleryItemDesc}>
                     {item.shortDescription || item.description}

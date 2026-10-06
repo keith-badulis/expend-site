@@ -330,21 +330,6 @@
     margin-bottom: 0;
   }
 
-  .mobileIconSquircle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 11px;
-    background: rgba(76, 116, 219, 0.14);
-    border: 1.2px solid rgba(112, 148, 240, 0.35);
-    color: var(--accent-light);
-    margin-bottom: 0.65rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    flex-shrink: 0;
-  }
-
   .mobileCardContent .galleryItemTitle,
   .mobileCardHeader .galleryItemTitle {
     font-size: 1.2rem;
@@ -442,13 +427,6 @@
     max-width: 310px;
     margin-top: 0.75rem;
     margin-bottom: 0;
-  }
-
-  .mobileIconSquircle {
-    width: 34px;
-    height: 34px;
-    border-radius: 10px;
-    margin-bottom: 0.5rem;
   }
 
   .mobileCardContent .galleryItemTitle,
