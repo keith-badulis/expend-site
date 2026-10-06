@@ -41,8 +41,6 @@ export interface PillarData {
   accentWord: string;
   styledTitle: (accentColor: string) => React.ReactNode;
   description: string;
-  highlight: string;
-  specCode: string;
   accentColor: string;
   icon: React.ReactNode;
 }
@@ -84,8 +82,6 @@ export const WhyChoose: React.FC = () => {
       ),
       description:
         'Completely serverless. Zero cloud telemetry, no analytics trackers, and zero ads. Your financial ledger stays securely on your device.',
-      highlight: '100% On-Device & Offline',
-      specCode: 'SCHEMA_V59',
       accentColor: colorSets.green[50],
       icon: <LockIcon size={19} color={colorSets.green[50]} strokeWidth="6.25px" />,
     },
@@ -102,8 +98,6 @@ export const WhyChoose: React.FC = () => {
       ),
       description:
         'Unlock everything with a single one-time purchase. No recurring subscription fees, no renewal anxiety, and future updates included forever.',
-      highlight: 'Pay Once • Lifetime Access',
-      specCode: 'LIFETIME_PRO',
       accentColor: colorSets.blue[50],
       icon: <CoinIcon size={19} color={colorSets.blue[50]} strokeWidth="6.25px" />,
     },
@@ -121,8 +115,6 @@ export const WhyChoose: React.FC = () => {
       ),
       description:
         'A clean interface with an integrated keypad calculator and reusable templates. Logging daily expenses becomes effortless second nature.',
-      highlight: 'Calculator & Quick Templates',
-      specCode: 'FAST_KEYPAD',
       accentColor: colorSets.orange[50],
       icon: <LightningBoltIcon size={19} color={colorSets.orange[50]} strokeWidth="6.25px" />,
     },
@@ -139,8 +131,6 @@ export const WhyChoose: React.FC = () => {
       ),
       description:
         'Thoughtfully designed with 130+ handcrafted vector icons and smooth haptics. Personalize your experience with 17 dynamic themes and true Dark Mode.',
-      highlight: 'Dynamic Themes • Dark Mode',
-      specCode: 'DARK_MODE',
       accentColor: colorSets.purple[50],
       icon: <PaletteIcon size={19} color={colorSets.purple[50]} strokeWidth="6.25px" />,
     },
@@ -190,15 +180,6 @@ export const WhyChoose: React.FC = () => {
                   {pillar.styledTitle(pillar.accentColor)}
                 </h3>
                 <p className={styles.cleanColDesc}>{pillar.description}</p>
-              </div>
-
-              {/* Grounded Blueprint Footer */}
-              <div className={styles.colFooterBlock}>
-                <div className={styles.flatHairline} />
-                <div className={styles.colMetaRow}>
-                  <span className={styles.metaHighlight}>{pillar.highlight}</span>
-                  <span className={styles.metaSpecCode}>{pillar.specCode}</span>
-                </div>
               </div>
             </div>
           ))}

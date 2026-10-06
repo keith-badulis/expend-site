@@ -30,9 +30,8 @@
   padding: clamp(2.5rem, 3.5vw, 3.75rem) clamp(1.4rem, 2vw, 2.25rem);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   background: rgba(23, 32, 54, 0.2);
-  min-height: 500px;
   position: relative;
   transition: background 0.25s ease;
 }
@@ -100,37 +99,6 @@
   line-height: 1.62;
   color: #94A3B8;
   margin: 0;
-}
-
-.colFooterBlock {
-  margin-top: 1.75rem;
-}
-
-.flatHairline {
-  width: 100%;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.07);
-  margin-bottom: 1rem;
-}
-
-.colMetaRow {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-}
-
-.metaHighlight {
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: #E2E8F0;
-}
-
-.metaSpecCode {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-  font-size: 0.62rem;
-  letter-spacing: 0.06em;
-  color: #64748B;
 }
 
 /* ==========================================================================
