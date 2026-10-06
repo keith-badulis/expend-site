@@ -142,6 +142,8 @@ export const WhyChoose: React.FC = () => {
       ref={sectionRef}
       className={styles.whyChooseSection}
     >
+      {/* Subtle Boundary Seam Light Sweep */}
+      <div className={styles.bottomLightSweep} aria-hidden="true" />
       <div className="container">
         {/* Section Header */}
         <div className="section-header">

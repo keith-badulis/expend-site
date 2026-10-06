@@ -6,6 +6,9 @@ import styles from './CtaSection.module.css';
 export const CtaSection: React.FC = () => {
   return (
     <section id="download" className={`section ${styles.ctaOpenSection}`}>
+      {/* Subtle Boundary Seam Light Sweep */}
+      <div className={styles.bottomLightSweep} aria-hidden="true" />
+
       {/* Radiant Spotlight Background Aura */}
       <div className={styles.ctaSpotlightAura} />
 

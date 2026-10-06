@@ -294,6 +294,8 @@ export const Features: React.FC = () => {
 
   return (
     <section id="features" className={`section ${styles.galleryFeaturesSection}`}>
+      {/* Subtle Boundary Seam Light Sweep */}
+      <div className={styles.bottomLightSweep} aria-hidden="true" />
 
       {/* Background Ambient Shapes */}
       <div

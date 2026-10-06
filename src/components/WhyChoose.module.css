@@ -20,9 +20,20 @@
 .monolithGrid {
   width: 100%;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+}
+
+/* --- BOUNDARY SEAM LIGHT SWEEP --- */
+.bottomLightSweep {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(76, 116, 219, 0.35) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 2;
 }
 
 .monolithCol {

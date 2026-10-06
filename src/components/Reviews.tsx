@@ -197,8 +197,8 @@ export const Reviews: React.FC = () => {
 
   return (
     <section id="reviews" className={`section ${styles.reviewsSection}`}>
-      {/* Precision Glowing Transition Seams */}
-      <div className={styles.bottomGlowSeam} aria-hidden="true" />
+      {/* Subtle Boundary Seam Light Sweep */}
+      <div className={styles.bottomLightSweep} aria-hidden="true" />
 
       <div className="container">
         {/* Section Header with Aggregated Trust Badge */}
