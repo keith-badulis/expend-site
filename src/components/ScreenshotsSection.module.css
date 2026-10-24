@@ -1,16 +1,31 @@
-/* Screenshots Section */
-.screenshotsSection {
-  background-color: var(--bg-color);
-  padding: 5rem 0 6rem 0;
+/* Outer section providing the scroll height for sticky pinning */
+.stickySection {
   position: relative;
+  width: 100%;
+  background-color: var(--bg-color);
+  min-height: 340vh;
+}
+
+/* Inner pinned viewport */
+.stickyViewport {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(1.5rem, 3.5vh, 2.75rem) 0 clamp(1rem, 2.5vh, 2rem) 0;
+  box-sizing: border-box;
+  z-index: 10;
 }
 
 .headerRow {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 2.5rem;
   gap: 1.5rem;
   flex-wrap: wrap;
 }
@@ -28,87 +43,101 @@
   background-color: var(--primary-bg-soft);
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-pill);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .sectionTitle {
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-size: clamp(1.85rem, 3.2vw, 2.6rem);
   font-weight: 800;
   color: var(--primary);
   letter-spacing: -0.025em;
   line-height: 1.18;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .sectionDescription {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   color: var(--text-secondary);
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
-/* Nav Carousel Buttons */
-.navControls {
+/* Light / Dark Mode Segmented Toggle */
+.headerControls {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 1rem;
 }
 
-.carouselBtn {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-secondary);
   border: 1px solid var(--border-color);
-  background-color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
+  border-radius: var(--radius-pill);
+  padding: 4px;
+  gap: 4px;
   box-shadow: var(--shadow-sm);
 }
 
-.carouselBtn:hover:not(:disabled) {
-  background-color: var(--bg-secondary);
-  border-color: var(--text-secondary);
-  transform: translateY(-1px);
+.toggleBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
 
-.carouselBtn:disabled {
-  opacity: 0.45;
-  cursor: not-allowed;
+.toggleBtn:hover {
+  color: var(--text-primary);
 }
 
-/* Carousel Track */
-.carouselTrack {
+.toggleBtnActive {
+  background-color: #FFFFFF;
+  color: var(--primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Horizontal Gallery Track */
+.trackWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
   display: flex;
-  gap: 1.75rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  padding: 1.5rem 0 2rem 0;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  align-items: center;
 }
 
-.carouselTrack::-webkit-scrollbar {
-  display: none;
+.horizontalTrack {
+  display: flex;
+  gap: clamp(1.25rem, 2vw, 2rem);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  align-items: flex-start;
 }
 
 .trackPaddingStart {
-  flex: 0 0 calc((100vw - min(var(--max-width), 100vw - 4rem)) / 2);
+  flex: 0 0 max(1.5rem, calc((100vw - min(var(--max-width), 100vw - 3rem)) / 2));
 }
 
 .trackPaddingEnd {
-  flex: 0 0 calc((100vw - min(var(--max-width), 100vw - 4rem)) / 2);
+  flex: 0 0 max(1.5rem, calc((100vw - min(var(--max-width), 100vw - 3rem)) / 2));
 }
 
 /* Screenshot Item Card */
 .screenshotCard {
-  flex: 0 0 280px;
-  scroll-snap-align: center;
+  flex: 0 0 auto;
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  user-select: none;
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -118,39 +147,64 @@
 
 /* Phone Mockup Frame */
 .phoneFrame {
-  width: 100%;
-  border-radius: 38px;
-  background-color: #161A22;
-  padding: 8px;
-  box-shadow: 0 12px 30px rgba(24, 38, 75, 0.12), 0 2px 6px rgba(24, 38, 75, 0.06);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  margin-bottom: 1.25rem;
+  height: clamp(340px, 48vh, 500px);
+  aspect-ratio: 1206 / 2622;
+  border-radius: clamp(28px, 4.2vh, 42px);
+  background: linear-gradient(145deg, #2D3340 0%, #161821 100%);
+  padding: clamp(6px, 1vh, 9px);
+  box-shadow:
+    0 16px 36px -8px rgba(15, 23, 42, 0.16),
+    0 4px 12px rgba(15, 23, 42, 0.08),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.75rem;
   transition: box-shadow 0.25s ease;
+  position: relative;
+  display: flex;
 }
 
 .screenshotCard:hover .phoneFrame {
-  box-shadow: 0 18px 42px rgba(24, 38, 75, 0.18), 0 4px 10px rgba(24, 38, 75, 0.08);
+  box-shadow:
+    0 24px 48px -10px rgba(15, 23, 42, 0.24),
+    0 8px 16px rgba(15, 23, 42, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .phoneScreen {
   position: relative;
-  border-radius: 30px;
-  overflow: hidden;
-  background-color: #FCFCFC;
-  line-height: 0;
-}
-
-.screenImage {
   width: 100%;
-  height: auto;
-  display: block;
+  height: 100%;
+  border-radius: clamp(22px, 3.4vh, 34px);
+  overflow: hidden;
+  background-color: #0E1217;
 }
 
-/* Caption */
+.screenImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.imgVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.imgHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Caption (Category Badge + Title only, no description) */
 .captionGroup {
   display: flex;
   flex-direction: column;
-  padding: 0 0.5rem;
+  padding: 0 0.35rem;
+  max-width: clamp(160px, 22vh, 235px);
 }
 
 .categoryBadge {
@@ -159,22 +213,48 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--accent-color);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
 .screenshotTitle {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.015em;
-  margin-bottom: 0.25rem;
   line-height: 1.25;
 }
 
-.screenshotDesc {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  line-height: 1.45;
+/* Minimal Scroll Progress Row */
+.progressRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.progressBarTrack {
+  width: clamp(120px, 18vw, 220px);
+  height: 4px;
+  background-color: var(--border-color);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressBarFill {
+  height: 100%;
+  width: 100%;
+  background-color: var(--primary);
+  transform-origin: left;
+  transform: scaleX(0);
+  will-change: transform;
+  border-radius: 2px;
+}
+
+.scrollHint {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 /* Lightbox Modal */
@@ -184,9 +264,9 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(18, 21, 26, 0.85);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(18, 21, 26, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -254,12 +334,8 @@
 .lightboxTitle {
   font-size: 1.25rem;
   font-weight: 700;
+  color: #FFFFFF;
   margin: 0.25rem 0;
-}
-
-.lightboxDesc {
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.75);
 }
 
 @keyframes fadeIn {
@@ -267,15 +343,26 @@
   to { opacity: 1; }
 }
 
+/* Mobile & Touch Responsive Overrides */
 @media (max-width: 768px) {
-  .screenshotCard {
-    flex: 0 0 240px;
+  .stickySection {
+    /* Maintain sticky scroll on mobile with adjusted height */
+    min-height: 280vh;
   }
+
   .phoneFrame {
-    border-radius: 32px;
-    padding: 6px;
+    height: clamp(300px, 42vh, 400px);
   }
-  .phoneScreen {
-    border-radius: 26px;
+
+  .captionGroup {
+    max-width: clamp(140px, 20vh, 190px);
+  }
+
+  .screenshotTitle {
+    font-size: 0.88rem;
+  }
+
+  .headerRow {
+    margin-bottom: 0;
   }
 }
