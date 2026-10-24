@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import appLogoImg from '../assets/app-logo.png';
+import appLogoImg from '../assets/app-logo.webp';
 import styles from './AnimatedLogo.module.css';
 
 interface AnimatedLogoProps {

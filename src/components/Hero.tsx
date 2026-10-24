@@ -8,7 +8,7 @@ import {
   AirplaneIcon,
   WalletIcon,
 } from './icons';
-import appScreenImg from '../assets/app-screen.png';
+import appScreenImg from '../assets/app-screen.webp';
 import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
@@ -61,6 +61,9 @@ export const Hero: React.FC = () => {
                     <img
                       src={appScreenImg}
                       alt="eXpend App Home Screen"
+                      loading="eager"
+                      fetchPriority="high"
+                      decoding="sync"
                     />
                   </div>
                 </div>

@@ -2,22 +2,22 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { SunIcon, MoonIcon } from './icons';
 
 // Import all 16 authentic app screenshots (8 Light / Dark pairs)
-import img3358 from '../assets/screenshots/IMG_3358.png';
-import img3359 from '../assets/screenshots/IMG_3359.png';
-import img3360 from '../assets/screenshots/IMG_3360.png';
-import img3361 from '../assets/screenshots/IMG_3361.png';
-import img3377 from '../assets/screenshots/IMG_3377.png';
-import img3378 from '../assets/screenshots/IMG_3378.png';
-import img3365 from '../assets/screenshots/IMG_3365.png';
-import img3366 from '../assets/screenshots/IMG_3366.png';
-import img3367 from '../assets/screenshots/IMG_3367.png';
-import img3370 from '../assets/screenshots/IMG_3370.png';
-import img3368 from '../assets/screenshots/IMG_3368.png';
-import img3369 from '../assets/screenshots/IMG_3369.png';
-import img3372 from '../assets/screenshots/IMG_3372.png';
-import img3371 from '../assets/screenshots/IMG_3371.png';
-import img3373 from '../assets/screenshots/IMG_3373.png';
-import img3374 from '../assets/screenshots/IMG_3374.png';
+import img3358 from '../assets/screenshots/IMG_3358.webp';
+import img3359 from '../assets/screenshots/IMG_3359.webp';
+import img3360 from '../assets/screenshots/IMG_3360.webp';
+import img3361 from '../assets/screenshots/IMG_3361.webp';
+import img3377 from '../assets/screenshots/IMG_3377.webp';
+import img3378 from '../assets/screenshots/IMG_3378.webp';
+import img3365 from '../assets/screenshots/IMG_3365.webp';
+import img3366 from '../assets/screenshots/IMG_3366.webp';
+import img3367 from '../assets/screenshots/IMG_3367.webp';
+import img3370 from '../assets/screenshots/IMG_3370.webp';
+import img3368 from '../assets/screenshots/IMG_3368.webp';
+import img3369 from '../assets/screenshots/IMG_3369.webp';
+import img3372 from '../assets/screenshots/IMG_3372.webp';
+import img3371 from '../assets/screenshots/IMG_3371.webp';
+import img3373 from '../assets/screenshots/IMG_3373.webp';
+import img3374 from '../assets/screenshots/IMG_3374.webp';
 
 import styles from './ScreenshotsSection.module.css';
 
