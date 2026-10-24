@@ -3,6 +3,7 @@
   padding: 3.5rem 0 2.5rem 0;
   position: relative;
   z-index: 10;
+  border-top: 1px solid var(--border-subtle);
 }
 
 .simpleFooterContent {
@@ -17,82 +18,61 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  opacity: 0.55;
-  transition: opacity 0.25s ease;
   user-select: none;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .footerLogoWrap:hover {
-    opacity: 0.85;
-  }
+.footerLogoWrap:hover {
+  opacity: 1;
 }
 
 .footerGrayscaleLogo {
   width: 28px;
   height: 28px;
   object-fit: contain;
-  filter: grayscale(100%) brightness(1.2);
 }
 
 .footerBrandText {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--text-muted);
+  color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
 .footerNavLinks {
   display: inline-flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .footerLink {
   font-size: 0.92rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-secondary);
   transition: color 0.2s ease;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .footerLink:hover {
-    color: #FFFFFF;
-  }
+.footerLink:hover {
+  color: var(--text-primary);
 }
 
 .footerLinkDivider {
-  color: rgba(255, 255, 255, 0.15);
+  color: var(--border-color);
   font-size: 0.85rem;
 }
 
 .footerCopyright {
-  font-size: 0.82rem;
-  color: rgba(148, 163, 184, 0.6);
+  font-size: 0.85rem;
+  color: var(--text-muted);
   margin: 0;
 }
 
 @media (max-width: 480px) {
   .simpleFooter {
-    padding: 2.25rem 0 1.75rem 0;
+    padding: 2.5rem 0 2rem 0;
   }
   .simpleFooterContent {
     gap: 0.95rem;
-  }
-  .footerGrayscaleLogo {
-    width: 22px;
-    height: 22px;
-  }
-  .footerBrandText {
-    font-size: 0.98rem;
-  }
-  .footerNavLinks {
-    gap: 0.75rem;
-  }
-  .footerLink {
-    font-size: 0.82rem;
-  }
-  .footerCopyright {
-    font-size: 0.74rem;
   }
 }

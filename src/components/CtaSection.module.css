@@ -1,33 +1,18 @@
 .ctaOpenSection {
-  padding: 4.5rem 0;
+  padding: 5rem 0 6rem 0;
   position: relative;
   text-align: center;
+  background-color: var(--bg-color);
 }
 
-/* --- BOUNDARY SEAM LIGHT SWEEP --- */
-.bottomLightSweep {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgba(76, 116, 219, 0.35) 50%, transparent 100%);
-  pointer-events: none;
-  z-index: 2;
-}
-
-.ctaSpotlightAura {
-  position: absolute;
-  width: 760px;
-  height: 620px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(76, 116, 219, 0.28) 0%, rgba(112, 148, 240, 0.1) 42%, transparent 72%);
-  filter: blur(65px);
-  pointer-events: none;
-  z-index: 1;
+.ctaCardContainer {
+  background: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
+  border: 1px solid var(--border-card);
+  border-radius: 32px;
+  padding: 4rem 2rem;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
 }
 
 .ctaInnerContent {
@@ -45,24 +30,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .ctaHeadline {
-  font-size: clamp(2rem, 4vw, 2.75rem);
-  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  font-weight: 800;
   margin-bottom: 1rem;
-  line-height: 1.2;
-  letter-spacing: -0.02em;
-  color: #FFFFFF;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  color: var(--primary);
+}
+
+.ctaHighlight {
+  color: var(--accent-color);
 }
 
 .ctaDescription {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 400;
   line-height: 1.65;
   color: var(--text-secondary);
   margin-bottom: 2.25rem;
+  max-width: 540px;
 }
 
 .ctaBadgesWrap {
@@ -71,88 +61,42 @@
   margin-bottom: 2rem;
 }
 
-.ctaGuaranteePills {
+.ctaTrustRow {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 0.85rem;
   font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.ctaGuaranteeItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-}
-
-.ctaGuaranteeSeparator {
-  color: rgba(255, 255, 255, 0.2);
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 768px) {
   .ctaOpenSection {
-    padding: 3.75rem 0;
+    padding: 3.5rem 0 4.5rem 0;
   }
-  .ctaSpotlightAura {
-    width: 360px;
-    height: 360px;
-  }
-  .ctaIconWrapper {
-    margin-bottom: 1.35rem;
-  }
-  .ctaHeadline {
-    font-size: clamp(1.75rem, 3.5vw, 2.15rem);
-    line-height: 1.2;
-    margin-bottom: 0.85rem;
-  }
-  .ctaDescription {
-    font-size: 0.94rem;
-    line-height: 1.55;
-    margin-bottom: 1.75rem;
-  }
-  .ctaBadgesWrap {
-    margin-bottom: 1.65rem;
-  }
-  .ctaGuaranteeSeparator {
-    display: none;
-  }
-  .ctaGuaranteePills {
-    flex-direction: column;
-    gap: 0.5rem;
-    font-size: 0.82rem;
-  }
-}
 
-@media (max-width: 480px) {
-  .ctaOpenSection {
-    padding: 3.5rem 0;
+  .ctaCardContainer {
+    padding: 2.75rem 1.25rem;
+    border-radius: 24px;
   }
-  .ctaSpotlightAura {
-    width: 270px;
-    height: 270px;
-  }
-  .ctaIconWrapper {
-    margin-bottom: 1.15rem;
-  }
+
   .ctaHeadline {
-    font-size: clamp(1.45rem, 5.5vw, 1.75rem);
-    line-height: 1.22;
-    margin-bottom: 0.65rem;
-    letter-spacing: -0.02em;
+    font-size: clamp(1.65rem, 5vw, 2.1rem);
   }
+
   .ctaDescription {
-    font-size: 0.86rem;
-    line-height: 1.5;
-    margin-bottom: 1.4rem;
+    font-size: 0.98rem;
   }
-  .ctaBadgesWrap {
-    margin-bottom: 1.4rem;
+
+  .ctaTrustRow {
+    flex-direction: column;
+    gap: 0.4rem;
   }
-  .ctaGuaranteePills {
-    gap: 0.45rem;
-    font-size: 0.78rem;
+
+  .ctaTrustRow span:nth-child(2),
+  .ctaTrustRow span:nth-child(4) {
+    display: none;
   }
 }

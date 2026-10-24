@@ -731,6 +731,36 @@ export const StarOutlineIcon: React.FC<IconProps> = ({
   </svg>
 );
 
+export const BackupIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M74.544 52.083s2.086 0 4.17 0c2.299 0 4.162 1.864 4.162 4.163v20.841c0 2.299-1.864 4.162-4.163 4.162H28.707c-2.299 0-4.163-1.864-4.163-4.162V56.246c0-2.299 1.864-4.162 4.163-4.162h4.169"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M62.101 62.5H45.324V37.937h-6.632L53.713 22.916l15.021 15.021h-6.632V62.5Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
 export const CloudBackupIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
@@ -812,99 +842,820 @@ export const AirplaneIcon: React.FC<IconProps> = ({
 export const CloseIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
-  strokeWidth = 2,
+  strokeWidth = '6.25px',
   className,
   style,
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
+    viewBox="0 0 100 100"
     width={size}
     height={size}
-    fill="none"
-    stroke={color}
-    strokeWidth={strokeWidth}
-    strokeLinecap="round"
-    strokeLinejoin="round"
     className={className}
-    style={style}
+    style={{ ...baseStyle, ...style }}
   >
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
+    <path
+      d="m81.23 18.75-62.5 62.499M18.731 18.751l62.5 62.499"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
   </svg>
 );
+export const CrossIcon = CloseIcon;
 
 export const ChevronLeftIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
-  strokeWidth = 2.5,
+  strokeWidth = '6.25px',
   className,
   style,
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
+    viewBox="0 0 100 105"
     width={size}
     height={size}
-    fill="none"
-    stroke={color}
-    strokeWidth={strokeWidth}
-    strokeLinecap="round"
-    strokeLinejoin="round"
     className={className}
-    style={style}
+    style={{ ...baseStyle, ...style }}
   >
-    <polyline points="15 18 9 12 15 6" />
+    <path
+      d="M58.423 87.903 26.142 55.622a4.35 4.35 0 0 1 0-6.149l32.281-32.281"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
   </svg>
 );
 
 export const ChevronRightIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
-  strokeWidth = 2.5,
+  strokeWidth = '6.25px',
   className,
   style,
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
+    viewBox="0 0 100 105"
     width={size}
     height={size}
-    fill="none"
-    stroke={color}
-    strokeWidth={strokeWidth}
-    strokeLinecap="round"
-    strokeLinejoin="round"
     className={className}
-    style={style}
+    style={{ ...baseStyle, ...style }}
   >
-    <polyline points="9 18 15 12 9 6" />
+    <path
+      d="m41.537 18.094 32.281 32.281a4.35 4.35 0 0 1 0 6.148L41.537 88.804"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
   </svg>
 );
 
-export const ZoomInIcon: React.FC<IconProps> = ({
+export const SearchIcon: React.FC<IconProps> = ({
   size = 20,
   color = 'currentColor',
-  strokeWidth = 2,
+  strokeWidth = '6.25px',
   className,
   style,
 }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 24 24"
+    viewBox="0 0 105 105"
     width={size}
     height={size}
-    fill="none"
-    stroke={color}
-    strokeWidth={strokeWidth}
-    strokeLinecap="round"
-    strokeLinejoin="round"
     className={className}
-    style={style}
+    style={{ ...baseStyle, ...style }}
   >
-    <circle cx="11" cy="11" r="8" />
-    <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    <line x1="11" y1="8" x2="11" y2="14" />
-    <line x1="8" y1="11" x2="14" y2="11" />
+    <circle
+      cx={45.383}
+      cy={43.093}
+      r={25}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M70.382 68.093 82.919 80.63"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+export const ZoomInIcon = SearchIcon;
+
+export const DrinkIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M73.729 41.973a4.36 4.36 0 0 0-1.051-3.44 4.36 4.36 0 0 0-3.277-1.483H29.909a4.364 4.364 0 0 0-4.328 4.923l2.918 22.587a12.321 12.321 0 0 0 12.219 10.742h17.873A12.321 12.321 0 0 0 70.81 64.56l2.919-22.587ZM72.916 60.775l4.863-.027a5.584 5.584 0 0 0 5.554-5.584v-3.445c0-3.084-2.5-5.584-5.585-5.584h-3.702M37.177 21.714v4.919M49.999 21.714v4.919M62.822 21.714v4.919M31.249 85.718h37.5"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const SpoonForkIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M62.481 49.05c-4.853-2.29-8.333-8.465-8.333-15.716 0-9.199 5.601-16.667 12.5-16.667 6.898 0 12.5 7.468 12.5 16.667 0 7.251-3.481 13.426-8.334 15.716M29.148 29.168v-12.5M37.481 29.168v-12.5M45.814 16.668v16.666c0 7.251-3.48 13.426-8.333 15.716v30.117a4.167 4.167 0 0 1-8.333 0V49.05c-4.853-2.29-8.334-8.465-8.334-15.716V16.668M70.814 50v29.167a4.166 4.166 0 1 1-8.333 0V50"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const GameIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M29.165 66.216s.264-10.92 8.523-11.458c7.13-.464 8.524-11.458 8.524-11.458H29.165s.264-10.921 8.523-11.458c6.365-.414 8.159-9.22 8.471-11.106a21.002 21.002 0 0 1 3.84-.353c11.506 0 20.834 9.327 20.834 20.833l.002 27.084H29.167l-.002-2.084ZM72.917 80.8a4.167 4.167 0 0 0-4.167-4.167h-37.5a4.167 4.167 0 0 0-4.167 4.167v6.25h45.834V80.8Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const HeadphonesIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M28.221 48.407c0-14.069 11.422-25.49 25.49-25.49 14.068 0 25.49 11.421 25.49 25.49M81.095 53.712a5.217 5.217 0 0 1 3.688 6.387l-4.074 15.202a5.217 5.217 0 0 1-6.387 3.688l-3.011-.807 6.773-25.277 3.011.807ZM70.034 50.748l-6.773 25.277M26.301 53.712a5.217 5.217 0 0 0-3.688 6.387l4.074 15.202a5.217 5.217 0 0 0 6.387 3.688l3.011-.807-6.773-25.277-3.011.807ZM37.362 50.748l6.773 25.277"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const HouseIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M84.681 51.487a1.667 1.667 0 0 1-1.107 2.912H73.375v22.726a4.357 4.357 0 0 1-4.357 4.357H56.706V66.903a2.09 2.09 0 0 0-2.087-2.087h-8.325a2.09 2.09 0 0 0-2.087 2.087v14.579h-12.31a4.357 4.357 0 0 1-4.357-4.357V54.399H17.187a1.661 1.661 0 0 1-.96-2.899c7.823-6.96 27.406-24.367 32.823-29.182a2.119 2.119 0 0 1 2.816 0l32.817 29.169Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const BillsIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M12.5 39.25v30.875A4.877 4.877 0 0 0 17.375 75h56.916"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M87.499 29.75a4.752 4.752 0 0 0-4.75-4.75H27.666a4.752 4.752 0 0 0-4.75 4.75v30.083a4.752 4.752 0 0 0 4.75 4.75h55.083a4.752 4.752 0 0 0 4.75-4.75V29.75Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <ellipse
+      cx={55.207}
+      cy={44.792}
+      rx={13.543}
+      ry={9.375}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M33.333 27.083c0 4.6-3.734 8.334-8.333 8.334M77.083 62.5c0-4.599 3.734-8.333 8.334-8.333M85.417 35.417a8.338 8.338 0 0 1-8.334-8.334M25 54.167a8.337 8.337 0 0 1 8.333 8.333"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const CalendarIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M27.084 23.96a10.42 10.42 0 0 0-10.417 10.417v35.415a10.42 10.42 0 0 0 10.417 10.417h45.832a10.417 10.417 0 0 0 10.416-10.417V34.377A10.416 10.416 0 0 0 72.916 23.96M43.75 23.959h12.5"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M35.417 19.792v7.291M64.583 19.792v7.291M16.667 38.542h66.666M40.625 52.093A2.096 2.096 0 0 0 38.531 50h-8.313a2.096 2.096 0 0 0-2.093 2.093v8.314a2.092 2.092 0 0 0 2.093 2.093h8.313a2.097 2.097 0 0 0 2.094-2.093v-8.314Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const ShoppingCartIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="m25.134 37.5 3.398 29.47a6.209 6.209 0 0 0 6.167 5.496h35.63c2.891 0 5.4-1.995 6.049-4.812 1.346-5.836 3.63-14.105 5.211-20.962a6.171 6.171 0 0 0-6.014-7.559H35.416"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle cx={38.541} cy={83.925} r={5.208} fill={color} />
+    <circle cx={67.708} cy={83.925} r={5.208} fill={color} />
+    <path
+      d="m25.134 37.5-1.532-11.42a4.166 4.166 0 0 0-4.129-3.613l-2.807-.001"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const TemplateIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M79.167 41.309a4.164 4.164 0 0 0-1.221-2.946L57.471 17.887a4.17 4.17 0 0 0-2.947-1.22H29.167A8.336 8.336 0 0 0 20.833 25v50a8.333 8.333 0 0 0 8.333 8.333h41.667A8.334 8.334 0 0 0 79.167 75V41.309Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M56.25 18.751V31.25a8.334 8.334 0 0 0 8.334 8.333h12.499"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M45.833 39.583h-12.5M66.667 58.333a6.25 6.25 0 0 0-6.251-6.25H39.583a6.25 6.25 0 0 0-6.25 6.25v6.251a6.25 6.25 0 0 0 6.25 6.25h20.833a6.251 6.251 0 0 0 6.251-6.25v-6.251Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const CategoriesIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M64.682 16.668a6.127 6.127 0 0 1 6.131 6.131v14.82a6.127 6.127 0 0 1-6.131 6.131h-14.82a6.132 6.132 0 0 1-6.131-6.131v-14.82a6.132 6.132 0 0 1 6.131-6.131h14.82Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <circle
+      cx={67.689}
+      cy={67.709}
+      r={15.625}
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+    />
+    <path
+      d="M26.662 41.651a4.166 4.166 0 0 1 7.198 0L43.163 57.6a4.165 4.165 0 0 1-3.599 6.266H20.957a4.166 4.166 0 0 1-3.599-6.266l9.304-15.949Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const ArchiveIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M79.743 23.851c2.07 0 3.75 1.68 3.75 3.75v11.25c0 2.07-1.68 3.75-3.75 3.75H20.575c-2.07 0-3.75-1.68-3.75-3.75v-11.25c0-2.07 1.68-3.75 3.75-3.75h59.168Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M77.243 53.018v24.502c0 1.237-.491 2.424-1.366 3.299-.875.875-2.061 1.366-3.299 1.366H27.741c-1.237 0-2.424-.491-3.299-1.366-.875-.875-1.366-2.061-1.366-3.299v-34.918"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M39.742 55.101h20.834"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const JsonIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M35.834 18.751h-1.411c-3.155 0-5.249.518-6.28 1.555-1.032 1.036-1.547 3.351-1.547 6.944 0 7.242-.167 11.816-.501 13.723-.546 2.957-1.479 5.238-2.799 6.841-1.32 1.603-3.39 3.027-6.212 4.27 3.337 1.271 5.757 3.213 7.259 5.825 1.502 2.612 2.253 6.889 2.253 12.832 0 5.39.061 8.596.182 9.619.243 1.879.857 3.192 1.843 3.939.986.746 2.92 1.119 5.802 1.119h1.411"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M65.001 85.417h1.411c3.155 0 5.249-.518 6.28-1.555 1.032-1.036 1.547-3.351 1.547-6.944 0-7.242.167-11.816.501-13.723.546-2.957 1.479-5.238 2.799-6.841 1.32-1.603 3.39-3.027 6.212-4.27-3.337-1.271-5.757-3.213-7.259-5.825-1.502-2.612-2.253-6.889-2.253-12.832 0-5.39-.061-8.596-.182-9.619-.243-1.879-.857-3.192-1.843-3.939-.986-.746-2.92-1.119-5.802-1.119h-1.411"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const DeltaIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="m49.981 20.194 33.333 58.973H16.649l33.332-58.973Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const InfinityIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 120 60"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M60 30 C45 14, 28 14, 18 22 C8 30, 8 40, 18 48 C28 56, 45 46, 60 30 C75 14, 92 14, 102 22 C112 30, 112 40, 102 48 C92 56, 75 46, 60 30 Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const HeartIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M49.999 31.606c7.017-12.856 21.052-12.856 28.07-6.189 7.018 6.667 9.518 17.5 2.5 30.833-4.912 10-20.043 22.5-30.57 29.167-10.526-6.667-25.657-19.167-30.57-29.167-7.017-13.333-4.517-24.167 2.5-30.833 7.017-6.667 21.052-6.667 28.07 6.189Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const ExpenseIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M37.5 39.575l39.507 39.532"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M39.583 80.684l35.624 0c1.873 0 3.393-1.52 3.393-3.393l0-35.624"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M20.24 22.321l8.926 8.926"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+export const ArrowBottomRightIcon = ExpenseIcon;
+
+export const IncomeIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M37.472 64.584l39.551-39.527"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M78.6 62.5l0-35.624c0-1.873-1.52-3.393-3.393-3.393l-35.624 0"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M20.237 81.807l8.929-8.924"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+export const ArrowTopRightIcon = IncomeIcon;
+
+export const HangerIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="m56.981 53.717 27.695 17.649a5.12 5.12 0 0 1-2.75 9.434H18.401a5.117 5.117 0 0 1-2.923-9.319l34.521-24.015v.001l4.96-3.857a8.74 8.74 0 0 0 3.374-6.899l-.001-1.753a8.325 8.325 0 0 0-8.325-8.325h-.016a8.326 8.326 0 0 0-8.325 8.324v.009"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const DropletsIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M64.583 71.711c-3.234 8.612-11.548 14.747-21.284 14.747-12.543 0-22.726-10.184-22.726-22.727 0-11.931 22.726-39.773 22.726-39.773l3.104 4.167"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M75.2 57.514a15.441 15.441 0 0 1-11.257 4.857c-8.545 0-15.483-6.938-15.483-15.483 0-4.588 4.933-12.629 9.229-18.763 3.316-4.734 6.254-8.333 6.254-8.333s15.483 18.967 15.483 27.096c0 4.112-1.607 7.852-4.226 10.626"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const LaptopIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M80.794 57.883V32.779a4.063 4.063 0 0 0-4.063-4.063h-46.04a4.063 4.063 0 0 0-4.062 4.063v25.104M62.044 66.216h25v4.601a8.421 8.421 0 0 1-8.421 8.42H28.799a8.418 8.418 0 0 1-8.421-8.422l.001-4.599h24.996v4.167h16.669v-4.167Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const NoteIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M83.332 25.166a8.5 8.5 0 0 0-8.498-8.499H25.166a8.503 8.503 0 0 0-6.01 2.489 8.503 8.503 0 0 0-2.489 6.01v49.668a8.501 8.501 0 0 0 8.499 8.498h29.888c2.1 0 4.114-.834 5.599-2.319l20.361-20.361a7.919 7.919 0 0 0 2.318-5.598V25.166Z"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M83.332 58.334H66.833a8.499 8.499 0 0 0-8.499 8.499v16.499"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="butt"
+    />
+    <path
+      d="M31.25 31.25h22.917M31.25 43.75h8.333"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+export const ArrowLeftIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 100 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M87.481 52.096l-70.833-0.022"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M42.218 24.503l-25.19 25.19c-1.324 1.324-1.324 3.474 0 4.798l25.19 25.19"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const DumbbellIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 100"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M25.896 54.245a4.99 4.99 0 0 1 7.059 0l16.511 16.511a4.99 4.99 0 0 1-.004 7.063 8.575 8.575 0 0 1-12.127 0L25.892 66.376a8.575 8.575 0 0 1 0-12.127l.004-.004ZM57.9 22.24a8.66 8.66 0 0 1 12.245.001L81.47 33.566a8.656 8.656 0 0 1 0 12.244l-.004.005a4.908 4.908 0 0 1-6.941-.001L57.896 29.186a4.907 4.907 0 0 1 0-6.941l.004-.005ZM41.239 62.527 66.21 37.502M24.557 79.167l2.079-2.084M80.807 22.917l2.079-2.084"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+  </svg>
+);
+
+export const ArrowDownIcon: React.FC<IconProps> = ({
+  size = 20,
+  color = 'currentColor',
+  strokeWidth = '6.25px',
+  className,
+  style,
+}) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 105 105"
+    width={size}
+    height={size}
+    className={className}
+    style={{ ...baseStyle, ...style }}
+  >
+    <path
+      d="M51.502 15.438l-0.022 70.833"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
+    <path
+      d="M23.913 60.723l25.19 25.19c1.324 1.324 3.474 1.324 4.798 0l25.19-25.19"
+      fill="none"
+      stroke={color}
+      strokeWidth={strokeWidth}
+    />
   </svg>
 );

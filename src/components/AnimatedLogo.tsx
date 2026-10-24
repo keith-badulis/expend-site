@@ -5,6 +5,7 @@ import styles from './AnimatedLogo.module.css';
 interface AnimatedLogoProps {
   size?: number;
   showText?: boolean;
+  showTagline?: boolean;
   animateOnScroll?: boolean;
   interactive?: boolean;
   style?: React.CSSProperties;
@@ -12,8 +13,9 @@ interface AnimatedLogoProps {
 }
 
 export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
-  size = 112,
+  size = 56,
   showText = true,
+  showTagline = false,
   animateOnScroll = false,
   interactive = true,
   style,
@@ -123,7 +125,9 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       {showText && (
         <div className={styles.brandText}>
           <span className={styles.brandName}>eXpend</span>
-          <span className={styles.brandSub}>Make budgeting a habit</span>
+          {showTagline && (
+            <span className={styles.brandSub}>Make budgeting a habit</span>
+          )}
         </div>
       )}
     </div>

@@ -7,7 +7,7 @@
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -67,7 +67,7 @@ p {
 }
 
 a {
-  color: var(--accent-light);
+  color: var(--accent-color);
   text-decoration: none;
   transition: all 0.2s ease;
   -webkit-font-smoothing: antialiased;
@@ -76,23 +76,24 @@ a {
 
 @media (hover: hover) and (pointer: fine) {
   a:hover {
-    color: #FFFFFF;
+    color: var(--primary-pressed);
   }
 }
 
-/* Global Buttons */
+/* Global Buttons: eXpend 'btn-round-primary' design primitive */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--accent-color);
+  background-color: var(--primary);
   color: #FFFFFF;
-  font-weight: 700;
+  font-family: var(--font-family);
+  font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.65rem 1.4rem;
-  border-radius: 12px;
-  border: 1.5px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 14px rgba(76, 116, 219, 0.4);
+  padding: 0.65rem 1.45rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(58, 67, 90, 0.25);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
@@ -102,10 +103,10 @@ a {
 
 @media (hover: hover) and (pointer: fine) {
   .btn-primary:hover {
-    background-color: var(--accent-light);
+    background-color: var(--primary-pressed);
     color: #FFFFFF;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(76, 116, 219, 0.55);
+    transform: translateY(-1.5px);
+    box-shadow: 0 4px 14px rgba(58, 67, 90, 0.35);
   }
 }
 

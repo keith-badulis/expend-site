@@ -1,7 +1,7 @@
 import React from 'react';
 import { Hero } from '../components/Hero';
 import { Features } from '../components/Features';
-import { WhyChoose } from '../components/WhyChoose';
+import { ScreenshotsSection } from '../components/ScreenshotsSection';
 import { Reviews } from '../components/Reviews';
 import { CtaSection } from '../components/CtaSection';
 import { Footer } from '../components/Footer';
@@ -12,7 +12,7 @@ export const Home: React.FC = () => {
       <main>
         <Hero />
         <Features />
-        <WhyChoose />
+        <ScreenshotsSection />
         <Reviews />
         <CtaSection />
       </main>

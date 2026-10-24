@@ -1,569 +1,629 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { createPortal } from 'react-dom';
-import addTxImg from '../assets/screenshots/IMG_2926.png';
-import budgetImg from '../assets/screenshots/IMG_2932.png';
-import filteredReportsImg from '../assets/screenshots/IMG_2940.png';
-import accountsImg from '../assets/screenshots/IMG_2935.png';
-import weeklyReportsImg from '../assets/screenshots/IMG_2936.png';
-import profileDashboardImg from '../assets/screenshots/IMG_2939.png';
+import React from 'react';
 import {
-  LightningBoltIcon,
+  WalletIcon,
+  CardIcon,
+  AirplaneIcon,
   PiggyBankIcon,
-  FilterIcon,
-  ReportIcon,
+  LockIcon,
+  LightningBoltIcon,
   StonksIcon,
-  ProfileIcon,
-  CloseIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
+  CoinIcon,
+  DrinkIcon,
+  SpoonForkIcon,
+  GameIcon,
+  HeadphonesIcon,
+  HouseIcon,
+  ShoppingCartIcon,
+  DescriptionIcon,
+  SparklesIcon,
+  DiamondIcon,
+  TagIcon,
+  CheckIcon,
+  ArchiveIcon,
+  JsonIcon,
+  CloudBackupIcon,
+  BackupIcon,
+  StarFilledIcon,
+  ReceiptIcon,
+  FilterIcon,
+  DeltaIcon,
+  HeartIcon,
+  CategoriesIcon,
+  InfinityIcon,
+  ExpenseIcon,
+  ArrowDownIcon,
+  NoteIcon,
+  HangerIcon,
+  DropletsIcon,
+  LaptopIcon,
 } from './icons';
 import styles from './Features.module.css';
-
-type FeatureCategory = 'tracking' | 'reports' | 'overview';
-
-interface FeatureItem {
-  id: string;
-  category: FeatureCategory;
-  icon: (color?: string, size?: number) => React.ReactNode;
-  title: string;
-  description: string;
-  shortDescription?: string;
-  tags: string[];
-  image: string;
-  imageAlt: string;
-}
-
-
-const featureItems: FeatureItem[] = [
-  {
-    id: 'add-transaction',
-    category: 'tracking',
-    icon: (color = 'var(--accent-light)', size = 20) => (
-      <LightningBoltIcon size={size} color={color} />
-    ),
-    title: 'Log Transactions in Seconds',
-    description:
-      'Log income, expenses, and transfers in seconds with a built-in calculator. Use reusable templates or schedule recurring transactions for hassle-free tracking.',
-    shortDescription:
-      'Quickly log income and expenses with the built-in keypad, reusable templates, and recurring transactions.',
-    tags: ['Income & Expenses', 'Custom Templates', 'Recurring Transactions'],
-    image: addTxImg,
-    imageAlt: 'eXpend Add Transaction keypad and calculator screen',
-  },
-  {
-    id: 'budget-planning',
-    category: 'tracking',
-    icon: (color = 'var(--accent-light)', size = 20) => (
-      <PiggyBankIcon size={size} color={color} />
-    ),
-    title: 'Set Spending Limits & Stay on Target',
-    description:
-      'Set budgets to stay within target spending limits. Stay in control with visual progress bars, category breakdowns, and flexible periods.',
-    shortDescription:
-      'Set spending limits with visual progress bars, category breakdowns, and flexible budget periods.',
-    tags: ['Spending Limits', 'Flexible Periods', 'Progress Tracking'],
-    image: budgetImg,
-    imageAlt: 'eXpend Budget Details and spending status screen',
-  },
-  {
-    id: 'filtered-reports',
-    category: 'reports',
-    icon: (color = 'var(--accent-light)', size = 20) => (
-      <FilterIcon size={size} color={color} />
-    ),
-    title: 'Filter and Analyze Exactly How You Want',
-    description:
-      'Group transactions and accounts with custom tags. Filter by date, category, or tag with interactive cashflow curves and automatic totals.',
-    shortDescription:
-      'Group records with custom tags and filter by date or category with interactive cashflow curves.',
-    tags: ['Custom Tags', 'Flexible Filters', 'Cashflow Curves'],
-    image: filteredReportsImg,
-    imageAlt: 'eXpend Filtered Reports screen with cashflow timeline chart',
-  },
-  {
-    id: 'spending-insights',
-    category: 'reports',
-    icon: (color = 'var(--accent-light)', size = 20) => (
-      <StonksIcon size={size} color={color} />
-    ),
-    title: 'Analyze Spending Habits and Trends',
-    description:
-      'Analyze spending habits and earnings with flexible reports. Compare income against expenses and spot weekly trends at a glance.',
-    shortDescription:
-      'Analyze income vs. expenses, spot weekly trends, and view detailed monthly reports.',
-    tags: ['Income vs Expense', 'Weekly Trends', 'Detailed Reports'],
-    image: weeklyReportsImg,
-    imageAlt: 'eXpend Monthly Report and weekly breakdown screen',
-  },
-  {
-    id: 'accounts-summary',
-    category: 'overview',
-    icon: (color = 'var(--accent-light)', size = 20) => (
-      <ReportIcon size={size} color={color} />
-    ),
-    title: 'Track Net Worth, Assets & Liabilities',
-    description:
-      'Keep track of cash, savings, cards, and debts in one place. Monitor your real-time net worth with multi-currency support.',
-    shortDescription:
-      'Track cash, savings, credit cards, and multi-currency net worth in one comprehensive view.',
-    tags: ['Net Worth', 'Assets & Liabilities', 'Multi-Currency'],
-    image: accountsImg,
-    imageAlt: 'eXpend Accounts Summary and Net Worth screen',
-  },
-  {
-    id: 'personalized-dashboard',
-    category: 'overview',
-    icon: (color = 'var(--accent-light)', size = 20) => (
-      <ProfileIcon size={size} color={color} />
-    ),
-    title: 'Everything in One Place',
-    description:
-      'Stay focused on reaching goals with visual savings milestones. Mindfully track debts, payable and receivable, in one clean overview.',
-    shortDescription:
-      'Monitor savings milestones and mindfully manage payable and receivable debts at a glance.',
-    tags: ['Smart Goal Tracking', 'Debt Management', 'At-a-Glance View'],
-    image: profileDashboardImg,
-    imageAlt: 'eXpend Profile and Dashboard with Wallets, Goals, and Debts',
-  },
-];
-
-// Preserved 2-column desktop layout
-const leftColItems = [featureItems[0], featureItems[2], featureItems[3]];
-const rightColItems = [featureItems[1], featureItems[4], featureItems[5]];
-
-// Hardware-grade phone mockup with specular sheen, unified backlight, and interactive click affordance
-const PhoneMockupFrame: React.FC<{
-  image: string;
-  alt: string;
-  onClick?: () => void;
-}> = ({ image, alt, onClick }) => (
-  <div
-    className={`${styles.phoneStage} ${onClick ? styles.clickablePhoneStage : ''}`}
-    onClick={onClick}
-    role={onClick ? 'button' : undefined}
-    tabIndex={onClick ? 0 : undefined}
-    aria-label={onClick ? `View enlarged screenshot: ${alt}` : undefined}
-    onKeyDown={
-      onClick
-        ? (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              onClick();
-            }
-          }
-        : undefined
-    }
-  >
-    <div className={styles.phoneBacklightStage} />
-    <div className={styles.galleryPhoneFrame}>
-      <div className={styles.screenSheen} />
-      <img
-        src={image}
-        alt={alt}
-        className={styles.galleryScreenImg}
-        loading="lazy"
-      />
-    </div>
-  </div>
-);
+import appIcon from '../assets/app-icon.png';
 
 export const Features: React.FC = () => {
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const isProgrammaticScroll = useRef(false);
-  const touchStartX = useRef<number | null>(null);
-  const touchStartY = useRef<number | null>(null);
-
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [mounted, setMounted] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Lock background scroll and listen for Escape/Arrow keys when preview overlay is open
-  useEffect(() => {
-    if (selectedImageIndex === null) return;
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        setSelectedImageIndex(null);
-      } else if (e.key === 'ArrowLeft') {
-        setSelectedImageIndex((prev) =>
-          prev === null ? null : (prev - 1 + featureItems.length) % featureItems.length
-        );
-      } else if (e.key === 'ArrowRight') {
-        setSelectedImageIndex((prev) =>
-          prev === null ? null : (prev + 1) % featureItems.length
-        );
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [selectedImageIndex]);
-
-  const handleCarouselScroll = () => {
-    if (isProgrammaticScroll.current || !carouselRef.current) return;
-    const container = carouselRef.current;
-    const containerCenter = container.getBoundingClientRect().left + container.offsetWidth / 2;
-    let closestIndex = 0;
-    let minDistance = Infinity;
-
-    Array.from(container.children).forEach((child, idx) => {
-      const childRect = child.getBoundingClientRect();
-      const childCenter = childRect.left + childRect.width / 2;
-      const dist = Math.abs(childCenter - containerCenter);
-      if (dist < minDistance) {
-        minDistance = dist;
-        closestIndex = idx;
-      }
-    });
-
-    if (closestIndex !== activeSlideIndex) {
-      setActiveSlideIndex(closestIndex);
-    }
-  };
-
-  const scrollToSlide = (index: number) => {
-    if (carouselRef.current) {
-      const cards = carouselRef.current.children;
-      if (cards[index]) {
-        isProgrammaticScroll.current = true;
-        setActiveSlideIndex(index);
-        (cards[index] as HTMLElement).scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center',
-        });
-        setTimeout(() => {
-          isProgrammaticScroll.current = false;
-        }, 400);
-      }
-    }
-  };
-
-  const handlePrevPreview = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setSelectedImageIndex((prev) =>
-      prev === null ? null : (prev - 1 + featureItems.length) % featureItems.length
-    );
-  };
-
-  const handleNextPreview = (e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    setSelectedImageIndex((prev) =>
-      prev === null ? null : (prev + 1) % featureItems.length
-    );
-  };
-
-  const handleClosePreview = () => {
-    setSelectedImageIndex(null);
-  };
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartX.current === null || touchStartY.current === null) return;
-    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
-    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
-    
-    // Horizontal swipe threshold: > 45px and predominantly horizontal
-    if (Math.abs(deltaX) > 45 && Math.abs(deltaX) > Math.abs(deltaY) * 1.4) {
-      if (deltaX > 0) {
-        handlePrevPreview();
-      } else {
-        handleNextPreview();
-      }
-    } else if (deltaY > 80 && Math.abs(deltaY) > Math.abs(deltaX) * 2) {
-      // Swipe down to dismiss
-      handleClosePreview();
-    }
-    touchStartX.current = null;
-    touchStartY.current = null;
-  };
-
   return (
-    <section id="features" className={`section ${styles.galleryFeaturesSection}`}>
-      {/* Subtle Boundary Seam Light Sweep */}
-      <div className={styles.bottomLightSweep} aria-hidden="true" />
-
-      {/* Background Ambient Shapes */}
-      <div
-        className="edge-shape ring"
-        style={{
-          width: '380px',
-          height: '380px',
-          top: '12%',
-          right: '-140px',
-        }}
-      />
-      <div
-        className="edge-shape square"
-        style={{
-          width: '260px',
-          height: '260px',
-          bottom: '18%',
-          left: '-100px',
-        }}
-      />
-
+    <section id="features" className={`section ${styles.featuresSection}`}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <h2 className="section-title">
-            Simplify Your Finances. <br />
-            <span style={{ color: 'var(--accent-light)' }}>Reach Your Goals.</span>
+            Manage Your Personal Finances Effortlessly
           </h2>
-          <p className="section-description">
-            Ditch the spreadsheets and notebooks. Make mindful financial journaling an effortless habit.
-          </p>
         </div>
 
-        {/* MOBILE CONTINUOUS 6-SCREEN CAROUSEL (<= 960px) */}
-        <div className={styles.mobileCarouselWrapper}>
-          <div
-            ref={carouselRef}
-            onScroll={handleCarouselScroll}
-            className={styles.mobileCarouselTrack}
-          >
-            {featureItems.map((item, index) => (
-              <div
-                key={item.id}
-                className={`${styles.mobileFeatureCard} ${activeSlideIndex === index ? styles.activeCard : ''}`}
-              >
-                <div className={styles.mobileScreenStage}>
-                  <PhoneMockupFrame
-                    image={item.image}
-                    alt={item.imageAlt}
-                    onClick={() => setSelectedImageIndex(index)}
-                  />
+        {/* Bento Grid */}
+        <div className={styles.bentoGrid}>
+
+          {/* =========================================================
+              BOX 1: All Your Accounts in One Place (Span 7)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxAccounts}`}>
+            {/* Visual Components at TOP */}
+            <div className={styles.visualAccountsWrap}>
+              {/* Overlapping Wallets Duo */}
+              <div className={styles.walletsOverlapStage}>
+                {/* Back Card: Cash (Red Gradient) */}
+                <div className={styles.backWalletCard}>
+                  <div className={styles.walletHeaderRow}>
+                    <div className={styles.walletIconSquircle}>
+                      <WalletIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                    </div>
+                  </div>
+                  <div className={styles.walletCardBottom}>
+                    <span className={styles.walletCardName}>Cash</span>
+                    <span className={styles.walletCardBalance}>$3,480.50</span>
+                  </div>
                 </div>
 
-                <div className={styles.mobileCardContent}>
-                  <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                  <p className={styles.galleryItemDesc}>
-                    {item.shortDescription || item.description}
-                  </p>
+                {/* Front Card: Credit Card (Blue Gradient with Credit Pill) */}
+                <div className={styles.frontWalletCard}>
+                  <div className={styles.walletHeaderRow}>
+                    <div className={styles.walletIconSquircle}>
+                      <CardIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                    </div>
+                    <span className={styles.creditBadgePill}>Credit</span>
+                  </div>
+                  <div className={styles.walletCardBottom}>
+                    <span className={styles.walletCardName}>Credit Card</span>
+                    <span className={styles.walletCardBalance}>$1,250.00</span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* 6-Slide Indicator Pagination Bar */}
-          <div className={styles.carouselPaginationDots} role="tablist" aria-label="Feature slides">
-            {featureItems.map((_, dotIdx) => (
-              <button
-                key={dotIdx}
-                type="button"
-                role="tab"
-                aria-selected={activeSlideIndex === dotIdx}
-                aria-label={`Go to feature slide ${dotIdx + 1}`}
-                onClick={() => scrollToSlide(dotIdx)}
-                className={`${styles.paginationDot} ${activeSlideIndex === dotIdx ? styles.dotActive : ''}`}
-              />
-            ))}
-          </div>
-        </div>
-
-
-        {/* DESKTOP 2-COLUMN STAGGERED EXHIBITION GALLERY (>= 961px) */}
-        <div className={styles.galleryStaggeredGrid}>
-          {/* LEFT COLUMN (Caption on Left, Screenshot on Right) */}
-          <div className={`${styles.galleryColumn} ${styles.galleryColLeft}`}>
-            {leftColItems.map((item) => {
-              const itemIndex = featureItems.findIndex((f) => f.id === item.id);
-              return (
-                <div key={item.id} className={`${styles.galleryItem} ${styles.captionLeft}`}>
-                  {/* Caption on Left */}
-                  <div className={styles.galleryCaptionBox}>
-                    <div className={styles.featureIconSquircle}>
-                      {item.icon('var(--accent-light)', 20)}
+              {/* Goals & Debts Stack (Companion column) */}
+              <div className={styles.goalsAndDebtsStack}>
+                {/* GoalListItem Replica */}
+                <div className={styles.miniGoalCard}>
+                  <div className={styles.miniGoalHeader}>
+                    <div className={styles.goalIconSquircle}>
+                      <AirplaneIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
                     </div>
-                    <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                    <p className={styles.galleryItemDesc}>{item.description}</p>
-                    <div className={styles.galleryTagsWrap}>
-                      {item.tags.map((tag, tIdx) => (
-                        <span key={tIdx} className={styles.galleryTagPill}>
-                          {tag}
-                        </span>
-                      ))}
+                    <div className={styles.goalDetails}>
+                      <span className={styles.goalTitle}>Vacation Goal</span>
+                      <div className={styles.goalAmountPercentRow}>
+                        <span className={styles.goalAmount}>$3,250 / $5,000</span>
+                        <span className={styles.goalPercent}>65%</span>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Screenshot on Right */}
-                  <div className={styles.galleryScreenBox}>
-                    <PhoneMockupFrame
-                      image={item.image}
-                      alt={item.imageAlt}
-                      onClick={() => setSelectedImageIndex(itemIndex)}
-                    />
+                  <div className={styles.goalProgressBar}>
+                    <div className={styles.goalProgressFill} style={{ width: '65%' }} />
                   </div>
                 </div>
-              );
-            })}
+
+                {/* DebtListItem Replica */}
+                <div className={styles.miniDebtCard}>
+                  <div className={styles.debtHeaderRow}>
+                    <div className={styles.debtTextIconWrap}>
+                      <span className={styles.debtInitial}>J</span>
+                      <svg className={styles.debtRingSvg} viewBox="0 0 32 32">
+                        <circle cx="16" cy="16" r="13" fill="none" stroke="rgba(76, 116, 219, 0.15)" strokeWidth="2.4" />
+                        <circle
+                          cx="16" cy="16" r="13" fill="none"
+                          stroke="#4C74DB" strokeWidth="2.4"
+                          strokeDasharray="57 82"
+                          strokeDashoffset="20"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    </div>
+                    <div className={styles.debtDetails}>
+                      <div className={styles.debtTitleRow}>
+                        <span className={styles.debtName}>Juan dela Cruz</span>
+                        <span className={styles.debtDate}>Sep 18</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={styles.debtBottomRow}>
+                    <div className={styles.debtTypeBadge}>
+                      <ArrowDownIcon size={11} color="#64748B" strokeWidth="6.25px" />
+                      <span>Payable</span>
+                    </div>
+                    <span className={styles.debtAmountStatement}>$120.00 left</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillBlue}`}>
+                <WalletIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>All Your Accounts in One Place</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Everything you have, from wallets and goals to credit cards and debts, consolidated under one clean and easy-to-use dashboard.
+              </p>
+            </div>
           </div>
 
-          {/* RIGHT COLUMN (Staggered Downward: Screenshot on Left, Caption on Right) */}
-          <div className={`${styles.galleryColumn} ${styles.galleryColRight}`}>
-            {rightColItems.map((item) => {
-              const itemIndex = featureItems.findIndex((f) => f.id === item.id);
-              return (
-                <div key={item.id} className={`${styles.galleryItem} ${styles.captionRight}`}>
-                  {/* Screenshot on Left */}
-                  <div className={styles.galleryScreenBox}>
-                    <PhoneMockupFrame
-                      image={item.image}
-                      alt={item.imageAlt}
-                      onClick={() => setSelectedImageIndex(itemIndex)}
-                    />
+          {/* =========================================================
+              BOX 2: Quick & easy recording (Span 5)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxKeypad}`}>
+            {/* Visual Components at TOP */}
+            <div className={styles.visualKeypadWrap}>
+              {/* Minimal Keypad Card */}
+              <div className={styles.miniKeypadCard}>
+                <div className={styles.miniKeypadDisplay}>
+                  <span className={styles.miniDisplaySymbol}>$</span>
+                  <span className={styles.miniDisplayAmount}>24.50</span>
+                </div>
+                <div className={styles.miniKeypadKeys}>
+                  <span className={styles.keyUnit}>7</span>
+                  <span className={styles.keyUnit}>8</span>
+                  <span className={styles.keyUnit}>9</span>
+                  <span className={styles.keyUnit}>4</span>
+                  <span className={styles.keyUnit}>5</span>
+                  <span className={styles.keyUnit}>6</span>
+                  <span className={styles.keyUnit}>1</span>
+                  <span className={styles.keyUnit}>2</span>
+                  <span className={styles.keyUnit}>3</span>
+                  <span className={styles.keyUnit}>.</span>
+                  <span className={styles.keyUnit}>0</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnitPrimary}`}>✓</span>
+                </div>
+              </div>
+
+              {/* Overlapping Template Chips (Splay at rest -> Separates level on hover) */}
+              <div className={styles.templatesOverlapStack}>
+                <div className={styles.miniTemplateChipTop}>
+                  <div className={styles.templateIconSquircleOrange}>
+                    <DrinkIcon size={15} color="#EF8354" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.templateInfo}>
+                    <span className={styles.templateName}>Morning Coffee</span>
+                    <span className={styles.templateSub}>Food & Dining</span>
+                  </div>
+                  <span className={styles.templateCostExpense}>-$4.50</span>
+                </div>
+
+                <div className={styles.miniTemplateChipBottom}>
+                  <div className={styles.templateIconSquircleGreen}>
+                    <ShoppingCartIcon size={15} color="#0DBF96" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.templateInfo}>
+                    <span className={styles.templateName}>Weekly Groceries</span>
+                    <span className={styles.templateSub}>Supermarket</span>
+                  </div>
+                  <span className={styles.templateCostExpense}>-$68.20</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillYellow}`}>
+                <LightningBoltIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>Quick & Easy Recording</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Record income, expenses, and account transfers in seconds, with a built-in calculator. Record routine purchases in a single tap with reusable templates.
+              </p>
+            </div>
+          </div>
+
+          {/* =========================================================
+              BOX 3: Flexible budget planning (Span 4)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxBudgets}`}>
+            {/* Visual Budget Cards at TOP - Clean Side-by-Side Balanced Cards */}
+            <div className={styles.visualBudgetsWrap}>
+              <div className={styles.budgetCardsGrid}>
+                {/* Card 1: Entertainment (Amber, 38% left) */}
+                <div className={styles.budgetItemCard}>
+                  <div className={styles.budgetCardIconSquircle}>
+                    <GameIcon size={15} color="#3A435A" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.budgetCardLabels}>
+                    <span className={styles.budgetCardTitle}>Entertainment</span>
+                    <span className={styles.budgetCardSubtitle}>$95.00 remaining</span>
+                  </div>
+                  <div className={styles.budgetBarPercentRow}>
+                    <div className={styles.budgetProgressBarTrackAmber}>
+                      <div className={styles.budgetProgressBarFillAmber} style={{ width: '38%' }} />
+                    </div>
+                    <span className={styles.budgetCardPercent}>38%</span>
+                  </div>
+                </div>
+
+                {/* Card 2: Food & Groceries (Green, 70% left) */}
+                <div className={styles.budgetItemCard}>
+                  <div className={styles.budgetCardIconSquircle}>
+                    <SpoonForkIcon size={15} color="#3A435A" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.budgetCardLabels}>
+                    <span className={styles.budgetCardTitle}>Food & Groceries</span>
+                    <span className={styles.budgetCardSubtitle}>$420.00 remaining</span>
+                  </div>
+                  <div className={styles.budgetBarPercentRow}>
+                    <div className={styles.budgetProgressBarTrackGreen}>
+                      <div className={styles.budgetProgressBarFillGreen} style={{ width: '70%' }} />
+                    </div>
+                    <span className={styles.budgetCardPercent}>70%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Card 3: Categories Breakdown / Distribution Bar Card from App (media_1792731495776_8d35d98f.png) */}
+              <div className={styles.categoryDistributionCard}>
+                <div className={styles.catDistHeaderRow}>
+                  <span className={styles.catDistTitle}>All Categories</span>
+                  <span className={styles.catDistTotal}>$10,759.59</span>
+                </div>
+
+                {/* Multi-segment Colored Distribution Bar */}
+                <div className={styles.catDistMultiBar}>
+                  <div className={styles.distSegment} style={{ flex: 48, backgroundColor: '#F56960' }} title="Food & Groceries" />
+                  <div className={styles.distSegment} style={{ flex: 18, backgroundColor: '#5E6882' }} title="Clothing & Shopping" />
+                  <div className={styles.distSegment} style={{ flex: 9, backgroundColor: '#DD56B2' }} title="Utilities" />
+                  <div className={styles.distSegment} style={{ flex: 8, backgroundColor: '#4C74DB' }} title="Electronics" />
+                  <div className={styles.distSegment} style={{ flex: 6, backgroundColor: '#20C49E' }} title="Transportation" />
+                  <div className={styles.distSegment} style={{ flex: 5, backgroundColor: '#8BAA36' }} title="Personal" />
+                  <div className={styles.distSegment} style={{ flex: 6, backgroundColor: '#EAAF3B' }} title="Entertainment" />
+                </div>
+
+                {/* Filter Pill Row */}
+                <div className={styles.catDistFilterRow}>
+                  {/* Selected Active Circle */}
+                  <div className={styles.catFilterCircleActive} title="All Categories">
+                    <CategoriesIcon size={14} color="#FFFFFF" strokeWidth="6.25px" />
                   </div>
 
-                  {/* Caption on Right */}
-                  <div className={styles.galleryCaptionBox}>
-                    <div className={styles.featureIconSquircle}>
-                      {item.icon('var(--accent-light)', 20)}
+                  {/* Icon Circles with authentic category colors */}
+                  <div className={styles.catFilterCircle} title="Food & Groceries">
+                    <SpoonForkIcon size={14} color="#F56960" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.catFilterCircle} title="Clothing & Shopping">
+                    <HangerIcon size={14} color="#5E6882" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.catFilterCircle} title="Utilities">
+                    <DropletsIcon size={14} color="#DD56B2" strokeWidth="6.25px" />
+                  </div>
+                  <div className={styles.catFilterCircle} title="Electronics">
+                    <LaptopIcon size={14} color="#4C74DB" strokeWidth="6.25px" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillGreen}`}>
+                <PiggyBankIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>Flexible Budget Planning</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Set custom budget limits and easily choose where your spending goes to keep your habits in check. Stay informed with smart budget insights!
+              </p>
+            </div>
+          </div>
+
+          {/* =========================================================
+              BOX 4: Visual Reports & Analytics (Span 4)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxReports}`}>
+            {/* Visual Component: Separate Cards Stack at TOP */}
+            <div className={styles.visualReportsWrap}>
+              <div className={styles.visualReportsStack}>
+                {/* Card 1: Balance Trend Curve (Character-rich curve with net positive) */}
+                <div className={styles.miniTrendCard}>
+                  <div className={styles.trendHeaderRow}>
+                    <span className={styles.trendCardTitle}>Balance Trend</span>
+                  </div>
+
+                  <div className={styles.trendBalanceRow}>
+                    <div className={styles.trendBalanceCol}>
+                      <span className={styles.trendColLabel}>Starting</span>
+                      <span className={styles.trendColAmount}>$144,120.00</span>
                     </div>
-                    <h3 className={styles.galleryItemTitle}>{item.title}</h3>
-                    <p className={styles.galleryItemDesc}>{item.description}</p>
-                    <div className={styles.galleryTagsWrap}>
-                      {item.tags.map((tag, tIdx) => (
-                        <span key={tIdx} className={styles.galleryTagPill}>
-                          {tag}
-                        </span>
-                      ))}
+                    <div className={`${styles.trendBalanceCol} ${styles.trendColRight}`}>
+                      <span className={styles.trendColLabel}>Ending</span>
+                      <span className={styles.trendColAmount}>$147,570.00</span>
+                    </div>
+                  </div>
+
+                  <div className={styles.trendSvgWrap}>
+                    <svg viewBox="0 0 280 50" className={styles.trendSvg} preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="expendBalanceTrendGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#4C74DB" stopOpacity="0.22" />
+                          <stop offset="100%" stopColor="#4C74DB" stopOpacity="0.0" />
+                        </linearGradient>
+                      </defs>
+
+                      {/* Starting vertical indicator guide */}
+                      <line x1="8" y1="4" x2="8" y2="48" stroke="rgba(76, 116, 219, 0.2)" strokeWidth="1.5" />
+
+                      {/* Area Gradient Fill - dynamic financial variation finishing net positive */}
+                      <path
+                        d="M 0 42 C 20 44, 35 46, 55 33 C 75 20, 95 38, 115 37 C 135 36, 145 22, 165 24 C 185 26, 195 30, 215 16 C 230 6, 250 10, 280 11 L 280 50 L 0 50 Z"
+                        fill="url(#expendBalanceTrendGrad)"
+                      />
+
+                      {/* Dotted cursor vertical line at active peak */}
+                      <line
+                        x1="244"
+                        y1="9.37"
+                        x2="244"
+                        y2="48"
+                        stroke="#4C74DB"
+                        strokeWidth="1.5"
+                        strokeDasharray="3 3"
+                        strokeOpacity="0.75"
+                      />
+
+                      {/* Blue Line Curve with character */}
+                      <path
+                        d="M 0 42 C 20 44, 35 46, 55 33 C 75 20, 95 38, 115 37 C 135 36, 145 22, 165 24 C 185 26, 195 30, 215 16 C 230 6, 250 10, 280 11"
+                        fill="none"
+                        stroke="#4C74DB"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+
+                      {/* Active Cursor Circle on Curve - mathematically 100% centered on the curve stroke */}
+                      <circle
+                        cx="244"
+                        cy="9.37"
+                        r="3.8"
+                        fill="#4C74DB"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Card 2: Pie / Donut Breakdown (Left: Donut chart, Right: Stacked Expense badge and category icons) */}
+                <div className={styles.miniPieCard}>
+                  {/* Left: Thick Donut Chart with Centered Round Icon */}
+                  <div className={styles.pieDonutWrap}>
+                    <svg viewBox="0 0 100 100" className={styles.pieDonutSvg}>
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#EF8354" strokeWidth="16" strokeDasharray="58 214" strokeDashoffset="0" />
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#20C49E" strokeWidth="16" strokeDasharray="46 214" strokeDashoffset="-59" />
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#DD56B2" strokeWidth="16" strokeDasharray="34 214" strokeDashoffset="-106" />
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#5E6882" strokeWidth="16" strokeDasharray="26 214" strokeDashoffset="-141" />
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#4C74DB" strokeWidth="16" strokeDasharray="22 214" strokeDashoffset="-168" />
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#EAAF3B" strokeWidth="16" strokeDasharray="18 214" strokeDashoffset="-191" />
+                      <circle cx="50" cy="50" r="34" fill="none" stroke="#E29965" strokeWidth="16" strokeDasharray="9 214" strokeDashoffset="-210" />
+                    </svg>
+                    <div className={styles.pieDonutCenterIcon}>
+                      <CategoriesIcon size={16} color="var(--primary)" strokeWidth="6.25px" />
+                    </div>
+                  </div>
+
+                  {/* Right: Stacked Expense Badge & Category Filter Icons */}
+                  <div className={styles.pieRightStack}>
+                    <span className={styles.pieExpensePill}>
+                      <ArrowDownIcon size={12} color="#838487" strokeWidth="6.25px" />
+                      <span>Expense</span>
+                    </span>
+
+                    <div className={styles.pieCategoryIcons}>
+                      <div className={styles.catRoundOrange} title="Housing">
+                        <HouseIcon size={12} color="#EF8354" strokeWidth="6.25px" />
+                      </div>
+                      <div className={styles.catRoundTeal} title="Travel">
+                        <AirplaneIcon size={12} color="#20C49E" strokeWidth="6.25px" />
+                      </div>
+                      <div className={styles.catRoundCoral} title="Dining">
+                        <SpoonForkIcon size={12} color="#F56960" strokeWidth="6.25px" />
+                      </div>
+                      <div className={styles.catRoundPink} title="Health">
+                        <HeartIcon size={12} color="#DD56B2" strokeWidth="6.25px" />
+                      </div>
                     </div>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillTeal}`}>
+                <StonksIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>Visual Reports & Analytics</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Visualize your spending habits and income trends with clean, interactive charts. Monitor your net worth and review your transaction history your way.
+              </p>
+            </div>
           </div>
+
+          {/* =========================================================
+              BOX 5: Plan Your Subscriptions (Span 4)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxPlanned}`}>
+            {/* Visual Component at TOP */}
+            <div className={styles.visualPlannedWrap}>
+              <div className={styles.miniPlannedWidget}>
+                <div className={styles.plannedHeaderRow}>
+                  <span className={styles.monthTag}>October</span>
+                  <span className={styles.dueBadge}>2 Due Soon</span>
+                </div>
+
+                {/* Calendar strip: Sunday 4 to Saturday 10 */}
+                <div className={styles.miniCalendarStrip}>
+                  <div className={styles.calDay}><span className={styles.calDayName}>S</span><span className={styles.calDate}>4</span></div>
+                  <div className={styles.calDay}><span className={styles.calDayName}>M</span><span className={styles.calDate}>5</span></div>
+                  <div className={styles.calDay}><span className={styles.calDayName}>T</span><span className={styles.calDate}>6</span></div>
+                  <div className={styles.calDay}><span className={styles.calDayName}>W</span><span className={styles.calDate}>7</span></div>
+                  <div className={styles.calDay}><span className={styles.calDayName}>T</span><span className={styles.calDate}>8</span></div>
+                  <div className={`${styles.calDay} ${styles.calDayActive}`}><span className={styles.calDayName}>F</span><span className={styles.calDate}>9</span></div>
+                  <div className={styles.calDay}><span className={styles.calDayName}>S</span><span className={styles.calDate}>10</span></div>
+                </div>
+
+                {/* Clean un-overlapped vertical bill cards */}
+                <div className={styles.plannedItemsListNoOverlap}>
+                  {/* Top Card: Music Subscription */}
+                  <div className={styles.miniBillCardClean}>
+                    <div className={styles.billIconCirclePurple}>
+                      <HeadphonesIcon size={15} color="#9957BD" strokeWidth="6.25px" />
+                    </div>
+                    <div className={styles.billMeta}>
+                      <span className={styles.billName}>Music Subscription</span>
+                      <span className={styles.billDue}>Oct 9 • Recurring</span>
+                    </div>
+                    <div className={styles.billRightGroup}>
+                      <span className={styles.billAmount}>-$14.99</span>
+                      <span className={styles.billPillUrgent}>Due today</span>
+                    </div>
+                  </div>
+
+                  {/* Bottom Card: Apartment Rent */}
+                  <div className={styles.miniBillCardClean}>
+                    <div className={styles.billIconCircleBlue}>
+                      <HouseIcon size={15} color="#4C74DB" strokeWidth="6.25px" />
+                    </div>
+                    <div className={styles.billMeta}>
+                      <span className={styles.billName}>Apartment Rent</span>
+                      <span className={styles.billDue}>Oct 15 • Monthly</span>
+                    </div>
+                    <div className={styles.billRightGroup}>
+                      <span className={styles.billAmount}>-$1,250.00</span>
+                      <span className={styles.billPillNormal}>In 6 days</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillPurple}`}>
+                <ReceiptIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>Plan Your Subscriptions</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Keep track of upcoming renewals, recurring dues, and scheduled settlements before they sneak up on you.
+              </p>
+            </div>
+          </div>
+
+          {/* =========================================================
+              BOX 6: One-Time Payment, Premium Forever (Span 6)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxLifetime}`}>
+            {/* Visual Component: Lifetime Pass Card at TOP */}
+            <div className={styles.visualLifetimeWrap}>
+              <div className={styles.lifetimePassCard}>
+                <div className={styles.passHeaderRow}>
+                  <div className={styles.passLogoGroup}>
+                    <div className={styles.passAppIconSquircle}>
+                      <img src={appIcon} alt="eXpend" className={styles.passAppLogoImg} />
+                    </div>
+                    <span className={styles.passBrandTitle}>eXpend Premium</span>
+                  </div>
+                </div>
+
+                <div className={styles.passHeroRow}>
+                  <div className={styles.passHeroLeft}>
+                    <span className={styles.passHeroClaim}>Pay Once, Own Forever</span>
+                    <span className={styles.passHeroSub}>Zero recurring fees • No subscriptions</span>
+                  </div>
+                  <div className={styles.passInfinityIconWrap}>
+                    <InfinityIcon size={32} color="#4C74DB" strokeWidth="6.25px" />
+                  </div>
+                </div>
+
+                <div className={styles.passPerksRow}>
+                  <span className={styles.passPerkPill}>✓ Unlimited Accounts</span>
+                  <span className={styles.passPerkPill}>✓ Cloud & Local Backup</span>
+                  <span className={styles.passPerkPill}>✓ All Future Updates</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillPink}`}>
+                <CoinIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>One-Time Payment, Premium Forever</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Say goodbye to recurring monthly subscriptions. One payment unlocks full premium access for life. Stay tuned for more updates!
+              </p>
+            </div>
+          </div>
+
+          {/* =========================================================
+              BOX 7: Private and Serverless Design (Span 6)
+              Illustration at TOP, Centered Badge & Text at BOTTOM
+             ========================================================= */}
+          <div className={`${styles.bentoBox} ${styles.boxPrivacy}`}>
+            {/* Visual Component: Square Cards Fanned Spread at TOP */}
+            <div className={styles.visualBackupWrap}>
+              <div className={styles.backupFanStage}>
+                <div className={`${styles.squareBackupCardFan} ${styles.fanCard1}`}>
+                  <div className={styles.backupIconCircleYellow}>
+                    <JsonIcon size={18} color="#EAAF3B" strokeWidth="6.25px" />
+                  </div>
+                  <span className={styles.backupSquareTitle}>JSON</span>
+                </div>
+
+                <div className={`${styles.squareBackupCardFan} ${styles.fanCard2}`}>
+                  <div className={styles.backupIconCircleGreen}>
+                    <NoteIcon size={18} color="#0DBF96" strokeWidth="6.25px" />
+                  </div>
+                  <span className={styles.backupSquareTitle}>CSV</span>
+                </div>
+
+                <div className={`${styles.squareBackupCardFan} ${styles.fanCard3}`}>
+                  <div className={styles.backupIconCircleOrange}>
+                    <BackupIcon size={18} color="#EF8354" strokeWidth="6.25px" />
+                  </div>
+                  <span className={styles.backupSquareTitle}>Local Backup</span>
+                </div>
+
+                <div className={`${styles.squareBackupCardFan} ${styles.fanCard4}`}>
+                  <div className={styles.backupIconCircleBlue}>
+                    <CloudBackupIcon size={18} color="#4C74DB" strokeWidth="6.25px" />
+                  </div>
+                  <span className={styles.backupSquareTitle}>Cloud Backup</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Centered Badge & Text at BOTTOM */}
+            <div className={styles.boxTextContent}>
+              <div className={`${styles.boxTagPill} ${styles.tagPillEmerald}`}>
+                <LockIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
+                <span>Private and Serverless Design</span>
+              </div>
+              <p className={styles.boxSubtitle}>
+                Your financial data stays yours, alone, with multiple export options to choose from. Backup and restore your data anytime, with optional Google Drive cloud backup.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      {/* SCREENSHOT DETAIL PREVIEW OVERLAY / LIGHTBOX MODAL */}
-      {mounted && selectedImageIndex !== null && typeof document !== 'undefined'
-        ? createPortal(
-            <div
-              className={styles.lightboxOverlay}
-              role="dialog"
-              aria-modal="true"
-              aria-label="Screenshot detail preview modal"
-            >
-              {/* Semi-transparent dark blur backdrop */}
-              <div
-                className={styles.lightboxBackdrop}
-                onClick={handleClosePreview}
-              />
-
-              {/* Lightbox Modal Container */}
-              <div
-                className={styles.lightboxContainer}
-                onTouchStart={handleTouchStart}
-                onTouchEnd={handleTouchEnd}
-              >
-                {/* Top Floating Capsule Bar */}
-                <div className={styles.lightboxTopCapsule}>
-                  <div className={styles.lightboxCapsuleMeta}>
-                    <span className={styles.lightboxCapsuleIcon}>
-                      {featureItems[selectedImageIndex].icon('var(--accent-light)', 16)}
-                    </span>
-                    <span className={styles.lightboxCapsuleCounter}>
-                      {selectedImageIndex + 1} / {featureItems.length}
-                    </span>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={handleClosePreview}
-                    className={styles.lightboxCapsuleCloseBtn}
-                    aria-label="Close screenshot preview"
-                  >
-                    <CloseIcon size={16} color="#FFFFFF" />
-                  </button>
-                </div>
-
-                {/* Main Visual Stage */}
-                <div className={styles.lightboxVisualStage}>
-                  {/* Previous Button */}
-                  <button
-                    type="button"
-                    onClick={handlePrevPreview}
-                    className={`${styles.lightboxNavBtn} ${styles.lightboxNavPrev}`}
-                    aria-label="Previous screenshot"
-                  >
-                    <ChevronLeftIcon size={24} color="#FFFFFF" />
-                  </button>
-
-                  {/* Phone Mockup Frame */}
-                  <div className={styles.lightboxPhoneContainer}>
-                    <div className={styles.lightboxBacklight} />
-                    <div className={styles.lightboxPhoneFrame}>
-                      <div className={styles.screenSheen} />
-                      <img
-                        key={featureItems[selectedImageIndex].image}
-                        src={featureItems[selectedImageIndex].image}
-                        alt={featureItems[selectedImageIndex].imageAlt}
-                        className={styles.lightboxScreenImg}
-                      />
-                    </div>
-                  </div>
-
-                  {/* Next Button */}
-                  <button
-                    type="button"
-                    onClick={handleNextPreview}
-                    className={`${styles.lightboxNavBtn} ${styles.lightboxNavNext}`}
-                    aria-label="Next screenshot"
-                  >
-                    <ChevronRightIcon size={24} color="#FFFFFF" />
-                  </button>
-                </div>
-
-                {/* Bottom Floating Glass Card */}
-                <div className={styles.lightboxBottomCard}>
-                  <h3 className={styles.lightboxTitle}>
-                    {featureItems[selectedImageIndex].title}
-                  </h3>
-                  <p className={styles.lightboxDesc}>
-                    {featureItems[selectedImageIndex].description}
-                  </p>
-
-                  {/* 6-Slide Quick Jump Pagination Dots */}
-                  <div
-                    className={styles.lightboxDotsTrack}
-                    role="tablist"
-                    aria-label="Lightbox screenshot slides"
-                  >
-                    {featureItems.map((_, dotIdx) => (
-                      <button
-                        key={dotIdx}
-                        type="button"
-                        role="tab"
-                        aria-selected={selectedImageIndex === dotIdx}
-                        aria-label={`Jump to screenshot ${dotIdx + 1}`}
-                        onClick={() => setSelectedImageIndex(dotIdx)}
-                        className={`${styles.lightboxDot} ${
-                          selectedImageIndex === dotIdx ? styles.lightboxDotActive : ''
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>,
-            document.body
-          )
-        : null}
     </section>
   );
 };

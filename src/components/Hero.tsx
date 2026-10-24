@@ -7,9 +7,6 @@ import {
   CardIcon,
   AirplaneIcon,
   WalletIcon,
-  LockIcon,
-  LightningBoltIcon,
-  CoinIcon,
 } from './icons';
 import appScreenImg from '../assets/app-screen.png';
 import styles from './Hero.module.css';
@@ -17,81 +14,25 @@ import styles from './Hero.module.css';
 export const Hero: React.FC = () => {
   return (
     <section className={styles.heroSection}>
-      {/* 1. Delicate Radial Masked Dot Matrix Grid */}
-      <div className={styles.heroDotGrid} aria-hidden="true" />
-
-      {/* 2. Subtle Boundary Seam Light Sweep */}
-      <div className={styles.bottomLightSweep} aria-hidden="true" />
-
-      {/* 3. Floating Frosted Glass Micro-Cards */}
-      {/* Badge 1: Private & Offline (Top-Right) */}
-      <div className={`${styles.perimeterGlassCard} ${styles.glassCardOffline} ${styles.glassReveal1}`}>
-        <div className={`${styles.glassCardInner} ${styles.floatCardA}`}>
-          <div className={styles.glassIconSquircleEmerald}>
-            <LockIcon size={16} color="#0DBF96" strokeWidth="6.25px" />
-          </div>
-          <div className={styles.glassCardContent}>
-            <span className={styles.glassCardTitle}>Private & Offline</span>
-            <span className={styles.glassCardSub}>No Accounts</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Badge 2: Quickly Record Transactions (Top-Left) */}
-      <div className={`${styles.perimeterGlassCard} ${styles.glassCardHierarchy} ${styles.glassReveal2}`}>
-        <div className={`${styles.glassCardInner} ${styles.floatCardB}`}>
-          <div className={styles.glassIconSquircleSunset}>
-            <LightningBoltIcon size={16} color="#EF8354" strokeWidth="6.25px" />
-          </div>
-          <div className={styles.glassCardContent}>
-            <span className={styles.glassCardTitle}>Quick Recording</span>
-            <span className={styles.glassCardSub}>Templates & Keypad</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Badge 3: Zero Subscriptions (Bottom-Left) */}
-      <div className={`${styles.perimeterGlassCard} ${styles.glassCardBudgets} ${styles.glassReveal3}`}>
-        <div className={`${styles.glassCardInner} ${styles.floatCardC}`}>
-          <div className={styles.glassIconSquircleCobalt}>
-            <CoinIcon size={16} color="#7094F0" strokeWidth="6.25px" />
-          </div>
-          <div className={styles.glassCardContent}>
-            <span className={styles.glassCardTitle}>Zero Subscriptions</span>
-            <span className={styles.glassCardSub}>Pay Once • Lifetime Access</span>
-          </div>
-        </div>
-      </div>
-
       <div className="container">
         <div className={styles.heroGrid}>
           {/* Left Column: Animated App Logo & Orchestrated Typographic Reveal */}
           <div>
-            {/* 1. Animated Logo (Starts immediately at T = 0.0s) */}
-            <AnimatedLogo size={112} />
+            {/* 1. Animated Logo */}
+            <AnimatedLogo size={56} />
 
-            {/* 2. Headline & Setup Text (Stagger 1: T = 0.45s) */}
+            {/* 2. Headline & Setup Text */}
             <div className={styles.revealHeadline}>
               <span className={styles.heroPreTitle}>
                 Tracking your finances is a chore.
               </span>
 
               <h1 className={styles.heroMainTitle}>
-                Let's make it{' '}
-                <span style={{ color: 'var(--accent-light)' }}>
-                  a habit.
-                </span>
+                Let's make it a habit.
               </h1>
             </div>
 
-            {/* 3. Subtext Paragraph (Stagger 2: T = 0.75s) */}
-            <div className={styles.revealSubtext}>
-              <p className={styles.heroDescription}>
-                Track daily expenses, set flexible budgets, and reach your goals, 100% privately on your device with no monthly subscriptions.
-              </p>
-            </div>
-
-            {/* 4. Official Download Badges (Stagger 3: T = 1.05s) */}
+            {/* 3. Official Download Badges */}
             <div className={styles.revealBadges}>
               <StoreBadges />
             </div>
@@ -99,27 +40,18 @@ export const Hero: React.FC = () => {
 
           {/* Right Column: 3D Perspective Phone Stage with Orbiting Highlights & Layered App Components */}
           <div className={styles.phoneMockupWrapper}>
-            {/* Dedicated Background Layer (Guaranteed Behind Phone & Chips) */}
+            {/* Dedicated Background Layer (Atmospheric Ambient Aura) */}
             <div className={styles.phoneBackdropGroup}>
-              {/* Layer 1: Radiant Backlight Aura */}
+              {/* Elegant Radiant Multi-Tone Backlight Aura */}
               <div className={`${styles.phoneAuraContainer} ${styles.auraReveal}`}>
                 <div className={styles.phoneBacklightAura} />
-              </div>
-
-              {/* Layer 2: Emanating Concentric Ripple Rings */}
-              <div className={`${styles.phoneRingsContainer} ${styles.ringsReveal}`}>
-                <div className={`${styles.phoneRingWrap} ${styles.ringWrap1}`}>
-                  <div className={`${styles.phoneEmanatingRing} ${styles.ring1} ${styles.pulseLoop1}`} />
-                </div>
-                <div className={`${styles.phoneRingWrap} ${styles.ringWrap2}`}>
-                  <div className={`${styles.phoneEmanatingRing} ${styles.ring2} ${styles.pulseLoop2}`} />
-                </div>
+                <div className={styles.phoneAuraSecondary} />
               </div>
             </div>
 
             {/* Interactive Phone Mockup & Floating Overlay Components */}
             <div className={styles.phoneAnchor}>
-              {/* Layer 3: Phone Device Container (Centerpiece hardware) */}
+              {/* Layer 3: Phone Device Container (Single Sleek Hardware Bezel) */}
               <div className={`${styles.phoneDeviceContainer} ${styles.phoneReveal}`}>
                 <div className={styles.phoneMockup}>
                   {/* Specular Diagonal Glass Sheen */}
@@ -134,11 +66,11 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 4: Emanating Pure Vector Money Icons (Floating in front of phone) */}
+              {/* Layer 4: Emanating Pure Vector Money Icons in Vibrant Blue */}
               <div className={`${styles.financeIconAnchor} ${styles.iconPosBank} ${styles.iconReveal1}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <BankIcon size={34} color="var(--accent-light)" />
+                    <BankIcon size={34} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
@@ -146,7 +78,7 @@ export const Hero: React.FC = () => {
               <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal2}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float2}`}>
-                    <CardIcon size={34} color="var(--accent-light)" />
+                    <CardIcon size={34} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
@@ -154,7 +86,7 @@ export const Hero: React.FC = () => {
               <div className={`${styles.financeIconAnchor} ${styles.iconPosPiggy} ${styles.iconReveal3}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float3}`}>
-                    <PiggyBankIcon size={35} color="var(--accent-light)" />
+                    <PiggyBankIcon size={35} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
@@ -174,7 +106,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 5: Authentic eXpend App Component 2: Vacation GoalListItem (Bottom-Right) */}
+              {/* Layer 5: Authentic eXpend App Component 2: Vacation GoalListItem (Bottom-Right, in LIGHT MODE) */}
               <div className={`${styles.appFloatingCard} ${styles.goalCardWrap} ${styles.cardReveal2}`}>
                 <div className={styles.goalCardBody}>
                   <div className={styles.goalTopRow}>
@@ -202,6 +134,35 @@ export const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Center-Bottom Animated Scroll Guide */}
+      <a
+        href="#features"
+        className={styles.scrollGuide}
+        aria-label="Scroll down to view features"
+        onClick={(e) => {
+          e.preventDefault();
+          document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+      >
+        <span className={styles.scrollGuideText}>Explore Features</span>
+        <svg
+          className={styles.scrollChevron}
+          width="14"
+          height="8"
+          viewBox="0 0 14 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1 1L7 7L13 1"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </a>
     </section>
   );
 };

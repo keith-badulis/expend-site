@@ -8,7 +8,7 @@
   <meta name="keywords" content="budgeting app, expense tracker, personal finance, money manager, offline budget app, debt tracker, wallet tracker, eXpend" />
   <meta name="author" content="subdial" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1F2A47" />
+  <meta name="theme-color" content="#FCFCFC" />
 
   <!-- Canonical URL -->
   <link rel="canonical" href="https://expend.subdial.dev/" />
@@ -62,5 +62,17 @@
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+  <script>
+    if (window.location.hash || window.location.search.includes('scroll=')) {
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const target = window.location.hash
+            ? document.querySelector(window.location.hash)
+            : document.getElementById(new URLSearchParams(window.location.search).get('scroll'));
+          target?.scrollIntoView({ behavior: 'instant', block: 'start' });
+        }, 150);
+      });
+    }
+  </script>
 </body>
 </html>
