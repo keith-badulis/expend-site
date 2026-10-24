@@ -5,19 +5,28 @@ import {
   BankIcon,
   PiggyBankIcon,
   CardIcon,
+  BillsIcon,
+  ShoppingCartIcon,
+  CoinIcon,
   AirplaneIcon,
   WalletIcon,
 } from './icons';
-import appScreenImg from '../assets/app-screen.webp';
+import appScreenImg from '../assets/screenshots/IMG_3359.webp';
 import styles from './Hero.module.css';
 
 export const Hero: React.FC = () => {
   return (
     <section className={styles.heroSection}>
+      {/* Subtle Architectural Dot Grid & Ambient Radial Glow */}
+      <div className={styles.heroAtmosphere} aria-hidden="true">
+        <div className={styles.heroDotGrid} />
+        <div className={styles.heroAmbientGlowLeft} />
+      </div>
+
       <div className="container">
         <div className={styles.heroGrid}>
           {/* Left Column: Animated App Logo & Orchestrated Typographic Reveal */}
-          <div>
+          <div className={styles.heroLeftColumn}>
             {/* 1. Animated Logo */}
             <AnimatedLogo size={56} interactive={false} />
 
@@ -28,20 +37,35 @@ export const Hero: React.FC = () => {
               </span>
 
               <h1 className={styles.heroMainTitle}>
-                Let's make it a habit.
+                Let's make it <span className={styles.heroHighlight}>a habit.</span>
               </h1>
             </div>
 
             {/* 3. Official Download Badges */}
             <div className={styles.revealBadges}>
               <StoreBadges />
+
+              {/* 4. High-Trust Product Pillars Micro-Row */}
+              <div className={styles.heroTrustRow}>
+                <span className={styles.heroTrustItem}>Smart Budget Tracking</span>
+                <span className={styles.heroTrustDot} aria-hidden="true">•</span>
+                <span className={styles.heroTrustItem}>100% On-Device</span>
+                <span className={styles.heroTrustDot} aria-hidden="true">•</span>
+                <span className={styles.heroTrustItem}>No Subscriptions</span>
+              </div>
             </div>
           </div>
 
           {/* Right Column: 3D Perspective Phone Stage with Orbiting Highlights & Layered App Components */}
           <div className={styles.phoneMockupWrapper}>
-            {/* Dedicated Background Layer (Atmospheric Ambient Aura) */}
+            {/* Dedicated Background Layer (Atmospheric Ambient Aura + Orbital Rings) */}
             <div className={styles.phoneBackdropGroup}>
+              {/* Concentric Stage Halo Rings */}
+              <div className={`${styles.phoneOrbitalRings} ${styles.auraReveal}`} aria-hidden="true">
+                <div className={styles.orbitalRingInner} />
+                <div className={styles.orbitalRingOuter} />
+              </div>
+
               {/* Elegant Radiant Multi-Tone Backlight Aura */}
               <div className={`${styles.phoneAuraContainer} ${styles.auraReveal}`}>
                 <div className={styles.phoneBacklightAura} />
@@ -71,19 +95,20 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 4: Emanating Pure Vector Money Icons in Vibrant Blue */}
+              {/* Layer 4: Emanating Pure Vector Finance Icons in Balanced Diagonal Symmetry */}
+              {/* Right Arc Icons (Top to Lower-Mid, above Vacation Card) */}
               <div className={`${styles.financeIconAnchor} ${styles.iconPosBank} ${styles.iconReveal1}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <BankIcon size={34} color="var(--accent-color)" />
+                    <BankIcon size={33} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
 
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal2}`}>
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosBills} ${styles.iconReveal2}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float2}`}>
-                    <CardIcon size={34} color="var(--accent-color)" />
+                    <BillsIcon size={34} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
@@ -91,7 +116,32 @@ export const Hero: React.FC = () => {
               <div className={`${styles.financeIconAnchor} ${styles.iconPosPiggy} ${styles.iconReveal3}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float3}`}>
-                    <PiggyBankIcon size={35} color="var(--accent-color)" />
+                    <PiggyBankIcon size={34} color="var(--accent-color)" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Left Arc Icons (Upper-Mid to Bottom, below Savings Card) */}
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal2}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float2}`}>
+                    <CardIcon size={33} color="var(--accent-color)" />
+                  </div>
+                </div>
+              </div>
+
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosCart} ${styles.iconReveal3}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
+                    <ShoppingCartIcon size={33} color="var(--accent-color)" />
+                  </div>
+                </div>
+              </div>
+
+              <div className={`${styles.financeIconAnchor} ${styles.iconPosCoin} ${styles.iconReveal4}`}>
+                <div className={styles.emanatingFinanceIcon}>
+                  <div className={`${styles.financeIconInner} ${styles.float3}`}>
+                    <CoinIcon size={31} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
