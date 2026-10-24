@@ -5,8 +5,6 @@ import {
   BankIcon,
   PiggyBankIcon,
   CardIcon,
-  BillsIcon,
-  ShoppingCartIcon,
   CoinIcon,
   AirplaneIcon,
   WalletIcon,
@@ -95,20 +93,12 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 4: Emanating Pure Vector Finance Icons in Balanced Diagonal Symmetry */}
-              {/* Right Arc Icons (Top to Lower-Mid, above Vacation Card) */}
+              {/* Layer 4: Emanating Pure Vector Finance Icons (2 per side for clean symmetry) */}
+              {/* Right Arc Icons (above Vacation Card) */}
               <div className={`${styles.financeIconAnchor} ${styles.iconPosBank} ${styles.iconReveal1}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <BankIcon size={33} color="var(--accent-color)" />
-                  </div>
-                </div>
-              </div>
-
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosBills} ${styles.iconReveal2}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float2}`}>
-                    <BillsIcon size={34} color="var(--accent-color)" />
+                    <BankIcon size={34} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
@@ -116,32 +106,24 @@ export const Hero: React.FC = () => {
               <div className={`${styles.financeIconAnchor} ${styles.iconPosPiggy} ${styles.iconReveal3}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float3}`}>
-                    <PiggyBankIcon size={34} color="var(--accent-color)" />
+                    <PiggyBankIcon size={35} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
 
-              {/* Left Arc Icons (Upper-Mid to Bottom, below Savings Card) */}
+              {/* Left Arc Icons (below Savings Card) */}
               <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal2}`}>
                 <div className={styles.emanatingFinanceIcon}>
                   <div className={`${styles.financeIconInner} ${styles.float2}`}>
-                    <CardIcon size={33} color="var(--accent-color)" />
-                  </div>
-                </div>
-              </div>
-
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosCart} ${styles.iconReveal3}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <ShoppingCartIcon size={33} color="var(--accent-color)" />
+                    <CardIcon size={34} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>
 
               <div className={`${styles.financeIconAnchor} ${styles.iconPosCoin} ${styles.iconReveal4}`}>
                 <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float3}`}>
-                    <CoinIcon size={31} color="var(--accent-color)" />
+                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
+                    <CoinIcon size={32} color="var(--accent-color)" />
                   </div>
                 </div>
               </div>

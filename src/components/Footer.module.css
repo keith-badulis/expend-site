@@ -22,7 +22,7 @@
 
 .footerBrandText {
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
