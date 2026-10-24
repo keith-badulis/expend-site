@@ -58,6 +58,8 @@ export const Hero: React.FC = () => {
                   <div className={styles.screenSheen} />
 
                   <div className={styles.phoneScreen}>
+                    {/* Authentic iPhone Dynamic Island */}
+                    <div className={styles.dynamicIsland} aria-hidden="true" />
                     <img
                       src={appScreenImg}
                       alt="eXpend App Home Screen"

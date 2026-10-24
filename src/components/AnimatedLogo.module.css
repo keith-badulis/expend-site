@@ -25,25 +25,25 @@
 }
 
 .spinInitial {
-  animation: logoSquircleMorphSpin 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logoSquircleMorphSpin 0.85s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .spinManual {
-  animation: logoSquircleMorphSpin 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logoSquircleMorphSpin 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* INNER LOGO IMAGE */
 .innerImg {
   display: block;
   object-fit: contain;
-  animation: logoScaleOnly 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: logoScaleOnly 0.75s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .brandText {
   display: flex;
   flex-direction: column;
   line-height: 1.2;
-  animation: logoTextFadeIn 1s cubic-bezier(0.25, 0.1, 0.25, 1) 0.35s both;
+  animation: logoTextFadeIn 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
 }
 
 .brandName {
@@ -65,12 +65,12 @@
 /* KEYFRAMES */
 @keyframes logoSquircleMorphSpin {
   0% {
-    transform: rotate(-270deg) scale(0.88);
+    transform: rotate(-180deg) scale(0.86);
     border-radius: 50%;
     opacity: 0;
     box-shadow: 0 0 0 transparent;
   }
-  40% {
+  35% {
     opacity: 1;
     box-shadow: 0 0 0 transparent;
   }
