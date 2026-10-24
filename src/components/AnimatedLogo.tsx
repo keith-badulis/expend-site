@@ -64,7 +64,6 @@ export const AnimatedLogo: React.FC<AnimatedLogoProps> = ({
       ref={containerRef}
       className={`${styles.container} ${className}`}
       onClick={interactive ? triggerAnimation : undefined}
-      title={interactive ? 'Click to animate' : undefined}
       style={{
         marginBottom: showText ? undefined : '0',
         userSelect: 'none',

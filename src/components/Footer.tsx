@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import appLogoImg from '../assets/app-logo.png';
 import styles from './Footer.module.css';
 
 export const Footer: React.FC = () => {
@@ -8,13 +7,8 @@ export const Footer: React.FC = () => {
     <footer className={styles.simpleFooter}>
       <div className="container">
         <div className={styles.simpleFooterContent}>
-          {/* Centered Grayscale Logo */}
-          <div className={styles.footerLogoWrap}>
-            <img
-              src={appLogoImg}
-              alt="eXpend Logo"
-              className={styles.footerGrayscaleLogo}
-            />
+          {/* Brand Name */}
+          <div className={styles.footerBrandWrap}>
             <span className={styles.footerBrandText}>eXpend</span>
           </div>
 

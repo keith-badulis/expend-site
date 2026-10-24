@@ -5,6 +5,10 @@
   position: relative;
 }
 
+.titleHighlight {
+  color: var(--accent-color);
+}
+
 /* Bento Grid */
 .bentoGrid {
   display: grid;
@@ -33,10 +37,6 @@
   overflow: hidden;
   transition: background-color 0.3s ease;
   min-height: 380px;
-}
-
-.bentoBox:hover {
-  background-color: rgba(221, 224, 233, 0.58);
 }
 
 /* Grid Spans */
@@ -74,11 +74,6 @@
   align-self: center;
   box-shadow: 0 4px 14px rgba(24, 38, 75, 0.08);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-.bentoBox:hover .boxTagPill {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(24, 38, 75, 0.14);
 }
 
 /* App 50-Color Tokens (expend/src/colors.ts) */
@@ -415,27 +410,6 @@
   color: var(--text-secondary);
 }
 
-/* Tactile Hover Animation on Box 1 */
-.boxAccounts:hover .backWalletCard {
-  transform: rotate(-5deg) translate(-8px, -6px);
-  box-shadow: 0 14px 32px rgba(245, 105, 96, 0.42);
-}
-
-.boxAccounts:hover .frontWalletCard {
-  transform: rotate(-5deg) translate(6px, 4px);
-  box-shadow: 0 16px 36px rgba(76, 116, 219, 0.45);
-}
-
-.boxAccounts:hover .miniGoalCard {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
-}
-
-.boxAccounts:hover .miniDebtCard {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
-}
-
 /* =========================================================
    BOX 2: Quick & easy recording
    Calculator Keypad on Left + Overlapping Template Chips on Right
@@ -556,17 +530,6 @@
   box-shadow: 0 10px 24px rgba(24, 38, 75, 0.12);
 }
 
-/* Box 2 Hover: Animate to Level (0deg) and Separate into Clean Distinct Rows */
-.boxKeypad:hover .miniTemplateChipTop {
-  transform: rotate(0deg) translateY(-8px);
-  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.10);
-}
-
-.boxKeypad:hover .miniTemplateChipBottom {
-  transform: rotate(0deg) translateY(8px);
-  box-shadow: 0 14px 30px rgba(24, 38, 75, 0.16);
-}
-
 .templateIconSquircleOrange {
   width: 28px;
   height: 28px;
@@ -619,12 +582,6 @@
   color: var(--color-red);
 }
 
-/* Hover Animation on Box 2 Keypad */
-.boxKeypad:hover .miniKeypadCard {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
-}
-
 /* =========================================================
    BOX 3: Flexible budget planning (Clean Side-by-Side Cards)
    ========================================================= */
@@ -657,16 +614,6 @@
   box-shadow: 0 4px 14px rgba(24, 38, 75, 0.05);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   box-sizing: border-box;
-}
-
-.boxBudgets:hover .budgetItemCard {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
-}
-
-.boxBudgets:hover .categoryDistributionCard {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(24, 38, 75, 0.08);
 }
 
 /* Category Spending Distribution Card (Replicating media_1792731495776_8d35d98f.png) */
@@ -871,11 +818,6 @@
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.boxReports:hover .miniTrendCard {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
-}
-
 .trendHeaderRow {
   display: flex;
   align-items: center;
@@ -966,11 +908,6 @@
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.boxReports:hover .miniPieCard {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
-}
-
 .pieDonutWrap {
   position: relative;
   width: 62px;
@@ -1044,10 +981,6 @@
 .catRoundTeal   { background: rgba(32, 196, 158, 0.15); }
 .catRoundCoral  { background: rgba(245, 105, 96, 0.15); }
 .catRoundPink   { background: rgba(221, 86, 178, 0.15); }
-
-.pieCategoryIcons > div:hover {
-  transform: scale(1.12);
-}
 
 /* =========================================================
    BOX 5: Stay ahead of bills
@@ -1236,16 +1169,6 @@
   white-space: nowrap;
 }
 
-.boxPlanned:hover .miniPlannedWidget {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
-}
-
-.boxPlanned:hover .miniBillCardClean {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(24, 38, 75, 0.07);
-}
-
 /* =========================================================
    BOX 6: ONE-TIME PAYMENT, LIFETIME ACCESS
    ========================================================= */
@@ -1272,11 +1195,6 @@
   gap: 10px;
   box-shadow: 0 6px 20px rgba(24, 38, 75, 0.06);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
-}
-
-.boxLifetime:hover .lifetimePassCard {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(24, 38, 75, 0.1);
 }
 
 .passHeaderRow {
@@ -1438,26 +1356,6 @@
   z-index: 4;
 }
 
-.boxPrivacy:hover .squareBackupCardFan {
-  margin: 0 5px;
-}
-
-.boxPrivacy:hover .fanCard1 {
-  transform: rotate(-5deg) translateY(-4px);
-}
-
-.boxPrivacy:hover .fanCard2 {
-  transform: rotate(-1.5deg) translateY(-8px);
-}
-
-.boxPrivacy:hover .fanCard3 {
-  transform: rotate(1.5deg) translateY(-8px);
-}
-
-.boxPrivacy:hover .fanCard4 {
-  transform: rotate(5deg) translateY(-4px);
-}
-
 /* Shared Icon Circles */
 .backupIconCircleGreen {
   width: 36px;
@@ -1501,6 +1399,207 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+}
+
+/* =========================================================
+   DESKTOP HOVER ANIMATIONS
+   (Strictly enabled in desktop view; disabled on mobile)
+   ========================================================= */
+@media (min-width: 961px) and (hover: hover) and (pointer: fine) {
+  .bentoBox:hover {
+    background-color: rgba(221, 224, 233, 0.58);
+  }
+
+  .bentoBox:hover .boxTagPill {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(24, 38, 75, 0.14);
+  }
+
+  /* Box 1: Accounts */
+  .boxAccounts:hover .backWalletCard {
+    transform: rotate(-5deg) translate(-8px, -6px);
+    box-shadow: 0 14px 32px rgba(245, 105, 96, 0.42);
+  }
+  .boxAccounts:hover .frontWalletCard {
+    transform: rotate(-5deg) translate(6px, 4px);
+    box-shadow: 0 16px 36px rgba(76, 116, 219, 0.45);
+  }
+  .boxAccounts:hover .miniGoalCard {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
+  }
+  .boxAccounts:hover .miniDebtCard {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
+  }
+
+  /* Box 2: Keypad & Templates */
+  .boxKeypad:hover .miniTemplateChipTop {
+    transform: rotate(0deg) translateY(-8px);
+    box-shadow: 0 8px 22px rgba(24, 38, 75, 0.10);
+  }
+  .boxKeypad:hover .miniTemplateChipBottom {
+    transform: rotate(0deg) translateY(8px);
+    box-shadow: 0 14px 30px rgba(24, 38, 75, 0.16);
+  }
+  .boxKeypad:hover .miniKeypadCard {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+  }
+
+  /* Box 3: Budgets */
+  .boxBudgets:hover .budgetItemCard {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
+  }
+  .boxBudgets:hover .categoryDistributionCard {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(24, 38, 75, 0.08);
+  }
+
+  /* Box 4: Reports */
+  .boxReports:hover .miniTrendCard {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+  }
+  .boxReports:hover .miniPieCard {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+  }
+  .pieCategoryIcons > div:hover {
+    transform: scale(1.12);
+  }
+
+  /* Box 5: Planned Bills */
+  .boxPlanned:hover .miniPlannedWidget {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+  }
+  .boxPlanned:hover .miniBillCardClean {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(24, 38, 75, 0.07);
+  }
+
+  /* Box 6: Lifetime Access */
+  .boxLifetime:hover .lifetimePassCard {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(24, 38, 75, 0.1);
+  }
+
+  /* Box 7: Privacy & Backups */
+  .boxPrivacy:hover .squareBackupCardFan {
+    margin: 0 5px;
+  }
+  .boxPrivacy:hover .fanCard1 {
+    transform: rotate(-5deg) translateY(-4px);
+  }
+  .boxPrivacy:hover .fanCard2 {
+    transform: rotate(-1.5deg) translateY(-8px);
+  }
+  .boxPrivacy:hover .fanCard3 {
+    transform: rotate(1.5deg) translateY(-8px);
+  }
+  .boxPrivacy:hover .fanCard4 {
+    transform: rotate(5deg) translateY(-4px);
+  }
+}
+
+/* =========================================================
+   MOBILE SCROLL-TRIGGERED ANIMATIONS (.boxActive)
+   (Automatically triggered as each bento box scrolls into view)
+   ========================================================= */
+.bentoBox.boxActive {
+  background-color: rgba(221, 224, 233, 0.58);
+}
+
+.bentoBox.boxActive .boxTagPill {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(24, 38, 75, 0.14);
+}
+
+/* Box 1: Accounts */
+.boxAccounts.boxActive .backWalletCard {
+  transform: rotate(-5deg) translate(-8px, -6px);
+  box-shadow: 0 14px 32px rgba(245, 105, 96, 0.42);
+}
+.boxAccounts.boxActive .frontWalletCard {
+  transform: rotate(-5deg) translate(6px, 4px);
+  box-shadow: 0 16px 36px rgba(76, 116, 219, 0.45);
+}
+.boxAccounts.boxActive .miniGoalCard {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
+}
+.boxAccounts.boxActive .miniDebtCard {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
+}
+
+/* Box 2: Keypad & Templates */
+.boxKeypad.boxActive .miniTemplateChipTop {
+  transform: rotate(0deg) translateY(-8px);
+  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.10);
+}
+.boxKeypad.boxActive .miniTemplateChipBottom {
+  transform: rotate(0deg) translateY(8px);
+  box-shadow: 0 14px 30px rgba(24, 38, 75, 0.16);
+}
+.boxKeypad.boxActive .miniKeypadCard {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+}
+
+/* Box 3: Budgets */
+.boxBudgets.boxActive .budgetItemCard {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(24, 38, 75, 0.09);
+}
+.boxBudgets.boxActive .categoryDistributionCard {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(24, 38, 75, 0.08);
+}
+
+/* Box 4: Reports */
+.boxReports.boxActive .miniTrendCard {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+}
+.boxReports.boxActive .miniPieCard {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+}
+
+/* Box 5: Planned Bills */
+.boxPlanned.boxActive .miniPlannedWidget {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 22px rgba(24, 38, 75, 0.09);
+}
+.boxPlanned.boxActive .miniBillCardClean {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(24, 38, 75, 0.07);
+}
+
+/* Box 6: Lifetime Access */
+.boxLifetime.boxActive .lifetimePassCard {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(24, 38, 75, 0.1);
+}
+
+/* Box 7: Privacy & Backups */
+.boxPrivacy.boxActive .squareBackupCardFan {
+  margin: 0 5px;
+}
+.boxPrivacy.boxActive .fanCard1 {
+  transform: rotate(-5deg) translateY(-4px);
+}
+.boxPrivacy.boxActive .fanCard2 {
+  transform: rotate(-1.5deg) translateY(-8px);
+}
+.boxPrivacy.boxActive .fanCard3 {
+  transform: rotate(1.5deg) translateY(-8px);
+}
+.boxPrivacy.boxActive .fanCard4 {
+  transform: rotate(5deg) translateY(-4px);
 }
 
 /* =========================================================
@@ -1578,9 +1677,24 @@
     max-width: 250px;
   }
 
+  /* Retain budget cards in 2 columns side-by-side on horizontal axis */
   .budgetCardsGrid {
-    grid-template-columns: 1fr;
-    max-width: 260px;
+    grid-template-columns: 1fr 1fr;
+    max-width: 320px;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .budgetItemCard {
+    padding: 7px 8px;
+  }
+
+  .budgetItemTitle {
+    font-size: 0.74rem;
+  }
+
+  .budgetItemRemaining {
+    font-size: 0.65rem;
   }
 
   .backupColoredCardsGrid {

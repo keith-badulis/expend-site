@@ -19,7 +19,7 @@ export const Hero: React.FC = () => {
           {/* Left Column: Animated App Logo & Orchestrated Typographic Reveal */}
           <div>
             {/* 1. Animated Logo */}
-            <AnimatedLogo size={56} />
+            <AnimatedLogo size={56} interactive={false} />
 
             {/* 2. Headline & Setup Text */}
             <div className={styles.revealHeadline}>

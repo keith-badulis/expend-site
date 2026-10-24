@@ -1,14 +1,13 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
-import { createPortal } from 'react-dom';
-import { CloseIcon, SunIcon, MoonIcon } from './icons';
+import { SunIcon, MoonIcon } from './icons';
 
-// Import all 18 authentic app screenshots (9 Light / Dark pairs)
+// Import all 16 authentic app screenshots (8 Light / Dark pairs)
 import img3358 from '../assets/screenshots/IMG_3358.png';
 import img3359 from '../assets/screenshots/IMG_3359.png';
 import img3360 from '../assets/screenshots/IMG_3360.png';
 import img3361 from '../assets/screenshots/IMG_3361.png';
-import img3363 from '../assets/screenshots/IMG_3363.png';
-import img3364 from '../assets/screenshots/IMG_3364.png';
+import img3377 from '../assets/screenshots/IMG_3377.png';
+import img3378 from '../assets/screenshots/IMG_3378.png';
 import img3365 from '../assets/screenshots/IMG_3365.png';
 import img3366 from '../assets/screenshots/IMG_3366.png';
 import img3367 from '../assets/screenshots/IMG_3367.png';
@@ -19,8 +18,6 @@ import img3372 from '../assets/screenshots/IMG_3372.png';
 import img3371 from '../assets/screenshots/IMG_3371.png';
 import img3373 from '../assets/screenshots/IMG_3373.png';
 import img3374 from '../assets/screenshots/IMG_3374.png';
-import img3377 from '../assets/screenshots/IMG_3377.png';
-import img3378 from '../assets/screenshots/IMG_3378.png';
 
 import styles from './ScreenshotsSection.module.css';
 
@@ -29,7 +26,6 @@ interface ScreenshotPair {
   lightImage: string;
   darkImage: string;
   title: string;
-  category: string;
 }
 
 const allScreenshots: ScreenshotPair[] = [
@@ -37,64 +33,49 @@ const allScreenshots: ScreenshotPair[] = [
     id: 'dashboard-overview',
     lightImage: img3358,
     darkImage: img3359,
-    category: 'Dashboard',
-    title: 'Net Worth & Overview',
+    title: 'Your Net Worth at a Glance',
   },
   {
     id: 'add-keypad',
     lightImage: img3360,
     darkImage: img3361,
-    category: 'Logging',
-    title: 'Keypad & Fast Entry',
+    title: 'Quick & Easy Recording',
   },
   {
     id: 'transaction-ledger',
-    lightImage: img3363,
-    darkImage: img3364,
-    category: 'Ledger',
-    title: 'Transaction Ledger & Search',
+    lightImage: img3377,
+    darkImage: img3378,
+    title: 'All Your Transactions, Reviewed',
   },
   {
     id: 'budget-details',
     lightImage: img3365,
     darkImage: img3366,
-    category: 'Budgets',
-    title: 'Budget Details & Progress',
+    title: 'Flexible Budget Planning',
   },
   {
     id: 'accounts-summary',
     lightImage: img3367,
     darkImage: img3370,
-    category: 'Accounts',
-    title: 'Accounts & Balances',
+    title: 'Keep Your Accounts in Check',
   },
   {
     id: 'visual-reports',
     lightImage: img3368,
     darkImage: img3369,
-    category: 'Analytics',
-    title: 'Spending Trends & Cash Flow',
+    title: 'Detailed Financial Reports',
   },
   {
     id: 'filtered-insights',
     lightImage: img3372,
     darkImage: img3371,
-    category: 'Analytics',
-    title: 'Filtered Category Insights',
+    title: 'View Your Records, Your Way',
   },
   {
     id: 'wallets-profile',
     lightImage: img3373,
     darkImage: img3374,
-    category: 'Accounts',
-    title: 'Wallets, Cards & Profile',
-  },
-  {
-    id: 'custom-tags',
-    lightImage: img3377,
-    darkImage: img3378,
-    category: 'Ledger',
-    title: 'Custom Tags & Split Ledger',
+    title: 'Easy Access in One Place',
   },
 ];
 
@@ -102,87 +83,83 @@ export const ScreenshotsSection: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
-  const [selectedScreenshot, setSelectedScreenshot] = useState<ScreenshotPair | null>(null);
+  const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
   const [sectionHeight, setSectionHeight] = useState<number | null>(null);
 
   // Dynamically calculate section scroll height based on track scrollable width
   const updateDimensions = useCallback(() => {
     if (!trackRef.current) return;
-    const trackWidth = trackRef.current.scrollWidth;
-    const viewportWidth = window.innerWidth;
+    const trackWidth = trackRef.current.offsetWidth;
+    const viewportWidth = document.documentElement.clientWidth;
     const maxTranslate = Math.max(0, trackWidth - viewportWidth);
-    // Multiply by 1.1 for comfortable, natural scroll pacing
-    const scrollDistance = Math.round(maxTranslate * 1.1);
+    const scrollDistance = Math.round(maxTranslate * 1.25);
     setSectionHeight(window.innerHeight + scrollDistance);
   }, []);
 
   useEffect(() => {
     updateDimensions();
+    const observer = new ResizeObserver(() => updateDimensions());
+    if (trackRef.current) {
+      observer.observe(trackRef.current);
+    }
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateDimensions);
+    };
   }, [updateDimensions]);
 
-  // Sticky Horizontal Scroll translation handler
+  // Sticky horizontal scroll + focus scale wave (flicker-free 2D GPU compositing)
   useEffect(() => {
-    let animationFrameId: number;
-
     const handleScroll = () => {
       if (!sectionRef.current || !trackRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
-      const sectionTop = rect.top;
       const totalScrollableDistance = rect.height - window.innerHeight;
-
       if (totalScrollableDistance <= 0) return;
 
-      // Progress: 0 at rect.top == 0, 1 at rect.bottom == window.innerHeight
-      const currentScroll = -sectionTop;
-      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollableDistance));
+      const progress = Math.max(0, Math.min(1, -rect.top / totalScrollableDistance));
 
-      const trackWidth = trackRef.current.scrollWidth;
-      const viewportWidth = window.innerWidth;
+      const trackWidth = trackRef.current.offsetWidth;
+      const viewportWidth = document.documentElement.clientWidth;
       const maxTranslate = Math.max(0, trackWidth - viewportWidth);
       const tx = -progress * maxTranslate;
 
-      trackRef.current.style.transform = `translate3d(${tx}px, 0, 0)`;
+      trackRef.current.style.transform = `translate3d(${tx.toFixed(2)}px, 0, 0)`;
 
       if (progressBarRef.current) {
-        progressBarRef.current.style.transform = `scaleX(${progress})`;
+        progressBarRef.current.style.transform = `scaleX(${progress.toFixed(4)})`;
+      }
+
+      // Sliding focal index from 0 (first screenshot) to N - 1 (last screenshot)
+      const totalCards = allScreenshots.length;
+      const focusIndex = progress * (totalCards - 1);
+
+      const isMobile = window.innerWidth <= 768;
+      const minScale = isMobile ? 0.86 : 0.76;
+      const step = isMobile ? 0.045 : 0.072;
+
+      for (let i = 0; i < totalCards; i++) {
+        const cardEl = cardRefs.current[i];
+        if (!cardEl) continue;
+
+        const absDist = Math.abs(i - focusIndex);
+        // Smooth scale falloff: 1.0 at focusIndex, gradually reducing for further cards
+        const scale = Math.max(minScale, 1 - absDist * step);
+
+        cardEl.style.transform = `translate3d(0, 0, 0) scale(${scale.toFixed(4)})`;
       }
     };
 
-    const onScroll = () => {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(handleScroll);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    handleScroll(); // Initial check
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
 
     return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [sectionHeight]);
-
-  // Close lightbox on Escape key
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setSelectedScreenshot(null);
-    };
-    if (selectedScreenshot) {
-      window.addEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-    };
-  }, [selectedScreenshot]);
 
   return (
     <section
@@ -196,33 +173,31 @@ export const ScreenshotsSection: React.FC = () => {
         <div className="container">
           <div className={styles.headerRow}>
             <div className={styles.headerLeft}>
-              <span className={styles.sectionSubtitle}>APP PREVIEW</span>
-              <h2 className={styles.sectionTitle}>Designed for Focus and Clarity</h2>
-              <p className={styles.sectionDescription}>
-                Explore authentic screens in light and dark mode as you scroll through the app.
-              </p>
+              <h2 className={styles.sectionTitle}>
+                Designed for <span className={styles.titleHighlight}>Focus and Clarity</span>
+              </h2>
             </div>
 
-            {/* Light / Dark Mode Toggle */}
+            {/* Light / Dark Mode Icon Toggle */}
             <div className={styles.headerControls}>
               <div className={styles.themeToggle} role="group" aria-label="Screenshot theme toggle">
                 <button
                   type="button"
                   className={`${styles.toggleBtn} ${themeMode === 'light' ? styles.toggleBtnActive : ''}`}
                   onClick={() => setThemeMode('light')}
+                  aria-label="Light mode"
                   aria-pressed={themeMode === 'light'}
                 >
-                  <SunIcon size={16} />
-                  <span>Light</span>
+                  <SunIcon size={18} />
                 </button>
                 <button
                   type="button"
                   className={`${styles.toggleBtn} ${themeMode === 'dark' ? styles.toggleBtnActive : ''}`}
                   onClick={() => setThemeMode('dark')}
+                  aria-label="Dark mode"
                   aria-pressed={themeMode === 'dark'}
                 >
-                  <MoonIcon size={16} />
-                  <span>Dark</span>
+                  <MoonIcon size={18} />
                 </button>
               </div>
             </div>
@@ -232,84 +207,56 @@ export const ScreenshotsSection: React.FC = () => {
         {/* Horizontally Scrollable Gallery Track */}
         <div className={styles.trackWrapper}>
           <div ref={trackRef} className={styles.horizontalTrack}>
-            <div className={styles.trackPaddingStart} />
-
-            {allScreenshots.map((item) => (
+            {allScreenshots.map((item, index) => (
               <div
                 key={item.id}
+                ref={(el) => {
+                  cardRefs.current[index] = el;
+                }}
                 className={styles.screenshotCard}
-                onClick={() => setSelectedScreenshot(item)}
-                title="Click to enlarge"
               >
-                {/* Realistic Hardware Phone Frame */}
+                {/* Realistic Multi-Layered Hardware Frame (Matches Hero Mockup) */}
                 <div className={styles.phoneFrame}>
+                  {/* Specular Diagonal Glass Sheen */}
+                  <div className={styles.screenSheen} aria-hidden="true" />
+
                   <div className={styles.phoneScreen}>
+                    <div className={styles.dynamicIsland} aria-hidden="true">
+                      <span className={styles.dynamicIslandCamera} />
+                    </div>
                     <img
                       src={item.lightImage}
                       alt={`${item.title} (Light Mode)`}
+                      decoding="async"
                       className={`${styles.screenImg} ${themeMode === 'light' ? styles.imgVisible : styles.imgHidden}`}
-                      loading="lazy"
                     />
                     <img
                       src={item.darkImage}
                       alt={`${item.title} (Dark Mode)`}
+                      decoding="async"
                       className={`${styles.screenImg} ${themeMode === 'dark' ? styles.imgVisible : styles.imgHidden}`}
-                      loading="lazy"
                     />
                   </div>
                 </div>
 
-                {/* Caption: Category + Title only (headers are enough) */}
+                {/* Caption: Title only */}
                 <div className={styles.captionGroup}>
-                  <span className={styles.categoryBadge}>{item.category}</span>
                   <h4 className={styles.screenshotTitle}>{item.title}</h4>
                 </div>
               </div>
             ))}
-
-            <div className={styles.trackPaddingEnd} />
           </div>
         </div>
 
-        {/* Minimal Scroll Progress Indicator */}
+        {/* Centered Scroll Progress Bar */}
         <div className="container">
           <div className={styles.progressRow}>
             <div className={styles.progressBarTrack}>
               <div ref={progressBarRef} className={styles.progressBarFill} />
             </div>
-            <span className={styles.scrollHint}>Scroll down to explore</span>
           </div>
         </div>
       </div>
-
-      {/* Lightbox Modal for Enlarge View */}
-      {selectedScreenshot &&
-        createPortal(
-          <div className={styles.lightboxBackdrop} onClick={() => setSelectedScreenshot(null)}>
-            <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
-              <button
-                type="button"
-                className={styles.lightboxCloseBtn}
-                onClick={() => setSelectedScreenshot(null)}
-                aria-label="Close enlarged preview"
-              >
-                <CloseIcon size={24} color="#FFFFFF" />
-              </button>
-              <div className={styles.lightboxPhone}>
-                <img
-                  src={themeMode === 'light' ? selectedScreenshot.lightImage : selectedScreenshot.darkImage}
-                  alt={selectedScreenshot.title}
-                  className={styles.lightboxImg}
-                />
-              </div>
-              <div className={styles.lightboxCaption}>
-                <span className={styles.lightboxCategory}>{selectedScreenshot.category}</span>
-                <h3 className={styles.lightboxTitle}>{selectedScreenshot.title}</h3>
-              </div>
-            </div>
-          </div>,
-          document.body
-        )}
     </section>
   );
 };

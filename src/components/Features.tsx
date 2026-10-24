@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   WalletIcon,
   CardIcon,
@@ -41,13 +41,71 @@ import styles from './Features.module.css';
 import appIcon from '../assets/app-icon.png';
 
 export const Features: React.FC = () => {
+  const containerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    // Only activate auto-scroll hover on mobile view (stacked bento boxes <= 960px)
+    const mobileQuery = window.matchMedia('(max-width: 960px)');
+
+    let observer: IntersectionObserver | null = null;
+
+    const setupObserver = () => {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+
+      if (!mobileQuery.matches) {
+        // Desktop view: ensure all mobile active classes are removed
+        if (containerRef.current) {
+          const boxes = containerRef.current.querySelectorAll(`.${styles.bentoBox}`);
+          boxes.forEach((box) => box.classList.remove(styles.boxActive));
+        }
+        return;
+      }
+
+      // Mobile view: trigger hover animations automatically as the user scrolls to each box
+      observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add(styles.boxActive);
+            } else {
+              entry.target.classList.remove(styles.boxActive);
+            }
+          });
+        },
+        {
+          // Middle active band of the mobile viewport
+          rootMargin: '-10% 0px -15% 0px',
+          threshold: 0.15,
+        }
+      );
+
+      if (containerRef.current) {
+        const boxes = containerRef.current.querySelectorAll(`.${styles.bentoBox}`);
+        boxes.forEach((box) => observer?.observe(box));
+      }
+    };
+
+    setupObserver();
+    mobileQuery.addEventListener('change', setupObserver);
+
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+      mobileQuery.removeEventListener('change', setupObserver);
+    };
+  }, []);
+
   return (
-    <section id="features" className={`section ${styles.featuresSection}`}>
+    <section id="features" ref={containerRef} className={`section ${styles.featuresSection}`}>
       <div className="container">
         {/* Section Header */}
         <div className="section-header">
           <h2 className="section-title">
-            Manage Your Personal Finances Effortlessly
+            Manage Your Personal Finances <span className={styles.titleHighlight}>Effortlessly</span>
           </h2>
         </div>
 

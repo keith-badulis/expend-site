@@ -197,25 +197,13 @@ export const Reviews: React.FC = () => {
 
   return (
     <section id="reviews" className={`section ${styles.reviewsSection}`}>
-      {/* Subtle Boundary Seam Light Sweep */}
-      <div className={styles.bottomLightSweep} aria-hidden="true" />
-
       <div className="container">
-        {/* Section Header with Aggregated Trust Badge */}
+        {/* Section Header */}
         <div className="section-header">
           <h2 className="section-title">
             Loved by People Who Value <br />
-            <span style={{ color: 'var(--accent-light)' }}>Simplicity & Design</span>
+            <span style={{ color: 'var(--accent-color)' }}>Simplicity & Design</span>
           </h2>
-
-          <p className="section-description">
-            Real reviews from users managing their personal finances with eXpend.
-          </p>
-
-          {/* Social Proof Trust Pill */}
-          <div className={styles.trustPill}>
-            <span className={styles.trustLabel}>App Store & Google Play Verified</span>
-          </div>
         </div>
       </div>
 

@@ -14,23 +14,10 @@
   gap: 1.25rem;
 }
 
-.footerLogoWrap {
+.footerBrandWrap {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
   user-select: none;
-  opacity: 0.85;
-  transition: opacity 0.2s ease;
-}
-
-.footerLogoWrap:hover {
-  opacity: 1;
-}
-
-.footerGrayscaleLogo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
 }
 
 .footerBrandText {
