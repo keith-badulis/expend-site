@@ -1349,7 +1349,7 @@ export const InfinityIcon: React.FC<IconProps> = ({
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 120 60"
     width={size}
-    height={size}
+    height={typeof size === 'number' ? Math.round(size / 2) : 'auto'}
     className={className}
     style={{ ...baseStyle, ...style }}
   >

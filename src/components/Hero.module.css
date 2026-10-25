@@ -343,11 +343,11 @@
   animation: financeFloat3 6.0s ease-in-out infinite alternate;
 }
 
-/* Single Sleek Hardware Frame (Matches Screenshots Section Hardware Bezel) */
+/* Single Sleek Hardware Frame (Matches Screenshots Section Hardware Bezel & Reference iPhone) */
 .phoneMockup {
   position: relative;
   width: 100%;
-  border-radius: 44px;
+  border-radius: 52px;
   padding: 8px;
   background: linear-gradient(145deg, #242936 0%, #141720 45%, #0F1219 100%);
   border: 1.5px solid #343B4D;
@@ -369,7 +369,7 @@
   left: 8px;
   right: 8px;
   bottom: 8px;
-  border-radius: 36px;
+  border-radius: 44px;
   background: linear-gradient(
     130deg,
     rgba(255, 255, 255, 0.12) 0%,
@@ -381,7 +381,7 @@
 }
 
 .phoneScreen {
-  border-radius: 36px;
+  border-radius: 44px;
   overflow: hidden;
   background-color: #11141A;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.85);
@@ -389,31 +389,44 @@
   position: relative;
 }
 
-/* Authentic iPhone Dynamic Island */
+/* Authentic iPhone Dynamic Island (Matches Reference Photo Proportions & Camera Detail) */
 .dynamicIsland {
   position: absolute;
-  top: 11px;
+  top: 10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 78px;
-  height: 21px;
+  width: 60px;
+  height: 23px;
   background-color: #000000;
-  border-radius: 999px;
+  border-radius: 9999px;
   z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 5px;
   pointer-events: none;
-  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.12);
+  box-sizing: border-box;
 }
 
-.dynamicIsland::after {
+.dynamicIslandCamera {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  position: relative;
+  background: radial-gradient(circle at 38% 38%, #202d4f 0%, #0d1424 55%, #05070c 100%);
+  box-shadow: inset 0 0 1px rgba(255, 255, 255, 0.3), 0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.dynamicIslandCamera::after {
   content: '';
   position: absolute;
-  right: 7px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 7px;
-  height: 7px;
+  top: 22%;
+  left: 26%;
+  width: 25%;
+  height: 25%;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #1d2a44 0%, #090d16 70%);
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .phoneScreen img {
@@ -1088,7 +1101,7 @@
     width: clamp(216px, 56vw, 234px);
   }
   .phoneMockup {
-    border-radius: 36px;
+    border-radius: 42px;
     padding: 6.5px;
   }
   .screenSheen {
@@ -1096,15 +1109,20 @@
     left: 6.5px;
     right: 6.5px;
     bottom: 6.5px;
-    border-radius: 29.5px;
+    border-radius: 35.5px;
   }
   .phoneScreen {
-    border-radius: 29.5px;
+    border-radius: 35.5px;
   }
   .dynamicIsland {
     top: 8px;
-    width: 62px;
-    height: 17px;
+    width: 48px;
+    height: 18px;
+    padding-right: 4px;
+  }
+  .dynamicIslandCamera {
+    width: 10px;
+    height: 10px;
   }
   .phoneBacklightAura {
     width: 260px;

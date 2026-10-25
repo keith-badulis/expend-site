@@ -39,6 +39,7 @@ import {
 } from './icons';
 import styles from './Features.module.css';
 import appIcon from '../assets/app-icon.png';
+import appLogo from '../assets/app-logo.webp';
 
 export const Features: React.FC = () => {
   const containerRef = useRef<HTMLElement>(null);
@@ -293,10 +294,10 @@ export const Features: React.FC = () => {
               Illustration at TOP, Centered Badge & Text at BOTTOM
              ========================================================= */}
           <div className={`${styles.bentoBox} ${styles.boxBudgets}`}>
-            {/* Visual Budget Cards at TOP - Clean Side-by-Side Balanced Cards */}
+            {/* Visual Budget Cards at TOP - Progress Bars & Multi-Bar Animate on Hover/Active */}
             <div className={styles.visualBudgetsWrap}>
               <div className={styles.budgetCardsGrid}>
-                {/* Card 1: Entertainment (Amber, 38% left) */}
+                {/* Card 1: Entertainment (Transitions from Green 72% -> Amber 38% on hover/active) */}
                 <div className={styles.budgetItemCard}>
                   <div className={styles.budgetCardIconSquircle}>
                     <GameIcon size={15} color="#3A435A" strokeWidth="6.25px" />
@@ -306,14 +307,14 @@ export const Features: React.FC = () => {
                     <span className={styles.budgetCardSubtitle}>$95.00 remaining</span>
                   </div>
                   <div className={styles.budgetBarPercentRow}>
-                    <div className={styles.budgetProgressBarTrackAmber}>
-                      <div className={styles.budgetProgressBarFillAmber} style={{ width: '38%' }} />
+                    <div className={`${styles.budgetProgressBarTrackAmber} ${styles.budgetTrackDynamic}`}>
+                      <div className={`${styles.budgetProgressBarFillAmber} ${styles.budgetFillDynamic}`} />
                     </div>
                     <span className={styles.budgetCardPercent}>38%</span>
                   </div>
                 </div>
 
-                {/* Card 2: Food & Groceries (Green, 70% left) */}
+                {/* Card 2: Food & Groceries (Green, animates from 46% -> 70% on hover/active) */}
                 <div className={styles.budgetItemCard}>
                   <div className={styles.budgetCardIconSquircle}>
                     <SpoonForkIcon size={15} color="#3A435A" strokeWidth="6.25px" />
@@ -324,7 +325,7 @@ export const Features: React.FC = () => {
                   </div>
                   <div className={styles.budgetBarPercentRow}>
                     <div className={styles.budgetProgressBarTrackGreen}>
-                      <div className={styles.budgetProgressBarFillGreen} style={{ width: '70%' }} />
+                      <div className={`${styles.budgetProgressBarFillGreen} ${styles.budgetFillGreenAnim}`} />
                     </div>
                     <span className={styles.budgetCardPercent}>70%</span>
                   </div>
@@ -338,15 +339,15 @@ export const Features: React.FC = () => {
                   <span className={styles.catDistTotal}>$10,759.59</span>
                 </div>
 
-                {/* Multi-segment Colored Distribution Bar */}
+                {/* Multi-segment Colored Distribution Bar (Segments shift proportions on hover/active) */}
                 <div className={styles.catDistMultiBar}>
-                  <div className={styles.distSegment} style={{ flex: 48, backgroundColor: '#F56960' }} title="Food & Groceries" />
-                  <div className={styles.distSegment} style={{ flex: 18, backgroundColor: '#5E6882' }} title="Clothing & Shopping" />
-                  <div className={styles.distSegment} style={{ flex: 9, backgroundColor: '#DD56B2' }} title="Utilities" />
-                  <div className={styles.distSegment} style={{ flex: 8, backgroundColor: '#4C74DB' }} title="Electronics" />
-                  <div className={styles.distSegment} style={{ flex: 6, backgroundColor: '#20C49E' }} title="Transportation" />
-                  <div className={styles.distSegment} style={{ flex: 5, backgroundColor: '#8BAA36' }} title="Personal" />
-                  <div className={styles.distSegment} style={{ flex: 6, backgroundColor: '#EAAF3B' }} title="Entertainment" />
+                  <div className={`${styles.distSegment} ${styles.distSeg1}`} style={{ backgroundColor: '#F56960' }} title="Food & Groceries" />
+                  <div className={`${styles.distSegment} ${styles.distSeg2}`} style={{ backgroundColor: '#5E6882' }} title="Clothing & Shopping" />
+                  <div className={`${styles.distSegment} ${styles.distSeg3}`} style={{ backgroundColor: '#DD56B2' }} title="Utilities" />
+                  <div className={`${styles.distSegment} ${styles.distSeg4}`} style={{ backgroundColor: '#4C74DB' }} title="Electronics" />
+                  <div className={`${styles.distSegment} ${styles.distSeg5}`} style={{ backgroundColor: '#20C49E' }} title="Transportation" />
+                  <div className={`${styles.distSegment} ${styles.distSeg6}`} style={{ backgroundColor: '#8BAA36' }} title="Personal" />
+                  <div className={`${styles.distSegment} ${styles.distSeg7}`} style={{ backgroundColor: '#EAAF3B' }} title="Entertainment" />
                 </div>
 
                 {/* Filter Pill Row */}
@@ -393,12 +394,8 @@ export const Features: React.FC = () => {
             {/* Visual Component: Separate Cards Stack at TOP */}
             <div className={styles.visualReportsWrap}>
               <div className={styles.visualReportsStack}>
-                {/* Card 1: Balance Trend Curve (Character-rich curve with net positive) */}
+                {/* Card 1: Balance Trend Curve (Graph & Cursor animate on hover/active) */}
                 <div className={styles.miniTrendCard}>
-                  <div className={styles.trendHeaderRow}>
-                    <span className={styles.trendCardTitle}>Balance Trend</span>
-                  </div>
-
                   <div className={styles.trendBalanceRow}>
                     <div className={styles.trendBalanceCol}>
                       <span className={styles.trendColLabel}>Starting</span>
@@ -406,7 +403,7 @@ export const Features: React.FC = () => {
                     </div>
                     <div className={`${styles.trendBalanceCol} ${styles.trendColRight}`}>
                       <span className={styles.trendColLabel}>Ending</span>
-                      <span className={styles.trendColAmount}>$147,570.00</span>
+                      <span className={`${styles.trendColAmount} ${styles.trendEndingAmount}`}>$147,570.00</span>
                     </div>
                   </div>
 
@@ -414,7 +411,7 @@ export const Features: React.FC = () => {
                     <svg viewBox="0 0 280 50" className={styles.trendSvg} preserveAspectRatio="none">
                       <defs>
                         <linearGradient id="expendBalanceTrendGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#4C74DB" stopOpacity="0.22" />
+                          <stop offset="0%" stopColor="#4C74DB" stopOpacity="0.24" />
                           <stop offset="100%" stopColor="#4C74DB" stopOpacity="0.0" />
                         </linearGradient>
                       </defs>
@@ -422,14 +419,26 @@ export const Features: React.FC = () => {
                       {/* Starting vertical indicator guide */}
                       <line x1="8" y1="4" x2="8" y2="48" stroke="rgba(76, 116, 219, 0.2)" strokeWidth="1.5" />
 
-                      {/* Area Gradient Fill - dynamic financial variation finishing net positive */}
+                      {/* Area Gradient Fill - animates opacity/scale on hover */}
                       <path
+                        className={styles.trendAreaPath}
                         d="M 0 42 C 20 44, 35 46, 55 33 C 75 20, 95 38, 115 37 C 135 36, 145 22, 165 24 C 185 26, 195 30, 215 16 C 230 6, 250 10, 280 11 L 280 50 L 0 50 Z"
                         fill="url(#expendBalanceTrendGrad)"
                       />
 
+                      {/* Faint baseline track so the drawing stroke animates over a subtle guide */}
+                      <path
+                        d="M 0 42 C 20 44, 35 46, 55 33 C 75 20, 95 38, 115 37 C 135 36, 145 22, 165 24 C 185 26, 195 30, 215 16 C 230 6, 250 10, 280 11"
+                        fill="none"
+                        stroke="rgba(76, 116, 219, 0.16)"
+                        strokeWidth="2.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+
                       {/* Dotted cursor vertical line at active peak */}
                       <line
+                        className={styles.trendPeakLine}
                         x1="244"
                         y1="9.37"
                         x2="244"
@@ -440,8 +449,10 @@ export const Features: React.FC = () => {
                         strokeOpacity="0.75"
                       />
 
-                      {/* Blue Line Curve with character */}
+                      {/* Blue Line Curve that draws forward on hover/active */}
                       <path
+                        className={styles.trendCurvePath}
+                        pathLength="100"
                         d="M 0 42 C 20 44, 35 46, 55 33 C 75 20, 95 38, 115 37 C 135 36, 145 22, 165 24 C 185 26, 195 30, 215 16 C 230 6, 250 10, 280 11"
                         fill="none"
                         stroke="#4C74DB"
@@ -450,8 +461,9 @@ export const Features: React.FC = () => {
                         strokeLinejoin="round"
                       />
 
-                      {/* Active Cursor Circle on Curve - mathematically 100% centered on the curve stroke */}
+                      {/* Active Cursor Circle on Curve */}
                       <circle
+                        className={styles.trendPeakDot}
                         cx="244"
                         cy="9.37"
                         r="3.8"
@@ -461,18 +473,18 @@ export const Features: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Card 2: Pie / Donut Breakdown (Left: Donut chart, Right: Stacked Expense badge and category icons) */}
+                {/* Card 2: Pie / Donut Breakdown (Donut segments & category icons animate on hover/active) */}
                 <div className={styles.miniPieCard}>
                   {/* Left: Thick Donut Chart with Centered Round Icon */}
                   <div className={styles.pieDonutWrap}>
                     <svg viewBox="0 0 100 100" className={styles.pieDonutSvg}>
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#EF8354" strokeWidth="16" strokeDasharray="58 214" strokeDashoffset="0" />
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#20C49E" strokeWidth="16" strokeDasharray="46 214" strokeDashoffset="-59" />
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#DD56B2" strokeWidth="16" strokeDasharray="34 214" strokeDashoffset="-106" />
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#5E6882" strokeWidth="16" strokeDasharray="26 214" strokeDashoffset="-141" />
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#4C74DB" strokeWidth="16" strokeDasharray="22 214" strokeDashoffset="-168" />
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#EAAF3B" strokeWidth="16" strokeDasharray="18 214" strokeDashoffset="-191" />
-                      <circle cx="50" cy="50" r="34" fill="none" stroke="#E29965" strokeWidth="16" strokeDasharray="9 214" strokeDashoffset="-210" />
+                      <circle className={styles.pieSeg1} cx="50" cy="50" r="34" fill="none" stroke="#EF8354" strokeWidth="16" strokeDasharray="58 214" strokeDashoffset="0" />
+                      <circle className={styles.pieSeg2} cx="50" cy="50" r="34" fill="none" stroke="#20C49E" strokeWidth="16" strokeDasharray="46 214" strokeDashoffset="-59" />
+                      <circle className={styles.pieSeg3} cx="50" cy="50" r="34" fill="none" stroke="#DD56B2" strokeWidth="16" strokeDasharray="34 214" strokeDashoffset="-106" />
+                      <circle className={styles.pieSeg4} cx="50" cy="50" r="34" fill="none" stroke="#5E6882" strokeWidth="16" strokeDasharray="26 214" strokeDashoffset="-141" />
+                      <circle className={styles.pieSeg5} cx="50" cy="50" r="34" fill="none" stroke="#4C74DB" strokeWidth="16" strokeDasharray="22 214" strokeDashoffset="-168" />
+                      <circle className={styles.pieSeg6} cx="50" cy="50" r="34" fill="none" stroke="#EAAF3B" strokeWidth="16" strokeDasharray="18 214" strokeDashoffset="-191" />
+                      <circle className={styles.pieSeg7} cx="50" cy="50" r="34" fill="none" stroke="#E29965" strokeWidth="16" strokeDasharray="9 214" strokeDashoffset="-210" />
                     </svg>
                     <div className={styles.pieDonutCenterIcon}>
                       <CategoriesIcon size={16} color="var(--primary)" strokeWidth="6.25px" />
@@ -527,7 +539,6 @@ export const Features: React.FC = () => {
               <div className={styles.miniPlannedWidget}>
                 <div className={styles.plannedHeaderRow}>
                   <span className={styles.monthTag}>October</span>
-                  <span className={styles.dueBadge}>2 Due Soon</span>
                 </div>
 
                 {/* Calendar strip: Sunday 4 to Saturday 10 */}
@@ -541,10 +552,10 @@ export const Features: React.FC = () => {
                   <div className={styles.calDay}><span className={styles.calDayName}>S</span><span className={styles.calDate}>10</span></div>
                 </div>
 
-                {/* Clean un-overlapped vertical bill cards */}
+                {/* Clean bill rows that highlight on hover/active */}
                 <div className={styles.plannedItemsListNoOverlap}>
                   {/* Top Card: Music Subscription */}
-                  <div className={styles.miniBillCardClean}>
+                  <div className={`${styles.miniBillCardClean} ${styles.billCardTop}`}>
                     <div className={styles.billIconCirclePurple}>
                       <HeadphonesIcon size={15} color="#9957BD" strokeWidth="6.25px" />
                     </div>
@@ -559,7 +570,7 @@ export const Features: React.FC = () => {
                   </div>
 
                   {/* Bottom Card: Apartment Rent */}
-                  <div className={styles.miniBillCardClean}>
+                  <div className={`${styles.miniBillCardClean} ${styles.billCardBottom}`}>
                     <div className={styles.billIconCircleBlue}>
                       <HouseIcon size={15} color="#4C74DB" strokeWidth="6.25px" />
                     </div>
@@ -593,32 +604,36 @@ export const Features: React.FC = () => {
               Illustration at TOP, Centered Badge & Text at BOTTOM
              ========================================================= */}
           <div className={`${styles.bentoBox} ${styles.boxLifetime}`}>
-            {/* Visual Component: Lifetime Pass Card at TOP */}
+            {/* Visual Component: Minimalist Paper-Craft Lifetime Pass with 3D Perspective & Glare */}
             <div className={styles.visualLifetimeWrap}>
-              <div className={styles.lifetimePassCard}>
-                <div className={styles.passHeaderRow}>
-                  <div className={styles.passLogoGroup}>
-                    <div className={styles.passAppIconSquircle}>
-                      <img src={appIcon} alt="eXpend" className={styles.passAppLogoImg} />
-                    </div>
-                    <span className={styles.passBrandTitle}>eXpend Premium</span>
+              <div className={styles.platinumPassCard}>
+                {/* Subtle Infinity Watermark in Background */}
+                <div className={styles.passWatermarkInfinity} aria-hidden="true">
+                  <InfinityIcon size={78} color="#4C74DB" strokeWidth="5.5px" />
+                </div>
+
+                {/* Dynamic Specular Glare Overlay that sweeps across as perspective tilts */}
+                <div className={styles.paperGlareOverlay} />
+
+                {/* Top Row: Brand Logo + eXpend (Single Primary Color) & Clean Premium Pill */}
+                <div className={styles.platinumTopRow}>
+                  <div className={styles.platinumBrandGroup}>
+                    <img src={appLogo} alt="eXpend" className={styles.platinumAppIconImg} />
+                    <span className={styles.platinumBrandName}>eXpend</span>
+                  </div>
+
+                  <div className={styles.platinumTierBadge}>
+                    <SparklesIcon size={11} color="#4C74DB" strokeWidth="6.25px" />
+                    <span>Premium</span>
                   </div>
                 </div>
 
-                <div className={styles.passHeroRow}>
-                  <div className={styles.passHeroLeft}>
-                    <span className={styles.passHeroClaim}>Pay Once, Own Forever</span>
-                    <span className={styles.passHeroSub}>Zero recurring fees • No subscriptions</span>
+                {/* Bottom Row: Validity Lifetime Claim */}
+                <div className={styles.platinumBottomRow}>
+                  <div className={styles.platinumClaimCol}>
+                    <span className={styles.platinumSubClaim}>Validity</span>
+                    <span className={styles.platinumMainClaim}>Lifetime</span>
                   </div>
-                  <div className={styles.passInfinityIconWrap}>
-                    <InfinityIcon size={32} color="#4C74DB" strokeWidth="6.25px" />
-                  </div>
-                </div>
-
-                <div className={styles.passPerksRow}>
-                  <span className={styles.passPerkPill}>✓ Unlimited Accounts</span>
-                  <span className={styles.passPerkPill}>✓ Cloud & Local Backup</span>
-                  <span className={styles.passPerkPill}>✓ All Future Updates</span>
                 </div>
               </div>
             </div>
