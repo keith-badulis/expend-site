@@ -64,7 +64,7 @@ export const Features: React.FC = () => {
         return;
       }
 
-      // Mobile view: trigger hover animations automatically as the user scrolls to each box
+      // Mobile view: trigger hover animations automatically when each bento box reaches the center of the screen
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -76,15 +76,20 @@ export const Features: React.FC = () => {
           });
         },
         {
-          // Middle active band of the mobile viewport
-          rootMargin: '-10% 0px -15% 0px',
-          threshold: 0.15,
+          // Offset active band so animation begins when the bento box reaches the center of the screen (~50% viewport)
+          rootMargin: '-20% 0px -48% 0px',
+          threshold: 0,
         }
       );
 
       if (containerRef.current) {
         const boxes = containerRef.current.querySelectorAll(`.${styles.bentoBox}`);
-        boxes.forEach((box) => observer?.observe(box));
+        boxes.forEach((box) => {
+          // Do not animate the last bento box (backup & restore cards) on mobile to prevent cards from shrinking
+          if (!box.classList.contains(styles.boxPrivacy)) {
+            observer?.observe(box);
+          }
+        });
       }
     };
 

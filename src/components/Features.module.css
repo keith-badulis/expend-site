@@ -1506,12 +1506,8 @@
 
 /* =========================================================
    MOBILE SCROLL-TRIGGERED ANIMATIONS (.boxActive)
-   (Automatically triggered as each bento box scrolls into view)
+   (Automatically triggered when bento box reaches screen center)
    ========================================================= */
-.bentoBox.boxActive {
-  background-color: rgba(221, 224, 233, 0.58);
-}
-
 .bentoBox.boxActive .boxTagPill {
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(24, 38, 75, 0.14);
@@ -1585,22 +1581,7 @@
   box-shadow: 0 10px 26px rgba(24, 38, 75, 0.1);
 }
 
-/* Box 7: Privacy & Backups */
-.boxPrivacy.boxActive .squareBackupCardFan {
-  margin: 0 5px;
-}
-.boxPrivacy.boxActive .fanCard1 {
-  transform: rotate(-5deg) translateY(-4px);
-}
-.boxPrivacy.boxActive .fanCard2 {
-  transform: rotate(-1.5deg) translateY(-8px);
-}
-.boxPrivacy.boxActive .fanCard3 {
-  transform: rotate(1.5deg) translateY(-8px);
-}
-.boxPrivacy.boxActive .fanCard4 {
-  transform: rotate(5deg) translateY(-4px);
-}
+/* Note: Box 7 (Privacy & Backups) is intentionally not animated on mobile to avoid card shrinking */
 
 /* =========================================================
    RESPONSIVE BREAKPOINTS
