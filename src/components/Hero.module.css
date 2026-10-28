@@ -270,79 +270,6 @@
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
 }
 
-/* 3. Pure Vector Finance Icons in Balanced Diagonal Symmetry */
-.financeIconAnchor {
-  position: absolute;
-  z-index: 6;
-  pointer-events: none;
-  transform: translateZ(25px);
-}
-
-/* Right Arc (above bottom-right Vacation card) */
-.iconPosBank {
-  top: 10%;
-  right: -78px;
-}
-
-.iconPosPiggy {
-  top: 56%;
-  right: -74px;
-}
-
-/* Left Arc (below top-left Savings card) */
-.iconPosCard {
-  top: 44%;
-  left: -66px;
-}
-
-.iconPosCoin {
-  bottom: 13%;
-  left: -72px;
-}
-
-.iconReveal1 {
-  animation: iconEntrancePop 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
-}
-
-.iconReveal2 {
-  animation: iconEntrancePop 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
-}
-
-.iconReveal3 {
-  animation: iconEntrancePop 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
-}
-
-.iconReveal4 {
-  animation: iconEntrancePop 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.54s both;
-}
-
-.emanatingFinanceIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  filter: drop-shadow(0 2px 6px rgba(76, 116, 219, 0.16));
-  opacity: 0.45;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease, opacity 0.4s ease;
-}
-
-.financeIconInner {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.float1 {
-  animation: financeFloat1 5.2s ease-in-out infinite alternate;
-}
-
-.float2 {
-  animation: financeFloat2 5.6s ease-in-out infinite alternate;
-}
-
-.float3 {
-  animation: financeFloat3 6.0s ease-in-out infinite alternate;
-}
-
 /* Single Sleek Hardware Frame (Matches Screenshots Section Hardware Bezel & Reference iPhone) */
 .phoneMockup {
   position: relative;
@@ -721,30 +648,6 @@
     transform: translate(-50%, -50%) scale(1.10);
     opacity: 0.95;
   }
-
-  .phoneAnchor:hover .emanatingFinanceIcon {
-    opacity: 0.85;
-  }
-
-  .phoneAnchor:hover .iconPosBank .emanatingFinanceIcon {
-    transform: translate(7px, -4px) scale(1.06);
-    filter: drop-shadow(0 0 16px rgba(76, 116, 219, 0.45)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.14));
-  }
-
-  .phoneAnchor:hover .iconPosPiggy .emanatingFinanceIcon {
-    transform: translate(6px, 3px) scale(1.06);
-    filter: drop-shadow(0 0 16px rgba(76, 116, 219, 0.45)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.14));
-  }
-
-  .phoneAnchor:hover .iconPosCard .emanatingFinanceIcon {
-    transform: translate(-6px, -2px) scale(1.06);
-    filter: drop-shadow(0 0 16px rgba(76, 116, 219, 0.45)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.14));
-  }
-
-  .phoneAnchor:hover .iconPosCoin .emanatingFinanceIcon {
-    transform: translate(-6px, 4px) scale(1.06);
-    filter: drop-shadow(0 0 16px rgba(76, 116, 219, 0.45)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.14));
-  }
 }
 
 /* --- KEYFRAME DEFINITIONS --- */
@@ -800,44 +703,6 @@
   100% {
     transform: translate(-50%, -50%) scale(0.94);
     opacity: 0.85;
-  }
-}
-
-@keyframes iconEntrancePop {
-  0% {
-    opacity: 0;
-    transform: scale(0.65);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes financeFloat1 {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-6px) rotate(5deg);
-  }
-}
-
-@keyframes financeFloat2 {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-6px) rotate(-5deg);
-  }
-}
-
-@keyframes financeFloat3 {
-  0% {
-    transform: translateY(0) rotate(0deg);
-  }
-  100% {
-    transform: translateY(-5px) rotate(4deg);
   }
 }
 
@@ -955,10 +820,6 @@
   .heroTrustRow {
     justify-content: center;
   }
-  .heroDescription {
-    margin-left: auto;
-    margin-right: auto;
-  }
   .phoneMockupWrapper {
     min-height: 500px;
   }
@@ -1034,22 +895,6 @@
   }
   .goalCardBody {
     width: 184px;
-  }
-  .iconPosBank {
-    top: 9%;
-    right: -46px;
-  }
-  .iconPosPiggy {
-    top: 56%;
-    right: -44px;
-  }
-  .iconPosCard {
-    top: 44%;
-    left: -44px;
-  }
-  .iconPosCoin {
-    bottom: 13%;
-    left: -44px;
   }
   .scrollGuide {
     bottom: 20px;
@@ -1207,26 +1052,5 @@
   .goalProgressTrack {
     margin-top: 4px;
     height: 3px;
-  }
-
-  .iconPosBank {
-    top: 9%;
-    right: -36px;
-  }
-  .iconPosPiggy {
-    top: 56%;
-    right: -34px;
-  }
-  .iconPosCard {
-    top: 44%;
-    left: -36px;
-  }
-  .iconPosCoin {
-    bottom: 13%;
-    left: -36px;
-  }
-  .emanatingFinanceIcon svg {
-    width: 20px;
-    height: 20px;
   }
 }

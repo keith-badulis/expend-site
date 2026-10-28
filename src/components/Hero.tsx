@@ -2,10 +2,6 @@ import React from 'react';
 import { StoreBadges } from './StoreBadges';
 import { AnimatedLogo } from './AnimatedLogo';
 import {
-  BankIcon,
-  PiggyBankIcon,
-  CardIcon,
-  CoinIcon,
   AirplaneIcon,
   WalletIcon,
 } from './icons';
@@ -95,42 +91,7 @@ export const Hero: React.FC = () => {
                 </div>
               </div>
 
-              {/* Layer 4: Emanating Pure Vector Finance Icons (2 per side for clean symmetry) */}
-              {/* Right Arc Icons (above Vacation Card) */}
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosBank} ${styles.iconReveal1}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <BankIcon size={34} color="var(--accent-color)" />
-                  </div>
-                </div>
-              </div>
-
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosPiggy} ${styles.iconReveal3}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float3}`}>
-                    <PiggyBankIcon size={35} color="var(--accent-color)" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Left Arc Icons (below Savings Card) */}
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosCard} ${styles.iconReveal2}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float2}`}>
-                    <CardIcon size={34} color="var(--accent-color)" />
-                  </div>
-                </div>
-              </div>
-
-              <div className={`${styles.financeIconAnchor} ${styles.iconPosCoin} ${styles.iconReveal4}`}>
-                <div className={styles.emanatingFinanceIcon}>
-                  <div className={`${styles.financeIconInner} ${styles.float1}`}>
-                    <CoinIcon size={32} color="var(--accent-color)" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Layer 5: Authentic eXpend App Component 1: Savings WalletItem (Top-Left) */}
+              {/* Layer 4: Authentic eXpend App Component 1: Savings WalletItem (Top-Left) */}
               <div className={`${styles.appFloatingCard} ${styles.walletCardWrap} ${styles.cardReveal1}`}>
                 <div className={styles.walletCardGradient}>
                   {/* Top Squircle Icon (Matches App's Wallet Icon) */}

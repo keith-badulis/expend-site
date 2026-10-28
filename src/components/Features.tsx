@@ -14,23 +14,14 @@ import {
   HeadphonesIcon,
   HouseIcon,
   ShoppingCartIcon,
-  DescriptionIcon,
   SparklesIcon,
-  DiamondIcon,
-  TagIcon,
-  CheckIcon,
-  ArchiveIcon,
   JsonIcon,
   CloudBackupIcon,
   BackupIcon,
-  StarFilledIcon,
   ReceiptIcon,
-  FilterIcon,
-  DeltaIcon,
   HeartIcon,
   CategoriesIcon,
   InfinityIcon,
-  ExpenseIcon,
   ArrowDownIcon,
   NoteIcon,
   HangerIcon,
@@ -38,7 +29,6 @@ import {
   LaptopIcon,
 } from './icons';
 import styles from './Features.module.css';
-import appIcon from '../assets/app-icon.png';
 import appLogo from '../assets/app-logo.webp';
 
 export const Features: React.FC = () => {
@@ -65,7 +55,7 @@ export const Features: React.FC = () => {
         return;
       }
 
-      // Mobile view: trigger hover animations automatically when each bento box reaches the center of the screen
+      // Mobile view: trigger hover animations automatically when each bento box is well-centered in view
       observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -77,19 +67,16 @@ export const Features: React.FC = () => {
           });
         },
         {
-          // Offset active band so animation begins when the bento box reaches the center of the screen (~50% viewport)
-          rootMargin: '-20% 0px -48% 0px',
-          threshold: 0,
+          // Calibrated active band so animation begins when the card is well in view, not prematurely
+          rootMargin: '-20% 0px -38% 0px',
+          threshold: 0.15,
         }
       );
 
       if (containerRef.current) {
         const boxes = containerRef.current.querySelectorAll(`.${styles.bentoBox}`);
         boxes.forEach((box) => {
-          // Do not animate the last bento box (backup & restore cards) on mobile to prevent cards from shrinking
-          if (!box.classList.contains(styles.boxPrivacy)) {
-            observer?.observe(box);
-          }
+          observer?.observe(box);
         });
       }
     };
@@ -166,13 +153,19 @@ export const Features: React.FC = () => {
                     <div className={styles.goalDetails}>
                       <span className={styles.goalTitle}>Vacation Goal</span>
                       <div className={styles.goalAmountPercentRow}>
-                        <span className={styles.goalAmount}>$3,250 / $5,000</span>
-                        <span className={styles.goalPercent}>65%</span>
+                        <div className={styles.goalAmountFlip}>
+                          <span className={styles.goalAmountRest}>$3,250 / $5,000</span>
+                          <span className={styles.goalAmountActive}>$4,250 / $5,000</span>
+                        </div>
+                        <div className={styles.goalPercentFlip}>
+                          <span className={styles.goalPercentRest}>65%</span>
+                          <span className={styles.goalPercentActive}>85%</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                   <div className={styles.goalProgressBar}>
-                    <div className={styles.goalProgressFill} style={{ width: '65%' }} />
+                    <div className={styles.goalProgressFill} />
                   </div>
                 </div>
 
@@ -184,6 +177,7 @@ export const Features: React.FC = () => {
                       <svg className={styles.debtRingSvg} viewBox="0 0 32 32">
                         <circle cx="16" cy="16" r="13" fill="none" stroke="rgba(76, 116, 219, 0.15)" strokeWidth="2.4" />
                         <circle
+                          className={styles.debtRingProgress}
                           cx="16" cy="16" r="13" fill="none"
                           stroke="#4C74DB" strokeWidth="2.4"
                           strokeDasharray="57 82"
@@ -201,7 +195,7 @@ export const Features: React.FC = () => {
                   </div>
                   <div className={styles.debtBottomRow}>
                     <div className={styles.debtTypeBadge}>
-                      <ArrowDownIcon size={11} color="#64748B" strokeWidth="6.25px" />
+                      <ArrowDownIcon size={11} color="currentColor" strokeWidth="6.25px" />
                       <span>Payable</span>
                     </div>
                     <span className={styles.debtAmountStatement}>$120.00 left</span>
@@ -232,22 +226,29 @@ export const Features: React.FC = () => {
               {/* Minimal Keypad Card */}
               <div className={styles.miniKeypadCard}>
                 <div className={styles.miniKeypadDisplay}>
-                  <span className={styles.miniDisplaySymbol}>$</span>
-                  <span className={styles.miniDisplayAmount}>24.50</span>
+                  <div className={styles.miniDisplayAmountStack}>
+                    <span className={styles.typeAmt0}><span className={styles.miniDisplaySymbol}>$</span>0</span>
+                    <span className={styles.typeAmt1}><span className={styles.miniDisplaySymbol}>$</span>2</span>
+                    <span className={styles.typeAmt2}><span className={styles.miniDisplaySymbol}>$</span>24</span>
+                    <span className={styles.typeAmt3}><span className={styles.miniDisplaySymbol}>$</span>24.</span>
+                    <span className={styles.typeAmt4}><span className={styles.miniDisplaySymbol}>$</span>24.5</span>
+                    <span className={styles.typeAmt5}><span className={styles.miniDisplaySymbol}>$</span>24.50</span>
+                  </div>
+                  <span className={styles.displayCursor} />
                 </div>
                 <div className={styles.miniKeypadKeys}>
                   <span className={styles.keyUnit}>7</span>
                   <span className={styles.keyUnit}>8</span>
                   <span className={styles.keyUnit}>9</span>
-                  <span className={styles.keyUnit}>4</span>
-                  <span className={styles.keyUnit}>5</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnit4}`}>4</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnit5}`}>5</span>
                   <span className={styles.keyUnit}>6</span>
                   <span className={styles.keyUnit}>1</span>
-                  <span className={styles.keyUnit}>2</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnit2}`}>2</span>
                   <span className={styles.keyUnit}>3</span>
-                  <span className={styles.keyUnit}>.</span>
-                  <span className={styles.keyUnit}>0</span>
-                  <span className={`${styles.keyUnit} ${styles.keyUnitPrimary}`}>✓</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnitDot}`}>.</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnit0}`}>0</span>
+                  <span className={`${styles.keyUnit} ${styles.keyUnitPrimary} ${styles.keyUnitCheck}`}>✓</span>
                 </div>
               </div>
 
@@ -402,7 +403,10 @@ export const Features: React.FC = () => {
                       <span className={styles.trendColAmount}>$144,120.00</span>
                     </div>
                     <div className={`${styles.trendBalanceCol} ${styles.trendColRight}`}>
-                      <span className={styles.trendColLabel}>Ending</span>
+                      <div className={styles.trendEndingHeader}>
+                        <span className={styles.trendColLabel}>Ending</span>
+                        <span className={styles.trendGrowthBadge}>▲ +2.4%</span>
+                      </div>
                       <span className={`${styles.trendColAmount} ${styles.trendEndingAmount}`}>$147,570.00</span>
                     </div>
                   </div>
@@ -461,6 +465,17 @@ export const Features: React.FC = () => {
                         strokeLinejoin="round"
                       />
 
+                      {/* Active Radar Pulse Ring around Peak Dot */}
+                      <circle
+                        className={styles.trendPeakDotRing}
+                        cx="244"
+                        cy="9.37"
+                        r="3.8"
+                        fill="none"
+                        stroke="#4C74DB"
+                        strokeWidth="1.5"
+                      />
+
                       {/* Active Cursor Circle on Curve */}
                       <circle
                         className={styles.trendPeakDot}
@@ -475,7 +490,7 @@ export const Features: React.FC = () => {
 
                 {/* Card 2: Pie / Donut Breakdown (Donut segments & category icons animate on hover/active) */}
                 <div className={styles.miniPieCard}>
-                  {/* Left: Thick Donut Chart with Centered Round Icon */}
+                  {/* Left: Thick Donut Chart */}
                   <div className={styles.pieDonutWrap}>
                     <svg viewBox="0 0 100 100" className={styles.pieDonutSvg}>
                       <circle className={styles.pieSeg1} cx="50" cy="50" r="34" fill="none" stroke="#EF8354" strokeWidth="16" strokeDasharray="58 214" strokeDashoffset="0" />
@@ -486,15 +501,12 @@ export const Features: React.FC = () => {
                       <circle className={styles.pieSeg6} cx="50" cy="50" r="34" fill="none" stroke="#EAAF3B" strokeWidth="16" strokeDasharray="18 214" strokeDashoffset="-191" />
                       <circle className={styles.pieSeg7} cx="50" cy="50" r="34" fill="none" stroke="#E29965" strokeWidth="16" strokeDasharray="9 214" strokeDashoffset="-210" />
                     </svg>
-                    <div className={styles.pieDonutCenterIcon}>
-                      <CategoriesIcon size={16} color="var(--primary)" strokeWidth="6.25px" />
-                    </div>
                   </div>
 
                   {/* Right: Stacked Expense Badge & Category Filter Icons */}
                   <div className={styles.pieRightStack}>
                     <span className={styles.pieExpensePill}>
-                      <ArrowDownIcon size={12} color="#838487" strokeWidth="6.25px" />
+                      <ArrowDownIcon size={12} color="currentColor" strokeWidth="6.25px" />
                       <span>Expense</span>
                     </span>
 
@@ -543,13 +555,18 @@ export const Features: React.FC = () => {
 
                 {/* Calendar strip: Sunday 4 to Saturday 10 */}
                 <div className={styles.miniCalendarStrip}>
-                  <div className={styles.calDay}><span className={styles.calDayName}>S</span><span className={styles.calDate}>4</span></div>
-                  <div className={styles.calDay}><span className={styles.calDayName}>M</span><span className={styles.calDate}>5</span></div>
-                  <div className={styles.calDay}><span className={styles.calDayName}>T</span><span className={styles.calDate}>6</span></div>
-                  <div className={styles.calDay}><span className={styles.calDayName}>W</span><span className={styles.calDate}>7</span></div>
-                  <div className={styles.calDay}><span className={styles.calDayName}>T</span><span className={styles.calDate}>8</span></div>
-                  <div className={`${styles.calDay} ${styles.calDayActive}`}><span className={styles.calDayName}>F</span><span className={styles.calDate}>9</span></div>
-                  <div className={styles.calDay}><span className={styles.calDayName}>S</span><span className={styles.calDate}>10</span></div>
+                  <div className={styles.calGridInner}>
+                    {/* Sliding selection glider from Oct 4 to Oct 9 */}
+                    <div className={styles.calActivePillGlider} />
+
+                    <div className={`${styles.calDay} ${styles.calDayFour}`}><span className={styles.calDayName}>S</span><span className={styles.calDate}>4</span></div>
+                    <div className={styles.calDay}><span className={styles.calDayName}>M</span><span className={styles.calDate}>5</span></div>
+                    <div className={styles.calDay}><span className={styles.calDayName}>T</span><span className={styles.calDate}>6</span></div>
+                    <div className={styles.calDay}><span className={styles.calDayName}>W</span><span className={styles.calDate}>7</span></div>
+                    <div className={styles.calDay}><span className={styles.calDayName}>T</span><span className={styles.calDate}>8</span></div>
+                    <div className={`${styles.calDay} ${styles.calDayNine}`}><span className={styles.calDayName}>F</span><span className={styles.calDate}>9</span></div>
+                    <div className={styles.calDay}><span className={styles.calDayName}>S</span><span className={styles.calDate}>10</span></div>
+                  </div>
                 </div>
 
                 {/* Clean bill rows that highlight on hover/active */}
@@ -565,7 +582,10 @@ export const Features: React.FC = () => {
                     </div>
                     <div className={styles.billRightGroup}>
                       <span className={styles.billAmount}>-$14.99</span>
-                      <span className={styles.billPillUrgent}>Due today</span>
+                      <div className={styles.billPillFlip}>
+                        <span className={styles.billPillRest}>In 5 days</span>
+                        <span className={styles.billPillActive}>Due today</span>
+                      </div>
                     </div>
                   </div>
 
@@ -580,7 +600,10 @@ export const Features: React.FC = () => {
                     </div>
                     <div className={styles.billRightGroup}>
                       <span className={styles.billAmount}>-$1,250.00</span>
-                      <span className={styles.billPillNormal}>In 6 days</span>
+                      <div className={styles.billPillFlip}>
+                        <span className={styles.billPillRest}>In 11 days</span>
+                        <span className={styles.billPillActiveBottom}>In 6 days</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -660,28 +683,28 @@ export const Features: React.FC = () => {
               <div className={styles.backupFanStage}>
                 <div className={`${styles.squareBackupCardFan} ${styles.fanCard1}`}>
                   <div className={styles.backupIconCircleYellow}>
-                    <JsonIcon size={18} color="#EAAF3B" strokeWidth="6.25px" />
+                    <JsonIcon size={18} color="currentColor" strokeWidth="6.25px" />
                   </div>
                   <span className={styles.backupSquareTitle}>JSON</span>
                 </div>
 
                 <div className={`${styles.squareBackupCardFan} ${styles.fanCard2}`}>
                   <div className={styles.backupIconCircleGreen}>
-                    <NoteIcon size={18} color="#0DBF96" strokeWidth="6.25px" />
+                    <NoteIcon size={18} color="currentColor" strokeWidth="6.25px" />
                   </div>
                   <span className={styles.backupSquareTitle}>CSV</span>
                 </div>
 
                 <div className={`${styles.squareBackupCardFan} ${styles.fanCard3}`}>
                   <div className={styles.backupIconCircleOrange}>
-                    <BackupIcon size={18} color="#EF8354" strokeWidth="6.25px" />
+                    <BackupIcon size={18} color="currentColor" strokeWidth="6.25px" />
                   </div>
                   <span className={styles.backupSquareTitle}>Local Backup</span>
                 </div>
 
                 <div className={`${styles.squareBackupCardFan} ${styles.fanCard4}`}>
                   <div className={styles.backupIconCircleBlue}>
-                    <CloudBackupIcon size={18} color="#4C74DB" strokeWidth="6.25px" />
+                    <CloudBackupIcon size={18} color="currentColor" strokeWidth="6.25px" />
                   </div>
                   <span className={styles.backupSquareTitle}>Cloud Backup</span>
                 </div>
