@@ -674,7 +674,7 @@ export const Features: React.FC = () => {
           </div>
 
           {/* =========================================================
-              BOX 7: Private and Serverless Design (Span 6)
+              BOX 7: Private & Portable (Span 6)
               Illustration at TOP, Centered Badge & Text at BOTTOM
              ========================================================= */}
           <div className={`${styles.bentoBox} ${styles.boxPrivacy}`}>
@@ -715,7 +715,7 @@ export const Features: React.FC = () => {
             <div className={styles.boxTextContent}>
               <div className={`${styles.boxTagPill} ${styles.tagPillEmerald}`}>
                 <LockIcon size={16} color="#FFFFFF" strokeWidth="6.25px" />
-                <span>Private and Serverless Design</span>
+                <span>Private &amp; Portable</span>
               </div>
               <p className={styles.boxSubtitle}>
                 Your financial data stays yours, alone, with multiple export options to choose from. Backup and restore your data anytime, with optional Google Drive cloud backup.
